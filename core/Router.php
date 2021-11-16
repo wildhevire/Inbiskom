@@ -38,11 +38,8 @@ class Router
 
         if (is_array($callback))
         {
-            var_dump($callback[0]);
-
             $controller = new $callback[0];
-            Application::$app->controller = $controller;
-
+            //Application::$app->controller = $controller;
             $callback[0] = $controller;
         }
 

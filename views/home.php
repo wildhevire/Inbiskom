@@ -1,1 +1,1 @@
-<html> <h1><?php  echo $title ?></h1> </html>
+<html> <h1>HOME</h1></html>
