@@ -43,7 +43,7 @@ class Router
             $callback[0] = $controller;
         }
 
-        return call_user_func($callback);
+        return call_user_func($callback, $this->request, $this->response);
     }
 
     public function renderView($view, $params = [])

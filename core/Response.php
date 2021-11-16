@@ -8,4 +8,9 @@ class Response
     {
         http_response_code($code);
     }
+
+    public function sendJSON($data)
+    {
+        echo json_encode($data);
+    }
 }
