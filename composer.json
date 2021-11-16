@@ -1,0 +1,20 @@
+{
+    "name": "wildhevire/inbiskom",
+    "autoload": {
+        "psr-4": {
+            "Wildhevire\\Inbiskom\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Wildhevire",
+            "email": "wildhevire404@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "require": {}
+}
