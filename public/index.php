@@ -1,12 +1,11 @@
 <?php
-use app\core\Application;
-use app\controllers;
 
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ .'/../vendor/autoload.php';
 
-$app = new Application(dirname(__DIR__));
+use app\Core\Router;
+use app\Controller\HomeController;
 
-$app->router->get('/', [controllers\HomeController::class, 'index']);
-$app->router->get('/katalog', [controllers\KatalogController::class, 'index']);
+Router::Add('GET', '/', HomeController::class, 'index');
+Router::Add('GET', '/warudo', HomeController::class, 'warudo');
 
-$app->run();
+Router::Run();
