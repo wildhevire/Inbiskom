@@ -10,13 +10,9 @@ use app\Config\Database;
 class HomeController
 {
     public function index() : void{
-
+        View::render("Home/index", [
+            'title' => 'Home'
+        ]);
     }
 
-    public function hello() : void{
-        echo "hello";
-    }
-    public function warudo() : void{
-        echo "warudo";
-    }
 }

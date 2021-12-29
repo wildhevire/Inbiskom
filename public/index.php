@@ -6,6 +6,6 @@ use app\Core\Router;
 use app\Controller\HomeController;
 
 Router::Add('GET', '/', HomeController::class, 'index');
-Router::Add('GET', '/warudo', HomeController::class, 'warudo');
+Router::Add('GET', '/config', \app\Controller\KonfigurasiController::class, 'index');
 
 Router::Run();
