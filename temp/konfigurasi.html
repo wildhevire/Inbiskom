@@ -124,14 +124,26 @@
                 <br />
 
                 <label class="bm-input-label" for="logo">Logo</label>
-                <div class="bm-input">
+                <label for="logo" class="bm-input--file" id="label-logo">
                   <input
+                    class="w-100 file-upload"
                     type="file"
+                    name="logo"
                     id="logo"
-                    class="bm-input__field"
-                    placeholder="Contoh: 081234567890"
+                    accept="image/*"
                   />
-                </div>
+
+                  <p class="text-secondary">Upload image</p>
+                  <i class="fas fa-save fs-2 text-secondary"></i>
+                </label>
+                <label for="logo" class="mb-4">
+                  <img
+                    class="w-50 bm-img-responsive"
+                    id="placeholder-logo"
+                    src="#"
+                    alt="Logo baru"
+                  />
+                </label>
 
                 <br />
               </div>
@@ -206,8 +218,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <script>
       $(document).ready(function () {
+        $('#placeholder-logo').hide();
+
         $('#menu').click(function () {
           $('#sidebar').toggle();
+        });
+
+        $('#logo').change(function () {
+          const [logo] = $('#logo')[0].files;
+          $('#label-logo').hide();
+          $('#placeholder-logo').show();
+          $('#placeholder-logo')[0].src = URL.createObjectURL(logo);
         });
       });
     </script>
