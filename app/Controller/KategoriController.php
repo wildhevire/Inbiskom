@@ -7,7 +7,7 @@ use app\Core\View;
 class KategoriController
 {
     public function index() : void{
-        View::render("Konfigurasi/index", [
+        View::renderDashboard("Kategori/index", [
             'title' => 'Konfigurasi'
         ]);
     }

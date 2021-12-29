@@ -7,7 +7,7 @@ use app\Core\View;
 class KonfigurasiController
 {
     public function index(){
-        View::render("Konfigurasi/index", [
+        View::renderDashboard("Konfigurasi/index", [
             'title' => 'Konfigurasi'
         ]);
     }

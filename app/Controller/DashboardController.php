@@ -7,10 +7,10 @@ use app\Core\View;
 
 use app\Config\Database;
 
-class HomeController
+class DashboardController
 {
     public function index() : void{
-        View::render("Home/index", [
+        View::renderDashboard("Dashboard/index", [
             'title' => 'Home'
         ]);
     }
