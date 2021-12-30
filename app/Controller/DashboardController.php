@@ -10,7 +10,7 @@ use app\Config\Database;
 class DashboardController
 {
     public function index() : void{
-        View::renderDashboard("Dashboard/index", [
+        View::RenderDashboard("Dashboard/index", [
             'title' => 'Home'
         ]);
     }

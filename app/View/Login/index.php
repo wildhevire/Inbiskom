@@ -43,7 +43,7 @@
                 </div>
                 <div class="col-8 col-md-9">
                     <h1 class="bm-h3-headline fw-bold bm-text-primary text-center">
-                        INBISKOM
+                        INBISKOM <?= $model['error'] ?? '' ?>
                     </h1>
                 </div>
             </div>
@@ -61,7 +61,7 @@
             <form method="post" action="/auth">
 
                 <div class="bm-input bm-input--outline bm-input--with-icon mb-3">
-                    <input
+                    <input name="username"
                             type="text"
                             class="bm-input__field"
                             placeholder="Masukkan username"
@@ -71,7 +71,7 @@
                     </div>
                 </div>
                 <div class="bm-input bm-input--outline bm-input--with-icon mb-3">
-                    <input
+                    <input name="password"
                             type="password"
                             class="bm-input__field"
                             placeholder="Masukkan password"
