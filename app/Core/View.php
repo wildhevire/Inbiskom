@@ -19,4 +19,8 @@ class View
         require __DIR__ . '/../View/' . $view . '.php';
         require __DIR__ . '/../View/template-katalog/footer.php';
     }
+
+    public static function renderHtml(string $view){
+        require __DIR__ . '/../View/' . $view . '.php';
+    }
 }
