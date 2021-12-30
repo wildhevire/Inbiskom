@@ -101,3 +101,56 @@ body {
 .bm-cursor-pointer {
   cursor: pointer;
 }
+
+.bm-horizontal-scrollable {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.bm-horizontal-scrollable > .bm-card-product {
+  flex: 0 0 auto;
+}
+
+.bm-two-lines-truncate {
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.bm-card-product {
+  width: 209px;
+}
+
+.bm-card-product > img {
+  height: 177px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.thumbnail-primary-photo {
+  height: 326px;
+  width: 326px;
+  object-fit: cover;
+}
+
+.mini-thumbnail-photo {
+  height: 92px;
+  width: 92px;
+  object-fit: cover;
+}
+
+.thumbnail-primary-photo,
+.mini-thumbnail-photo {
+  border-radius: 4px;
+}
+
+.photo-40 {
+  height: 48px;
+  width: 48px;
+}
+
+.rounded-photo {
+  border-radius: 50%;
+}
