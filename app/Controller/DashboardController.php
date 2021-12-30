@@ -11,7 +11,8 @@ class DashboardController
 {
     public function index() : void{
         View::RenderDashboard("Dashboard/index", [
-            'title' => 'Home'
+            'title' => 'Home',
+            'page_type' => 'dashboard'
         ]);
     }
 

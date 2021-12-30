@@ -23,8 +23,16 @@ class PenggunaController
         $this->session = new Session();
     }
 
-    public function index()
+    public function index(){
+        View::RenderDashboard("Pengguna/index", [
+            'title' => 'Pengguna',
+            'page_type' => 'pengguna'
+        ]);
+    }
+
+    public function Login()
     {
+
         View::RenderHtml('Login/index', []);
     }
 

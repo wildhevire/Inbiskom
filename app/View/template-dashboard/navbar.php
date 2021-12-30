@@ -13,37 +13,43 @@
     <!-- ! SIDEBAR -->
     <nav class="sidebar row bm-bg-primary-darker" id="sidebar">
         <ul>
-            <li class="bm-nav-link bm-nav-link--active">
+            <li class="bm-nav-link <?php if(isset($model['page_type']) && $model['page_type'] == 'dashboard'){ echo 'bm-nav-link--active'; } else echo "" ?> ">
                 <a href="/dashboard-home">
                     <i class="fa fa-home"></i>
                     Dashboard
                 </a>
             </li>
-            <li class="bm-nav-link">
+            <li class="bm-nav-link <?php if(isset($model['page_type']) && $model['page_type'] == 'penjual'){ echo 'bm-nav-link--active'; } else echo "" ?> ">
                 <a href="/dashboard-penjual">
                     <i class="fa fa-user"></i>
                     Penjual
                 </a>
             </li>
-            <li class="bm-nav-link">
+            <li class="bm-nav-link <?php if(isset($model['page_type']) && $model['page_type'] == 'kelompok'){ echo 'bm-nav-link--active'; } else echo "" ?> ">
                 <a href="/dashboard-kelompok">
                     <i class="fa fa-user-friends"></i>
                     Kelompok
                 </a>
             </li>
-            <li class="bm-nav-link">
+            <li class="bm-nav-link <?php if(isset($model['page_type']) && $model['page_type'] == 'produk'){ echo 'bm-nav-link--active'; } else echo "" ?> ">
                 <a href="/dashboard-produk">
                     <i class="fa fa-box-open"></i>
                     Produk
                 </a>
             </li>
-            <li class="bm-nav-link">
+            <li class="bm-nav-link <?php if(isset($model['page_type']) && $model['page_type'] == 'kategori'){ echo 'bm-nav-link--active'; } else echo "" ?> ">
                 <a href="/dashboard-kategori">
                     <i class="fa fa-tags"></i>
                     Kategori
                 </a>
             </li>
-            <li class="bm-nav-link">
+            <li class="bm-nav-link <?php if(isset($model['page_type']) && $model['page_type'] == 'pengguna'){ echo 'bm-nav-link--active'; } else echo "" ?> ">
+                <a href="/dashboard-pengguna">
+                    <i class="fa fa-user-shield"></i>
+                    Pengguna
+                </a>
+            </li>
+            <li class="bm-nav-link <?php if(isset($model['page_type']) && $model['page_type'] == 'konfigurasi'){ echo 'bm-nav-link--active'; } else echo "" ?> ">
                 <a href="/dashboard-konfigurasi">
                     <i class="fa fa-cog"></i>
                     Konfigurasi

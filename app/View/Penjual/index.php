@@ -1,3 +1,3 @@
 <h2>
-    HOME
+    Penjual
 </h2>

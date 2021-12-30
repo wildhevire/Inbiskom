@@ -8,7 +8,8 @@ class KonfigurasiController
 {
     public function index(){
         View::RenderDashboard("Konfigurasi/index", [
-            'title' => 'Konfigurasi'
+            'title' => 'Konfigurasi',
+            'page_type' => 'konfigurasi'
         ]);
     }
 }
