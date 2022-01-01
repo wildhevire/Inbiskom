@@ -8,6 +8,7 @@ use app\DTO\AddPenggunaRequest;
 use app\DTO\AddPenggunaResponse;
 use app\DTO\LoginPenggunaRequest;
 use app\DTO\LoginPenggunaResponse;
+use app\Exception\DatabaseQueryException;
 use app\Exception\ValidationException;
 use app\Repository\PenggunaRepository;
 use function PHPUnit\Framework\throwException;
@@ -117,9 +118,15 @@ class PenggunaService
         {
             throw new ValidationException("Username dan/atau Password Tidak Boleh Kosong");
         }
+    }
 
-
-
-
+    public function GetAllModel()
+    {
+        $result = $this->repo->SelectAll();
+        if($result == null){
+            //TODO : Exception Message
+            throw new DatabaseQueryException("Tidak dapat mengambil data dari database.");
+        }
+        return $result;
     }
 }

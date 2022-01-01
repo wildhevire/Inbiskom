@@ -21,26 +21,32 @@
         </div>
     </div>
 </div>
+
+<?php if(isset($model['success'])) {?>
 <!-- ! SUCCESS ALERT -->
 <div class="bm-alert bm-alert--success mt-4" role="alert">
     <div class="bm-alert__icon">
         <i class="fas fa-check-circle"></i>
     </div>
-    <div class="bm-alert__content">Success message</div>
+    <div class="bm-alert__content"><?= $model['success'] ?></div>
 </div>
 <!-- ! END OF SUCCESS ALERT -->
+<?php } ?>
 
+<?php if(isset($model['error'])) {?>
 <!-- ! ERROR ALERT -->
 <div class="bm-alert bm-alert--error mt-4" role="alert">
     <div class="bm-alert__icon">
         <i class="fas fa-exclamation-circle"></i>
     </div>
-    <div class="bm-alert__content">Error message</div>
+    <div class="bm-alert__content"><?= $model['error'] ?></div>
 </div>
 <!-- ! END OF ERROR ALERT -->
+<?php } ?>
 
 <div class="bm-card mt-4 bg-white">
     <table class="bm-table w-100">
+
         <thead>
         <th>No</th>
         <th>Nama</th>
@@ -51,13 +57,16 @@
         <th>Aksi</th>
         </thead>
         <tbody>
+        <?php $counter = 0 ?>
+        <?php foreach ($model['data'] as $data) :?>
         <tr>
-            <td>1</td>
-            <td>Benno Alif</td>
-            <td>benno_alif</td>
-            <td>2021</td>
-            <td>Kepala Divisi</td>
-            <td>Aktif</td>
+            <?php $counter++; ?>
+            <td><?= $counter ?></td>
+            <td><?= $data['nama_pengguna'] ?></td>
+            <td><?= $data['username'] ?></td>
+            <td><?= $data['tahun_aktif'] ?></td>
+            <td><?= $data['hak_akses'] ?></td>
+            <td><?php echo $data['status'] == 1 ?  "Aktif" :  "Tidak Aktif" ?></td>
             <td>
                 <a rel="modal:open" href="#edit_modal" class="bm-link"
                 >Ubah</a
@@ -70,25 +79,8 @@
                 >
             </td>
         </tr>
-        <tr>
-            <td>2</td>
-            <td>Wildan</td>
-            <td>wildan</td>
-            <td>2021</td>
-            <td>Sekretaris</td>
-            <td>Aktif</td>
-            <td>
-                <a rel="modal:open" href="#edit_modal" class="bm-link"
-                >Ubah</a
-                >&nbsp;&nbsp;&nbsp;&nbsp;
-                <a
-                        rel="modal:open"
-                        href="#delete_modal"
-                        class="bm-link text-danger"
-                >Ubah status</a
-                >
-            </td>
-        </tr>
+        <?php endforeach; ?>
+
         </tbody>
     </table>
 </div>
@@ -201,7 +193,8 @@
 <!-- ! END OF TAMBAH MODAL -->
 
 <!-- ! EDIT MODAL -->
-<div
+
+    <div
         class="bm-modal h-auto bm-modal--scrollable"
         id="edit_modal"
         role="dialog"
@@ -216,91 +209,97 @@
             <span class="bm-sr-only">Batal</span>
         </a>
     </div>
+    <form action="/update-pengguna" method="POST">
+        <div class="bm-modal__body">
 
-    <div class="bm-modal__body">
-        <label class="bm-input-label" for="nama">Nama</label>
-        <div class="bm-input">
-            <input
-                    type="text"
-                    id="nama"
-                    class="bm-input__field"
-                    placeholder="Contoh: John Doe"
-            />
-        </div>
-
-        <br />
-        <label class="bm-input-label" for="username">Username</label>
-        <div class="bm-input">
-            <input
-                    type="text"
-                    id="username"
-                    class="bm-input__field"
-                    placeholder="Contoh: john_doe"
-            />
-        </div>
-
-        <br />
-
-        <label class="bm-input-label" for="password">Password</label>
-        <div class="bm-input">
-            <input
-                    type="password"
-                    id="password"
-                    class="bm-input__field"
-                    placeholder="Minimal 8 karakter"
-            />
-        </div>
-
-        <br />
-
-        <label class="bm-input-label" for="tahun-aktif">Tahun aktif</label>
-        <div class="bm-input">
-            <input
-                    type="number"
-                    id="tahun-aktif"
-                    class="bm-input__field"
-                    placeholder="Contoh: 2021"
-            />
-        </div>
-
-        <br />
-
-        <label class="bm-input-label">Hak akses</label>
-        <div class="row px-5">
-            <label class="bm-radio col-6">
-                Ketua divisi
+            <input type="hidden" name="id_pengguna" id="delete_id">
+            <label class="bm-input-label" for="nama">Nama</label>
+            <div class="bm-input">
                 <input
-                        type="radio"
-                        class="bm-radio__input"
-                        id="hak-akses"
-                        name="hak-akses"
-                        value="ketua-divisi"
+                        type="text"
+                        id="nama"
+                        class="bm-input__field"
+                        placeholder="Contoh: John Doe"
                 />
-                <span class="bm-radio__checkmark"></span>
-            </label>
-            <label class="bm-radio col-6">
-                Sekretaris
-                <input
-                        type="radio"
-                        class="bm-radio__input"
-                        id="hak-akses"
-                        name="hak-akses"
-                        value="sekretaris"
-                />
-                <span class="bm-radio__checkmark"></span>
-            </label>
-        </div>
-    </div>
+            </div>
 
-    <div class="bm-modal__footer">
-        <a type="button" class="bm-btn bm-btn--secondary" rel="modal:close">
-            <span class="bm-btn__label">Batal</span>
-        </a>
-        <button type="button" class="bm-btn">
-            <span class="bm-btn__label">Simpan</span>
-        </button>
-    </div>
+            <br />
+            <label class="bm-input-label" for="username">Username</label>
+            <div class="bm-input">
+                <input
+                        type="text"
+                        id="username"
+                        class="bm-input__field"
+                        placeholder="Contoh: john_doe"
+                />
+            </div>
+
+            <br />
+
+            <label class="bm-input-label" for="password">Password</label>
+            <div class="bm-input">
+                <input
+                        type="password"
+                        id="password"
+                        class="bm-input__field"
+                        placeholder="Minimal 8 karakter"
+                />
+            </div>
+
+            <br />
+
+            <label class="bm-input-label" for="tahun-aktif">Tahun aktif</label>
+            <div class="bm-input">
+                <input
+                        type="number"
+                        id="tahun-aktif"
+                        class="bm-input__field"
+                        placeholder="Contoh: 2021"
+                />
+            </div>
+
+            <br />
+
+            <label class="bm-input-label">Hak akses</label>
+            <div class="row px-5">
+                <label class="bm-radio col-6">
+                    Ketua divisi
+                    <input
+                            type="radio"
+                            class="bm-radio__input"
+                            id="hak-akses"
+                            name="hak-akses"
+                            value="ketua-divisi"
+                    />
+                    <span class="bm-radio__checkmark"></span>
+                </label>
+                <label class="bm-radio col-6">
+                    Sekretaris
+                    <input
+                            type="radio"
+                            class="bm-radio__input"
+                            id="hak-akses"
+                            name="hak-akses"
+                            value="sekretaris"
+                    />
+                    <span class="bm-radio__checkmark"></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="bm-modal__footer">
+            <a type="button" class="bm-btn bm-btn--secondary" rel="modal:close">
+                <span class="bm-btn__label">Batal</span>
+            </a>
+            <button type="submit" class="bm-btn">
+                <span class="bm-btn__label">Simpan</span>
+            </button>
+        </div>
+    </form>
+
 </div>
+
+
 <!-- ! END OF EDIT MODAL -->
 
 <!-- ! DELETE MODAL -->

@@ -26,7 +26,8 @@ class PenggunaController
     public function index(){
         View::RenderDashboard("Pengguna/index", [
             'title' => 'Pengguna',
-            'page_type' => 'pengguna'
+            'page_type' => 'pengguna',
+            'data' => $this->GetAllUserModel()
         ]);
     }
 
@@ -62,6 +63,11 @@ class PenggunaController
         }
     }
 
+    private function GetAllUserModel() : ?array
+    {
+        return $this->service->GetAllModel();
+    }
+
     public function Logout()
     {
         session_destroy();
@@ -90,7 +96,7 @@ class PenggunaController
         }
         catch (ValidationException $exception)
         {
-            View::RenderHtml('Login/AddPengguna', [
+            View::RenderDashboard('Pengguna/index', [
                 'error'=> $exception->getMessage()
             ]);
         }

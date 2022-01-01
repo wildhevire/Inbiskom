@@ -211,29 +211,32 @@
         </a>
       </div>
 
-      <div class="bm-modal__body">
-        <label class="bm-input-label" for="nama-kategori">Nama Kategori</label>
-        <div class="bm-input bm-input--with-icon">
-          <input
-            id="nama-kategori"
-            type="text"
-            class="bm-input__field"
-            placeholder="Contoh: Makanan & Minuman"
-          />
-          <div class="bm-input__icon">
-            <i class="fa fa-tags"></i>
-          </div>
+      <form action="/AddKategori" method="POST">
+        <div class="bm-modal__body">
+            <label class="bm-input-label" for="nama-kategori">Nama Kategori</label>
+            <div class="bm-input bm-input--with-icon">
+              <input name="nama_kategori"
+                      id="nama-kategori"
+                      type="text"
+                      class="bm-input__field"
+                      placeholder="Contoh: Makanan & Minuman"
+              />
+              <div class="bm-input__icon">
+                <i class="fa fa-tags"></i>
+              </div>
+            </div>
         </div>
-      </div>
 
-      <div class="bm-modal__footer">
-        <a type="button" class="bm-btn bm-btn--secondary" rel="modal:close">
-          <span class="bm-btn__label">Batal</span>
-        </a>
-        <button type="button" class="bm-btn">
-          <span class="bm-btn__label">Simpan</span>
-        </button>
-      </div>
+        <div class="bm-modal__footer">
+          <a type="button" class="bm-btn bm-btn--secondary" rel="modal:close">
+            <span class="bm-btn__label">Batal</span>
+          </a>
+          <button type="submit" class="bm-btn">
+            <span class="bm-btn__label">Simpan</span>
+          </button>
+        </div>
+      </form>
+
     </div>
     <!-- ! END OF MODAL -->
 

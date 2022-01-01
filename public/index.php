@@ -41,16 +41,34 @@ Router::Add('GET', '/dashboard-produk',
 Router::Add('GET', '/dashboard-login',
     \app\Controller\PenggunaController::class, 'Login',
     [\app\Middleware\MustNotLoginMiddleware::class]);
-Router::Add('POST', '/auth',
-    \app\Controller\PenggunaController::class, 'Authenticate');
+
 Router::Add('GET', '/auth-logout',
     \app\Controller\PenggunaController::class, 'Logout');
 
 
+//Form Action Handler
+Router::Add('POST', '/auth',
+    \app\Controller\PenggunaController::class, 'Authenticate');
+Router::Add('POST', '/AddPengguna',
+    \app\Controller\PenggunaController::class, 'AddPengguna',
+    [\app\Middleware\MustLoginMiddleware::class]);
+Router::Add('POST', '/AddKategori',
+    \app\Controller\KategoriController::class, 'AddKategori',
+    [\app\Middleware\MustLoginMiddleware::class]);
+Router::Add('POST', '/UpdateKategori',
+    \app\Controller\KategoriController::class, 'UpdateKategori',
+    [\app\Middleware\MustLoginMiddleware::class]);
+Router::Add('POST', '/DeleteKategori',
+    \app\Controller\KategoriController::class, 'DeleteKategori',
+    [\app\Middleware\MustLoginMiddleware::class]);
+
 //TODO :TEST Purpose ONLY
 Router::Add('GET', '/AddPengguna',
-    \app\Controller\PenggunaController::class, 'RenderAddPengguna');
-Router::Add('POST', '/AddPengguna',
-    \app\Controller\PenggunaController::class, 'AddPengguna');
+    \app\Controller\PenggunaController::class, 'RenderAddPengguna',
+    [\app\Middleware\MustNotLoginMiddleware::class]);
+
+Router::Add('POST', '/update-pengguna',
+    \app\Controller\PenggunaController::class, 'index',
+    [\app\Middleware\MustLoginMiddleware::class]);
 
 Router::Run();
