@@ -4,8 +4,8 @@ namespace app\Service;
 
 use app\Config\Database;
 use app\DBModel\Kategori;
-use app\DTO\KategoriRequest;
-use app\DTO\KategoriResponse;
+use app\DTO\Kategori\KategoriRequest;
+use app\DTO\Kategori\KategoriResponse;
 use app\Exception\DataAlreadyExistException;
 use app\Exception\DatabaseQueryException;
 use app\Repository\KategoriRepository;

@@ -1,10 +1,10 @@
 <?php
 
-namespace app\DTO;
+namespace app\DTO\Pengguna;
 
 use app\DBModel\Pengguna;
 
-class AddPenggunaResponse
+class PenggunaRequest
 {
     public Pengguna $pengguna;
 }

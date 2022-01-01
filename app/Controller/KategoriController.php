@@ -5,7 +5,7 @@ namespace app\Controller;
 use app\Config\Database;
 use app\Core\Session;
 use app\Core\View;
-use app\DTO\KategoriRequest;
+use app\DTO\Kategori\KategoriRequest;
 use app\Repository\KategoriRepository;
 use app\Service\KategoriService;
 
@@ -59,7 +59,10 @@ class KategoriController
         try
         {
             $this->service->UpdateKategori($request);
-            View::Redirect('/dashboard-kategori');
+            View::RenderDashboard('Kategori/index', [
+                'data' => $this->service->GetAllModel(),
+                'success' => "Berhasil Mengubah Kategori"
+            ]);
         }
         catch (\Exception $exception)
         {

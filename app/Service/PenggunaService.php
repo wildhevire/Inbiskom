@@ -4,10 +4,12 @@ namespace app\Service;
 
 use app\Config\Database;
 use app\DBModel\Pengguna;
-use app\DTO\AddPenggunaRequest;
-use app\DTO\AddPenggunaResponse;
-use app\DTO\LoginPenggunaRequest;
-use app\DTO\LoginPenggunaResponse;
+use app\DTO\Pengguna\AddPenggunaRequest;
+use app\DTO\Pengguna\AddPenggunaResponse;
+use app\DTO\Pengguna\LoginPenggunaRequest;
+use app\DTO\Pengguna\LoginPenggunaResponse;
+use app\DTO\Pengguna\PenggunaRequest;
+use app\DTO\Pengguna\PenggunaResponse;
 use app\Exception\DatabaseQueryException;
 use app\Exception\ValidationException;
 use app\Repository\PenggunaRepository;
@@ -129,4 +131,35 @@ class PenggunaService
         }
         return $result;
     }
+
+    //TODO : Handle Delete, ubah status pengguna, ubah data pengguna
+    public function DeletePengguna(PenggunaRequest $request):void
+    {
+
+    }
+
+    public function UpdateStatusPengguna(string $id):void
+    {
+
+    }
+
+    public function UpdatePengguna(PenggunaRequest $request): PenggunaResponse
+    {
+        try {
+            $pengguna = new Pengguna();
+            $pengguna->nama_pengguna = $request->pengguna->nama_pengguna;
+            $pengguna->username = $request->pengguna->username;
+            $pengguna->hak_akses = $request->pengguna->hak_akses;
+            $pengguna->status = $request->pengguna->status;
+            $pengguna->tahun_aktif = $request->pengguna->tahun_aktif;
+
+            $response = new PenggunaResponse();
+            return $response;
+
+        }catch (\Exception $e)
+        {
+            throw $e;
+        }
+    }
+
 }
