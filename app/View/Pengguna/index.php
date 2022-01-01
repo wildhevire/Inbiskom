@@ -242,7 +242,7 @@
             <div class="bm-input">
                 <input
                         type="password"
-                        id="password"
+                        id="update_password"
                         class="bm-input__field"
                         placeholder="Minimal 8 karakter"
                 />
@@ -343,7 +343,7 @@
 
 <script>
     $(".btn_update").click(function () {
-        var id_pengguna = $(this).data("id_pengguna");
+        var id_pengguna = $(this).data("id");
         var nama = $(this).data("nama");
         var username = $(this).data("username");
         var tahun_aktif = $(this).data("tahunAktif");
