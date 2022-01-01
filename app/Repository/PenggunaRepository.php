@@ -87,6 +87,12 @@ class PenggunaRepository
         $this->conn->exec("DELETE FROM pengguna");
     }
 
+    public function DeleteById(strint $id): void
+    {
+        $statement = $this->conn->prepare("DELETE FROM pengguna WHERE id_pengguna = ?");
+        $statement->execute([$id]);
+    }
+
     public function SelectAll(): ?array
     {
         $statement = $this->conn->query(

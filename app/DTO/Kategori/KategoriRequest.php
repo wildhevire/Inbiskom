@@ -1,6 +1,6 @@
 <?php
 
-namespace app\DTO;
+namespace app\DTO\Kategori;
 
 class KategoriRequest
 {

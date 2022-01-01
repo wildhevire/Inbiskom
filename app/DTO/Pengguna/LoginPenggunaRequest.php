@@ -1,6 +1,6 @@
 <?php
 
-namespace app\DTO;
+namespace app\DTO\Pengguna;
 
 class LoginPenggunaRequest
 {

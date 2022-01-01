@@ -5,8 +5,8 @@ namespace app\Controller;
 use app\Config\Database;
 use app\Core\Session;
 use app\Core\View;
-use app\DTO\AddPenggunaRequest;
-use app\DTO\LoginPenggunaRequest;
+use app\DTO\Pengguna\AddPenggunaRequest;
+use app\DTO\Pengguna\LoginPenggunaRequest;
 use app\Exception\ValidationException;
 use app\Repository\PenggunaRepository;
 use app\Service\PenggunaService;
@@ -73,6 +73,28 @@ class PenggunaController
         session_destroy();
         View::Redirect('/dashboard-login');
     }
+
+    public function UpdatePengguna():void
+    {
+
+    }
+
+    public function DeletePengguna():void
+    {
+        try
+        {
+            $id = $_POST['id_kategori'];
+            $this->service->RemoveKategori($id);
+            View::Redirect('/dashboard-kategori');
+        }
+        catch (\Exception $exception)
+        {
+            View::RenderDashboard('Dashboard/index', [
+                'error'=> $exception->getMessage()
+            ]);
+        }
+    }
+
 
     //Test Purpose Only
     public function RenderAddPengguna()

@@ -56,7 +56,7 @@
         <?php foreach ($model['data'] as $data) : ?>
         <tr>
             <?php $counter++; ?>
-            <td> <?= $counter ?> </td>>
+            <td> <?= $counter ?> </td>
             <td><?= $data['nama_kategori'] ?></td>
             <td>
                 <a rel="modal:open" href="#update_modal" class="bm-link btn_update"
