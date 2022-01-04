@@ -97,3 +97,11 @@ body {
 .file-upload {
   display: none;
 }
+
+.bm-close-btn {
+  position: absolute;
+  right: 0;
+  top: -10%;
+  transform: scale(0.7);
+  background-color: red;
+}
