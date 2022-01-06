@@ -1,399 +1,543 @@
-
-        <!-- ! MAIN CONTENT -->
-        <main class="container-fluid mt-4 pb-5">
-          <h2 class="mb-4">Kelompok</h2>
-          <div class="row align-items-center">
-            <div class="col">
-              <a rel="modal:open" href="#add_modal" class="bm-btn"
-                ><span class="bm-btn__icon">
-                  <i class="fas fa-plus"></i>
-                </span>
-                <span class="bm-btn__label">Tambah kelompok</span></a
-              >
-            </div>
-            <div class="col-4">
-              <div class="bm-input bm-input--outline bm-input--with-icon">
-                <input
-                  type="text"
-                  class="bm-input__field"
-                  placeholder="Cari kelompok"
-                />
-                <div class="bm-input__icon">
-                  <i class="fa fa-search"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- ! SUCCESS ALERT -->
-          <div class="bm-alert bm-alert--success mt-4" role="alert">
-            <div class="bm-alert__icon">
-              <i class="fas fa-check-circle"></i>
-            </div>
-            <div class="bm-alert__content">Success message</div>
-          </div>
-          <!-- ! END OF SUCCESS ALERT -->
-
-          <!-- ! ERROR ALERT -->
-          <div class="bm-alert bm-alert--error mt-4" role="alert">
-            <div class="bm-alert__icon">
-              <i class="fas fa-exclamation-circle"></i>
-            </div>
-            <div class="bm-alert__content">Error message</div>
-          </div>
-          <!-- ! END OF ERROR ALERT -->
-
-          <div class="bm-card mt-4 bg-white">
-            <table class="bm-table w-100">
-              <thead>
-                <th>No</th>
-                <th>Nama Kelompok</th>
-                <th>Tipe</th>
-                <th>Jumlah Anggota</th>
-                <th>Jumlah Produk</th>
-                <th>Kategori</th>
-                <th>Angkatan</th>
-                <th>Aksi</th>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Kupakkai</td>
-                  <td>Mahasiswa</td>
-                  <td>4</td>
-                  <td>3</td>
-                  <td>Pakaian</td>
-                  <td>2020</td>
-                  <td>
-                    <a
-                      rel="modal:open"
-                      href="#detail_modal"
-                      class="bm-link"
-                      >Lihat</a
-                    >&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a rel="modal:open" 
-                    href="#edit_modal" 
-                    class="bm-link"
-                      >Ubah</a
-                    >&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a
-                      rel="modal:open"
-                      href="#delete_modal"
-                      class="bm-link text-danger"
-                      >Hapus</a
-                    >&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a
-                      rel="modal:open"
-                      href="#delete_modal"
-                      class="bm-link"
-                      >Buka</a
-                    >
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </main>
-        <!-- ! END OF MAIN CONTENT -->
+<!-- ! MAIN CONTENT -->
+<main class="container-fluid mt-4 pb-5">
+  <h2 class="mb-4">Kelompok</h2>
+  <div class="row align-items-center">
+    <div class="col">
+      <a rel="modal:open" href="#add_modal" class="bm-btn"><span class="bm-btn__icon">
+          <i class="fas fa-plus"></i>
+        </span>
+        <span class="bm-btn__label">Tambah kelompok</span></a>
+    </div>
+    <div class="col-4">
+      <div class="bm-input bm-input--outline bm-input--with-icon">
+        <input type="text" class="bm-input__field" placeholder="Cari kelompok" />
+        <div class="bm-input__icon">
+          <i class="fa fa-search"></i>
+        </div>
       </div>
     </div>
+  </div>
+  <!-- ! SUCCESS ALERT -->
+  <div class="bm-alert bm-alert--success mt-4" role="alert">
+    <div class="bm-alert__icon">
+      <i class="fas fa-check-circle"></i>
+    </div>
+    <div class="bm-alert__content">Success message</div>
+  </div>
+  <!-- ! END OF SUCCESS ALERT -->
+
+  <!-- ! ERROR ALERT -->
+  <div class="bm-alert bm-alert--error mt-4" role="alert">
+    <div class="bm-alert__icon">
+      <i class="fas fa-exclamation-circle"></i>
+    </div>
+    <div class="bm-alert__content">Error message</div>
+  </div>
+  <!-- ! END OF ERROR ALERT -->
+
+  <div class="bm-card mt-4 bg-white">
+    <table class="bm-table w-100">
+      <thead>
+        <th>No</th>
+        <th>Nama Kelompok</th>
+        <th>Tipe</th>
+        <th>Jumlah Anggota</th>
+        <th>Jumlah Produk</th>
+        <th>Kategori</th>
+        <th>Angkatan</th>
+        <th>Aksi</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Kupakkai</td>
+          <td>Mahasiswa</td>
+          <td>4</td>
+          <td>3</td>
+          <td>Pakaian</td>
+          <td>2020</td>
+          <td>
+            <a rel="modal:open" href="#detail_modal" class="bm-link">Lihat</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a rel="modal:open" href="#edit_modal" class="bm-link">Ubah</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a rel="modal:open" href="#delete_modal" class="bm-link text-danger">Hapus</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a rel="modal:open" href="#delete_modal" class="bm-link">Buka</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+<!-- ! END OF MAIN CONTENT -->
+</div>
+</div>
 
 <!-- ! DETAIL MODAL -->
-<div
-      class="bm-modal h-auto bm-modal--scrollable"
-      id="detail_modal"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="modal-label"
-      tabindex="-1"
-    >
-      <div class="bm-modal__header">
-        <h5 class="bm-modal__title">Detail data kelompok</h5>
-        <a class="bm-modal__button-close" aria-label="close" rel="modal:close">
-          <span class="bm-modal__icon-close"></span>
-          <span class="bm-sr-only">Batal</span>
-        </a>
+<div class="bm-modal h-auto bm-modal--scrollable" id="detail_modal" role="dialog" aria-modal="true" aria-labelledby="modal-label" tabindex="-1">
+  <div class="bm-modal__header">
+    <h5 class="bm-modal__title">Detail data kelompok</h5>
+    <a class="bm-modal__button-close" aria-label="close" rel="modal:close">
+      <span class="bm-modal__icon-close"></span>
+      <span class="bm-sr-only">Batal</span>
+    </a>
+  </div>
+
+  <div class="bm-modal__body">
+    <span class="fw-bold">Nama kelompok:</span>
+    <p>Kupakkai</p>
+
+    <span class="fw-bold">Angkatan:</span>
+    <p>2021</p>
+
+    <span class="fw-bold">Deskripsi:</span>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo
+      soluta, doloremque ullam aspernatur obcaecati accusantium voluptate
+      dolorum vitae fugiat iure dolor. Quibusdam soluta rem nostrum vitae
+      velit officiis eligendi error!
+    </p>
+
+    <span class="fw-bold">Kategori:</span>
+    <p>Pakaian</p>
+
+    <span class="fw-bold">Anggota:</span>
+    <p>Ivan, Beno, Wildan</p>
+
+    <span class="fw-bold">Produk:</span>
+    <p>T-shirt polos, Celana panjang, Boba</p>
+
+    <span class="fw-bold">Foto produk:</span>
+    <div class="mt-2">
+      <div class="row" id="images">
+        <img class="bm-img-responsive col-4 bm-cursor-pointer" src="https://placekitten.com/200/300" alt="Picture 1" />
       </div>
+    </div>
+  </div>
 
-      <div class="bm-modal__body">
-        <span class="fw-bold">Nama kelompok:</span>
-        <p>Kupakkai</p>
+  <div class="bm-modal__footer">
+    <a type="button" class="bm-btn bm-btn--secondary" rel="modal:close">
+      <span class="bm-btn__label">Tutup</span>
+    </a>
+  </div>
+</div>
+<!-- ! END OF DETAIL MODAL -->
 
-        <span class="fw-bold">Angkatan:</span>
-        <p>2021</p>
+<!-- ! ADD MODAL -->
+<div class="bm-modal h-auto bm-modal--scrollable" id="add_modal" role="dialog" aria-modal="true" aria-labelledby="modal-label" tabindex="-1">
+  <div class="bm-modal__header">
+    <h5 class="bm-modal__title">Tambah data kelompok</h5>
+    <a class="bm-modal__button-close" aria-label="close" rel="modal:close">
+      <span class="bm-modal__icon-close"></span>
+      <span class="bm-sr-only">Batal</span>
+    </a>
+  </div>
 
-        <span class="fw-bold">Deskripsi:</span>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo
-          soluta, doloremque ullam aspernatur obcaecati accusantium voluptate
-          dolorum vitae fugiat iure dolor. Quibusdam soluta rem nostrum vitae
-          velit officiis eligendi error!
-        </p>
-
-        <span class="fw-bold">Kategori:</span>
-        <p>Pakaian</p>
-
-        <span class="fw-bold">Anggota:</span>
-        <p>Ivan, Beno, Wildan</p>
-
-        <span class="fw-bold">Produk:</span>
-        <p>T-shirt polos, Celana panjang, Boba</p>
-
-        <span class="fw-bold">Foto produk:</span>
-        <div class="mt-2">
-          <div class="row" id="images">
-            <img
-              class="bm-img-responsive col-4 bm-cursor-pointer"
-              src="https://placekitten.com/200/300"
-              alt="Picture 1"
-            />
+  <div class="bm-modal__body">
+    <form action="" method="post">
+      <ul class="bm-accordion">
+        <li class="bm-accordion__item bm-accordion__item--active">
+          <div class="bm-accordion__header bm-cursor-pointer">
+            <div class="bm-accordion__title">Data kelompok</div>
+            <span class="bm-accordion__arrow"></span>
           </div>
-        </div>
-      </div>
+          <div class="bm-accordion__content">
+            <label class="bm-input-label">Tipe</label>
+            <div class="row px-5">
+              <label class="bm-radio col-6">
+                Mahasiswa
+                <input type="radio" class="bm-radio__input" id="tipe-mahasiswa" name="tipe_kelompok" value="mahasiswa" />
+                <span class="bm-radio__checkmark"></span>
+              </label>
+              <label class="bm-radio col-6">
+                Umum
+                <input type="radio" class="bm-radio__input" id="tipe-umum" name="tipe_kelompok" value="umum" />
+                <span class="bm-radio__checkmark"></span>
+              </label>
+            </div>
+            <label class="bm-input-label" for="nama-kelompok">Nama kelompok</label>
+            <div class="bm-input">
+              <input name="nama_kelompok" id="nama-kelompok" type="text" class="bm-input__field" placeholder="Contoh: Kupakkai" />
+            </div>
+            <br />
+            <label class="bm-input-label" for="angkatan">Angkatan</label>
+            <div class="bm-input">
+              <input name="angkatan" id="angkatan" type="number" class="bm-input__field" placeholder="Contoh: 2022" />
+            </div>
+            <br />
+            <label class="bm-input-label" for="deskripsi">Deskripsi</label>
+            <div class="bm-input">
+              <textarea name="deskripsi_kelompok" id="deskripsi" class="bm-input__field" placeholder="Contoh: Jual berbagai macam t-shirt"></textarea>
+            </div>
+            <br />
+            <label class="bm-input-label" for="kategori">Kategori</label>
+            <div class="bm-input">
+              <select name="id_kategori" class="bm-input__field" id="kategori" required>
+                <option value="" disabled selected>Pilih kategori</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+              </select>
+              <span class="bm-input__arrow"></span>
+            </div>
+            <br />
+            <label class="bm-input-label" for="logo-kelompok">Logo kelompok</label>
+            <label for="logo" class="bm-input--file mt-4 mx-auto bm-cursor-pointer" id="label-logo">
+              <input class="w-100 file-upload" type="file" name="url_logo_toko" id="logo" accept="image/*" />
+  
+              <p class="text-secondary">Tambah foto</p>
+              <i class="fas fa-save fs-2 text-secondary"></i>
+            </label>
+            <label for="logo" class="mx-auto mt-4 mb-2 text-center">
+              <img class="w-50 bm-img-responsive bm-cursor-pointer" id="placeholder-logo" src="#" alt="Logo baru" />
+            </label>
+          </div>
+        </li>
+        <li class="bm-accordion__item">
+          <div class="bm-accordion__header bm-cursor-pointer">
+            <div class="bm-accordion__title">Anggota kelompok</div>
+            <span class="bm-accordion__arrow"></span>
+          </div>
+          <div class="bm-accordion__content">
+            <div id="form-anggota">
+              <div class="anggota" class="anggota-1">
+                <label class="bm-input-label" for="no-identitas-1">No. Identitas 1</label>
+                <div class="bm-input">
+                  <input name="no_identitas-1" id="no-identitas-1" type="text" class="bm-input__field" placeholder="Contoh: 12355212129900001" />
+                </div>
+                <br />
+                <label class="bm-input-label" for="nama-anggota-1">Nama anggota 1</label>
+                <div class="bm-input">
+                  <input name="nama_penjual-1" id="nama-anggota-1" type="text" class="bm-input__field" placeholder="Contoh: John Doe" />
+                </div>
+                <hr />
+              </div>
+            </div>
+            <button type="button" class="bm-btn" id="tambah-anggota">
+              <span class="bm-btn__icon">
+                <i class="fas fa-plus"></i>
+              </span>
+              <span class="bm-btn__label">Tambah anggota</span>
+            </button>
+            <button type="button" class="bm-btn bm-btn--danger" id="hapus-anggota">
+              <span class="bm-btn__icon">
+                <i class="fas fa-plus"></i>
+              </span>
+              <span class="bm-btn__label">Hapus Anggota</span>
+            </button>
+          </div>
+        </li>
+        <li class="bm-accordion__item">
+          <div class="bm-accordion__header bm-cursor-pointer">
+            <div class="bm-accordion__title">Data produk</div>
+            <span class="bm-accordion__arrow"></span>
+          </div>
+          <div class="bm-accordion__content">
+            <div id="produk-container">
+  
+              <div class="produk-wrapper">
+                <p class="fw-bold">Produk 1</p>
+                <label class="bm-input-label" for="nama-produk-1">Nama produk</label>
+                <div class="bm-input">
+                  <input name="nama_produk-1" id="nama-produk-1" type="text" class="bm-input__field" placeholder="Contoh: T-shirt hitam manis" />
+                </div>
+                <br />
+                <label class="bm-input-label" for="harga-1">Harga</label>
+                <div class="bm-input">
+                  <input name="harga-1" id="harga-1" type="number" class="bm-input__field" placeholder="Contoh: 30000" />
+                </div>
+                <br />
+                <label class="bm-input-label" for="deskripsi-produk-1">Deskripsi produk</label>
+                <div class="bm-input">
+                  <textarea name="deskripsi_produk-1" id="deskripsi-peroduk-1" class="bm-input__field" placeholder="Contoh: T-shirt berwarna hitam dengan bahan katun"></textarea>
+                </div>
+                <br />
+                <label class="bm-input-label" for="foto-produk-1">Foto produk</label>
+                <p class="bm-caption text-secondary">
+                  Pilih foto untuk dijadikan foto utama
+                </p>
+                <div class="row" id="foto-produk-wrapper-1">
+                  <!-- FOTO PRODUK -->
+                </div>
+  
+                <label for="foto-produk-1" class="bm-input--file mt-4 mx-auto bm-cursor-pointer">
+                  <input class="w-100 file-upload" type="file" name="foto-produk-1" id="foto-produk-1" accept="image/*" />
+  
+                  <p class="text-secondary">Tambah foto</p>
+                  <i class="fas fa-save fs-2 text-secondary"></i>
+                </label>
+  
+                <hr />
+  
+              </div>
+            </div>
+            <button type="button" class="bm-btn" id="tambah-produk">
+              <span class="bm-btn__icon">
+                <i class="fas fa-plus"></i>
+              </span>
+              <span class="bm-btn__label">Tambah produk</span>
+            </button>
+            <button type="button" class="bm-btn bm-btn--danger" id="hapus-produk">
+              <span class="bm-btn__icon">
+                <i class="fas fa-plus"></i>
+              </span>
+              <span class="bm-btn__label">Hapus produk</span>
+            </button>
+          </div>
+        </li>
+      </ul>
+    </form>
+  </div>
 
-      <div class="bm-modal__footer">
-        <a type="button" class="bm-btn bm-btn--secondary" rel="modal:close">
-          <span class="bm-btn__label">Tutup</span>
-        </a>
-      </div>
+  <div class="bm-modal__footer">
+    <a type="button" class="bm-btn bm-btn--secondary" rel="modal:close">
+      <span class="bm-btn__label">Batal</span>
+    </a>
+    <button type="button" class="bm-btn">
+      <span class="bm-btn__label">Simpan</span>
+    </button>
+  </div>
+</div>
+<!-- ! END OF ADD MODAL -->
+
+<!-- ! EDIT MODAL -->
+<div class="bm-modal h-auto bm-modal--scrollable" id="edit_modal" role="dialog" aria-modal="true" aria-labelledby="modal-label" tabindex="-1">
+  <div class="bm-modal__header">
+    <h5 class="bm-modal__title">Ubah data pengguna</h5>
+    <a class="bm-modal__button-close" aria-label="close" rel="modal:close">
+      <span class="bm-modal__icon-close"></span>
+      <span class="bm-sr-only">Batal</span>
+    </a>
+  </div>
+
+  <div class="bm-modal__body">
+    <label class="bm-input-label" for="nama">Nama</label>
+    <div class="bm-input">
+      <input type="text" id="nama" class="bm-input__field" placeholder="Contoh: John Doe" />
     </div>
-    <!-- ! END OF DETAIL MODAL -->
 
-    <!-- ! EDIT MODAL -->
-    <div
-      class="bm-modal h-auto bm-modal--scrollable"
-      id="add_modal"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="modal-label"
-      tabindex="-1"
-    >
-      <div class="bm-modal__header">
-        <h5 class="bm-modal__title">Tambah data pengguna</h5>
-        <a class="bm-modal__button-close" aria-label="close" rel="modal:close">
-          <span class="bm-modal__icon-close"></span>
-          <span class="bm-sr-only">Batal</span>
-        </a>
-      </div>
-
-      <div class="bm-modal__body">
-        <label class="bm-input-label" for="nama">Nama</label>
-        <div class="bm-input">
-          <input
-            type="text"
-            id="nama"
-            class="bm-input__field"
-            placeholder="Contoh: John Doe"
-          />
-        </div>
-
-        <br />
-        <label class="bm-input-label" for="username">Username</label>
-        <div class="bm-input">
-          <input
-            type="text"
-            id="username"
-            class="bm-input__field"
-            placeholder="Contoh: john_doe"
-          />
-        </div>
-
-        <br />
-
-        <label class="bm-input-label" for="password">Password</label>
-        <div class="bm-input">
-          <input
-            type="password"
-            id="password"
-            class="bm-input__field"
-            placeholder="Minimal 8 karakter"
-          />
-        </div>
-
-        <br />
-
-        <label class="bm-input-label" for="tahun-aktif">Tahun aktif</label>
-        <div class="bm-input">
-          <input
-            type="number"
-            id="tahun-aktif"
-            class="bm-input__field"
-            placeholder="Contoh: 2021"
-          />
-        </div>
-
-        <br />
-
-        <label class="bm-input-label">Hak akses</label>
-        <div class="row px-5">
-          <label class="bm-radio col-6">
-            Ketua divisi
-            <input
-              type="radio"
-              class="bm-radio__input"
-              id="hak-akses"
-              name="hak-akses"
-              value="ketua-divisi"
-            />
-            <span class="bm-radio__checkmark"></span>
-          </label>
-          <label class="bm-radio col-6">
-            Sekretaris
-            <input
-              type="radio"
-              class="bm-radio__input"
-              id="hak-akses"
-              name="hak-akses"
-              value="sekretaris"
-            />
-            <span class="bm-radio__checkmark"></span>
-          </label>
-        </div>
-      </div>
-
-      <div class="bm-modal__footer">
-        <a type="button" class="bm-btn bm-btn--secondary" rel="modal:close">
-          <span class="bm-btn__label">Batal</span>
-        </a>
-        <button type="button" class="bm-btn">
-          <span class="bm-btn__label">Simpan</span>
-        </button>
-      </div>
+    <br />
+    <label class="bm-input-label" for="username">Username</label>
+    <div class="bm-input">
+      <input type="text" id="username" class="bm-input__field" placeholder="Contoh: john_doe" />
     </div>
-    <!-- ! END OF EDIT MODAL -->
 
-    <!-- ! EDIT MODAL -->
-    <div
-      class="bm-modal h-auto bm-modal--scrollable"
-      id="edit_modal"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="modal-label"
-      tabindex="-1"
-    >
-      <div class="bm-modal__header">
-        <h5 class="bm-modal__title">Ubah data pengguna</h5>
-        <a class="bm-modal__button-close" aria-label="close" rel="modal:close">
-          <span class="bm-modal__icon-close"></span>
-          <span class="bm-sr-only">Batal</span>
-        </a>
-      </div>
+    <br />
 
-      <div class="bm-modal__body">
-        <label class="bm-input-label" for="nama">Nama</label>
-        <div class="bm-input">
-          <input
-            type="text"
-            id="nama"
-            class="bm-input__field"
-            placeholder="Contoh: John Doe"
-          />
-        </div>
-
-        <br />
-        <label class="bm-input-label" for="username">Username</label>
-        <div class="bm-input">
-          <input
-            type="text"
-            id="username"
-            class="bm-input__field"
-            placeholder="Contoh: john_doe"
-          />
-        </div>
-
-        <br />
-
-        <label class="bm-input-label" for="password">Password</label>
-        <div class="bm-input">
-          <input
-            type="password"
-            id="password"
-            class="bm-input__field"
-            placeholder="Minimal 8 karakter"
-          />
-        </div>
-
-        <br />
-
-        <label class="bm-input-label" for="tahun-aktif">Tahun aktif</label>
-        <div class="bm-input">
-          <input
-            type="number"
-            id="tahun-aktif"
-            class="bm-input__field"
-            placeholder="Contoh: 2021"
-          />
-        </div>
-
-        <br />
-
-        <label class="bm-input-label">Hak akses</label>
-        <div class="row px-5">
-          <label class="bm-radio col-6">
-            Ketua divisi
-            <input
-              type="radio"
-              class="bm-radio__input"
-              id="hak-akses"
-              name="hak-akses"
-              value="ketua-divisi"
-            />
-            <span class="bm-radio__checkmark"></span>
-          </label>
-          <label class="bm-radio col-6">
-            Sekretaris
-            <input
-              type="radio"
-              class="bm-radio__input"
-              id="hak-akses"
-              name="hak-akses"
-              value="sekretaris"
-            />
-            <span class="bm-radio__checkmark"></span>
-          </label>
-        </div>
-      </div>
-
-      <div class="bm-modal__footer">
-        <a type="button" class="bm-btn bm-btn--secondary" rel="modal:close">
-          <span class="bm-btn__label">Batal</span>
-        </a>
-        <button type="button" class="bm-btn">
-          <span class="bm-btn__label">Simpan</span>
-        </button>
-      </div>
+    <label class="bm-input-label" for="password">Password</label>
+    <div class="bm-input">
+      <input type="password" id="password" class="bm-input__field" placeholder="Minimal 8 karakter" />
     </div>
-    <!-- ! END OF EDIT MODAL -->
 
-    <!-- ! DELETE MODAL -->
-    <div
-      class="bm-modal h-auto bm-modal--scrollable"
-      id="delete_modal"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="modal-label"
-      tabindex="-1"
-    >
-      <div class="bm-modal__header">
-        <h5 class="bm-modal__title">Apakah Anda yakin?</h5>
-        <a class="bm-modal__button-close" aria-label="close" rel="modal:close">
-          <span class="bm-modal__icon-close"></span>
-          <span class="bm-sr-only">Batal</span>
-        </a>
-      </div>
+    <br />
 
-      <div class="bm-modal__body">
-        <p class="bm-body1">
-          Anda tidak akan dapat memulihkan data ini jika sudah di hapus
-        </p>
-      </div>
-
-      <div class="bm-modal__footer">
-        <a type="button" class="bm-btn bm-btn--secondary" rel="modal:close">
-          <span class="bm-btn__label">Batal</span>
-        </a>
-        <button type="button" class="bm-btn bm-btn--danger">
-          <span class="bm-btn__label">Ya, hapus data ini!</span>
-        </button>
-      </div>
+    <label class="bm-input-label" for="tahun-aktif">Tahun aktif</label>
+    <div class="bm-input">
+      <input type="number" id="tahun-aktif" class="bm-input__field" placeholder="Contoh: 2021" />
     </div>
-    <!-- ! END OF DELETE MODAL -->
+
+    <br />
+
+    <label class="bm-input-label">Hak akses</label>
+    <div class="row px-5">
+      <label class="bm-radio col-6">
+        Ketua divisi
+        <input type="radio" class="bm-radio__input" id="hak-akses" name="hak-akses" value="ketua-divisi" />
+        <span class="bm-radio__checkmark"></span>
+      </label>
+      <label class="bm-radio col-6">
+        Sekretaris
+        <input type="radio" class="bm-radio__input" id="hak-akses" name="hak-akses" value="sekretaris" />
+        <span class="bm-radio__checkmark"></span>
+      </label>
+    </div>
+  </div>
+
+  <div class="bm-modal__footer">
+    <a type="button" class="bm-btn bm-btn--secondary" rel="modal:close">
+      <span class="bm-btn__label">Batal</span>
+    </a>
+    <button type="button" class="bm-btn">
+      <span class="bm-btn__label">Simpan</span>
+    </button>
+  </div>
+</div>
+<!-- ! END OF EDIT MODAL -->
+
+<!-- ! DELETE MODAL -->
+<div class="bm-modal h-auto bm-modal--scrollable" id="delete_modal" role="dialog" aria-modal="true" aria-labelledby="modal-label" tabindex="-1">
+  <div class="bm-modal__header">
+    <h5 class="bm-modal__title">Apakah Anda yakin?</h5>
+    <a class="bm-modal__button-close" aria-label="close" rel="modal:close">
+      <span class="bm-modal__icon-close"></span>
+      <span class="bm-sr-only">Batal</span>
+    </a>
+  </div>
+
+  <div class="bm-modal__body">
+    <p class="bm-body1">
+      Anda tidak akan dapat memulihkan data ini jika sudah di hapus
+    </p>
+  </div>
+
+  <div class="bm-modal__footer">
+    <a type="button" class="bm-btn bm-btn--secondary" rel="modal:close">
+      <span class="bm-btn__label">Batal</span>
+    </a>
+    <button type="button" class="bm-btn bm-btn--danger">
+      <span class="bm-btn__label">Ya, hapus data ini!</span>
+    </button>
+  </div>
+</div>
+<!-- ! END OF DELETE MODAL -->
+<script>
+  $(document).ready(function() {
+
+    $('.bm-accordion__header').on('click', function() {
+      $(this).parent().toggleClass('bm-accordion__item--active')
+    });
+    $('#placeholder-logo').hide();
+
+    $('#logo').change(function() {
+      const [logo] = $('#logo')[0].files;
+      $('#label-logo').hide();
+      $('#placeholder-logo').show();
+      $('#placeholder-logo')[0].src = URL.createObjectURL(logo);
+    });
+
+    let i = 1;
+    $("#hapus-anggota").hide()
+    $("#hapus-produk").hide()
+    
+    $("#tambah-anggota").click(() => {
+      i++;
+      $("#form-anggota").append(`<div class="anggota" id="anggota-${i}">
+              <label class="bm-input-label" for="no-identitas-${i}">No. Identitas ${i}</label>
+              <div class="bm-input">
+                <input name="no_identitas-${i}" id="no-identitas-${i}" type="text" class="bm-input__field" placeholder="Contoh: 12355212129900001" />
+              </div>
+              <br />
+              <label class="bm-input-label" for="nama-anggota-${i}">Nama anggota ${i}</label>
+              <div class="bm-input">
+                <input name="nama_penjual-${i}" id="nama-anggota-${i}" type="text" class="bm-input__field" placeholder="Contoh: John Doe" />
+              </div>
+              <hr />
+            </div>`)
+      if ($(".anggota").length === 3) {
+        $("#tambah-anggota").prop('disabled', true);
+      }
+
+      if ($(".anggota").length !== 1) {
+        $("#hapus-anggota").show()
+      }
+    })
+    $("#hapus-anggota").click(() => {
+      $("#tambah-anggota").prop('disabled', false);
+      $(`#anggota-${i}`).remove()
+      i--
+      if (i === 1) {
+        $("#hapus-anggota").hide()
+      }
+    })
+
+    $("#hapus-produk").click(() => {
+      $(`#produk-${produkIterator}`).remove()
+      produkIterator--
+      if (produkIterator === 1) {
+        $("#hapus-produk").hide()
+      }
+    })
+
+    let produkIterator = 1;
+
+    $("#tambah-produk").click(() => {
+      produkIterator++;
+
+      if (produkIterator !== 1) {
+        $("#hapus-produk").show()
+      }
+      $("#produk-container").append(
+        `<div class="produk-wrapper" id="produk-${produkIterator}">
+            <p class="fw-bold">Produk ${produkIterator}</p>
+            <label class="bm-input-label" for="nama-produk-${produkIterator}">Nama produk</label>
+            <div class="bm-input">
+              <input name="nama_produk-${produkIterator}" id="nama-produk-${produkIterator}" type="text" class="bm-input__field" placeholder="Contoh: T-shirt hitam manis" />
+            </div>
+            <br />
+            <label class="bm-input-label" for="harga-${produkIterator}">Harga</label>
+            <div class="bm-input">
+              <input name="harga-${produkIterator}" id="harga-${produkIterator}" type="number" class="bm-input__field" placeholder="Contoh: 30000" />
+            </div>
+            <br />
+            <label class="bm-input-label" for="deskripsi-produk-${produkIterator}">Deskripsi produk</label>
+            <div class="bm-input">
+              <textarea name="deskripsi_produk-${produkIterator}" id="deskripsi-peroduk-${produkIterator}" class="bm-input__field" placeholder="Contoh: T-shirt berwarna hitam dengan bahan katun"></textarea>
+            </div>
+            <br />
+            <label class="bm-input-label" for="foto-produk-${produkIterator}">Foto produk</label>
+            <p class="bm-caption text-secondary">
+              Pilih foto untuk dijadikan foto utama
+            </p>
+            <div class="row" id="foto-produk-wrapper-${produkIterator}">
+              <!-- FOTO PRODUK -->
+            </div>
+
+            <label for="foto-produk-${produkIterator}" class="bm-input--file mt-4 mx-auto bm-cursor-pointer">
+              <input class="w-100 file-upload" type="file" name="foto-produ-${produkIterator}k" id="foto-produk-${produkIterator}" accept="image/*" />
+
+              <p class="text-secondary">Tambah foto</p>
+              <i class="fas fa-save fs-2 text-secondary"></i>
+            </label>
+
+            <hr />
+
+          </div>`
+      )
+      $(`#foto-produk-${produkIterator}`).change(function() {
+        const [logo] = $(`#foto-produk-${produkIterator}`)[0].files;
+        $(`#foto-produk-wrapper-${produkIterator}`).append(`
+        <label class="bm-radio col-4">
+                <img class="bm-img-responsive" src="${URL.createObjectURL(logo)}" alt="Picture 1" />
+                <input type="radio" class="bm-radio__input" name="radio_selected" value="radio" />
+                <span class="bm-radio__checkmark"></span>
+                <button class="bm-btn-circle bm-btn-circle--small bm-close-btn" id="delete-foto">
+                  <span class="bm-btn-circle__icon">
+                    <i class="fas fa-times"></i>
+                  </span>
+                </button>
+              </label>
+        `)
+      });
+      $(`#foto-produk-wrapper-${produkIterator}`).on("click", '#delete-foto', (e) => {
+      if (e.target.parentElement.tagName === "SPAN") {
+        e.target.parentElement.parentElement.parentElement.remove()
+      } else {
+        e.target.parentElement.remove();
+      }
+    })
+    })
+
+    $(`#foto-produk-1`).change(function() {
+        const [logo] = $(`#foto-produk-1`)[0].files;
+        $(`#foto-produk-wrapper-1`).append(`
+        <label class="bm-radio col-4">
+                <img class="bm-img-responsive" src="${URL.createObjectURL(logo)}" alt="Picture 1" />
+                <input type="radio" class="bm-radio__input" name="radio_selected" value="radio" />
+                <span class="bm-radio__checkmark"></span>
+                <button class="bm-btn-circle bm-btn-circle--small bm-close-btn" id="delete-foto">
+                  <span class="bm-btn-circle__icon">
+                    <i class="fas fa-times"></i>
+                  </span>
+                </button>
+              </label>
+        `)
+      });
+
+    $('#foto-produk-wrapper-1').on("click", '#delete-foto', (e) => {
+      console.log(e.target);
+      if (e.target.parentElement.tagName === "SPAN") {
+        console.log(e.target.parentElement.parentElement.parentElement.remove());
+      } else {
+        console.log(e.target.parentElement.remove());
+      }
+    })
+  });
+</script>
