@@ -122,7 +122,7 @@
 <!-- ! END OF DETAIL MODAL -->
 
 <!-- ! ADD MODAL -->
-<div class="bm-modal h-auto bm-modal--scrollable" id="add_modal" role="dialog" aria-modal="true" aria-labelledby="modal-label" tabindex="-1">
+<div class="bm-modal h-auto" id="add_modal" role="dialog" aria-modal="true" aria-labelledby="modal-label" tabindex="-1">
   <div class="bm-modal__header">
     <h5 class="bm-modal__title">Tambah data kelompok</h5>
     <a class="bm-modal__button-close" aria-label="close" rel="modal:close">
@@ -182,7 +182,7 @@
             <label class="bm-input-label" for="logo-kelompok">Logo kelompok</label>
             <label for="logo" class="bm-input--file mt-4 mx-auto bm-cursor-pointer" id="label-logo">
               <input class="w-100 file-upload" type="file" name="url_logo_toko" id="logo" accept="image/*" />
-  
+
               <p class="text-secondary">Tambah foto</p>
               <i class="fas fa-save fs-2 text-secondary"></i>
             </label>
@@ -197,6 +197,7 @@
             <span class="bm-accordion__arrow"></span>
           </div>
           <div class="bm-accordion__content">
+            <input name="detail_kelompok_count" hidden hidden id="detail_kelompok_count" type="number" value="1" />
             <div id="form-anggota">
               <div class="anggota" class="anggota-1">
                 <label class="bm-input-label" for="no-identitas-1">No. Identitas 1</label>
@@ -231,8 +232,8 @@
             <span class="bm-accordion__arrow"></span>
           </div>
           <div class="bm-accordion__content">
+            <input name="produk_count" hidden id="produk_count" type="number" value="1" />
             <div id="produk-container">
-  
               <div class="produk-wrapper">
                 <p class="fw-bold">Produk 1</p>
                 <label class="bm-input-label" for="nama-produk-1">Nama produk</label>
@@ -251,22 +252,23 @@
                 </div>
                 <br />
                 <label class="bm-input-label" for="foto-produk-1">Foto produk</label>
+                <input name="foto_count-1" hidden id="foto_count-1" type="number" value="0" />
                 <p class="bm-caption text-secondary">
                   Pilih foto untuk dijadikan foto utama
                 </p>
                 <div class="row" id="foto-produk-wrapper-1">
                   <!-- FOTO PRODUK -->
                 </div>
-  
+
                 <label for="foto-produk-1" class="bm-input--file mt-4 mx-auto bm-cursor-pointer">
                   <input class="w-100 file-upload" type="file" name="foto-produk-1" id="foto-produk-1" accept="image/*" />
-  
+
                   <p class="text-secondary">Tambah foto</p>
                   <i class="fas fa-save fs-2 text-secondary"></i>
                 </label>
-  
+
                 <hr />
-  
+
               </div>
             </div>
             <button type="button" class="bm-btn" id="tambah-produk">
@@ -406,9 +408,10 @@
     let i = 1;
     $("#hapus-anggota").hide()
     $("#hapus-produk").hide()
-    
+
     $("#tambah-anggota").click(() => {
       i++;
+      $("#detail_kelompok_count").val(i)
       $("#form-anggota").append(`<div class="anggota" id="anggota-${i}">
               <label class="bm-input-label" for="no-identitas-${i}">No. Identitas ${i}</label>
               <div class="bm-input">
@@ -433,6 +436,7 @@
       $("#tambah-anggota").prop('disabled', false);
       $(`#anggota-${i}`).remove()
       i--
+      $("#detail_kelompok_count").val(i)
       if (i === 1) {
         $("#hapus-anggota").hide()
       }
@@ -441,6 +445,7 @@
     $("#hapus-produk").click(() => {
       $(`#produk-${produkIterator}`).remove()
       produkIterator--
+      $("#produk_count").val(produkIterator)
       if (produkIterator === 1) {
         $("#hapus-produk").hide()
       }
@@ -450,6 +455,7 @@
 
     $("#tambah-produk").click(() => {
       produkIterator++;
+      $("#produk_count").val(produkIterator)
 
       if (produkIterator !== 1) {
         $("#hapus-produk").show()
@@ -473,6 +479,7 @@
             </div>
             <br />
             <label class="bm-input-label" for="foto-produk-${produkIterator}">Foto produk</label>
+            <input name="foto_count-${produkIterator}" hidden id="foto_count-${produkIterator}" type="number" value="0" />
             <p class="bm-caption text-secondary">
               Pilih foto untuk dijadikan foto utama
             </p>
@@ -493,9 +500,12 @@
       )
       $(`#foto-produk-${produkIterator}`).change(function() {
         const [logo] = $(`#foto-produk-${produkIterator}`)[0].files;
+        let fotoProdukCount = document.getElementsByClassName(`foto-produk-${produkIterator}`).length
+        fotoProdukCount += 1
+        $(`#foto_count-${produkIterator}`).val(fotoProdukCount)
         $(`#foto-produk-wrapper-${produkIterator}`).append(`
         <label class="bm-radio col-4">
-                <img class="bm-img-responsive" src="${URL.createObjectURL(logo)}" alt="Picture 1" />
+                <img class="bm-img-responsive foto-produk-${produkIterator}" src="${URL.createObjectURL(logo)}" alt="Picture 1" />
                 <input type="radio" class="bm-radio__input" name="radio_selected" value="radio" />
                 <span class="bm-radio__checkmark"></span>
                 <button class="bm-btn-circle bm-btn-circle--small bm-close-btn" id="delete-foto">
@@ -507,19 +517,25 @@
         `)
       });
       $(`#foto-produk-wrapper-${produkIterator}`).on("click", '#delete-foto', (e) => {
-      if (e.target.parentElement.tagName === "SPAN") {
-        e.target.parentElement.parentElement.parentElement.remove()
-      } else {
-        e.target.parentElement.remove();
-      }
-    })
+        let fotoProdukCount = document.getElementsByClassName(`foto-produk-${produkIterator}`).length
+        fotoProdukCount--
+        $(`#foto_count-${produkIterator}`).val(fotoProdukCount)
+        if (e.target.parentElement.tagName === "SPAN") {
+          e.target.parentElement.parentElement.parentElement.remove()
+        } else {
+          e.target.parentElement.remove();
+        }
+      })
     })
 
     $(`#foto-produk-1`).change(function() {
-        const [logo] = $(`#foto-produk-1`)[0].files;
-        $(`#foto-produk-wrapper-1`).append(`
+      const [logo] = $(`#foto-produk-1`)[0].files;
+      let fotoProdukCount = document.getElementsByClassName("foto-produk-1").length
+      fotoProdukCount += 1
+      $("#foto_count-1").val(fotoProdukCount)
+      $(`#foto-produk-wrapper-1`).append(`
         <label class="bm-radio col-4">
-                <img class="bm-img-responsive" src="${URL.createObjectURL(logo)}" alt="Picture 1" />
+                <img class="bm-img-responsive foto-produk-1" src="${URL.createObjectURL(logo)}" alt="Picture 1" />
                 <input type="radio" class="bm-radio__input" name="radio_selected" value="radio" />
                 <span class="bm-radio__checkmark"></span>
                 <button class="bm-btn-circle bm-btn-circle--small bm-close-btn" id="delete-foto">
@@ -529,10 +545,12 @@
                 </button>
               </label>
         `)
-      });
+    });
 
     $('#foto-produk-wrapper-1').on("click", '#delete-foto', (e) => {
-      console.log(e.target);
+      let fotoProdukCount = document.getElementsByClassName("foto-produk-1").length
+      fotoProdukCount--;
+      $("#foto_count-1").val(fotoProdukCount)
       if (e.target.parentElement.tagName === "SPAN") {
         console.log(e.target.parentElement.parentElement.parentElement.remove());
       } else {
