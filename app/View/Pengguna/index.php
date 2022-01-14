@@ -217,7 +217,7 @@
             <input type="hidden" name="id_pengguna" id="id_pengguna">
             <label class="bm-input-label" for="nama">Nama</label>
             <div class="bm-input">
-                <input
+                <input name="nama_pengguna"
                         type="text"
                         id="update_nama"
                         class="bm-input__field"
@@ -228,7 +228,7 @@
             <br/>
             <label class="bm-input-label" for="username">Username</label>
             <div class="bm-input">
-                <input
+                <input name="username"
                         type="text"
                         id="update_username"
                         class="bm-input__field"
@@ -240,7 +240,7 @@
 
             <label class="bm-input-label" for="password">Password</label>
             <div class="bm-input">
-                <input
+                <input name="password"
                         type="password"
                         id="update_password"
                         class="bm-input__field"
@@ -252,7 +252,7 @@
 
             <label class="bm-input-label" for="tahun-aktif">Tahun aktif</label>
             <div class="bm-input">
-                <input
+                <input name="tahun_aktif"
                         type="number"
                         id="update_tahun-aktif"
                         class="bm-input__field"
@@ -270,7 +270,7 @@
                             type="radio"
                             class="bm-radio__input"
                             id="update_hak-akses-kepala"
-                            name="hak-akses"
+                            name="hak_akses"
                             value="ketua_divisi"
                     />
                     <span class="bm-radio__checkmark"></span>
@@ -281,7 +281,7 @@
                             type="radio"
                             class="bm-radio__input"
                             id="update_hak-akses-sekretaris"
-                            name="hak-akses"
+                            name="hak_akses"
                             value="sekretaris"
                     />
                     <span class="bm-radio__checkmark"></span>

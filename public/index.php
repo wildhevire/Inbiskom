@@ -62,13 +62,22 @@ Router::Add('POST', '/DeleteKategori',
     \app\Controller\KategoriController::class, 'DeleteKategori',
     [\app\Middleware\MustLoginMiddleware::class]);
 
+
+//Kelompok
+Router::Add('POST', '/TambahKelompok',
+    \app\Controller\KelompokController::class, 'TambahKelompok',
+    [\app\Middleware\MustLoginMiddleware::class]);
+
+
 //TODO :TEST Purpose ONLY
 Router::Add('GET', '/AddPengguna',
     \app\Controller\PenggunaController::class, 'RenderAddPengguna',
     [\app\Middleware\MustNotLoginMiddleware::class]);
 
+
 Router::Add('POST', '/update-pengguna',
-    \app\Controller\PenggunaController::class, 'index',
+    \app\Controller\PenggunaController::class, 'UpdatePengguna',
     [\app\Middleware\MustLoginMiddleware::class]);
+
 
 Router::Run();

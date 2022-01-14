@@ -132,7 +132,7 @@
   </div>
 
   <div class="bm-modal__body">
-    <form action="" method="post">
+    <form action="/TambahKelompok" method="POST" enctype="multipart/form-data">
       <ul class="bm-accordion">
         <li class="bm-accordion__item bm-accordion__item--active">
           <div class="bm-accordion__header bm-cursor-pointer">
@@ -172,9 +172,9 @@
             <div class="bm-input">
               <select name="id_kategori" class="bm-input__field" id="kategori" required>
                 <option value="" disabled selected>Pilih kategori</option>
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
+                  <?php foreach ($model['data']['kategori'] as $kategori) :?>
+                        <option value="<?= $kategori['id_kategori']?>"><?= $kategori['nama_kategori']?></option>
+                  <?php endforeach; ?>
               </select>
               <span class="bm-input__arrow"></span>
             </div>
@@ -286,17 +286,18 @@
           </div>
         </li>
       </ul>
+        <div class="bm-modal__footer">
+            <a type="button" class="bm-btn bm-btn--secondary" rel="modal:close">
+                <span class="bm-btn__label">Batal</span>
+            </a>
+            <button type="Submit" class="bm-btn">
+                <span class="bm-btn__label">Simpan</span>
+            </button>
+        </div>
     </form>
   </div>
 
-  <div class="bm-modal__footer">
-    <a type="button" class="bm-btn bm-btn--secondary" rel="modal:close">
-      <span class="bm-btn__label">Batal</span>
-    </a>
-    <button type="button" class="bm-btn">
-      <span class="bm-btn__label">Simpan</span>
-    </button>
-  </div>
+
 </div>
 <!-- ! END OF ADD MODAL -->
 

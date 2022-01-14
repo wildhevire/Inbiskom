@@ -61,7 +61,30 @@ class DetailKelompokRepository
 
     public function SelectAll(): ?array
     {
-        return null;
+        $statement = $this->conn->query(
+            "SELECT id_detail_kelompok, no_identitas, nama_penjual, 
+                    FROM detail_kelompok");
+
+        $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
+
+        return $result;
     }
 
+    public function DeleteById(string $id): void
+    {
+        $statement = $this->conn->prepare("DELETE FROM detail_kelompok WHERE id_kelompok = ?");
+        $statement->execute([$id]);
+    }
+
+    public function Update(DetailKelompok $kelompok) : DetailKelompok
+    {
+        $statement = $this->connection->prepare("
+                UPDATE detail_kelompok SET no_identitas = ?, nama_penjual = ? 
+                WHERE id_detail_kelompok = ?,
+            ");
+        $statement->execute([
+            $kelompok->no_identitas, $kelompok->nama_penjual, $kelompok->id_detail_kelompok
+        ]);
+        return $kelompok;
+    }
 }

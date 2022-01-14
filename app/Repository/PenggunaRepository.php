@@ -109,13 +109,12 @@ class PenggunaRepository
     {
         $statement = $this->connection->prepare("
                 UPDATE pengguna SET nama_pengguna = ?, username = ?, 
-                                    password = ?, hak_akses = ?, status = ?, tahun_aktif = ? 
+                                hak_akses = ?, status = ?, tahun_aktif = ? 
                 WHERE id_pengguna = ?,
             ");
         $statement->execute([
             $pengguna->nama_pengguna,
             $pengguna->username,
-            $pengguna->password,
             $pengguna->hak_akses,
             $pengguna->status,
             $pengguna->tahun_aktif,
@@ -123,5 +122,27 @@ class PenggunaRepository
 
         ]);
         return $pengguna;
+    }
+
+    public function UpdatePasword(Pengguna $pengguna):Pengguna
+    {
+        $statement = $this->conn->prepare("
+               UPDATE pengguna SET password = ? WHERE id_pengguna = ?");
+
+        $statement->execute([
+            $pengguna->password,
+            $pengguna->id_pengguna
+]       );
+        return $pengguna;
+    }
+    public function UpdateStatus(string $id, bool $status):void
+    {
+        $statusInDB = 0;
+        if($status){
+            $statusInDB = 1;
+        }
+
+        $statement = $this->conn->prepare("UPDATE pengguna SET status= ? WHERE id_pengguna = ?");
+        $statement->execute([$statusInDB, $id]);
     }
 }

@@ -67,7 +67,8 @@ class KategoriController
         catch (\Exception $exception)
         {
             View::RenderDashboard('Kategori/index', [
-                'error'=> $exception->getMessage()
+                'error'=> $exception->getMessage(),
+                'data' => $this->service->GetAllModel()
             ]);
         }
     }

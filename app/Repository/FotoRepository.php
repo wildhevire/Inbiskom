@@ -61,7 +61,30 @@ class FotoRepository
 
     public function SelectAll(): ?array
     {
-        return null;
+        $statement = $this->conn->query(
+            "SELECT id_foto, url, is_primary, id_produk
+                    FROM foto");
+
+        $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
+
+        return $result;
     }
 
+    public function DeleteById(strint $id): void
+    {
+        $statement = $this->conn->prepare("DELETE FROM foto WHERE id_foto = ?");
+        $statement->execute([$id]);
+    }
+
+    public function Update(Foto $foto) :Foto
+    {
+        $statement = $this->connection->prepare("
+                UPDATE foto SET url = ?, is_primary = ?, id_produk = ?
+                WHERE id_foto = ?,
+            ");
+        $statement->execute([
+           $foto->url, $foto->is_primary, $foto->id_produk, $foto->id_foto
+        ]);
+        return $foto;
+    }
 }

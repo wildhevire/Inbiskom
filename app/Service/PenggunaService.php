@@ -138,26 +138,50 @@ class PenggunaService
 
     }
 
-    public function UpdateStatusPengguna(string $id):void
+    public function UpdateStatusPengguna(string $id, bool $status):void
     {
-
+        try
+        {
+            $this->repo->UpdateStatus($id, $status);
+        }
+        catch (\Exception $e)
+        {
+            throw $e;
+        }
     }
 
-    public function UpdatePengguna(PenggunaRequest $request): PenggunaResponse
+    public function UpdatePengguna(PenggunaRequest $request): ?PenggunaResponse
     {
+
         try {
+            Database::BeginTransaction();
             $pengguna = new Pengguna();
+            $pengguna = $this->repo->SelectByUsername($request->username);
+
+            if($pengguna != null)
+            {
+                //TODO : Ganti Error Message
+                throw new ValidationException("Pengguna Dengan No Identitas Tersebut Sudah ada");
+            }
+
             $pengguna->nama_pengguna = $request->pengguna->nama_pengguna;
             $pengguna->username = $request->pengguna->username;
             $pengguna->hak_akses = $request->pengguna->hak_akses;
             $pengguna->status = $request->pengguna->status;
             $pengguna->tahun_aktif = $request->pengguna->tahun_aktif;
 
+            if($request->pengguna->password != ""){
+                $pengguna->password = $request->pengguna->password;
+                $this->repo->Update($pengguna);
+            }
+            $this->repo->Update($pengguna);
             $response = new PenggunaResponse();
+            Database::CommitTransaction();
             return $response;
 
         }catch (\Exception $e)
         {
+            Database::RollbackTransaction();
             throw $e;
         }
     }

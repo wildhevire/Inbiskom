@@ -58,7 +58,37 @@ class ProdukRepository
 
     public function SelectAll(): ?array
     {
-        return null;
+        $statement = $this->conn->query(
+            "SELECT id_produk, nama_produk, harga, 
+                    deskripsi_produk
+                    FROM kelompok");
+
+        $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+
+    public function DeleteById(strint $id): void
+    {
+        $statement = $this->conn->prepare("DELETE FROM produk WHERE id_produk = ?");
+        $statement->execute([$id]);
+    }
+
+    public function Update(Produk $produk) : Produk
+    {
+        $statement = $this->connection->prepare("
+                UPDATE produk SET nama_produk = ?, harga = ?, 
+                                deskripsi_produk = ?
+                WHERE id_produk = ?,
+            ");
+        $statement->execute([
+            $produk->nama_produk,
+            $produk->harga,
+            $produk->deskripsi_produk,
+            $produk->id_produk,
+
+        ]);
+        return $produk;
     }
 
 }

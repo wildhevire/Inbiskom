@@ -7,6 +7,7 @@ use app\Core\Session;
 use app\Core\View;
 use app\DTO\Pengguna\AddPenggunaRequest;
 use app\DTO\Pengguna\LoginPenggunaRequest;
+use app\DTO\Pengguna\PenggunaRequest;
 use app\Exception\ValidationException;
 use app\Repository\PenggunaRepository;
 use app\Service\PenggunaService;
@@ -76,23 +77,29 @@ class PenggunaController
 
     public function UpdatePengguna():void
     {
+        try
+        {
+            $request = new PenggunaRequest();
+            $request->pengguna->id_pengguna = $_POST['id_pengguna'];
+            $request->pengguna->username = $_POST['username'];
+            $request->pengguna->password = $_POST['password'];
+            $request->pengguna->tahun_aktif = $_POST['tahun_aktif'];
+            $request->pengguna->hak_akses= $_POST['hak_akses'];
+            if($request->pengguna->password == "")
+            {
+
+            }
+        }
+        catch(\Exception $e)
+        {
+
+        }
 
     }
 
     public function DeletePengguna():void
     {
-        try
-        {
-            $id = $_POST['id_kategori'];
-            $this->service->RemoveKategori($id);
-            View::Redirect('/dashboard-kategori');
-        }
-        catch (\Exception $exception)
-        {
-            View::RenderDashboard('Dashboard/index', [
-                'error'=> $exception->getMessage()
-            ]);
-        }
+
     }
 
 

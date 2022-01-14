@@ -31,6 +31,8 @@ class KelompokRepository
             $kelompok->id_kategori,
             $kelompok->id_pengguna
         ]);
+        $lastId = $this->conn->lastInsertId();
+        $kelompok->id_kelompok = $lastId;
         return $kelompok;
     }
 
@@ -67,7 +69,38 @@ class KelompokRepository
 
     public function SelectAll(): ?array
     {
-        return null;
+        $statement = $this->conn->query(
+            "SELECT id_kelompok, nama_kelompok, angkatan, 
+                    deskripsi_kelompok, tipe_kelompok, url_logo_toko
+                    FROM kelompok");
+
+        $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
+
+        return $result;
     }
 
+    public function DeleteById(string $id): void
+    {
+        $statement = $this->conn->prepare("DELETE FROM kelompok WHERE id_kelompok = ?");
+        $statement->execute([$id]);
+    }
+
+    public function Update(Kelompok $kelompok) : Kelompok
+    {
+        $statement = $this->connection->prepare("
+                UPDATE kelompok SET nama_kelompok = ?, angkatan = ?, deskripsi_kelompok = ?, tipe_kelompok = ?, url_logo_toko = ?, id_kategori = ?, id_pengguna = ?
+                WHERE id_kelompok = ?,
+            ");
+        $statement->execute([
+            $kelompok->nama_kelompok,
+            $kelompok->angkatan,
+            $kelompok->deskripsi_kelompok,
+            $kelompok->tipe_kelompok,
+            $kelompok->url_logo_toko,
+            $kelompok->id_kategori,
+            $kelompok->id_pengguna,
+            $kelompok->id_kelompok
+        ]);
+        return $kelompok;
+    }
 }
