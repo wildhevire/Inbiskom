@@ -92,6 +92,16 @@ body {
   width: 240px;
   border: 2px dashed #b9b9b9;
   border-radius: 4px;
+  cursor: pointer;
+}
+
+.bm-input--file__small {
+  height: 80px;
+  width: 96px;
+}
+
+.bm-input--file__small span {
+  font-size: 0.8em;
 }
 
 .file-upload {
@@ -104,4 +114,8 @@ body {
   top: -10%;
   transform: scale(0.7);
   background-color: red;
+}
+
+.bm-relative {
+  position: relative;
 }

@@ -172,9 +172,9 @@
             <div class="bm-input">
               <select name="id_kategori" class="bm-input__field" id="kategori" required>
                 <option value="" disabled selected>Pilih kategori</option>
-                  <?php foreach ($model['data']['kategori'] as $kategori) :?>
-                        <option value="<?= $kategori['id_kategori']?>"><?= $kategori['nama_kategori']?></option>
-                  <?php endforeach; ?>
+                <?php foreach ($model['data']['kategori'] as $kategori) : ?>
+                  <option value="<?= $kategori['id_kategori'] ?>"><?= $kategori['nama_kategori'] ?></option>
+                <?php endforeach; ?>
               </select>
               <span class="bm-input__arrow"></span>
             </div>
@@ -184,7 +184,7 @@
               <input class="w-100 file-upload" type="file" name="url_logo_toko" id="logo" accept="image/*" />
 
               <p class="text-secondary">Tambah foto</p>
-              <i class="fas fa-save fs-2 text-secondary"></i>
+              <i class="fas fa-image fs-2 text-secondary"></i>
             </label>
             <label for="logo" class="mx-auto mt-4 mb-2 text-center">
               <img class="w-50 bm-img-responsive bm-cursor-pointer" id="placeholder-logo" src="#" alt="Logo baru" />
@@ -253,19 +253,94 @@
                 <br />
                 <label class="bm-input-label" for="foto-produk-1">Foto produk</label>
                 <input name="foto_count-1" hidden id="foto_count-1" type="number" value="0" />
-                <p class="bm-caption text-secondary">
-                  Pilih foto untuk dijadikan foto utama
-                </p>
                 <div class="row" id="foto-produk-wrapper-1">
-                  <!-- FOTO PRODUK -->
+                  <span class="col-12 bm-caption text-secondary">
+                    Foto utama produk
+                  </span>
+                  <div class="col-3 mb-4">
+                    <label for="foto-produk-1-1" id="label-foto-produk-1-1" class="bm-input--file bm-input--file__small mt-4 mx-auto bm-cursor-pointer">
+                      <input class="file-upload" type="file" name="foto-produk-1-1" id="foto-produk-1-1" accept="image/*" />
+
+                      <span class="text-secondary">Tambah foto</span>
+                      <i class="fas fa-image fs-2 text-secondary"></i>
+                    </label>
+                    <label for="foto-produk-1-1" class="mx-auto my-4 text-center bm-relative" id="label-image-foto-produk-1-1">
+                      <img class="bm-img-responsive bm-cursor-pointer" id="placeholder-foto-produk-1-1" src="#" alt="Foto produk" />
+                      <button class="bm-btn-circle bm-btn-circle--small bm-close-btn" id="delete-foto">
+                        <span class="bm-btn-circle__icon">
+                          <i class="fas fa-times"></i>
+                        </span>
+                      </button>
+                    </label>
+                  </div>
+                  <span class="col-12 bm-caption text-secondary">
+                    Foto produk
+                  </span>
+                  <div class="col-3">
+                    <label for="foto-produk-1-2" id="label-foto-produk-1-2" class="bm-input--file bm-input--file__small mt-4 mx-auto bm-cursor-pointer">
+                      <input class="file-upload" type="file" name="foto-produk-1-2" id="foto-produk-1-2" accept="image/*" />
+
+                      <span class="text-secondary">Tambah foto</span>
+                      <i class="fas fa-image fs-2 text-secondary"></i>
+                    </label>
+                    <label for="foto-produk-1-2" class="mx-auto my-4 text-center bm-relative" id="label-image-foto-produk-1-2">
+                      <img class="bm-img-responsive bm-cursor-pointer" id="placeholder-foto-produk-1-2" src="#" alt="Foto produk" />
+                      <button class="bm-btn-circle bm-btn-circle--small bm-close-btn" id="delete-foto">
+                        <span class="bm-btn-circle__icon">
+                          <i class="fas fa-times"></i>
+                        </span>
+                      </button>
+                    </label>
+                  </div>
+                  <div class="col-3">
+                    <label for="foto-produk-1-3" id="label-foto-produk-1-3" class="bm-input--file bm-input--file__small mt-4 mx-auto bm-cursor-pointer">
+                      <input class="file-upload" type="file" name="foto-produk-1-3" id="foto-produk-1-3" accept="image/*" />
+
+                      <span class="text-secondary">Tambah foto</span>
+                      <i class="fas fa-image fs-2 text-secondary"></i>
+                    </label>
+                    <label for="foto-produk-1-3" class="mx-auto my-4 text-center bm-relative" id="label-image-foto-produk-1-3">
+                      <img class="bm-img-responsive bm-cursor-pointer" id="placeholder-foto-produk-1-3" src="#" alt="Foto produk" />
+                      <button class="bm-btn-circle bm-btn-circle--small bm-close-btn" id="delete-foto">
+                        <span class="bm-btn-circle__icon">
+                          <i class="fas fa-times"></i>
+                        </span>
+                      </button>
+                    </label>
+                  </div>
+                  <div class="col-3">
+                    <label for="foto-produk-1-4" id="label-foto-produk-1-4" class="bm-input--file bm-input--file__small mt-4 mx-auto bm-cursor-pointer">
+                      <input class="file-upload" type="file" name="foto-produk-1-4" id="foto-produk-1-4" accept="image/*" />
+
+                      <span class="text-secondary">Tambah foto</span>
+                      <i class="fas fa-image fs-2 text-secondary"></i>
+                    </label>
+                    <label for="foto-produk-1-4" class="mx-auto my-4 text-center bm-relative" id="label-image-foto-produk-1-4">
+                      <img class="bm-img-responsive bm-cursor-pointer" id="placeholder-foto-produk-1-4" src="#" alt="Foto produk" />
+                      <button class="bm-btn-circle bm-btn-circle--small bm-close-btn" id="delete-foto">
+                        <span class="bm-btn-circle__icon">
+                          <i class="fas fa-times"></i>
+                        </span>
+                      </button>
+                    </label>
+                  </div>
+                  <div class="col-3">
+                    <label for="foto-produk-1-5" id="label-foto-produk-1-5" class="bm-input--file bm-input--file__small mt-4 mx-auto bm-cursor-pointer">
+                      <input class="file-upload" type="file" name="foto-produk-1-5" id="foto-produk-1-5" accept="image/*" />
+
+                      <span class="text-secondary">Tambah foto</span>
+                      <i class="fas fa-image fs-2 text-secondary"></i>
+                    </label>
+                    <label for="foto-produk-1-5" class="mx-auto my-4 text-center bm-relative" id="label-image-foto-produk-1-5">
+                      <img class="bm-img-responsive bm-cursor-pointer" id="placeholder-foto-produk-1-5" src="#" alt="Foto produk" />
+                      <button class="bm-btn-circle bm-btn-circle--small bm-close-btn" id="delete-foto">
+                        <span class="bm-btn-circle__icon">
+                          <i class="fas fa-times"></i>
+                        </span>
+                      </button>
+                    </label>
+                  </div>
                 </div>
-
-                <label for="foto-produk-1" class="bm-input--file mt-4 mx-auto bm-cursor-pointer">
-                  <input class="w-100 file-upload" type="file" name="foto-produk-1" id="foto-produk-1" accept="image/*" />
-
-                  <p class="text-secondary">Tambah foto</p>
-                  <i class="fas fa-save fs-2 text-secondary"></i>
-                </label>
 
                 <hr />
 
@@ -286,14 +361,14 @@
           </div>
         </li>
       </ul>
-        <div class="bm-modal__footer">
-            <a type="button" class="bm-btn bm-btn--secondary" rel="modal:close">
-                <span class="bm-btn__label">Batal</span>
-            </a>
-            <button type="Submit" class="bm-btn">
-                <span class="bm-btn__label">Simpan</span>
-            </button>
-        </div>
+      <div class="bm-modal__footer">
+        <a type="button" class="bm-btn bm-btn--secondary" rel="modal:close">
+          <span class="bm-btn__label">Batal</span>
+        </a>
+        <button type="Submit" class="bm-btn">
+          <span class="bm-btn__label">Simpan</span>
+        </button>
+      </div>
     </form>
   </div>
 
@@ -406,6 +481,19 @@
       $('#placeholder-logo')[0].src = URL.createObjectURL(logo);
     });
 
+    for (let index = 1; index < 6; index++) {
+      console.log(index);
+      $(`#placeholder-foto-produk-1-${index}`).hide();
+      $(`#label-image-foto-produk-1-${index}`).hide();
+      $(`#foto-produk-1-${index}`).change(function() {
+        const [logo] = $(`#foto-produk-1-${index}`)[0].files;
+        $(`#label-foto-produk-1-${index}`).hide();
+        $(`#placeholder-foto-produk-1-${index}`).show();
+        $(`#label-image-foto-produk-1-${index}`).show();
+        $(`#placeholder-foto-produk-1-${index}`)[0].src = URL.createObjectURL(logo);
+      });
+    }
+
     let i = 1;
     $("#hapus-anggota").hide()
     $("#hapus-produk").hide()
@@ -447,6 +535,7 @@
       $(`#produk-${produkIterator}`).remove()
       produkIterator--
       $("#produk_count").val(produkIterator)
+      $("#tambah-produk").prop('disabled', false);
       if (produkIterator === 1) {
         $("#hapus-produk").hide()
       }
@@ -456,11 +545,19 @@
 
     $("#tambah-produk").click(() => {
       produkIterator++;
+
+      
       $("#produk_count").val(produkIterator)
 
       if (produkIterator !== 1) {
         $("#hapus-produk").show()
       }
+
+      if (produkIterator === 2) {
+        // $("#tambah-produk").prop('disabled', true);
+      }
+
+
       $("#produk-container").append(
         `<div class="produk-wrapper" id="produk-${produkIterator}">
             <p class="fw-bold">Produk ${produkIterator}</p>
@@ -485,77 +582,192 @@
               Pilih foto untuk dijadikan foto utama
             </p>
             <div class="row" id="foto-produk-wrapper-${produkIterator}">
-              <!-- FOTO PRODUK -->
-            </div>
+                  <span class="col-12 bm-caption text-secondary">
+                    Foto utama produk
+                  </span>
+                  <div class="col-3 mb-4">
+                    <label for="foto-produk-${produkIterator}-1" id="label-foto-produk-${produkIterator}-1" class="bm-input--file bm-input--file__small mt-4 mx-auto bm-cursor-pointer">
+                      <input class="file-upload" type="file" name="foto-produk-${produkIterator}-1" id="foto-produk-${produkIterator}-1" accept="image/*" />
 
-            <label for="foto-produk-${produkIterator}" class="bm-input--file mt-4 mx-auto bm-cursor-pointer">
-              <input class="w-100 file-upload" type="file" name="foto-produ-${produkIterator}k" id="foto-produk-${produkIterator}" accept="image/*" />
+                      <span class="text-secondary">Tambah foto</span>
+                      <i class="fas fa-image fs-2 text-secondary"></i>
+                    </label>
+                    <label for="foto-produk-${produkIterator}-1" class="mx-auto my-4 text-center bm-relative" id="label-image-foto-produk-${produkIterator}-1">
+                      <img class="bm-img-responsive bm-cursor-pointer" id="placeholder-foto-produk-${produkIterator}-1" src="#" alt="Foto produk" />
+                      <button class="bm-btn-circle bm-btn-circle--small bm-close-btn" id="delete-foto">
+                        <span class="bm-btn-circle__icon">
+                          <i class="fas fa-times"></i>
+                        </span>
+                      </button>
+                    </label>
+                  </div>
+                  <span class="col-12 bm-caption text-secondary">
+                    Foto produk
+                  </span>
+                  <div class="col-3">
+                    <label for="foto-produk-${produkIterator}-2" id="label-foto-produk-${produkIterator}-2" class="bm-input--file bm-input--file__small mt-4 mx-auto bm-cursor-pointer">
+                      <input class="file-upload" type="file" name="foto-produk-${produkIterator}-2" id="foto-produk-${produkIterator}-2" accept="image/*" />
 
-              <p class="text-secondary">Tambah foto</p>
-              <i class="fas fa-save fs-2 text-secondary"></i>
-            </label>
+                      <span class="text-secondary">Tambah foto</span>
+                      <i class="fas fa-image fs-2 text-secondary"></i>
+                    </label>
+                    <label for="foto-produk-${produkIterator}-2" class="mx-auto my-4 text-center bm-relative" id="label-image-foto-produk-${produkIterator}-2">
+                      <img class="bm-img-responsive bm-cursor-pointer" id="placeholder-foto-produk-${produkIterator}-2" src="#" alt="Foto produk" />
+                      <button class="bm-btn-circle bm-btn-circle--small bm-close-btn" id="delete-foto">
+                        <span class="bm-btn-circle__icon">
+                          <i class="fas fa-times"></i>
+                        </span>
+                      </button>
+                    </label>
+                  </div>
+                  <div class="col-3">
+                    <label for="foto-produk-${produkIterator}-3" id="label-foto-produk-${produkIterator}-3" class="bm-input--file bm-input--file__small mt-4 mx-auto bm-cursor-pointer">
+                      <input class="file-upload" type="file" name="foto-produk-${produkIterator}-3" id="foto-produk-${produkIterator}-3" accept="image/*" />
+
+                      <span class="text-secondary">Tambah foto</span>
+                      <i class="fas fa-image fs-2 text-secondary"></i>
+                    </label>
+                    <label for="foto-produk-${produkIterator}-3" class="mx-auto my-4 text-center bm-relative" id="label-image-foto-produk-${produkIterator}-3">
+                      <img class="bm-img-responsive bm-cursor-pointer" id="placeholder-foto-produk-${produkIterator}-3" src="#" alt="Foto produk" />
+                      <button class="bm-btn-circle bm-btn-circle--small bm-close-btn" id="delete-foto">
+                        <span class="bm-btn-circle__icon">
+                          <i class="fas fa-times"></i>
+                        </span>
+                      </button>
+                    </label>
+                  </div>
+                  <div class="col-3">
+                    <label for="foto-produk-${produkIterator}-4" id="label-foto-produk-${produkIterator}-4" class="bm-input--file bm-input--file__small mt-4 mx-auto bm-cursor-pointer">
+                      <input class="file-upload" type="file" name="foto-produk-${produkIterator}-4" id="foto-produk-${produkIterator}-4" accept="image/*" />
+
+                      <span class="text-secondary">Tambah foto</span>
+                      <i class="fas fa-image fs-2 text-secondary"></i>
+                    </label>
+                    <label for="foto-produk-${produkIterator}-4" class="mx-auto my-4 text-center bm-relative" id="label-image-foto-produk-${produkIterator}-4">
+                      <img class="bm-img-responsive bm-cursor-pointer" id="placeholder-foto-produk-${produkIterator}-4" src="#" alt="Foto produk" />
+                      <button class="bm-btn-circle bm-btn-circle--small bm-close-btn" id="delete-foto">
+                        <span class="bm-btn-circle__icon">
+                          <i class="fas fa-times"></i>
+                        </span>
+                      </button>
+                    </label>
+                  </div>
+                  <div class="col-3">
+                    <label for="foto-produk-${produkIterator}-5" id="label-foto-produk-${produkIterator}-5" class="bm-input--file bm-input--file__small mt-4 mx-auto bm-cursor-pointer">
+                      <input class="file-upload" type="file" name="foto-produk-${produkIterator}-5" id="foto-produk-${produkIterator}-5" accept="image/*" />
+
+                      <span class="text-secondary">Tambah foto</span>
+                      <i class="fas fa-image fs-2 text-secondary"></i>
+                    </label>
+                    <label for="foto-produk-${produkIterator}-5" class="mx-auto my-4 text-center bm-relative" id="label-image-foto-produk-${produkIterator}-5">
+                      <img class="bm-img-responsive bm-cursor-pointer" id="placeholder-foto-produk-${produkIterator}-5" src="#" alt="Foto produk" />
+                      <button class="bm-btn-circle bm-btn-circle--small bm-close-btn" id="delete-foto">
+                        <span class="bm-btn-circle__icon">
+                          <i class="fas fa-times"></i>
+                        </span>
+                      </button>
+                    </label>
+                  </div>
+                </div>
 
             <hr />
 
           </div>`
       )
-      $(`#foto-produk-${produkIterator}`).change(function() {
-        const [logo] = $(`#foto-produk-${produkIterator}`)[0].files;
-        let fotoProdukCount = document.getElementsByClassName(`foto-produk-${produkIterator}`).length
-        fotoProdukCount += 1
-        $(`#foto_count-${produkIterator}`).val(fotoProdukCount)
-        $(`#foto-produk-wrapper-${produkIterator}`).append(`
-        <label class="bm-radio col-4">
-                <img class="bm-img-responsive foto-produk-${produkIterator}" src="${URL.createObjectURL(logo)}" alt="Picture 1" />
-                <input type="radio" class="bm-radio__input" name="radio_selected" value="radio" />
-                <span class="bm-radio__checkmark"></span>
-                <button class="bm-btn-circle bm-btn-circle--small bm-close-btn" id="delete-foto">
-                  <span class="bm-btn-circle__icon">
-                    <i class="fas fa-times"></i>
-                  </span>
-                </button>
-              </label>
-        `)
-      });
+
+      for (let index = 1; index < 6; index++) {
+        console.log(index);
+        $(`#placeholder-foto-produk-${produkIterator}-${index}`).hide();
+        $(`#label-image-foto-produk-${produkIterator}-${index}`).hide();
+        $(`#foto-produk-${produkIterator}-${index}`).change(function() {
+          const [logo] = $(`#foto-produk-${produkIterator}-${index}`)[0].files;
+          $(`#label-foto-produk-${produkIterator}-${index}`).hide();
+          $(`#placeholder-foto-produk-${produkIterator}-${index}`).show();
+          $(`#label-image-foto-produk-${produkIterator}-${index}`).show();
+          $(`#placeholder-foto-produk-${produkIterator}-${index}`)[0].src = URL.createObjectURL(logo);
+        });
+      }
+
+      // $(`#foto-produk-${produkIterator}`).change(function() {
+      //   const [logo] = $(`#foto-produk-${produkIterator}`)[0].files;
+      //   let fotoProdukCount = document.getElementsByClassName(`foto-produk-${produkIterator}`).length
+      //   fotoProdukCount += 1
+      //   $(`#foto_count-${produkIterator}`).val(fotoProdukCount)
+      //   $(`#foto-produk-wrapper-${produkIterator}`).append(`
+      //   <input type="file" name="input-foto-produk-${produkIterator}" id="input-foto-produk-${produkIterator}" value="${logo}" />
+      //   <label class="bm-radio col-4">
+      //           <img class="bm-img-responsive foto-produk-${produkIterator}" src="${URL.createObjectURL(logo)}" alt="Picture 1" />
+      //           <input type="radio" class="bm-radio__input" name="radio_selected" value="radio" />
+      //           <span class="bm-radio__checkmark"></span>
+      //           <button class="bm-btn-circle bm-btn-circle--small bm-close-btn" id="delete-foto">
+      //             <span class="bm-btn-circle__icon">
+      //               <i class="fas fa-times"></i>
+      //             </span>
+      //           </button>
+      //         </label>
+      //   `)
+      // });
+
       $(`#foto-produk-wrapper-${produkIterator}`).on("click", '#delete-foto', (e) => {
+        e.preventDefault()
         let fotoProdukCount = document.getElementsByClassName(`foto-produk-${produkIterator}`).length
         fotoProdukCount--
         $(`#foto_count-${produkIterator}`).val(fotoProdukCount)
         if (e.target.parentElement.tagName === "SPAN") {
-          e.target.parentElement.parentElement.parentElement.remove()
+          let elId = e.target.parentElement.parentElement.parentElement.parentElement.children[0].children[0].id
+          $(`#${elId}`).val('')
+          $(`#placeholder-${elId}`).hide();
+          $(`#label-image-${elId}`).hide();
+          $(`#label-${elId}`).show();
         } else {
-          e.target.parentElement.remove();
+          let elId = e.target.parentElement.parentElement.children[0].children[0].id
+          $(`#${elId}`).val('')
+          $(`#placeholder-${elId}`).hide();
+          $(`#label-image-${elId}`).hide();
+          $(`#label-${elId}`).show();
         }
       })
     })
 
-    $(`#foto-produk-1`).change(function() {
-      const [logo] = $(`#foto-produk-1`)[0].files;
-      let fotoProdukCount = document.getElementsByClassName("foto-produk-1").length
-      fotoProdukCount += 1
-      $("#foto_count-1").val(fotoProdukCount)
-      $(`#foto-produk-wrapper-1`).append(`
-        <label class="bm-radio col-4">
-                <img class="bm-img-responsive foto-produk-1" src="${URL.createObjectURL(logo)}" alt="Picture 1" />
-                <input type="radio" class="bm-radio__input" name="radio_selected" value="radio" />
-                <span class="bm-radio__checkmark"></span>
-                <button class="bm-btn-circle bm-btn-circle--small bm-close-btn" id="delete-foto">
-                  <span class="bm-btn-circle__icon">
-                    <i class="fas fa-times"></i>
-                  </span>
-                </button>
-              </label>
-        `)
-    });
-
+    // $(`#foto-produk-1`).change(function() {
+    //   const [logo] = $(`#foto-produk-1`)[0].files;
+    //   console.log(logo.name);
+    //   let fotoProdukCount = document.getElementsByClassName("foto-produk-1").length
+    //   fotoProdukCount += 1
+    //   $("#foto_count-1").val(fotoProdukCount)
+    //   $(`#foto-produk-wrapper-1`).append(`
+    //   <input type="file" name="input-foto-produk-1" id="input-foto-produk-1" value="${logo}" />
+    //     <label class="bm-radio col-4">
+    //             <img class="bm-img-responsive foto-produk-1" src="${URL.createObjectURL(logo)}" alt="Picture 1" />
+    //             <input type="radio" class="bm-radio__input" name="radio_selected" value="${logo.name}" />
+    //             <span class="bm-radio__checkmark"></span>
+    //             <button class="bm-btn-circle bm-btn-circle--small bm-close-btn" id="delete-foto">
+    //               <span class="bm-btn-circle__icon">
+    //                 <i class="fas fa-times"></i>
+    //               </span>
+    //             </button>
+    //           </label>
+    //     `)
+    // });
+    
     $('#foto-produk-wrapper-1').on("click", '#delete-foto', (e) => {
+      e.preventDefault()
       let fotoProdukCount = document.getElementsByClassName("foto-produk-1").length
       fotoProdukCount--;
       $("#foto_count-1").val(fotoProdukCount)
       if (e.target.parentElement.tagName === "SPAN") {
-        console.log(e.target.parentElement.parentElement.parentElement.remove());
+        let elId = e.target.parentElement.parentElement.parentElement.parentElement.children[0].children[0].id
+        console.log(elId);
+        $(`#${elId}`).val('')
+        $(`#placeholder-${elId}`).hide();
+        $(`#label-image-${elId}`).hide();
+        $(`#label-${elId}`).show();
       } else {
-        console.log(e.target.parentElement.remove());
+        let elId = e.target.parentElement.parentElement.children[0].children[0].id
+        $(`#${elId}`).val('')
+        $(`#placeholder-${elId}`).hide();
+        $(`#label-image-${elId}`).hide();
+        $(`#label-${elId}`).show();
       }
     })
   });
