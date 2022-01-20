@@ -129,6 +129,17 @@ body {
   object-fit: cover;
 }
 
+.bm-card-product__small {
+  width: 166px;
+  height: 100%;
+}
+
+.bm-card-product__small > img {
+  height: 140px;
+  width: 100%;
+  object-fit: cover;
+}
+
 .thumbnail-primary-photo {
   height: 326px;
   width: 326px;
@@ -153,4 +164,30 @@ body {
 
 .rounded-photo {
   border-radius: 50%;
+}
+
+.bm-border-left {
+  border-left: 2px solid #e7e7e7;
+}
+
+.detail-toko {
+  padding: 14px 0;
+  border: 1px solid #d0d9e5;
+  border-radius: 4px;
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 600px) {
+  .bm-border-left {
+    border-right: 2px solid #e7e7e7;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .bm-card-product__small {
+    width: 209px;
+  }
+
+  .bm-card-product__small > img {
+    height: 177px;
+  }
 }
