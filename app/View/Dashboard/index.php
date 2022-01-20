@@ -4,4 +4,3 @@
 
 </h2>
 
-<?php= $model['data']; ?>

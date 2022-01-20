@@ -62,6 +62,10 @@ Router::Add('POST', '/DeleteKategori',
     \app\Controller\KategoriController::class, 'DeleteKategori',
     [\app\Middleware\MustLoginMiddleware::class]);
 
+//KONFIGURASI
+Router::Add('POST', '/TambahKonfig',
+    \app\Controller\KonfigurasiController::class, 'AddKonfigurasi',
+    [\app\Middleware\MustLoginMiddleware::class]);
 
 //Kelompok
 Router::Add('POST', '/TambahKelompok',

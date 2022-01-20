@@ -17,23 +17,28 @@
       </div>
     </div>
   </div>
-  <!-- ! SUCCESS ALERT -->
-  <div class="bm-alert bm-alert--success mt-4" role="alert">
-    <div class="bm-alert__icon">
-      <i class="fas fa-check-circle"></i>
-    </div>
-    <div class="bm-alert__content">Success message</div>
-  </div>
-  <!-- ! END OF SUCCESS ALERT -->
 
-  <!-- ! ERROR ALERT -->
-  <div class="bm-alert bm-alert--error mt-4" role="alert">
-    <div class="bm-alert__icon">
-      <i class="fas fa-exclamation-circle"></i>
-    </div>
-    <div class="bm-alert__content">Error message</div>
-  </div>
-  <!-- ! END OF ERROR ALERT -->
+    <?php if(isset($model['success'])) {?>
+        <!-- ! SUCCESS ALERT -->
+        <div class="bm-alert bm-alert--success mt-4" role="alert">
+            <div class="bm-alert__icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="bm-alert__content"><?= $model['success'] ?></div>
+        </div>
+        <!-- ! END OF SUCCESS ALERT -->
+    <?php } ?>
+
+    <?php if(isset($model['error'])) {?>
+        <!-- ! ERROR ALERT -->
+        <div class="bm-alert bm-alert--error mt-4" role="alert">
+            <div class="bm-alert__icon">
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <div class="bm-alert__content"><?= $model['error'] ?></div>
+        </div>
+        <!-- ! END OF ERROR ALERT -->
+    <?php } ?>
 
   <div class="bm-card mt-4 bg-white">
     <table class="bm-table w-100">

@@ -19,10 +19,10 @@ class KelompokRepository
     public function Insert(Kelompok $kelompok): Kelompok
     {
         $statement = $this->conn->prepare(
-            "INSERT INTO kelompok(id_kelompok, nama_kelompok, angkatan, deskripsi_kelompok, tipe_kelompok, url_logo_toko, id_kategori, id_pengguna) values (?, ?, ?, ?, ?, ?, ?, ?)"
+            "INSERT INTO kelompok(nama_kelompok, angkatan, deskripsi_kelompok, tipe_kelompok, url_logo_toko, id_kategori, id_pengguna) values (?, ?, ?, ?, ?, ?, ?)"
         );
         $statement->execute([
-            $kelompok->id_kelompok,
+
             $kelompok->nama_kelompok,
             $kelompok->angkatan,
             $kelompok->deskripsi_kelompok,

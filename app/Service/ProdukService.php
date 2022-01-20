@@ -27,9 +27,10 @@ class ProdukService
             $produk->deskripsi_produk = $request->deskripsi_produk;
             $produk->harga = $request->harga;
             $produk->nama_produk = $request->nama_produk;
-
             $result = $this->repo->Insert($produk);
+
             $response = new ProdukResponse();
+            $response->id_produk = $result->id_produk;
             $response->id_kelompok = $result->id_kelompok;
             $response->deskripsi_produk = $result->deskripsi_produk;
             $response->harga = $result->harga;

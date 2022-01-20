@@ -19,11 +19,10 @@ class DetailKelompokRepository
     public function Insert(DetailKelompok $detailKelompok): DetailKelompok
     {
         $statement = $this->conn->prepare(
-            "INSERT INTO detail_kelompok(id_detail_kelompok, no_identitas, nama_penjual, id_kelompok) VALUES(?, ?, ?, ?)"
+            "INSERT INTO detail_kelompok( no_identitas, nama_penjual, id_kelompok) VALUES( ?, ?, ?)"
         );
 
         $statement->execute([
-            $detailKelompok->id_detail_kelompok,
             $detailKelompok->no_identitas,
             $detailKelompok->nama_penjual,
             $detailKelompok->id_kelompok

@@ -19,11 +19,10 @@ class FotoRepository
     public function Insert(Foto $foto): Foto
     {
         $statement = $this->conn->prepare(
-            "INSERT INTO foto(id_foto, url, is_primary, id_produk) values (?, ?, ?, ?)"
+            "INSERT INTO foto(url, is_primary, id_produk) values ( ?, ?, ?)"
         );
 
         $statement->execute([
-            $foto->id_foto,
             $foto->url,
             $foto->is_primary,
             $foto->id_produk
