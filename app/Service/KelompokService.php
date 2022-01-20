@@ -2,6 +2,7 @@
 
 namespace app\Service;
 
+use app\Config\Database;
 use app\DBModel\Kelompok;
 use app\DTO\Kelompok\KelompokRequest;
 use app\DTO\Kelompok\KelompokResponse;
@@ -15,14 +16,13 @@ class KelompokService
     {
         $this->repo = $repo;
     }
-
     public function AddKelompok(KelompokRequest $request) : KelompokResponse
     {
         try
         {
             Database::BeginTransaction();
             $kelompok = new Kelompok();
-            $kelompok->id_kelompok = $request->id_kelompok;
+            //$kelompok->id_kelompok = $request->id_kelompok;
             $kelompok->nama_kelompok = $request->nama_kelompok;
             $kelompok->angkatan = $request->angkatan;
             $kelompok->deskripsi_kelompok = $request->deskripsi_kelompok;
@@ -43,6 +43,9 @@ class KelompokService
             $response->id_pengguna = $kelompok->id_pengguna;
 
             Database::CommitTransaction();
+
+
+
             return $response;
         }
         catch (\Exception $e)
@@ -65,6 +68,9 @@ class KelompokService
             $kelompok->id_kategori = $request->id_kategori;
             $kelompok->id_pengguna = $request->id_pengguna;
             $this->repo->Update($kelompok);
+
+            //DELETE THIS LATER JUST GARBAGE
+
         }catch (\Exception $e)
         {
             throw $e;

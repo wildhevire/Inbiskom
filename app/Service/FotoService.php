@@ -26,6 +26,8 @@ class FotoService
             $foto->id_produk = $request->id_produk;
             $foto->is_primary = $request->is_primary;
             $foto->url = $request->url;
+            $this->repo->Insert($foto);
+
             $response = new FotoResponse();
             Database::CommitTransaction();
             return $response;

@@ -16,15 +16,16 @@ class ProdukRepository
     public function Insert(Produk $produk): Produk
     {
         $statement = $this->conn->prepare(
-            "INSERT INTO produk(id_produk, nama_produk, harga, deskripsi_produk, id_kelompok) values(?, ?, ?, ?, ?)"
+            "INSERT INTO produk(nama_produk, harga, deskripsi_produk, id_kelompok) values(?, ?, ?, ?)"
         );
         $statement->execute([
-            $produk->id_produk,
             $produk->nama_produk,
             $produk->harga,
             $produk->deskripsi_produk,
             $produk->id_kelompok
         ]);
+        $lastId = $this->conn->lastInsertId();
+        $produk->id_produk = $lastId;
         return $produk;
     }
 

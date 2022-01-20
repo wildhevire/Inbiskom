@@ -17,23 +17,28 @@
       </div>
     </div>
   </div>
-  <!-- ! SUCCESS ALERT -->
-  <div class="bm-alert bm-alert--success mt-4" role="alert">
-    <div class="bm-alert__icon">
-      <i class="fas fa-check-circle"></i>
-    </div>
-    <div class="bm-alert__content">Success message</div>
-  </div>
-  <!-- ! END OF SUCCESS ALERT -->
 
-  <!-- ! ERROR ALERT -->
-  <div class="bm-alert bm-alert--error mt-4" role="alert">
-    <div class="bm-alert__icon">
-      <i class="fas fa-exclamation-circle"></i>
-    </div>
-    <div class="bm-alert__content">Error message</div>
-  </div>
-  <!-- ! END OF ERROR ALERT -->
+    <?php if(isset($model['success'])) {?>
+        <!-- ! SUCCESS ALERT -->
+        <div class="bm-alert bm-alert--success mt-4" role="alert">
+            <div class="bm-alert__icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="bm-alert__content"><?= $model['success'] ?></div>
+        </div>
+        <!-- ! END OF SUCCESS ALERT -->
+    <?php } ?>
+
+    <?php if(isset($model['error'])) {?>
+        <!-- ! ERROR ALERT -->
+        <div class="bm-alert bm-alert--error mt-4" role="alert">
+            <div class="bm-alert__icon">
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <div class="bm-alert__content"><?= $model['error'] ?></div>
+        </div>
+        <!-- ! END OF ERROR ALERT -->
+    <?php } ?>
 
   <div class="bm-card mt-4 bg-white">
     <table class="bm-table w-100">
@@ -48,12 +53,15 @@
         <th>Aksi</th>
       </thead>
       <tbody>
+          <?php $counter = 0; ?>
+          <?php foreach ($model['data']['kelompok'] as $kelompok) : ?>
         <tr>
-          <td>1</td>
-          <td>Kupakkai</td>
-          <td>Mahasiswa</td>
-          <td>4</td>
-          <td>3</td>
+            <?php $counter++; ?>
+          <td><?= $counter ?> </td>
+          <td><?= $kelompok['nama_kelompok'] ?></td>
+          <td><?= $kelompok['tipe_kelompok'] ?></td>
+          <td><?= $kelompok['jumlah_anggota'] ?></td>
+          <td></td>
           <td>Pakaian</td>
           <td>2020</td>
           <td>
