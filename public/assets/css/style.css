@@ -92,30 +92,102 @@ body {
   width: 240px;
   border: 2px dashed #b9b9b9;
   border-radius: 4px;
-  cursor: pointer;
-}
-
-.bm-input--file__small {
-  height: 80px;
-  width: 96px;
-}
-
-.bm-input--file__small span {
-  font-size: 0.8em;
 }
 
 .file-upload {
   display: none;
 }
 
-.bm-close-btn {
-  position: absolute;
-  right: 0;
-  top: -10%;
-  transform: scale(0.7);
-  background-color: red;
+.bm-cursor-pointer {
+  cursor: pointer;
 }
 
-.bm-relative {
-  position: relative;
+.bm-horizontal-scrollable {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.bm-horizontal-scrollable > .bm-card-product {
+  flex: 0 0 auto;
+}
+
+.bm-two-lines-truncate {
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.bm-card-product {
+  width: 209px;
+}
+
+.bm-card-product > img {
+  height: 177px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.bm-card-product__small {
+  width: 166px;
+  height: 100%;
+}
+
+.bm-card-product__small > img {
+  height: 140px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.thumbnail-primary-photo {
+  height: 326px;
+  width: 326px;
+  object-fit: cover;
+}
+
+.mini-thumbnail-photo {
+  height: 92px;
+  width: 92px;
+  object-fit: cover;
+}
+
+.thumbnail-primary-photo,
+.mini-thumbnail-photo {
+  border-radius: 4px;
+}
+
+.photo-40 {
+  height: 48px;
+  width: 48px;
+}
+
+.rounded-photo {
+  border-radius: 50%;
+}
+
+.bm-border-left {
+  border-left: 2px solid #e7e7e7;
+}
+
+.detail-toko {
+  padding: 14px 0;
+  border: 1px solid #d0d9e5;
+  border-radius: 4px;
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 600px) {
+  .bm-border-left {
+    border-right: 2px solid #e7e7e7;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .bm-card-product__small {
+    width: 209px;
+  }
+
+  .bm-card-product__small > img {
+    height: 177px;
+  }
 }
