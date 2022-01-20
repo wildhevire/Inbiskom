@@ -73,6 +73,12 @@ Router::Add('POST', '/TambahKelompok',
     [\app\Middleware\MustLoginMiddleware::class]);
 
 
+
+
+//KATALOG
+Router::Add('GET', '/',
+    \app\Controller\KatalogHomeController::class, 'index');
+
 //TODO :TEST Purpose ONLY
 Router::Add('GET', '/AddPengguna',
     \app\Controller\PenggunaController::class, 'RenderAddPengguna',
