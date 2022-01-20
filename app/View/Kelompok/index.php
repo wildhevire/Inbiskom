@@ -61,9 +61,9 @@
           <td><?= $kelompok['nama_kelompok'] ?></td>
           <td><?= $kelompok['tipe_kelompok'] ?></td>
           <td><?= $kelompok['jumlah_anggota'] ?></td>
-          <td></td>
-          <td>Pakaian</td>
-          <td>2020</td>
+          <td><?= $kelompok['jumlah_produk'] ?></td>
+          <td><?= $kelompok['kategori'] ?></td>
+          <td><?= $kelompok['angkatan'] ?></td>
           <td>
             <a rel="modal:open" href="#detail_modal" class="bm-link">Lihat</a>&nbsp;&nbsp;&nbsp;&nbsp;
             <a rel="modal:open" href="#edit_modal" class="bm-link">Ubah</a>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -71,6 +71,7 @@
             <a rel="modal:open" href="#delete_modal" class="bm-link">Buka</a>
           </td>
         </tr>
+          <?php endforeach ?>
       </tbody>
     </table>
   </div>

@@ -44,8 +44,6 @@ class KelompokService
 
             Database::CommitTransaction();
 
-
-
             return $response;
         }
         catch (\Exception $e)
@@ -72,6 +70,16 @@ class KelompokService
             //DELETE THIS LATER JUST GARBAGE
 
         }catch (\Exception $e)
+        {
+            throw $e;
+        }
+    }
+
+    public function GetCountGroup(string $id)
+    {
+        try {
+            return $this->repo->GetCount($id);
+        } catch (\Exception $e) 
         {
             throw $e;
         }

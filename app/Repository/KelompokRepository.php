@@ -69,10 +69,20 @@ class KelompokRepository
 
     public function SelectAll(): ?array
     {
+        // $statement = $this->conn->query(
+        //     "SELECT id_kelompok, nama_kelompok, angkatan, 
+        //             deskripsi_kelompok, tipe_kelompok, url_logo_toko
+        //             FROM kelompok");
+
         $statement = $this->conn->query(
-            "SELECT id_kelompok, nama_kelompok, angkatan, 
-                    deskripsi_kelompok, tipe_kelompok, url_logo_toko
-                    FROM kelompok");
+            "SELECT kelompok.id_kelompok,
+            (SELECT COUNT(*) FROM detail_kelompok WHERE kelompok.id_kelompok=detail_kelompok.id_kelompok) AS jumlah_anggota,
+            (SELECT COUNT(*) FROM produk WHERE kelompok.id_kelompok=produk.id_kelompok) AS jumlah_produk,
+            (SELECT id_kategori FROM kategori WHERE kelompok.id_kategori=kategori.id_kategori) AS id_kategori,
+            (SELECT nama_kategori FROM kategori WHERE kelompok.id_kategori=kategori.id_kategori) AS kategori,
+            nama_kelompok, angkatan, deskripsi_kelompok, tipe_kelompok, url_logo_toko
+        FROM kelompok"
+        );
 
         $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
 
@@ -83,6 +93,28 @@ class KelompokRepository
     {
         $statement = $this->conn->prepare("DELETE FROM kelompok WHERE id_kelompok = ?");
         $statement->execute([$id]);
+    }
+
+    public function GetCount(int $id): ?array
+    {
+        $statement = $this->conn->prepare("
+        SELECT COUNT(nama_penjual)
+        FROM detail_kelompok, kelompok 
+        WHERE detail_kelompok.id_kelompok=kelompok.id_kelompok AND kelompok.id_kelompok=?
+        GROUP BY detail_kelompok.id_kelompok
+        ");
+
+        $statement->execute([$id]);
+
+        try {
+            if ($row = $statement->fetch()) {
+                return $row;
+            } else {
+                return null;
+            }
+        } finally {
+            $statement->closeCursor();
+        }
     }
 
     public function Update(Kelompok $kelompok) : Kelompok
