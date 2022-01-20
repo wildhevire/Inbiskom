@@ -64,6 +64,7 @@ class KelompokController
             'page_type' => 'kelompok',
             'data' => [
                 'kategori' => $this->kategoriService->GetAllModel(),
+                'kelompok'=> $this->kelompokService->GetAllModel()
             ]
         ]);
     }
@@ -96,13 +97,14 @@ class KelompokController
             $kelompok = $this->InsertKelompok();
             $this->InsertAllDetailKelompok($kelompok);
             $this->InsertAllProduk($kelompok);
-            echo '<pre>' , var_dump($_POST) , '</pre>';
-            echo '<pre>' , var_dump($_FILES) , '</pre>';
-//            $this->OnActionSuccess("Berhasil Menambahkan Kelompok!",
-//                [
-//                    'kategori'=> $this->kategoriService->GetAllModel(),
-//                ]
-//            );
+//            echo '<pre>' , var_dump($_POST) , '</pre>';
+//            echo '<pre>' , var_dump($_FILES) , '</pre>';
+            $this->OnActionSuccess("Berhasil Menambahkan Kelompok!",
+                [
+                    'kategori'=> $this->kategoriService->GetAllModel(),
+                    'kelompok'=> $this->kelompokService->GetAllModel()
+                ]
+            );
 
 
         }
@@ -112,6 +114,7 @@ class KelompokController
             $this->OnActionError($exception->getMessage(),
                 [
                     'kategori'=> $this->kategoriService->GetAllModel(),
+                    'kelompok'=> $this->kelompokService->GetAllModel()
                 ]
             );
         }

@@ -53,12 +53,15 @@
         <th>Aksi</th>
       </thead>
       <tbody>
+          <?php $counter = 0; ?>
+          <?php foreach ($model['data']['kelompok'] as $kelompok) : ?>
         <tr>
-          <td>1</td>
-          <td>Kupakkai</td>
-          <td>Mahasiswa</td>
-          <td>4</td>
-          <td>3</td>
+            <?php $counter++; ?>
+          <td><?= $counter ?> </td>
+          <td><?= $kelompok['nama_kelompok'] ?></td>
+          <td><?= $kelompok['tipe_kelompok'] ?></td>
+          <td><?= $kelompok['jumlah_anggota'] ?></td>
+          <td></td>
           <td>Pakaian</td>
           <td>2020</td>
           <td>
