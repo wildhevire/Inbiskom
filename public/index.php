@@ -6,6 +6,13 @@ use app\Core\Router;
 use app\Controller\DashboardController;
 
 
+function rupiah($angka){
+
+    $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+    return $hasil_rupiah;
+
+}
+
 //Render Dashboard
 Router::Add('GET', '/dashboard-home',
     DashboardController::class, 'index',
@@ -78,6 +85,11 @@ Router::Add('POST', '/TambahKelompok',
 //KATALOG
 Router::Add('GET', '/',
     \app\Controller\KatalogHomeController::class, 'index');
+
+Router::Add('GET', '/produk',
+    \app\Controller\KatalogProdukController::class, 'index');
+
+
 
 //TODO :TEST Purpose ONLY
 Router::Add('GET', '/AddPengguna',

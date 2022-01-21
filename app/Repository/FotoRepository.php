@@ -3,6 +3,7 @@
 namespace app\Repository;
 
 use app\DBModel\Foto;
+use mysql_xdevapi\Result;
 
 class FotoRepository
 {
@@ -85,5 +86,17 @@ class FotoRepository
            $foto->url, $foto->is_primary, $foto->id_produk, $foto->id_foto
         ]);
         return $foto;
+    }
+
+    public function SelectByIdProduk($id_produk)
+    {
+        $statement = $this->conn->prepare(
+            "SELECT url, is_primary
+                        FROM foto f, produk p
+                        WHERE f.id_produk=p.id_produk AND p.id_produk=?"
+        );
+        $statement->execute([$id_produk]);
+        $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
+        return $result;
     }
 }

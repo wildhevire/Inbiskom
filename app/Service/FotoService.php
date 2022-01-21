@@ -6,6 +6,7 @@ use app\Config\Database;
 use app\DBModel\Foto;
 use app\DTO\Foto\FotoRequest;
 use app\DTO\Foto\FotoResponse;
+use app\Exception\DatabaseQueryException;
 use app\Repository\FotoRepository;
 
 class FotoService
@@ -57,6 +58,14 @@ class FotoService
         }
         return $result;
     }
-
+    public function GetFotoForProduk($id_produk)
+    {
+        $result = $this->repo->SelectByIdProduk($id_produk);
+        if($result == null){
+            //TODO : Exception Message
+            throw new DatabaseQueryException("Tidak dapat mengambil data dari database.");
+        }
+        return $result;
+    }
     //TODO: Tambah GetModelByProduk dan action lain di katalog
 }
