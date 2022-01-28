@@ -4,7 +4,7 @@
         <i class="fa fa-bars"></i>
     </div>
     <div class="col-2 text-end" id="logout">
-        <a href="/auth-logout"><i class="fa fa-sign-out-alt"></i></a>
+        <a class="text-white" href="/auth-logout"><i class="fa fa-sign-out-alt"></i></a>
     </div>
 </header>
 <!-- ! END OF NAVBAR -->
