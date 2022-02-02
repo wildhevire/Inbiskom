@@ -70,7 +70,7 @@ class FotoRepository
         return $result;
     }
 
-    public function DeleteById(strint $id): void
+    public function DeleteById(string $id): void
     {
         $statement = $this->conn->prepare("DELETE FROM foto WHERE id_foto = ?");
         $statement->execute([$id]);

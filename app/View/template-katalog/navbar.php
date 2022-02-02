@@ -5,12 +5,15 @@
     </div>
     <div class="col col-lg-6">
         <div class="bm-input bm-input--with-icon">
-            <input
-                type="text"
-                class="bm-input__field"
-                placeholder="Cari produk"
-                value=""
-            />
+            <form action="/search?q=" method="get">
+                <input
+                    type="text"
+                    class="bm-input__field"
+                    placeholder="Cari produk"
+                    name="q"
+                    value=""
+                />
+            </form>
             <div class="bm-input__icon">
                 <i class="fas fa-search"></i>
             </div>

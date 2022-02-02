@@ -38,6 +38,7 @@ class KatalogProdukController
         $request = $_GET['q'];
         $model = $this->service->GetProduk($request);
         $foto = $this->fotoService->GetFotoForProduk($request);
+        $this->produkRepository->UpdateViewsCount($request);
         $primaryFoto = '';
         $fotoPelengkap = [];
         foreach ($foto as $item)

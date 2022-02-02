@@ -19,6 +19,11 @@
         crossorigin="anonymous"
         referrerpolicy="no-referrer"
     />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/xzoom/dist/xzoom.css"
+      media="all"
+    />
     <link rel="stylesheet" href="./../assets/css/style.css" />
 </head>
 <body>

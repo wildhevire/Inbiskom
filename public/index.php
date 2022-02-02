@@ -89,6 +89,12 @@ Router::Add('GET', '/',
 Router::Add('GET', '/produk',
     \app\Controller\KatalogProdukController::class, 'index');
 
+Router::Add('GET', '/toko',
+    \app\Controller\TokoController::class, 'index');
+
+Router::Add('GET', '/search',
+    \app\Controller\SearchController::class, 'index');
+
 
 
 //TODO :TEST Purpose ONLY

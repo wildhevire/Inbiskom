@@ -62,20 +62,21 @@ class ProdukRepository
         $statement = $this->conn->query(
             "SELECT id_produk, nama_produk, harga, 
                     deskripsi_produk
-                    FROM kelompok");
+                    FROM kelompok"
+        );
 
         $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
 
         return $result;
     }
 
-    public function DeleteById(strint $id): void
+    public function DeleteById(string $id): void
     {
         $statement = $this->conn->prepare("DELETE FROM produk WHERE id_produk = ?");
         $statement->execute([$id]);
     }
 
-    public function Update(Produk $produk) : Produk
+    public function Update(Produk $produk): Produk
     {
         $statement = $this->connection->prepare("
                 UPDATE produk SET nama_produk = ?, harga = ?, 
@@ -92,4 +93,10 @@ class ProdukRepository
         return $produk;
     }
 
+    public function UpdateViewsCount(string $id_produk)
+    {
+        $statement = $this->conn->prepare("UPDATE produk
+        SET view_count = IFNULL(view_count, 0) + 1 WHERE id_produk = ?");
+        $statement->execute([$id_produk]);
+    }
 }

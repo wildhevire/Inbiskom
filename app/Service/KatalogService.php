@@ -34,4 +34,34 @@ class KatalogService
         return $result;
     }
 
+    public function GetTokoDescription(string $id_produk)
+    {
+        $result = $this->repo->SelectForDetailToko($id_produk);
+        if($result == null){
+            //TODO : Exception Message
+            throw new DatabaseQueryException("Tidak dapat mengambil data dari database.");
+        }
+        return $result;
+    }
+
+    public function GetTokoDescriptionMember(string $id_produk)
+    {
+        $result = $this->repo->SelectForDetailTokoMember($id_produk);
+        if($result == null){
+            //TODO : Exception Message
+            throw new DatabaseQueryException("Tidak dapat mengambil data dari database.");
+        }
+        return $result;
+    }
+
+    public function GetTokoDescriptionProducts(string $id_produk)
+    {
+        $result = $this->repo->SelectForDetailTokoProducts($id_produk);
+        if($result == null){
+            //TODO : Exception Message
+            throw new DatabaseQueryException("Tidak dapat mengambil data dari database.");
+        }
+        return $result;
+    }
+
 }
