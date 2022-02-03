@@ -95,6 +95,9 @@ Router::Add('GET', '/toko',
 Router::Add('GET', '/search',
     \app\Controller\SearchController::class, 'index');
 
+Router::Add('GET', '/tentang',
+    \app\Controller\TentangController::class, 'index');
+
 
 
 //TODO :TEST Purpose ONLY

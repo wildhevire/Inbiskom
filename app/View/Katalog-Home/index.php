@@ -10,14 +10,15 @@ $default_thumbnail = "./assets/images/Logo UNIKOM.png";
     <main class="container mt-4 pb-5">
         <div class="produk">
             <h3>Produk Populer</h3>
+            <?php $index = 0 ?>
             <?php foreach ($model['katalog'] as $kategori => $katalog) :?>
             <div class="row mb-4">
                 <h5 class="col-6"><?= $kategori ?></h5>
                 <?php //TODO: Check per kategori ?>
                 <div class="col-6 text-end align-self-center">
-                    <a href="#" class="bm-link">Lihat Semua</a>
+                    <a href="<?= "/search?kategori=".$model['kategori'][$index]["id_kategori"] ?>" class="bm-link">Lihat Semua</a>
                 </div>
-
+                <?php $index++ ?>
 
                 <div class="col-12">
                     <div class="bm-horizontal-scrollable gap-3">
@@ -99,7 +100,7 @@ $default_thumbnail = "./assets/images/Logo UNIKOM.png";
                 <?php foreach ($model['kategori'] as $kategori) :?>
 
                 <a
-                    href="#"
+                    href="<?= "/search?kategori=".$kategori['id_kategori'] ?>"
                     class="
                   bm-card
                   bg-white

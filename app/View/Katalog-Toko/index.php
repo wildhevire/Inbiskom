@@ -12,20 +12,24 @@
                 </div>
                 <div class="col-8 col-md-8 col-lg-10">
                   <h4><?php echo $model["tokoDescription"][0]["nama_kelompok"] ?></h4>
-                  <?php echo $model["tokoDescription"][0]["angkatan"] ?>
+                  <?php echo $model["tokoDescription"][0]["nama_kategori"] ?> • <?php echo $model["tokoDescription"][0]["angkatan"] ?>
                 </div>
               </div>
-              <div class="col-4 col-md-3 bm-border-left mb-4">
+              <div class="col-4 col-md-3 bm-border-left pb-4">
                 <h4><?php echo $model["tokoDescription"][0]["total_produk"] ?></h4>
                 Total produk
               </div>
-              <div class="col-12 col-md-4 text-center text-sm-start">
+              <div class="col-12 col-md-4 text-center text-sm-start mt-4 mt-sm-0 ">
                 <?php foreach ($model["tokoMember"] as $tokoMember) :?>
                   <div class="bm-subtitle1"><?= $tokoMember["nama_penjual"] ?></div>
                 <?php endforeach; ?>
               </div>
             </div>
             <div class="bm-tab-menu" id="tab-container">
+              <div class="my-3">
+                <p class="text-decoration-underline fw-bold">Deskripsi Kelompok</p>
+                <span class="bm-body1 multiline"><?= $model["tokoDescription"][0]["deskripsi_kelompok"]?></span>
+              </div>
               <ul class="bm-tab-menu__tab-list">
                 <li class="bm-tab-menu__tab">
                   <a href="#produk" class="bm-tab-menu__tab-link">Produk</a>
@@ -43,7 +47,7 @@
                         alt="<?= $tokoProduct["nama_produk"] ?>"
                       />
                       <div class="bm-card__inner">
-                        <h2 class="bm-card__title"><?= rupiah($tokoProduct["harga"]) ?></h2>
+                        <h2 class="bm-card__title text-truncate"><?= rupiah($tokoProduct["harga"]) ?></h2>
 
                         <a
                           href="<?= "/produk?q=".$tokoProduct["id_produk"] ?>"

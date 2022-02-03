@@ -34,6 +34,26 @@ class KatalogService
         return $result;
     }
 
+    public function GetKonfigurasi()
+    {
+        $result = $this->repo->SelectAllKonfigurasi();
+        if($result == null){
+            //TODO : Exception Message
+            throw new DatabaseQueryException("Tidak dapat mengambil data dari database.");
+        }
+        return $result;
+    }
+
+    public function GetNoWa()
+    {
+        $result = $this->repo->SelectNoWa();
+        if($result == null){
+            //TODO : Exception Message
+            throw new DatabaseQueryException("Tidak dapat mengambil data dari database.");
+        }
+        return $result;
+    }
+
     public function GetTokoDescription(string $id_produk)
     {
         $result = $this->repo->SelectForDetailToko($id_produk);
@@ -61,6 +81,26 @@ class KatalogService
             //TODO : Exception Message
             throw new DatabaseQueryException("Tidak dapat mengambil data dari database.");
         }
+        return $result;
+    }
+
+    public function GetSearchResultProduct(string $nama_produk, string $id_kategori, string $angkatan, string $hargaMin, string $hargaMax)
+    {
+        $result = $this->repo->SearchProducts($nama_produk, $id_kategori, $angkatan, $hargaMin, $hargaMax);
+        // if($result == null){
+        //     //TODO : Exception Message
+        //     throw new DatabaseQueryException("Tidak dapat mengambil data dari database.");
+        // }
+        return $result;
+    }
+
+    public function GetSearchResultToko(string $nama_toko, string $id_kategori, string $angkatan)
+    {
+        $result = $this->repo->SearchToko($nama_toko, $id_kategori, $angkatan);
+        // if($result == null){
+        //     //TODO : Exception Message
+        //     throw new DatabaseQueryException("Tidak dapat mengambil data dari database.");
+        // }
         return $result;
     }
 

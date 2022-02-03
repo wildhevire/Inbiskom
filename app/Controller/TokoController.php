@@ -36,12 +36,14 @@ class TokoController
       $tokoModel = $this->service->GetTokoDescription($request);
       $memberModel = $this->service->GetTokoDescriptionMember($request);
       $productsModel = $this->service->GetTokoDescriptionProducts($request);
+      $konfigurasi = $this->service->GetKonfigurasi();
       
-      //  echo '<pre>' , var_dump($productsModel) , '</pre>';
+    //    echo '<pre>' , var_dump($tokoModel) , '</pre>';
       View::RenderKatalog("Katalog-Toko/index", [
           'tokoDescription' => $tokoModel,
           'tokoMember' => $memberModel,
           'tokoProducts' => $productsModel,
+          'konfigurasi' => $konfigurasi,
       ]);
   }
 

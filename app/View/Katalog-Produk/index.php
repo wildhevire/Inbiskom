@@ -70,7 +70,9 @@ $foto = $model['fotoPelengkap'];
                       </span>
                             <span class="bm-btn__label">Lihat toko</span>
                         </a>
-                        <a href="#" class="col-12 bm-btn"
+                        
+                        <?php $wa = "62".substr($model["noWa"]["no_wa"], 1) ?>
+                        <a href="<?= "https://wa.me/".$wa."?text=Saya%20ingin%20bertanya%20tentang%20produk%20".$produk['nama_produk'] ?>" class="col-12 bm-btn"
                         ><span class="bm-btn__icon">
                         <i class="fab fa-whatsapp"></i>
                       </span>

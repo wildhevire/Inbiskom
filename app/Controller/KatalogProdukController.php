@@ -38,7 +38,9 @@ class KatalogProdukController
         $request = $_GET['q'];
         $model = $this->service->GetProduk($request);
         $foto = $this->fotoService->GetFotoForProduk($request);
+        $noWa = $this->service->GetNoWa();
         $this->produkRepository->UpdateViewsCount($request);
+        $konfigurasi = $this->service->GetKonfigurasi();
         $primaryFoto = '';
         $fotoPelengkap = [];
         foreach ($foto as $item)
@@ -50,11 +52,13 @@ class KatalogProdukController
                 array_push($fotoPelengkap, $item);
             }
         }
-//        echo '<pre>' , var_dump($model) , '</pre>';
+    //    echo '<pre>' , var_dump($noWa) , '</pre>';
         View::RenderKatalog("Katalog-Produk/index", [
             'produk' => $model,
             'fotoPrimary' => $primaryFoto,
-            'fotoPelengkap' => $fotoPelengkap
+            'fotoPelengkap' => $fotoPelengkap,
+            'noWa' => $noWa,
+            'konfigurasi' => $konfigurasi,
         ]);
     }
 

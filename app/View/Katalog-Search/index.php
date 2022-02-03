@@ -8,34 +8,26 @@
           <span class="bm-accordion__arrow"></span>
         </button>
         <div class="bm-accordion__content">
-          <form action="#" method="post">
+          <form action="search" method="GET">
+            <input type="hidden" name="q" value="<?= isset($_GET['q']) ? $_GET['q'] : ''?>">
             <label class="bm-input-label text-secondary" for="kategori">Kategori</label>
             <div class="bm-input">
+            <?php foreach ($model["kategori"] as $kategori) :?>
               <label class="bm-radio">
-                Craft
-                <input type="radio" class="bm-radio__input" name="kategori" value="craft" />
+                <?= $kategori["nama_kategori"] ?>
+                <input type="radio" class="bm-radio__input" name="kategori" value="<?= $kategori["id_kategori"] ?>" <?= isset($_GET['kategori'] ) && $kategori["id_kategori"] == $_GET['kategori'] ? 'checked' : '' ?> />
                 <span class="bm-radio__checkmark"></span>
               </label>
-              <label class="bm-radio">
-                Fashion
-                <input type="radio" class="bm-radio__input" name="kategori" value="fashion" />
-                <span class="bm-radio__checkmark"></span>
-              </label>
-              <label class="bm-radio">
-                Jasa
-                <input type="radio" class="bm-radio__input" name="kategori" value="jasa" />
-                <span class="bm-radio__checkmark"></span>
-              </label>
+              <?php endforeach;?>
             </div>
 
-            <label class="bm-input-label text-secondary" for="tahun">Tahun</label>
+            <label class="bm-input-label text-secondary" for="angkatan">Tahun</label>
             <div class="bm-input">
-              <select class="bm-input__field" id="tahun" name="tahun" required>
-                <option value="" disabled selected>Tahun</option>
-                <option value="2019">2019</option>
-                <option value="2020">2020</option>
-                <option value="2021">2021</option>
-                <option value="2022">2022</option>
+              <select class="bm-input__field" id="angkatan" name="angkatan">
+                <option value="" disabled <?= isset($_GET['angkatan']) ? '' : 'selected'?>>Tahun</option>
+                <?php for ($i = 2017; $i < date("Y"); $i++) : ?>
+                <option value="<?= $i?>" <?= isset($_GET['angkatan']) && $_GET['angkatan'] == $i ? 'selected' : ''?>><?= $i?></option>
+                <?php endfor; ?>
               </select>
               <span class="bm-input__arrow"></span>
             </div>
@@ -44,11 +36,11 @@
 
             <label class="bm-input-label text-secondary" for="harga-minimum">Harga</label>
             <div class="bm-input">
-              <input type="number" id="harga-minimum" class="bm-input__field" placeholder="Contoh: 20000" />
+              <input type="number" name="min" id="harga-minimum" class="bm-input__field" placeholder="Contoh: 20000" value="<?= isset($_GET["min"]) ? $_GET["min"] : '' ?>" />
             </div>
             <br />
             <div class="bm-input">
-              <input type="number" id="harga-maximum" class="bm-input__field" placeholder="Contoh: 50000" />
+              <input type="number" name="max" id="harga-maximum" class="bm-input__field" placeholder="Contoh: 50000" value="<?= isset($_GET["max"]) ? $_GET["max"] : '' ?>"/>
             </div>
             <br />
             <button class="bm-btn w-100">Terapkan</button>
@@ -68,87 +60,47 @@
       </ul>
       <div id="produk" class="bm-tab-menu__tab-panel" id="tab-1">
         <div class="row">
+        <?php if (empty($model["searchProduct"])) { ?>
+          <div class="col-12">
+            <p class="text-center">Produk yang dicari tidak ditemukan.</p>
+          </div>
+          <?php } ?>
+        <?php foreach ($model["searchProduct"] as $product) :?>
           <!-- ! CARD PRODUCT -->
           <div class="col-6 col-md-3 col-lg-3 mb-3">
             <div class="bm-card bm-card-product__small bg-white">
-              <img class="bm-img-responsive" src="https://placekitten.com/200/500" alt="XPS, Designed to be the best" />
+              <img class="bm-img-responsive" src=" <?php echo $product['primary_foto'] === NULL ? $default_thumbnail : './assets/images/'.$product['primary_foto'] ?>"
+                                alt="<?= $product['nama_produk'] ?>" />
               <div class="bm-card__inner">
-                <h2 class="bm-card__title">Rp 25.000</h2>
+                <h2 class="bm-card__title"><?= rupiah($product["harga"]) ?></h2>
 
-                <a href="#" class="bm-two-lines-truncate mb-3 text-decoration-none">
-                  Logitech G304 Lightspeed Wireless Gaming Mouse
+                <a href="<?= "/produk?q=".$product['id_produk'] ?>" class="bm-two-lines-truncate mb-3 text-decoration-none">
+                <?= $product["nama_produk"] ?>
                 </a>
                 <div class="row align-items-center text-secondary">
                   <i class="col-1 fas fa-store"></i>
-                  <span class="col text-truncate">Logitech Geming</span>
+                  <span class="col text-truncate"><?= $product["nama_kelompok"] ?></span>
                 </div>
               </div>
             </div>
           </div>
           <!-- ! END OF CARD PRODUCT -->
-          <!-- ! CARD PRODUCT -->
-          <div class="col-6 col-md-3 col-lg-3 mb-3">
-            <div class="bm-card bm-card-product__small bg-white">
-              <img class="bm-img-responsive" src="https://placekitten.com/200/500" alt="XPS, Designed to be the best" />
-              <div class="bm-card__inner">
-                <h2 class="bm-card__title">Rp 25.000</h2>
-
-                <a href="#" class="bm-two-lines-truncate mb-3 text-decoration-none">
-                  Logitech G304 Lightspeed Wireless Gaming Mouse
-                </a>
-                <div class="row align-items-center text-secondary">
-                  <i class="col-1 fas fa-store"></i>
-                  <span class="col text-truncate">Logitech Geming</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- ! END OF CARD PRODUCT -->
-          <!-- ! CARD PRODUCT -->
-          <div class="col-6 col-md-3 col-lg-3 mb-3">
-            <div class="bm-card bm-card-product__small bg-white">
-              <img class="bm-img-responsive" src="https://placekitten.com/200/500" alt="XPS, Designed to be the best" />
-              <div class="bm-card__inner">
-                <h2 class="bm-card__title">Rp 25.000</h2>
-
-                <a href="#" class="bm-two-lines-truncate mb-3 text-decoration-none">
-                  Logitech G304 Lightspeed Wireless Gaming Mouse
-                </a>
-                <div class="row align-items-center text-secondary">
-                  <i class="col-1 fas fa-store"></i>
-                  <span class="col text-truncate">Logitech Geming</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- ! END OF CARD PRODUCT -->
-          <!-- ! CARD PRODUCT -->
-          <div class="col-6 col-md-3 col-lg-3 mb-3">
-            <div class="bm-card bm-card-product__small bg-white">
-              <img class="bm-img-responsive" src="https://placekitten.com/200/500" alt="XPS, Designed to be the best" />
-              <div class="bm-card__inner">
-                <h2 class="bm-card__title">Rp 25.000</h2>
-
-                <a href="#" class="bm-two-lines-truncate mb-3 text-decoration-none">
-                  Logitech G304 Lightspeed Wireless Gaming Mouse
-                </a>
-                <div class="row align-items-center text-secondary">
-                  <i class="col-1 fas fa-store"></i>
-                  <span class="col text-truncate">Logitech Geming</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- ! END OF CARD PRODUCT -->
+          <?php endforeach;?>
         </div>
       </div>
       <div id="toko" class="bm-tab-menu__tab-panel" id="tab-2">
         <div class="row">
+        <?php if (empty($model["searchToko"])) { ?>
+          <div class="col-12">
+            <p class="text-center">Toko yang dicari tidak ditemukan.</p>
+          </div>
+          <?php } ?>
+        <?php foreach ($model["searchToko"] as $toko) :?>
           <!-- ! CARD TOKO -->
           <div class="col-12 col-md-6 col-lg-4 mb-3">
             <div class="bm-card">
               <div class="bm-card__inner">
-                <div class="row mb-3">
+                <!-- <div class="row mb-3">
                   <div class="col-4">
                     <img class="bm-img-responsive" src="https://placekitten.com/500/500" alt="XPS, Designed to be the best" />
                   </div>
@@ -158,20 +110,21 @@
                   <div class="col-4">
                     <img class="bm-img-responsive" src="https://placekitten.com/500/500" alt="XPS, Designed to be the best" />
                   </div>
-                </div>
+                </div> -->
                 <div class="row align-items-center">
                   <div class="col-4 text-center">
-                    <img class="bm-img-responsive rounded-photo photo-40" src="https://placekitten.com/400/400" alt="Logo toko" />
+                    <img class="bm-img-responsive rounded-photo photo-40" src=" <?php echo $toko['url_logo_toko'] === NULL ? $default_thumbnail : './assets/images/'.$toko['url_logo_toko'] ?>"
+                                alt="<?= $product['nama_kelompok'] ?>" />
                   </div>
                   <div class="col-8 p-0">
                     <div class="row">
-                      <span class="fw-bold">Toko Sepatu</span>
-                      <span class="text-secondary">3 produk • 2018</span>
+                      <span class="fw-bold"><?= $toko["nama_kelompok"] ?></span>
+                      <span class="text-secondary"><?= $toko["total_produk"] ?> produk • <?= $toko["angkatan"] ?></span>
                     </div>
                   </div>
                 </div>
                 <div class="row gap-2 mt-3 px-2">
-                  <a href="#" class="col-12 bm-btn bm-btn--tertiary">
+                  <a href="<?= "/toko?q=".$toko['id_kelompok'] ?>" class="col-12 bm-btn bm-btn--tertiary">
                     <span class="bm-btn__icon">
                       <i class="fa fa-store"></i>
                     </span>
@@ -182,120 +135,7 @@
             </div>
           </div>
           <!-- ! END OF CARD TOKO -->
-          <!-- ! CARD TOKO -->
-          <div class="col-12 col-md-6 col-lg-4 mb-3">
-            <div class="bm-card">
-              <div class="bm-card__inner">
-                <div class="row mb-3">
-                  <div class="col-4">
-                    <img class="bm-img-responsive" src="https://placekitten.com/500/500" alt="XPS, Designed to be the best" />
-                  </div>
-                  <div class="col-4">
-                    <img class="bm-img-responsive" src="https://placekitten.com/500/500" alt="XPS, Designed to be the best" />
-                  </div>
-                  <div class="col-4">
-                    <img class="bm-img-responsive" src="https://placekitten.com/500/500" alt="XPS, Designed to be the best" />
-                  </div>
-                </div>
-                <div class="row align-items-center">
-                  <div class="col-4 text-center">
-                    <img class="bm-img-responsive rounded-photo photo-40" src="https://placekitten.com/400/400" alt="Logo toko" />
-                  </div>
-                  <div class="col-8 p-0">
-                    <div class="row">
-                      <span class="fw-bold">Toko Sepatu</span>
-                      <span class="text-secondary">3 produk • 2018</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="row gap-2 mt-3 px-2">
-                  <a href="#" class="col-12 bm-btn bm-btn--tertiary">
-                    <span class="bm-btn__icon">
-                      <i class="fa fa-store"></i>
-                    </span>
-                    <span class="bm-btn__label">Lihat toko</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- ! END OF CARD TOKO -->
-          <!-- ! CARD TOKO -->
-          <div class="col-12 col-md-6 col-lg-4 mb-3">
-            <div class="bm-card">
-              <div class="bm-card__inner">
-                <div class="row mb-3">
-                  <div class="col-4">
-                    <img class="bm-img-responsive" src="https://placekitten.com/500/500" alt="XPS, Designed to be the best" />
-                  </div>
-                  <div class="col-4">
-                    <img class="bm-img-responsive" src="https://placekitten.com/500/500" alt="XPS, Designed to be the best" />
-                  </div>
-                  <div class="col-4">
-                    <img class="bm-img-responsive" src="https://placekitten.com/500/500" alt="XPS, Designed to be the best" />
-                  </div>
-                </div>
-                <div class="row align-items-center">
-                  <div class="col-4 text-center">
-                    <img class="bm-img-responsive rounded-photo photo-40" src="https://placekitten.com/400/400" alt="Logo toko" />
-                  </div>
-                  <div class="col-8 p-0">
-                    <div class="row">
-                      <span class="fw-bold">Toko Sepatu</span>
-                      <span class="text-secondary">3 produk • 2018</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="row gap-2 mt-3 px-2">
-                  <a href="#" class="col-12 bm-btn bm-btn--tertiary">
-                    <span class="bm-btn__icon">
-                      <i class="fa fa-store"></i>
-                    </span>
-                    <span class="bm-btn__label">Lihat toko</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- ! END OF CARD TOKO -->
-          <!-- ! CARD TOKO -->
-          <div class="col-12 col-md-6 col-lg-4 mb-3">
-            <div class="bm-card">
-              <div class="bm-card__inner">
-                <div class="row mb-3">
-                  <div class="col-4">
-                    <img class="bm-img-responsive" src="https://placekitten.com/500/500" alt="XPS, Designed to be the best" />
-                  </div>
-                  <div class="col-4">
-                    <img class="bm-img-responsive" src="https://placekitten.com/500/500" alt="XPS, Designed to be the best" />
-                  </div>
-                  <div class="col-4">
-                    <img class="bm-img-responsive" src="https://placekitten.com/500/500" alt="XPS, Designed to be the best" />
-                  </div>
-                </div>
-                <div class="row align-items-center">
-                  <div class="col-4 text-center">
-                    <img class="bm-img-responsive rounded-photo photo-40" src="https://placekitten.com/400/400" alt="Logo toko" />
-                  </div>
-                  <div class="col-8 p-0">
-                    <div class="row">
-                      <span class="fw-bold">Toko Sepatu</span>
-                      <span class="text-secondary">3 produk • 2018</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="row gap-2 mt-3 px-2">
-                  <a href="#" class="col-12 bm-btn bm-btn--tertiary">
-                    <span class="bm-btn__icon">
-                      <i class="fa fa-store"></i>
-                    </span>
-                    <span class="bm-btn__label">Lihat toko</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- ! END OF CARD TOKO -->
+          <?php endforeach;?>
         </div>
       </div>
     </div>
