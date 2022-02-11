@@ -12,7 +12,7 @@ class FileUploader
     public static function HandleImageUpload($fieldName) : ?FileUploadInfo
     {
         $dir = __DIR__."/../../public/assets/images/";
-        $allowedFileExt = array('png', 'jpg', 'jpeg');
+        $allowedFileExt = array('png', 'jpg', 'jpeg', 'jfif');
 
         $fileName = $_FILES[$fieldName]['name'];
         $fileType = $_FILES[$fieldName]['type'];

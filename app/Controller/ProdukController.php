@@ -3,8 +3,10 @@
 namespace app\Controller;
 
 use app\Config\Database;
+use app\Core\FileUploader;
 use app\Core\Session;
 use app\Core\View;
+use app\DTO\Foto\FotoRequest;
 use app\DTO\Produk\ProdukRequest;
 use app\Repository\FotoRepository;
 use app\Repository\KelompokRepository;
@@ -45,12 +47,13 @@ class ProdukController
 //        echo '<pre>' , var_dump($this->produkService->GetAllModel()) , '</pre>';
     }
 
-    public function AddProduk()
-    {
-
-        echo '<pre>' , var_dump($_POST) , '</pre>';
-
-    }
+//    public function AddProduk()
+//    {
+//        echo '<pre>' , var_dump($_FILES) , '</pre>';
+//        echo '<pre>' , var_dump($_POST) , '</pre>';
+//
+//
+//    }
     public function UpdateProduk()
     {
 
@@ -63,8 +66,55 @@ class ProdukController
         echo '<pre>' , var_dump($_POST) , '</pre>';
     }
 
-    private function InsertSingleProduk(string $onPostId,string $kelompokID)
+    public function AddProduk()
     {
+        //$produkCount = $_POST['produk_count'];
+        $fotoCount = 5;
+        //$fotoCount = $_POST['foto_count'];
+        echo '<pre>' , var_dump($_FILES) , '</pre>';
+        //TODO : 1 kelompok produknya bisa banyak, insert produk dulu baru foto
+
+        //Handle Produk
+        $namaProduk     = $_POST['nama_produk'];
+        $hargaProduk    = $_POST['harga'];
+        $deskripsi      = $_POST['deskripsi_produk'];
+        $kelompokID      = $_POST['id_kelompok'];
+        $request = new ProdukRequest();
+        $request->id_kelompok = $kelompokID;
+        $request->nama_produk = $namaProduk;
+        $request->harga = $hargaProduk;
+        $request->deskripsi_produk = $deskripsi;
+        $produk = $this->produkService->AddProduk($request);
+
+        //Handle Foto
+        for ($j = 1; $j <= $fotoCount; $j++)
+        {
+            if ($_FILES['foto-produk-1-'.$j]['size'] == 0)
+            {
+                continue;
+            }
+
+            $img = FileUploader::HandleImageUpload('foto-produk-1-'.$j);
+//                if($img == null)
+//                {
+//                    throw new UploadFailedException("Gagal Upload File");
+//                }
+
+//                    if(!$img->isSuccess){
+//                        //TODO : Throw Exception
+//                        throw new UploadFailedException("Gagal Upload File Foto Produk");
+//                    }
+            $fotoReq = new FotoRequest();
+            $fotoReq->id_produk = $produk->id_produk;
+            $fotoReq->url = $img->filePath;
+            $fotoReq->is_primary = 0;
+            if($j == 1){
+                $fotoReq->is_primary = 1;
+            }
+            $this->fotoService->AddFoto($fotoReq);
+        }
+
+        View::Redirect("/dashboard-produk");
 
     }
 }

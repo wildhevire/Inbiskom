@@ -155,8 +155,6 @@ class KelompokController
                     'kelompok'=> $this->kelompokService->GetAllModel()
                 ]
             );
-
-
         }
         catch (\Exception $exception)
         {

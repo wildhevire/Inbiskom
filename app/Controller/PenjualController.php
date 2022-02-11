@@ -56,6 +56,7 @@ class PenjualController
     public function AddPenjual(){
        echo '<pre>' , var_dump($_POST) , '</pre>';
 
+
 //        $idDetailKelompok = $_POST['id_penjual'];
 //        $noIdentitas = $_POST['no_identitas'];
 //        $namaPenjual = $_POST['nama_penjual'];

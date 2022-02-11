@@ -106,6 +106,7 @@
  </div>
  <!-- ! END OF DETAIL MODAL -->
 
+
  <!-- ! ADD MODAL -->
  <div class="bm-modal h-auto " id="add_modal" role="dialog" aria-modal="true" aria-labelledby="modal-label" tabindex="-1">
    <div class="bm-modal__header">
@@ -116,8 +117,9 @@
      </a>
    </div>
 
-   <div class="bm-modal__body">
      <form action="/AddProduk" method="POST" enctype="multipart/form-data">
+   <div class="bm-modal__body">
+
        <label class="bm-input-label" for="nama-produk">Nama produk</label>
        <div class="bm-input">
          <input type="text" name="nama_produk" id="nama-produk" class="bm-input__field" placeholder="Contoh: Seblak Mantap" />
@@ -249,9 +251,11 @@
        <span class="bm-btn__label">Simpan</span>
      </button>
    </div>
+
      </form>
  </div>
  <!-- ! END OF ADD MODAL -->
+
  <!-- ! EDIT MODAL -->
  <div class="bm-modal h-auto " id="edit_modal" role="dialog" aria-modal="true" aria-labelledby="modal-label" tabindex="-1">
    <div class="bm-modal__header">
