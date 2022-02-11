@@ -62,6 +62,7 @@ class KelompokController
         View::RenderDashboard("Kelompok/index", [
             'title' => 'Kelompok',
             'page_type' => 'kelompok',
+            'hak_akses' => $this->session->Get("hak_akses"),
             'data' => [
                 'kategori' => $this->kategoriService->GetAllModel(),
                 'kelompok'=> $this->kelompokService->GetAllModel()

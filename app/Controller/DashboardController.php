@@ -2,6 +2,7 @@
 
 namespace app\Controller;
 
+use app\Core\Session;
 use app\Core\View;
 
 
@@ -13,10 +14,12 @@ class DashboardController
 {
     private OverviewRepository $repository;
     private OverviewService $service;
+    private Session $session;
     public function __construct()
     {
        $this->repository =  new OverviewRepository(Database::getConnection());
         $this->service = new OverviewService($this->repository);
+        $this->session = new Session();
     }
 
 //private function filter_a($var): bool
@@ -31,6 +34,7 @@ class DashboardController
         View::RenderDashboard("Dashboard/index", [
             'title' => 'Home',
             'page_type' => 'dashboard',
+            'hak_akses' => $this->session->Get("hak_akses"),
             'pendaftar_pertahun' => $this->service->SelectPendaftarPerTahun(),
             'produk_perkategori' => $this->service->SelectProdukPerKategori(),
             'penjual_pertipe' => $this->service->SelectPenjualPerTipe(),

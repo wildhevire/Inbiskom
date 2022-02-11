@@ -43,18 +43,22 @@
                     Kategori
                 </a>
             </li>
+            <?php if(isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris" ) :?>
             <li class="bm-nav-link <?php if(isset($model['page_type']) && $model['page_type'] == 'pengguna'){ echo 'bm-nav-link--active'; } else echo "" ?> ">
                 <a href="/dashboard-pengguna">
                     <i class="fa fa-user-shield"></i>
                     Pengguna
                 </a>
             </li>
+            <?php endif;?>
+            <?php if(isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris" ) :?>
             <li class="bm-nav-link <?php if(isset($model['page_type']) && $model['page_type'] == 'konfigurasi'){ echo 'bm-nav-link--active'; } else echo "" ?> ">
                 <a href="/dashboard-konfigurasi">
                     <i class="fa fa-cog"></i>
                     Konfigurasi
                 </a>
             </li>
+            <?php endif;?>
         </ul>
     </nav>
     <!-- ! END OF SIDEBAR -->

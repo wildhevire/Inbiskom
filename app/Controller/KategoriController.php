@@ -24,6 +24,7 @@ class KategoriController
         View::RenderDashboard("Kategori/index", [
             'title' => 'Kategori',
             'page_type' => 'kategori',
+            'hak_akses' => $this->session->Get("hak_akses"),
             'data' => $this->service->GetAllModel()
         ]);
     }

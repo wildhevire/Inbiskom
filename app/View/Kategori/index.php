@@ -1,12 +1,14 @@
 <h2 class="mb-4">Kategori</h2>
 <div class="row align-items-center">
     <div class="col">
+        <?php if(isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris" ) :?>
         <a rel="modal:open" href="#add_modal" class="bm-btn"
         ><span class="bm-btn__icon">
                   <i class="fas fa-plus"></i>
                 </span>
             <span class="bm-btn__label">Tambah kategori</span></a
         >
+        <?php endif;?>
     </div>
     <!-- <div class="col-4">
         <div class="bm-input bm-input--outline bm-input--with-icon">
@@ -49,7 +51,9 @@
         <thead>
         <th>No</th>
         <th>Nama kategori</th>
+        <?php if(isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris" ) :?>
         <th>Aksi</th>
+        <?php endif;?>
         </thead>
         <tbody>
         <?php $counter = 0; ?>
@@ -58,6 +62,7 @@
             <?php $counter++; ?>
             <td> <?= $counter ?> </td>
             <td><?= $data['nama_kategori'] ?></td>
+            <?php if(isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris" ) :?>
             <td>
                 <a rel="modal:open" href="#update_modal" class="bm-link btn_update"
                    id="btn_update" data-id="<?= $data['id_kategori']; ?>" data-nama="<?= $data['nama_kategori']; ?>"
@@ -71,6 +76,7 @@
                 >Hapus</a
                 >
             </td>
+            <?php endif;?>
         </tr>
         <?php endforeach; ?>
 

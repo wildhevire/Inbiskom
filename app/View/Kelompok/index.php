@@ -3,10 +3,12 @@
   <h2 class="mb-4">Kelompok</h2>
   <div class="row align-items-center">
     <div class="col">
+        <?php if(isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris" ) :?>
       <a rel="modal:open" href="#add_modal" class="bm-btn"><span class="bm-btn__icon">
           <i class="fas fa-plus"></i>
         </span>
         <span class="bm-btn__label">Tambah kelompok</span></a>
+        <?php endif;?>
     </div>
     <!-- <div class="col-4">
       <div class="bm-input bm-input--outline bm-input--with-icon">
@@ -50,7 +52,9 @@
         <th>Jumlah Produk</th>
         <th>Kategori</th>
         <th>Angkatan</th>
+        <?php if(isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris" ) :?>
         <th>Aksi</th>
+        <?php endif;?>
       </thead>
       <tbody>
         <?php $counter = 0; ?>
@@ -64,6 +68,7 @@
             <td><?= $kelompok['jumlah_produk'] ?></td>
             <td><?= $kelompok['kategori'] ?></td>
             <td><?= $kelompok['angkatan'] ?></td>
+              <?php if(isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris" ) :?>
             <td>
               <!--            <a rel="modal:open" href="#detail_modal" class="bm-link"-->
               <!--            >Lihat</a>&nbsp;&nbsp;&nbsp;&nbsp;-->
@@ -72,6 +77,7 @@
               <a rel="modal:open" id="btn_delete" href="#delete_modal" class="bm-link text-danger btn_delete" data-id="<?= $kelompok['id_kelompok'] ?>">Hapus</a>&nbsp;&nbsp;&nbsp;&nbsp;
               <a target="_blank" href="/toko?q=<?= $kelompok['id_kelompok'] ?>" class="bm-link">Buka</a>
             </td>
+              <?php endif;?>
           </tr>
         <?php endforeach ?>
       </tbody>
