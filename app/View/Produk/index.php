@@ -352,7 +352,8 @@
        <span class="bm-sr-only">Batal</span>
      </a>
    </div>
-
+     <form action="/DeleteProduk" method="POST">
+         <input name="id_produk" type="hidden" id="delete_id_produk">
    <div class="bm-modal__body">
      <p class="bm-body1">
        Anda tidak akan dapat memulihkan data ini jika sudah di hapus
@@ -363,10 +364,11 @@
      <a type="button" class="bm-btn bm-btn--secondary" rel="modal:close">
        <span class="bm-btn__label">Batal</span>
      </a>
-     <button type="button" class="bm-btn bm-btn--danger">
+     <button type="submit" class="bm-btn bm-btn--danger">
        <span class="bm-btn__label">Ya, hapus data ini!</span>
      </button>
    </div>
+     </form>
  </div>
  <!-- ! END OF DELETE MODAL -->
 
@@ -418,5 +420,11 @@
        }
      })
 
+   });
+
+   $(".btn_delete").click(function (){
+       var id = $(this).data("id");
+
+       $("#delete_id_produk").val(id);
    });
  </script>

@@ -69,4 +69,14 @@ class ProdukService
             throw $e;
         }
     }
+
+    public function DeleteProdukById(string $id)
+    {
+        try {
+            $this->repo->DeleteById($id);
+        }catch (\Exception $e)
+        {
+            throw $e;
+        }
+    }
 }

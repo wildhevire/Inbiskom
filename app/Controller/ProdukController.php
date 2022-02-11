@@ -63,7 +63,10 @@ class ProdukController
     public function DeleteProduk()
     {
 
-        echo '<pre>' , var_dump($_POST) , '</pre>';
+       // echo '<pre>' , var_dump($_POST) , '</pre>';
+        $id = $_POST['id_produk'];
+        $this->produkService->DeleteProdukById($id);
+        View::Redirect("/dashboard-produk");
     }
 
     public function AddProduk()
@@ -71,7 +74,7 @@ class ProdukController
         //$produkCount = $_POST['produk_count'];
         $fotoCount = 5;
         //$fotoCount = $_POST['foto_count'];
-        echo '<pre>' , var_dump($_FILES) , '</pre>';
+        //echo '<pre>' , var_dump($_FILES) , '</pre>';
         //TODO : 1 kelompok produknya bisa banyak, insert produk dulu baru foto
 
         //Handle Produk
