@@ -40,11 +40,12 @@
              <td><?= $produk['nama_kategori'] ?></td>
              <td><?= $produk['nama_kelompok'] ?></td>
              <td>
-               <a rel="" href="/produk?q=<?= $produk['id_produk'] ?>" class="bm-link">Lihat</a>&nbsp;&nbsp;&nbsp;&nbsp;
+               <a target="_blank" href="/produk?q=<?= $produk['id_produk'] ?>" class="bm-link">Lihat</a>&nbsp;&nbsp;&nbsp;&nbsp;
                <a rel="modal:open" href="#edit_modal" class="bm-link btn_update"
                   data-id="<?= $produk['id_produk'] ?>"
                   data-nama="<?= $produk['nama_produk'] ?>"
                   data-harga="<?= $produk['harga'] ?>"
+                  data-id_kelompok="<?= $produk['id_kelompok'] ?>"
                   data-deskripsi="<?= $produk['deskripsi_produk'] ?>"
 
 
@@ -271,7 +272,7 @@
 
    <div class="bm-modal__body">
      <form action="/UpdateProduk" method="POST" enctype="multipart/form-data">
-         <input type="text" name="id_produk" id="update-id-produk"/>
+         <input type="text" hidden name="id_produk" id="update-id-produk"/>
        <label class="bm-input-label" for="add-nama-produk">Nama produk</label>
        <div class="bm-input">
          <input type="text" name="nama_produk" id="add-nama-produk" class="bm-input__field" placeholder="Contoh: Seblak Mantap" />
@@ -289,9 +290,9 @@
          <textarea id="add-alamat" name="deskripsi_produk" class="bm-input__field" placeholder="Contoh: Seblak dengan menggunakan kerupuk asli"></textarea>
        </div>
        <br />
-       <label class="bm-input-label" for="kelompok">Kelompok</label>
+       <label class="bm-input-label" for="edit_kelompok">Kelompok</label>
        <div class="bm-input">
-         <select class="bm-input__field" id="kelompok" name="id_kelompok" required>
+         <select class="bm-input__field" id="edit_kelompok" name="id_kelompok" required>
            <option value="" disabled selected>Pilih opsi</option>
              <?php foreach ($model['kelompok'] as $kelompok) :?>
                  <option value="<?= $kelompok['id_kelompok'] ?>"><?= $kelompok['nama_kelompok'] ?></option>
@@ -302,7 +303,7 @@
        <br />
        <br />
 
-       <label class="bm-input-label" for="foto-produk">Foto produk</label>
+       <!-- <label class="bm-input-label" for="foto-produk">Foto produk</label>
        <p class="bm-caption text-secondary">
          Pilih foto untuk dijadikan foto utama
        </p>
@@ -332,7 +333,7 @@
          <button type="button" class="bm-btn">
            <span class="bm-btn__label">Upload gambar</span>
          </button>
-       </div>
+       </div> -->
 
    </div>
 
@@ -439,11 +440,12 @@
        var harga = $(this).data("harga");
        var deskripsi = $(this).data("deskripsi");
        var id_kategori = $(this).data("id_kategori");
+       var id_kelompok = $(this).data("id_kelompok");
 
        $("#update-id-produk").val(id);
        $("#add-nama-produk").val(nama);
        $("#add-harga").val(harga);
        $("#add-alamat").val(deskripsi);
-      // $("#update-id-produk").val(id_kategori);
+       $("#edit_kelompok").val(id_kelompok);
    });
  </script>

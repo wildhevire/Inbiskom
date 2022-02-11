@@ -68,9 +68,9 @@
               <!--            <a rel="modal:open" href="#detail_modal" class="bm-link"-->
               <!--            >Lihat</a>&nbsp;&nbsp;&nbsp;&nbsp;-->
               <a rel="modal:open" href="#edit_modal" class="bm-link btn_update" id="btn_update" data-deskripsi="<?= $kelompok['deskripsi_kelompok'] ?>"
-                 data-id="<?= $kelompok['id_kelompok'] ?>" data-nama="<?= $kelompok['nama_kelompok'] ?>" data-tipe="<?= $kelompok['tipe_kelompok'] ?>" data-jumlah_anggota="<?= $kelompok['jumlah_anggota'] ?>" data-jumlah_produk="<?= $kelompok['jumlah_produk'] ?>" data-kategori="<?= $kelompok['kategori'] ?>" data-angkatan="<?= $kelompok['angkatan'] ?>">Ubah</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                 data-id="<?= $kelompok['id_kelompok'] ?>" data-nama="<?= $kelompok['nama_kelompok'] ?>" data-tipe="<?= $kelompok['tipe_kelompok'] ?>" data-jumlah_anggota="<?= $kelompok['jumlah_anggota'] ?>" data-jumlah_produk="<?= $kelompok['jumlah_produk'] ?>" data-kategori="<?= $kelompok['id_kategori'] ?>" data-angkatan="<?= $kelompok['angkatan'] ?>">Ubah</a>&nbsp;&nbsp;&nbsp;&nbsp;
               <a rel="modal:open" id="btn_delete" href="#delete_modal" class="bm-link text-danger btn_delete" data-id="<?= $kelompok['id_kelompok'] ?>">Hapus</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a rel="" href="/toko?q=<?= $kelompok['id_kelompok'] ?>" class="bm-link">Buka</a>
+              <a target="_blank" href="/toko?q=<?= $kelompok['id_kelompok'] ?>" class="bm-link">Buka</a>
             </td>
           </tr>
         <?php endforeach ?>
@@ -414,13 +414,12 @@
 
       <br />
 
-      <label class="bm-input-label" for="tipe_kelompok">Tipe Kelompok</label>
+      <label class="bm-input-label" for="edit_tipe_kelompok">Tipe Kelompok</label>
       <div class="bm-input">
-        <select name="tipe_kelompok" class="bm-input__field" id="tipe_kelompok" required>
-
+        <select name="tipe_kelompok" class="bm-input__field" id="edit_tipe_kelompok" required>
           <option value="" disabled selected>Pilih </option>
-          <option value="Mahasiswa">Mahasiswa</option>
-          <option value="Umum">Umum</option>
+          <option value="mahasiswa">Mahasiswa</option>
+          <option value="umum">Umum</option>
 
         </select>
         <span class="bm-input__arrow"></span>
@@ -433,9 +432,9 @@
         <textarea name="deskripsi_kelompok" id="deskripsi_kelompok" class="bm-input__field" placeholder="Contoh: T-shirt berwarna hitam dengan bahan katun"></textarea>
       </div>
       <br />
-      <label class="bm-input-label" for="kategori">Kategori</label>
+      <label class="bm-input-label" for="edit_kategori">Kategori</label>
       <div class="bm-input">
-        <select name="id_kategori" class="bm-input__field" id="kategori" required>
+        <select name="id_kategori" class="bm-input__field" id="edit_kategori" required>
           <option value="" disabled selected>Pilih kategori</option>
           <?php foreach ($model['data']['kategori'] as $kategori) : ?>
             <option value="<?= $kategori['id_kategori'] ?>"><?= $kategori['nama_kategori'] ?></option>
@@ -811,6 +810,8 @@
       $("#update_nama_kategori").val(kategori);
       $("#update_angkatan").val(angkatan);
       $("#deskripsi_kelompok").val(deskripsi);
+      $("#edit_tipe_kelompok").val(tipe);
+      $("#edit_kategori").val(kategori);
   });
 
   $(".btn_delete").click(function() {
