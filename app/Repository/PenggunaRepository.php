@@ -105,6 +105,9 @@ class PenggunaRepository
         return $result;
     }
 
+
+
+
     public function Update(Pengguna $pengguna) : Pengguna
     {
         $statement = $this->connection->prepare("

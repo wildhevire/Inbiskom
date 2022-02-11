@@ -24,60 +24,27 @@
          <th>Aksi</th>
        </thead>
        <tbody>
+       <?php $counter = 0; ?>
+       <?php foreach ($model['produk'] as $produk ) : ?>
          <tr>
-           <td>1</td>
-           <td>T-Shirt polos</td>
-           <td class="text-truncate" style="max-width: 240px">
-             Lorem ipsum dolor sit amet consectetur adipisicing elit.
-             Ullam doloremque facere, nulla possimus quis deserunt
-             tempore. Maxime quod suscipit iure quis consequatur eum
-             accusamus necessitatibus facere soluta, rem numquam at.
-           </td>
-           <td>25000</td>
-           <td>Fashion</td>
-           <td>Kupakkai</td>
+             <?php $counter++; ?>
+            <td><?= $counter ?> </td>
+           <td><?=  $produk['nama_produk'] ?></td>
+           <td class="text-truncate" style="max-width: 240px"><?=  $produk['deskripsi_produk'] ?> </td>
+           <td><?=  $produk['harga'] ?> </td>
+           <td><?=  $produk['nama_kategori'] ?></td>
+           <td><?=  $produk['nama_kelompok'] ?></td>
            <td>
-             <a rel="modal:open" href="#detail_modal" class="bm-link">Lihat</a>&nbsp;&nbsp;&nbsp;&nbsp;
-             <a rel="modal:open" href="#edit_modal" class="bm-link">Ubah</a>&nbsp;&nbsp;&nbsp;&nbsp;
+             <a rel="" href="/produk?q=<?= $produk['id_produk']?>" class="bm-link">Lihat</a>&nbsp;&nbsp;&nbsp;&nbsp;
+             <a rel="modal:open" href="#edit_modal" class="bm-link"
+             data-id="<?= $produk['id_produk']?>"
+             data-id="<?= $produk['id_produk']?>"
+             data-id="<?= $produk['id_produk']?>"
+             >Ubah</a>&nbsp;&nbsp;&nbsp;&nbsp;
              <a rel="modal:open" href="#delete_modal" class="bm-link text-danger">Hapus</a>
            </td>
          </tr>
-         <tr>
-           <td>2</td>
-           <td>T-Shirt polos</td>
-           <td class="text-truncate" style="max-width: 240px">
-             Lorem ipsum dolor sit amet consectetur adipisicing elit.
-             Ullam doloremque facere, nulla possimus quis deserunt
-             tempore. Maxime quod suscipit iure quis consequatur eum
-             accusamus necessitatibus facere soluta, rem numquam at.
-           </td>
-           <td>25000</td>
-           <td>Fashion</td>
-           <td>Kupakkai</td>
-           <td>
-             <a rel="modal:open" href="#detail_modal" class="bm-link">Lihat</a>&nbsp;&nbsp;&nbsp;&nbsp;
-             <a rel="modal:open" href="#edit_modal" class="bm-link">Ubah</a>&nbsp;&nbsp;&nbsp;&nbsp;
-             <a rel="modal:open" href="#delete_modal" class="bm-link text-danger">Hapus</a>
-           </td>
-         </tr>
-         <tr>
-           <td>3</td>
-           <td>T-Shirt polos</td>
-           <td class="text-truncate" style="max-width: 240px">
-             Lorem ipsum dolor sit amet consectetur adipisicing elit.
-             Ullam doloremque facere, nulla possimus quis deserunt
-             tempore. Maxime quod suscipit iure quis consequatur eum
-             accusamus necessitatibus facere soluta, rem numquam at.
-           </td>
-           <td>25000</td>
-           <td>Fashion</td>
-           <td>Kupakkai</td>
-           <td>
-             <a rel="modal:open" href="#detail_modal" class="bm-link">Lihat</a>&nbsp;&nbsp;&nbsp;&nbsp;
-             <a rel="modal:open" href="#edit_modal" class="bm-link">Ubah</a>&nbsp;&nbsp;&nbsp;&nbsp;
-             <a rel="modal:open" href="#delete_modal" class="bm-link text-danger">Hapus</a>
-           </td>
-         </tr>
+       <?php endforeach ?>
        </tbody>
      </table>
    </div>

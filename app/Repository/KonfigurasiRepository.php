@@ -19,11 +19,15 @@ class KonfigurasiRepository
     public function Insert(Konfigurasi $konfigurasi): Konfigurasi
     {
         $statement = $this->conn->prepare(
-            "INSERT INTO konfigurasi(id_konfigursi, nip, nama_ketua, url_logo, alamat_inbiskom, no_hp, no_wa, email, username_ig, id_pengguna) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+            "INSERT INTO 
+    konfigurasi(nip, nama_ketua, url_logo, 
+                alamat_inbiskom, no_hp, no_wa, email, 
+                username_ig, id_pengguna) 
+values (?, ?, ?, ?, ?, ?, ?, ?, ?)"
         );
 
         $statement->execute([
-            $konfigurasi->id_konfigurasi,
+
             $konfigurasi->nip,
             $konfigurasi->nama_ketua,
             $konfigurasi->url_logo,
@@ -77,32 +81,14 @@ class KonfigurasiRepository
         return null;
     }
 
-    public function SelectLast() : ?Konfigurasi
+    public function SelectLast()
     {
-         $statement = $this->conn->prepare(
-             "SELECT id_konfigursi, nip, nama_ketua, url_logo, alamat_inbiskom, no_hp, no_wa, email, username_ig, id_pengguna FROM konfigurasi ORDER BY ID DESC LIMIT 1"
-         );
-        $statement->execute();
+        $statement = $this->conn->prepare(
+            "SELECT * FROM konfigurasi  ORDER BY id_konfigurasi DESC LIMIT 1"
+        );
 
-        try {
-            if ($row = $statement->fetch()) {
-                $konfigurasi = new Konfigurasi();
-                $konfigurasi->id_konfigurasi = $row['id_konfigurasi'];
-                $konfigurasi->nip = $row['nip'];
-                $konfigurasi->nama_ketua = $row['nama_ketua'];
-                $konfigurasi->url_logo = $row['url_logo'];
-                $konfigurasi->alamat_inibiskom = $row['alamat_inbiskom'];
-                $konfigurasi->no_hp = $row['no_hp'];
-                $konfigurasi->no_wa = $row['no_wa'];
-                $konfigurasi->email = $row['email'];
-                $konfigurasi->username_ig = $row['username_ig'];
-                $konfigurasi->id_pengguna = $row['id_pengguna'];
-                return $konfigurasi;
-            } else {
-                return null;
-            }
-        } finally {
-            $statement->closeCursor();
-        }
+        $statement->execute();
+        $result = $statement->fetch(\PDO::FETCH_ASSOC);
+        return $result;
     }
 }

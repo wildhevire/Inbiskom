@@ -43,6 +43,25 @@ Router::Add('GET', '/dashboard-produk',
     [\app\Middleware\MustLoginMiddleware::class]
 );
 
+Router::Add('POST', '/TambahKonfig',
+    \app\Controller\KonfigurasiController::class, 'AddKonfigurasi',
+    [\app\Middleware\MustLoginMiddleware::class]
+);
+
+//Penjual
+Router::Add('POST', '/UpdatePenjual',
+    \app\Controller\PenjualController::class, 'UpdatePenjual',
+    [\app\Middleware\MustLoginMiddleware::class]
+);
+Router::Add('POST', '/AddPenjual',
+    \app\Controller\PenjualController::class, 'AddPenjual',
+    [\app\Middleware\MustLoginMiddleware::class]
+);
+Router::Add('POST', '/DeletePenjual',
+    \app\Controller\PenjualController::class, 'DeletePenjual',
+    [\app\Middleware\MustLoginMiddleware::class]
+);
+
 
 //Login
 Router::Add('GET', '/dashboard-login',
@@ -78,7 +97,12 @@ Router::Add('POST', '/TambahKonfig',
 Router::Add('POST', '/TambahKelompok',
     \app\Controller\KelompokController::class, 'TambahKelompok',
     [\app\Middleware\MustLoginMiddleware::class]);
-
+Router::Add('POST', '/UpdateKelompok',
+    \app\Controller\KelompokController::class, 'UpdateKelompok',
+    [\app\Middleware\MustLoginMiddleware::class]);
+Router::Add('POST', '/DeleteKelompok',
+    \app\Controller\KelompokController::class, 'DeleteKelompok',
+    [\app\Middleware\MustLoginMiddleware::class]);
 
 
 

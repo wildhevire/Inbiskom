@@ -7,6 +7,7 @@ use app\Config\Database;
 use app\DBModel\DetailKelompok;
 use app\DTO\DetailKelompok\DetailKelompokRequest;
 use app\DTO\DetailKelompok\DetailKelompokResponse;
+use app\Exception\DatabaseQueryException;
 use app\Repository\DetailKelompokRepository;
 
 class DetailKelompokService
@@ -18,6 +19,15 @@ class DetailKelompokService
         $this->repo = $repo;
     }
 
+    public function GetPenggunaAndKelompok()
+    {
+        $result = $this->repo->SelectPenjualAndKelompok();
+        if($result == null){
+            //TODO : Exception Message
+            throw new DatabaseQueryException("Tidak dapat mengambil data dari database.");
+        }
+        return $result;
+    }
     public function AddPenjual(DetailKelompokRequest $request) : DetailKelompokResponse
     {
         try
@@ -47,9 +57,10 @@ class DetailKelompokService
     {
         try {
             $anggota = new DetailKelompok();
-            $anggota->id_kelompok = $request->id_kelompok;
+            $anggota->id_detail_kelompok = $request->id_detail_kelompok;
             $anggota->nama_penjual = $request->nama_penjual;
             $anggota->no_identitas = $request->no_identitas;
+            $anggota->id_kelompok = $request->id_kelompok;
             $this->repo->Update($anggota);
         }catch (\Exception $e)
         {

@@ -119,16 +119,30 @@ class KelompokRepository
 
     public function Update(Kelompok $kelompok) : Kelompok
     {
-        $statement = $this->connection->prepare("
-                UPDATE kelompok SET nama_kelompok = ?, angkatan = ?, deskripsi_kelompok = ?, tipe_kelompok = ?, url_logo_toko = ?, id_kategori = ?, id_pengguna = ?
-                WHERE id_kelompok = ?,
+//        $statement = $this->conn->prepare("
+//                UPDATE kelompok SET nama_kelompok = ?, angkatan = ?, deskripsi_kelompok = ?, tipe_kelompok = ?, url_logo_toko = ?, id_kategori = ?, id_pengguna = ?
+//                WHERE id_kelompok = ?,
+//            ");
+        $statement = $this->conn->prepare("
+                UPDATE kelompok SET nama_kelompok = ?, angkatan = ?, 
+                                    tipe_kelompok = ?, 
+                                    id_kategori = ?, id_pengguna = ?
+                WHERE id_kelompok = ?
             ");
+//        $statement->execute([
+//            $kelompok->nama_kelompok,
+//            $kelompok->angkatan,
+//            $kelompok->deskripsi_kelompok,
+//            $kelompok->tipe_kelompok,
+//            $kelompok->url_logo_toko,
+//            $kelompok->id_kategori,
+//            $kelompok->id_pengguna,
+//            $kelompok->id_kelompok
+//        ]);
         $statement->execute([
             $kelompok->nama_kelompok,
             $kelompok->angkatan,
-            $kelompok->deskripsi_kelompok,
             $kelompok->tipe_kelompok,
-            $kelompok->url_logo_toko,
             $kelompok->id_kategori,
             $kelompok->id_pengguna,
             $kelompok->id_kelompok

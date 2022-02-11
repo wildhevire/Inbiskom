@@ -88,6 +88,55 @@ class KelompokController
             'data' => $model
         ]);
     }
+    public function UpdateKelompok()
+    {
+        echo '<pre>' , var_dump($_POST) , '</pre>';
+        echo '<pre>' , var_dump($_FILES) , '</pre>';
+        $req = new KelompokRequest();
+        $req->id_kelompok = $_POST["id_kelompok"];
+        $req->nama_kelompok = $_POST["nama_kelompok"];
+        $req->angkatan = $_POST["angkatan"];
+        $req->tipe_kelompok = $_POST["tipe_kelompok"];
+        $req->id_kategori = $_POST["id_kategori"];
+
+        $req->id_pengguna = $this->session->Get("id_pengguna");
+        try {
+
+            $this->kelompokService->UpdateKelompok($req);
+            View::Redirect('/dashboard-kelompok');
+        }
+        catch (\Exception $e)
+        {
+            $this->OnActionError($e->getMessage(),
+                [
+                    'kategori'=> $this->kategoriService->GetAllModel(),
+                    'kelompok'=> $this->kelompokService->GetAllModel()
+                ]
+            );
+        }
+    }
+    public function DeleteKelompok()
+    {
+        echo '<pre>' , var_dump($_POST) , '</pre>';
+        echo '<pre>' , var_dump($_FILES) , '</pre>';
+        $id = $_POST["id_kelompok"];
+
+        try {
+
+            $this->kelompokService->DeleteKelompokById($id);
+            View::Redirect('/dashboard-kelompok');
+        }
+        catch (\Exception $e)
+        {
+            $this->OnActionError($e->getMessage(),
+                [
+                    'kategori'=> $this->kategoriService->GetAllModel(),
+                    'kelompok'=> $this->kelompokService->GetAllModel()
+                ]
+            );
+        }
+    }
+
     public function TambahKelompok() : void
     {
 //        echo '<pre>' , var_dump($_POST) , '</pre>';

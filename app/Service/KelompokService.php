@@ -60,9 +60,9 @@ class KelompokService
             $kelompok->id_kelompok = $request->id_kelompok;
             $kelompok->nama_kelompok = $request->nama_kelompok;
             $kelompok->angkatan = $request->angkatan;
-            $kelompok->deskripsi_kelompok = $request->deskripsi_kelompok;
+//            $kelompok->deskripsi_kelompok = $request->deskripsi_kelompok;
             $kelompok->tipe_kelompok = $request->tipe_kelompok;
-            $kelompok->url_logo_toko = $request->url_logo_toko;
+//            $kelompok->url_logo_toko = $request->url_logo_toko;
             $kelompok->id_kategori = $request->id_kategori;
             $kelompok->id_pengguna = $request->id_pengguna;
             $this->repo->Update($kelompok);

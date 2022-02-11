@@ -17,10 +17,11 @@ class PenggunaController
 {
     private PenggunaService $service;
     private Session $session;
+    private PenggunaRepository $repo;
     public function __construct()
     {
-        $repo = new PenggunaRepository(Database::getConnection());
-        $this->service = new PenggunaService($repo);
+        $this->repo = new PenggunaRepository(Database::getConnection());
+        $this->service = new PenggunaService($this->repo);
         $this->session = new Session();
     }
 

@@ -60,9 +60,9 @@ class ProdukRepository
     public function SelectAll(): ?array
     {
         $statement = $this->conn->query(
-            "SELECT id_produk, nama_produk, harga, 
-                    deskripsi_produk
-                    FROM kelompok"
+            "SELECT id_produk, nama_produk, deskripsi_produk, harga, nama_kategori, nama_kelompok
+            FROM produk p, kategori ka, kelompok k
+            WHERE p.id_kelompok=k.id_kelompok AND k.id_kategori=ka.id_kategori"
         );
 
         $result = $statement->fetchAll(\PDO::FETCH_ASSOC);

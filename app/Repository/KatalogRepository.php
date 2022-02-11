@@ -51,7 +51,7 @@ class KatalogRepository
     public function SelectAllKonfigurasi()
     {
         $statement = $this->conn->prepare(
-            "SELECT * FROM konfigurasi LIMIT 1"
+            "SELECT * FROM konfigurasi  ORDER BY id_konfigurasi DESC LIMIT 1"
         );
 
         $statement->execute();

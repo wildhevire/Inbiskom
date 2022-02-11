@@ -65,10 +65,21 @@
           <td><?= $kelompok['kategori'] ?></td>
           <td><?= $kelompok['angkatan'] ?></td>
           <td>
-            <a rel="modal:open" href="#detail_modal" class="bm-link">Lihat</a>&nbsp;&nbsp;&nbsp;&nbsp;
-            <a rel="modal:open" href="#edit_modal" class="bm-link">Ubah</a>&nbsp;&nbsp;&nbsp;&nbsp;
-            <a rel="modal:open" href="#delete_modal" class="bm-link text-danger">Hapus</a>&nbsp;&nbsp;&nbsp;&nbsp;
-            <a rel="modal:open" href="#delete_modal" class="bm-link">Buka</a>
+<!--            <a rel="modal:open" href="#detail_modal" class="bm-link"-->
+<!--            >Lihat</a>&nbsp;&nbsp;&nbsp;&nbsp;-->
+            <a rel="modal:open" href="#edit_modal" class="bm-link" id="btn_update"
+               data-id="<?= $kelompok['id_kelompok'] ?>"
+               data-nama="<?= $kelompok['nama_kelompok'] ?>"
+               data-tipe="<?= $kelompok['tipe_kelompok'] ?>"
+               data-jumlah_anggota="<?= $kelompok['jumlah_anggota'] ?>"
+               data-jumlah_produk="<?= $kelompok['jumlah_produk'] ?>"
+               data-kategori="<?= $kelompok['kategori'] ?>"
+               data-angkatan="<?= $kelompok['angkatan'] ?>"
+            >Ubah</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a rel="modal:open" id="btn_delete" href="#delete_modal" class="bm-link text-danger btn_delete"
+               data-id="<?= $kelompok['id_kelompok'] ?>"
+            >Hapus</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a rel="" href="/toko?q=<?= $kelompok['id_kelompok'] ?>" class="bm-link">Buka</a>
           </td>
         </tr>
           <?php endforeach ?>
@@ -153,12 +164,12 @@
             <div class="row px-5">
               <label class="bm-radio col-6">
                 Mahasiswa
-                <input type="radio" class="bm-radio__input" id="tipe-mahasiswa" name="tipe_kelompok" value="mahasiswa" />
+                <input type="radio" class="bm-radio__input" id="tipe-mahasiswa" name="tipe_kelompok" value="Mahasiswa" />
                 <span class="bm-radio__checkmark"></span>
               </label>
               <label class="bm-radio col-6">
                 Umum
-                <input type="radio" class="bm-radio__input" id="tipe-umum" name="tipe_kelompok" value="umum" />
+                <input type="radio" class="bm-radio__input" id="tipe-umum" name="tipe_kelompok" value="Umum" />
                 <span class="bm-radio__checkmark"></span>
               </label>
             </div>
@@ -396,83 +407,88 @@
   </div>
 
   <div class="bm-modal__body">
-    <label class="bm-input-label" for="nama">Nama</label>
-    <div class="bm-input">
-      <input type="text" id="nama" class="bm-input__field" placeholder="Contoh: John Doe" />
-    </div>
+  <form action="/UpdateKelompok" method="POST">
+      <input type="hidden" name="id_kelompok" id="update_id_kelompok" class="bm-input__field" placeholder="Contoh: John Doe" />
 
-    <br />
-    <label class="bm-input-label" for="username">Username</label>
-    <div class="bm-input">
-      <input type="text" id="username" class="bm-input__field" placeholder="Contoh: john_doe" />
-    </div>
+        <label class="bm-input-label" for="nama">Nama Kelompok</label>
+        <div class="bm-input">
+          <input type="text" name="nama_kelompok" id="nama" class="bm-input__field" placeholder="Contoh: John Doe" />
+        </div>
 
-    <br />
+        <br />
+        <label class="bm-input-label" for="angkatan">Angkatan</label>
+        <div class="bm-input">
+          <input type="number" name="angkatan" id="update_angkatan" class="bm-input__field" placeholder="2020" />
+        </div>
 
-    <label class="bm-input-label" for="password">Password</label>
-    <div class="bm-input">
-      <input type="password" id="password" class="bm-input__field" placeholder="Minimal 8 karakter" />
-    </div>
+        <br />
 
-    <br />
+      <label class="bm-input-label" for="tipe_kelompok">Tipe Kelompok</label>
+      <div class="bm-input">
+          <select name="tipe_kelompok" class="bm-input__field" id="tipe_kelompok" required>
 
-    <label class="bm-input-label" for="tahun-aktif">Tahun aktif</label>
-    <div class="bm-input">
-      <input type="number" id="tahun-aktif" class="bm-input__field" placeholder="Contoh: 2021" />
-    </div>
+              <option value="" disabled selected>Pilih </option>
+              <option value="Mahasiswa">Mahasiswa</option>
+              <option value="Umum">Umum</option>
 
-    <br />
+          </select>
+          <span class="bm-input__arrow"></span>
+      </div>
 
-    <label class="bm-input-label">Hak akses</label>
-    <div class="row px-5">
-      <label class="bm-radio col-6">
-        Ketua divisi
-        <input type="radio" class="bm-radio__input" id="hak-akses" name="hak-akses" value="ketua-divisi" />
-        <span class="bm-radio__checkmark"></span>
-      </label>
-      <label class="bm-radio col-6">
-        Sekretaris
-        <input type="radio" class="bm-radio__input" id="hak-akses" name="hak-akses" value="sekretaris" />
-        <span class="bm-radio__checkmark"></span>
-      </label>
-    </div>
-  </div>
+      <br />
+      <label class="bm-input-label" for="kategori">Kategori</label>
+      <div class="bm-input">
+          <select name="id_kategori" class="bm-input__field" id="kategori" required>
+              <option value="" disabled selected>Pilih kategori</option>
+              <?php foreach ($model['data']['kategori'] as $kategori) : ?>
+                  <option value="<?= $kategori['id_kategori'] ?>"><?= $kategori['nama_kategori'] ?></option>
+              <?php endforeach; ?>
+          </select>
+          <span class="bm-input__arrow"></span>
+      </div>
+      <br />
 
-  <div class="bm-modal__footer">
-    <a type="button" class="bm-btn bm-btn--secondary" rel="modal:close">
-      <span class="bm-btn__label">Batal</span>
-    </a>
-    <button type="button" class="bm-btn">
-      <span class="bm-btn__label">Simpan</span>
-    </button>
+      <div class="bm-modal__footer">
+        <a type="button" class="bm-btn bm-btn--secondary" rel="modal:close">
+          <span class="bm-btn__label">Batal</span>
+        </a>
+        <button type="submit" class="bm-btn">
+          <span class="bm-btn__label">Simpan</span>
+        </button>
+      </div>
+    </form>
   </div>
 </div>
 <!-- ! END OF EDIT MODAL -->
 
 <!-- ! DELETE MODAL -->
 <div class="bm-modal h-auto bm-modal--scrollable" id="delete_modal" role="dialog" aria-modal="true" aria-labelledby="modal-label" tabindex="-1">
-  <div class="bm-modal__header">
-    <h5 class="bm-modal__title">Apakah Anda yakin?</h5>
-    <a class="bm-modal__button-close" aria-label="close" rel="modal:close">
-      <span class="bm-modal__icon-close"></span>
-      <span class="bm-sr-only">Batal</span>
-    </a>
-  </div>
 
-  <div class="bm-modal__body">
-    <p class="bm-body1">
-      Anda tidak akan dapat memulihkan data ini jika sudah di hapus
-    </p>
-  </div>
+    <form action="/DeleteKelompok" method="POST">
+        <input type="hidden" name="id_kelompok" id="delete_id_kelompok"/>
+            <div class="bm-modal__header">
+            <h5 class="bm-modal__title">Apakah Anda yakin?</h5>
+            <a class="bm-modal__button-close" aria-label="close" rel="modal:close">
+              <span class="bm-modal__icon-close"></span>
+              <span class="bm-sr-only">Batal</span>
+            </a>
+          </div>
 
-  <div class="bm-modal__footer">
-    <a type="button" class="bm-btn bm-btn--secondary" rel="modal:close">
-      <span class="bm-btn__label">Batal</span>
-    </a>
-    <button type="button" class="bm-btn bm-btn--danger">
-      <span class="bm-btn__label">Ya, hapus data ini!</span>
-    </button>
-  </div>
+          <div class="bm-modal__body">
+            <p class="bm-body1">
+              Anda tidak akan dapat memulihkan data ini jika sudah di hapus
+            </p>
+          </div>
+
+          <div class="bm-modal__footer">
+            <a type="button" class="bm-btn bm-btn--secondary" rel="modal:close">
+              <span class="bm-btn__label">Batal</span>
+            </a>
+            <button type="submit" class="bm-btn bm-btn--danger">
+              <span class="bm-btn__label">Ya, hapus data ini!</span>
+            </button>
+          </div>
+    </form>
 </div>
 <!-- ! END OF DELETE MODAL -->
 <script>
@@ -780,4 +796,37 @@
       }
     })
   });
+
+  $("#btn_update").click(function (){
+      var id = $(this).data("id");
+      var nama = $(this).data("nama");
+      var tipe = $(this).data("tipe");
+      var jumlah_anggota = $(this).data("jumlah_anggota");
+      var jumlah_produk = $(this).data("jumlah_produk");
+      var kategori = $(this).data("kategori");
+      var angkatan = $(this).data("angkatan");
+
+      $("#update_id_kelompok").val(id);
+      $("#nama").val(nama);
+      $("#update_nama_kategori").val(jumlah_anggota);
+      $("#update_nama_kategori").val(jumlah_produk);
+      $("#update_nama_kategori").val(kategori);
+      $("#update_angkatan").val(angkatan);
+  });
+
+  $(".btn_delete").click(function (){
+      var id = $(this).data("id");
+
+      $("#delete_id_kelompok").val(id);
+  });
+  //
+  //data-nama="<?//= $kelompok['nama_kelompok'] ?>//"
+  //data-tipe="<?//= $kelompok['tipe_kelompok'] ?>//"
+  //data-jumlah_anggota="<?//= $kelompok['jumlah_anggota'] ?>//"
+  //data-jumlah_produk="<?//= $kelompok['jumlah_produk'] ?>//"
+  //data-kategori="<?//= $kelompok['kategori'] ?>//"
+  //data-angkatan="<?//= $kelompok['angkatan'] ?>//"
+
+
+
 </script>

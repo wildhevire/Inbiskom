@@ -72,14 +72,29 @@
 </div>
 
 <script>
+
+    const randomColor = function() {
+        const r = Math.floor(Math.random() * 255);
+        const g = Math.floor(Math.random() * 255);
+        const b = Math.floor(Math.random() * 255);
+        return "rgb(" + r + "," + g + "," + b + ")";
+    };
     // CHART PENDAFTAR
     const currentYear = new Date().getFullYear(); // 2020
     const lastFiveYears = currentYear - 5;
 
     const labelsPendaftar = [];
-    for (let index = lastFiveYears; index <= currentYear; index++) {
-        labelsPendaftar.push(index)
-    }
+    // for (let index = lastFiveYears; index <= currentYear; index++) {
+    //     labelsPendaftar.push(index)
+    // }
+    const dataPendaftar = [];
+    const colorPendaftar = [];
+    <?php foreach ($model["pendaftar_pertahun"]as $pendaftar) :?>
+        labelsPendaftar.push(<?= $pendaftar['angkatan']?>);
+        dataPendaftar.push(<?= $pendaftar['jml_pendaftar']?>);
+    colorPendaftar.push(randomColor());
+
+    <?php endforeach;?>
 
     const data = {
         labels: labelsPendaftar,
@@ -87,7 +102,7 @@
             label: 'Total Pendaftar INBISKOM tiap tahun',
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
-            data: [0, 10, 5, 2, 20, 30, 45],
+            data:dataPendaftar,
         }]
     };
 
@@ -114,19 +129,30 @@
 
 
     // CHART TOTAL PRODUK BERDASARKAN KATEGORI
+    const labelProdukPerKategori = [];
+    const dataProdukPerKategori = [];
+    const colorProdukPerKategori = [];
+    <?php foreach ($model["produk_perkategori"]as $produk) :?>
+    labelProdukPerKategori.push("<?= $produk['nama_kategori']?>");
+    dataProdukPerKategori.push(<?= $produk['jml_produk']?>);
+    colorProdukPerKategori.push(randomColor());
+    <?php endforeach;?>
     const produkPerKategori = new Chart(document.getElementById('produkPerKategori').getContext('2d'), {
         type: 'bar',
         data: {
-            labels: ['Craft', 'Fashion', 'Foods', "Jasa", "Pertanian & Perkebunan"],
+            labels: labelProdukPerKategori,
+            // labels: ['Craft', 'Fashion', 'Foods', "Jasa", "Pertanian & Perkebunan"],
             datasets: [{
-                data: [12, 19, 3, 8, 16, 12],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                ],
+                data: dataProdukPerKategori,
+                // data: [12, 19, 3, 8, 16, 12],
+                // backgroundColor: [
+                //     'rgba(255, 99, 132, 1)',
+                //     'rgba(54, 162, 235, 1)',
+                //     'rgba(255, 206, 86, 1)',
+                //     'rgba(75, 192, 192, 1)',
+                //     'rgba(153, 102, 255, 1)',
+                // ],
+                backgroundColor:colorProdukPerKategori
             }, ]
         },
         options: {
@@ -144,16 +170,24 @@
     });
 
     // TOTAL PENJUAL BERDASARKAN TIPE
+    const labelTipeKelompok = [];
+    const dataTipeKelompok = [];
+    <?php foreach ($model["penjual_pertipe"]as $item) :?>
+    labelTipeKelompok.push("<?= $item['tipe_kelompok']?>");
+    dataTipeKelompok.push(<?= $item['jml_penjual']?>);
+    <?php endforeach;?>
     const penjualPerTipe = new Chart(document.getElementById('penjualPerTipe').getContext('2d'), {
         type: 'doughnut',
         data: {
-            labels: [
-                'Mahasiswa',
-                'Umum'
-            ],
+            // labels: [
+            //     'Mahasiswa',
+            //     'Umum'
+            // ],
+            labels: labelTipeKelompok,
             datasets: [{
                 label: 'My First Dataset',
-                data: [80, 20],
+                // data: [80, 20],
+                data: dataTipeKelompok,
                 backgroundColor: [
                     'rgb(255, 99, 132)',
                     'rgb(54, 162, 235)',
@@ -176,6 +210,11 @@
     });
 
     // Kategori produk berdasarkan tipe penjual
+
+    <?php
+
+
+    ?>
     const kategoriPerTipe = new Chart(document.getElementById('kategoriPerTipe').getContext('2d'), {
         type: 'bar',
         data: {

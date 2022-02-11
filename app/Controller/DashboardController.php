@@ -6,14 +6,52 @@ use app\Core\View;
 
 
 use app\Config\Database;
+use app\Repository\OverviewRepository;
+use app\Service\OverviewService;
 
 class DashboardController
 {
+    private OverviewRepository $repository;
+    private OverviewService $service;
+    public function __construct()
+    {
+       $this->repository =  new OverviewRepository(Database::getConnection());
+        $this->service = new OverviewService($this->repository);
+    }
+
+//private function filter_a($var): bool
+//    {
+//        return strtolower($var["tipe_kelompok"]) == "umum";
+//    }
+//private function filter_b($var): bool
+//    {
+//        return strtolower($var["tipe_kelompok"]) == "mahasiswa";
+//    }
     public function index() : void{
         View::RenderDashboard("Dashboard/index", [
             'title' => 'Home',
-            'page_type' => 'dashboard'
+            'page_type' => 'dashboard',
+            'pendaftar_pertahun' => $this->service->SelectPendaftarPerTahun(),
+            'produk_perkategori' => $this->service->SelectProdukPerKategori(),
+            'penjual_pertipe' => $this->service->SelectPenjualPerTipe(),
         ]);
+
+//        echo '<pre>' , var_dump($this->service->SelectPenjualPerKategori()) , '</pre>';
+
+
+
+//
+//        $data = $this->service->SelectPenjualPerKategori();
+//        $kategoriPerTipe = array();
+//        $kategoriPerTipe['umum'] = array_filter($data, "filter_a");
+//        $kategoriPerTipe['mahasiswa'] = array_filter($data, "filter_b");
+//
+//        echo '<pre>' , var_dump($kategoriPerTipe) , '</pre>';
+
+
     }
+
+
+
 
 }

@@ -1,4 +1,4 @@
-<h2 class="mb-4">Pengguna</h2>
+ <h2 class="mb-4">Pengguna</h2>
 <div class="row align-items-center">
     <div class="col">
         <a rel="modal:open" href="#add_modal" class="bm-btn"
