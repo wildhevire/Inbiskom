@@ -58,10 +58,11 @@ class ProdukService
     {
         try {
             $produk = new Produk();
-            $produk->nama_produk = $request->id_kelompok;
-            $produk->harga = $request->nama_kelompok;
-            $produk->deskripsi_produk = $request->angkatan;
-            $produk->id_produk = $request->deskripsi_kelompok;
+            $produk->id_kelompok = $request->id_kelompok;
+            $produk->nama_produk = $request->nama_produk;
+            $produk->harga = $request->harga;
+            $produk->deskripsi_produk = $request->deskripsi_produk;
+            $produk->id_produk = $request->id_produk;
             $this->repo->Update($produk);
             return $produk;
         }catch (\Exception $e)

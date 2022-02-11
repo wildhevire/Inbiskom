@@ -78,17 +78,17 @@ class ProdukRepository
 
     public function Update(Produk $produk): Produk
     {
-        $statement = $this->connection->prepare("
+        $statement = $this->conn->prepare("
                 UPDATE produk SET nama_produk = ?, harga = ?, 
-                                deskripsi_produk = ?
-                WHERE id_produk = ?,
+                                deskripsi_produk = ?, id_kelompok = ?
+                WHERE id_produk = ?
             ");
         $statement->execute([
             $produk->nama_produk,
             $produk->harga,
             $produk->deskripsi_produk,
-            $produk->id_produk,
-
+            $produk->id_kelompok,
+            $produk->id_produk
         ]);
         return $produk;
     }

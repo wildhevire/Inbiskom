@@ -56,7 +56,15 @@ class ProdukController
 //    }
     public function UpdateProduk()
     {
+        $req = new ProdukRequest();
+        $req->id_produk = $_POST['id_produk'];
+        $req->nama_produk = $_POST['nama_produk'];
+        $req->harga = $_POST['harga'];
+        $req->deskripsi_produk = $_POST['deskripsi_produk'];
+        $req->id_kelompok = $_POST['id_kelompok'];
 
+        $this->produkService->UpdateProduk($req);
+        View::Redirect("/dashboard-produk");
         echo '<pre>' , var_dump($_POST) , '</pre>';
     }
 

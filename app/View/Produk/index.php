@@ -43,8 +43,11 @@
                <a rel="" href="/produk?q=<?= $produk['id_produk'] ?>" class="bm-link">Lihat</a>&nbsp;&nbsp;&nbsp;&nbsp;
                <a rel="modal:open" href="#edit_modal" class="bm-link btn_update"
                   data-id="<?= $produk['id_produk'] ?>"
-                  data-id="<?= $produk['id_produk'] ?>"
-                  data-id="<?= $produk['id_produk'] ?>"
+                  data-nama="<?= $produk['nama_produk'] ?>"
+                  data-harga="<?= $produk['harga'] ?>"
+                  data-deskripsi="<?= $produk['deskripsi_produk'] ?>"
+
+
                >Ubah</a>&nbsp;&nbsp;&nbsp;&nbsp;
                <a rel="modal:open" href="#delete_modal" class="bm-link text-danger btn_delete"
                   data-id="<?= $produk['id_produk'] ?>"
@@ -267,7 +270,8 @@
    </div>
 
    <div class="bm-modal__body">
-     <form action="/UbahProduk" method="POST" enctype="multipart/form-data">
+     <form action="/UpdateProduk" method="POST" enctype="multipart/form-data">
+         <input type="text" name="id_produk" id="update-id-produk"/>
        <label class="bm-input-label" for="add-nama-produk">Nama produk</label>
        <div class="bm-input">
          <input type="text" name="nama_produk" id="add-nama-produk" class="bm-input__field" placeholder="Contoh: Seblak Mantap" />
@@ -329,17 +333,18 @@
            <span class="bm-btn__label">Upload gambar</span>
          </button>
        </div>
-     </form>
+
    </div>
 
    <div class="bm-modal__footer">
      <a type="button" class="bm-btn bm-btn--secondary" rel="modal:close">
        <span class="bm-btn__label">Batal</span>
      </a>
-     <button type="button" class="bm-btn">
+     <button type="submit" class="bm-btn">
        <span class="bm-btn__label">Simpan</span>
      </button>
    </div>
+     </form>
  </div>
  <!-- ! END OF EDIT MODAL -->
 
@@ -426,5 +431,19 @@
        var id = $(this).data("id");
 
        $("#delete_id_produk").val(id);
+   });
+
+   $(".btn_update").click(function (){
+       var id = $(this).data("id");
+       var nama = $(this).data("nama");
+       var harga = $(this).data("harga");
+       var deskripsi = $(this).data("deskripsi");
+       var id_kategori = $(this).data("id_kategori");
+
+       $("#update-id-produk").val(id);
+       $("#add-nama-produk").val(nama);
+       $("#add-harga").val(harga);
+       $("#add-alamat").val(deskripsi);
+      // $("#update-id-produk").val(id_kategori);
    });
  </script>

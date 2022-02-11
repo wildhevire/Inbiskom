@@ -28,15 +28,15 @@ class DashboardController
 //        return strtolower($var["tipe_kelompok"]) == "mahasiswa";
 //    }
     public function index() : void{
-        View::RenderDashboard("Dashboard/index", [
-            'title' => 'Home',
-            'page_type' => 'dashboard',
-            'pendaftar_pertahun' => $this->service->SelectPendaftarPerTahun(),
-            'produk_perkategori' => $this->service->SelectProdukPerKategori(),
-            'penjual_pertipe' => $this->service->SelectPenjualPerTipe(),
-        ]);
+//        View::RenderDashboard("Dashboard/index", [
+//            'title' => 'Home',
+//            'page_type' => 'dashboard',
+//            'pendaftar_pertahun' => $this->service->SelectPendaftarPerTahun(),
+//            'produk_perkategori' => $this->service->SelectProdukPerKategori(),
+//            'penjual_pertipe' => $this->service->SelectPenjualPerTipe(),
+//        ]);
 
-//        echo '<pre>' , var_dump($this->service->SelectPenjualPerKategori()) , '</pre>';
+        echo '<pre>' , var_dump($this->service->SelectPenjualPerKategori()) , '</pre>';
 
 
 
