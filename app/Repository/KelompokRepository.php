@@ -126,7 +126,7 @@ class KelompokRepository
         $statement = $this->conn->prepare("
                 UPDATE kelompok SET nama_kelompok = ?, angkatan = ?, 
                                     tipe_kelompok = ?, 
-                                    id_kategori = ?, id_pengguna = ?
+                                    id_kategori = ?, id_pengguna = ?, deskripsi_kelompok = ?
                 WHERE id_kelompok = ?
             ");
 //        $statement->execute([
@@ -145,7 +145,8 @@ class KelompokRepository
             $kelompok->tipe_kelompok,
             $kelompok->id_kategori,
             $kelompok->id_pengguna,
-            $kelompok->id_kelompok
+            $kelompok->deskripsi_kelompok,
+            $kelompok->id_kelompok,
         ]);
         return $kelompok;
     }
