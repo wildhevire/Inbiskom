@@ -29,6 +29,7 @@ class PenggunaController
         View::RenderDashboard("Pengguna/index", [
             'title' => 'Pengguna',
             'page_type' => 'pengguna',
+            'hak_akses' => $this->session->Get("hak_akses"),
             'data' => $this->GetAllUserModel()
         ]);
     }

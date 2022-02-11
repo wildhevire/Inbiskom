@@ -34,12 +34,13 @@ class ProdukController
         $this->fotoRepository = new FotoRepository(Database::getConnection());
         $this->fotoService = new FotoService($this->fotoRepository);
         $this->kelompokService = new KelompokService($this->kelompokRepository);
-
+        $this->session = new Session();
     }
     public function index(){
         View::RenderDashboard("Produk/index", [
             'title' => 'Produk',
             'page_type' => 'produk',
+            'hak_akses' => $this->session->Get("hak_akses"),
             'produk' => $this->produkService->GetAllModel(),
             'kelompok' => $this->kelompokService->GetAllModel()
         ]);

@@ -31,6 +31,7 @@ class PenjualController
         View::RenderDashboard("Penjual/index", [
             'title' => 'Penjual',
             'page_type' => 'penjual',
+            'hak_akses' => $this->session->Get("hak_akses"),
             'penjual' => $this->service->GetPenggunaAndKelompok(),
             'kelompok' => $this->kelompokService->GetAllModel()
         ]);

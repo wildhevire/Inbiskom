@@ -3,10 +3,12 @@
    <h2 class="mb-4">Produk</h2>
    <div class="row align-items-center">
      <div class="col">
+         <?php if(isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris" ) :?>
        <a rel="modal:open" href="#add_modal" class="bm-btn"><span class="bm-btn__icon">
            <i class="fas fa-plus"></i>
          </span>
          <span class="bm-btn__label">Tambah Produk</span></a>
+         <?php endif;?>
      </div>
      <div class="col-4">
        <div class="bm-input bm-input--outline bm-input--with-icon">
@@ -26,7 +28,9 @@
          <th>Harga</th>
          <th>Kategori</th>
          <th>Kelompok</th>
+         <?php if(isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris" ) :?>
          <th>Aksi</th>
+         <?php endif;?>
        </thead>
        <tbody>
          <?php $counter = 0; ?>
@@ -39,6 +43,7 @@
              <td><?= $produk['harga'] ?> </td>
              <td><?= $produk['nama_kategori'] ?></td>
              <td><?= $produk['nama_kelompok'] ?></td>
+               <?php if(isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris" ) :?>
              <td>
                <a target="_blank" href="/produk?q=<?= $produk['id_produk'] ?>" class="bm-link">Lihat</a>&nbsp;&nbsp;&nbsp;&nbsp;
                <a rel="modal:open" href="#edit_modal" class="bm-link btn_update"
@@ -54,6 +59,7 @@
                   data-id="<?= $produk['id_produk'] ?>"
                >Hapus</a>
              </td>
+               <?php endif;?>
            </tr>
          <?php endforeach ?>
        </tbody>

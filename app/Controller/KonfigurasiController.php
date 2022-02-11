@@ -26,6 +26,7 @@ class KonfigurasiController
         View::RenderDashboard("Konfigurasi/index", [
             'title' => 'Konfigurasi',
             'page_type' => 'konfigurasi',
+            'hak_akses' => $this->session->Get("hak_akses"),
             'konfigurasi'=> $this->service->GetAllModel()
         ]);
     }

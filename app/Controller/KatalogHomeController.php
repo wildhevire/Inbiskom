@@ -3,6 +3,7 @@
 namespace app\Controller;
 
 use app\Config\Database;
+use app\Core\Session;
 use app\Core\View;
 use app\Repository\KatalogRepository;
 use app\Repository\KategoriRepository;
@@ -16,7 +17,6 @@ class KatalogHomeController
 
     private KategoriRepository $kategoriRepository;
     private KategoriService $kategoriService;
-
 
     public function __construct()
     {

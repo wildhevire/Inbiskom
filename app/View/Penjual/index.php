@@ -3,10 +3,12 @@
     <h2 class="mb-4">Penjual</h2>
     <div class="row align-items-center">
         <div class="col">
+            <?php if(isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris" ) :?>
             <a rel="modal:open" href="#add_modal" class="bm-btn"><span class="bm-btn__icon">
                     <i class="fas fa-plus"></i>
                 </span>
                 <span class="bm-btn__label">Tambah Penjual</span></a>
+            <?php endif;?>
         </div>
         <div class="col-4">
             <div class="bm-input bm-input--outline bm-input--with-icon">
@@ -25,7 +27,9 @@
                 <th>Nama</th>
                 <th>Jenis</th>
                 <th>Kelompok</th>
+                <?php if(isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris" ) :?>
                 <th>Aksi</th>
+                <?php endif;?>
             </thead>
             <tbody>
                 <?php $counter = 0 ?>
@@ -37,10 +41,12 @@
                         <td><?= $penjual['nama_penjual'] ?></td>
                         <td><?= $penjual['tipe_kelompok'] ?></td>
                         <td><?= $penjual['nama_kelompok'] ?></td>
+                        <?php if(isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris" ) :?>
                         <td>
                             <a rel="modal:open" href="#edit_modal" class="bm-link btn_update" id="btn_update" data-id="<?= $penjual['id_detail_kelompok']; ?>" data-no_id="<?= $penjual['no_identitas']; ?>" data-nama_penjual="<?= $penjual['nama_penjual']; ?>" data-nama_tipe="<?= $penjual['tipe_kelompok']; ?>" data-nama_kelompok="<?= $penjual['nama_kelompok']; ?>" data-id_kelompok="<?= $penjual['id_kelompok']; ?>">Ubah</a>&nbsp;&nbsp;&nbsp;&nbsp;
                             <a rel="modal:open" href="#delete_modal" class="bm-link text-danger btn_delete" id="btn_delete" data-id_detail_kelompok="<?= $penjual['id_detail_kelompok'] ?>">Hapus</a>
                         </td>
+                        <?php endif;?>
                     </tr>
                 <?php endforeach; ?>
 
