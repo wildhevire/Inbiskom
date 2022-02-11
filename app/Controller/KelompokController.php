@@ -90,8 +90,8 @@ class KelompokController
     }
     public function UpdateKelompok()
     {
-        echo '<pre>' , var_dump($_POST) , '</pre>';
-        echo '<pre>' , var_dump($_FILES) , '</pre>';
+//        echo '<pre>' , var_dump($_POST) , '</pre>';
+//        echo '<pre>' , var_dump($_FILES) , '</pre>';
         $req = new KelompokRequest();
         $req->id_kelompok = $_POST["id_kelompok"];
         $req->nama_kelompok = $_POST["nama_kelompok"];
@@ -117,8 +117,8 @@ class KelompokController
     }
     public function DeleteKelompok()
     {
-        echo '<pre>' , var_dump($_POST) , '</pre>';
-        echo '<pre>' , var_dump($_FILES) , '</pre>';
+//        echo '<pre>' , var_dump($_POST) , '</pre>';
+//        echo '<pre>' , var_dump($_FILES) , '</pre>';
         $id = $_POST["id_kelompok"];
 
         try {

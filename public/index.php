@@ -44,12 +44,16 @@ Router::Add('GET', '/dashboard-produk',
     \app\Controller\ProdukController::class, 'index',
     [\app\Middleware\MustLoginMiddleware::class]
 );
-Router::Add('GET', '/UpdateProduk',
+Router::Add('POST', '/UpdateProduk',
     \app\Controller\ProdukController::class, 'UpdateProduk',
     [\app\Middleware\MustLoginMiddleware::class]
 );
-Router::Add('GET', '/DeleteProduk',
+Router::Add('POST', '/DeleteProduk',
     \app\Controller\ProdukController::class, 'DeleteProduk',
+    [\app\Middleware\MustLoginMiddleware::class]
+);
+Router::Add('POST', '/AddProduk',
+    \app\Controller\ProdukController::class, 'AddProduk',
     [\app\Middleware\MustLoginMiddleware::class]
 );
 

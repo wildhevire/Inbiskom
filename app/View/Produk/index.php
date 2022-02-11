@@ -41,8 +41,14 @@
              <td><?= $produk['nama_kelompok'] ?></td>
              <td>
                <a rel="" href="/produk?q=<?= $produk['id_produk'] ?>" class="bm-link">Lihat</a>&nbsp;&nbsp;&nbsp;&nbsp;
-               <a rel="modal:open" href="#edit_modal" class="bm-link" data-id="<?= $produk['id_produk'] ?>" data-id="<?= $produk['id_produk'] ?>" data-id="<?= $produk['id_produk'] ?>">Ubah</a>&nbsp;&nbsp;&nbsp;&nbsp;
-               <a rel="modal:open" href="#delete_modal" class="bm-link text-danger">Hapus</a>
+               <a rel="modal:open" href="#edit_modal" class="bm-link btn_update"
+                  data-id="<?= $produk['id_produk'] ?>"
+                  data-id="<?= $produk['id_produk'] ?>"
+                  data-id="<?= $produk['id_produk'] ?>"
+               >Ubah</a>&nbsp;&nbsp;&nbsp;&nbsp;
+               <a rel="modal:open" href="#delete_modal" class="bm-link text-danger btn_delete"
+                  data-id="<?= $produk['id_produk'] ?>"
+               >Hapus</a>
              </td>
            </tr>
          <?php endforeach ?>
@@ -111,7 +117,7 @@
    </div>
 
    <div class="bm-modal__body">
-     <form action="/TambahProduk" method="POST" enctype="multipart/form-data">
+     <form action="/AddProduk" method="POST" enctype="multipart/form-data">
        <label class="bm-input-label" for="nama-produk">Nama produk</label>
        <div class="bm-input">
          <input type="text" name="nama_produk" id="nama-produk" class="bm-input__field" placeholder="Contoh: Seblak Mantap" />
@@ -133,9 +139,9 @@
        <div class="bm-input">
          <select class="bm-input__field" id="kelompok" name="id_kelompok" required>
            <option value="" disabled selected>Pilih opsi</option>
-           <option value="1">Option 1</option>
-           <option value="2">Option 2</option>
-           <option value="3">Option 3</option>
+             <?php foreach ($model['kelompok'] as $kelompok) :?>
+                 <option value="<?= $kelompok['id_kelompok'] ?>"><?= $kelompok['nama_kelompok'] ?></option>
+             <?php endforeach;?>
          </select>
          <span class="bm-input__arrow"></span>
        </div>
@@ -232,17 +238,18 @@
            </label>
          </div>
        </div>
-     </form>
+
    </div>
 
    <div class="bm-modal__footer">
      <a type="button" class="bm-btn bm-btn--secondary" rel="modal:close">
        <span class="bm-btn__label">Batal</span>
      </a>
-     <button type="button" class="bm-btn">
+     <button type="submit" class="bm-btn">
        <span class="bm-btn__label">Simpan</span>
      </button>
    </div>
+     </form>
  </div>
  <!-- ! END OF ADD MODAL -->
  <!-- ! EDIT MODAL -->
@@ -278,9 +285,9 @@
        <div class="bm-input">
          <select class="bm-input__field" id="kelompok" name="id_kelompok" required>
            <option value="" disabled selected>Pilih opsi</option>
-           <option value="1">Option 1</option>
-           <option value="2">Option 2</option>
-           <option value="3">Option 3</option>
+             <?php foreach ($model['kelompok'] as $kelompok) :?>
+                 <option value="<?= $kelompok['id_kelompok'] ?>"><?= $kelompok['nama_kelompok'] ?></option>
+             <?php endforeach;?>
          </select>
          <span class="bm-input__arrow"></span>
        </div>
