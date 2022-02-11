@@ -67,7 +67,7 @@
             <td>
               <!--            <a rel="modal:open" href="#detail_modal" class="bm-link"-->
               <!--            >Lihat</a>&nbsp;&nbsp;&nbsp;&nbsp;-->
-              <a rel="modal:open" href="#edit_modal" class="bm-link" id="btn_update" data-deskripsi="<?= $kelompok['deskripsi_kelompok'] ?>"
+              <a rel="modal:open" href="#edit_modal" class="bm-link btn_update" id="btn_update" data-deskripsi="<?= $kelompok['deskripsi_kelompok'] ?>"
                  data-id="<?= $kelompok['id_kelompok'] ?>" data-nama="<?= $kelompok['nama_kelompok'] ?>" data-tipe="<?= $kelompok['tipe_kelompok'] ?>" data-jumlah_anggota="<?= $kelompok['jumlah_anggota'] ?>" data-jumlah_produk="<?= $kelompok['jumlah_produk'] ?>" data-kategori="<?= $kelompok['kategori'] ?>" data-angkatan="<?= $kelompok['angkatan'] ?>">Ubah</a>&nbsp;&nbsp;&nbsp;&nbsp;
               <a rel="modal:open" id="btn_delete" href="#delete_modal" class="bm-link text-danger btn_delete" data-id="<?= $kelompok['id_kelompok'] ?>">Hapus</a>&nbsp;&nbsp;&nbsp;&nbsp;
               <a rel="" href="/toko?q=<?= $kelompok['id_kelompok'] ?>" class="bm-link">Buka</a>
@@ -794,7 +794,7 @@
     })
   });
 
-  $("#btn_update").click(function (){
+  $(".btn_update").click(function (){
       var id = $(this).data("id");
       var nama = $(this).data("nama");
       var tipe = $(this).data("tipe");
