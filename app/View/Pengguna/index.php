@@ -92,7 +92,7 @@
 
 <!-- ! TAMBAH MODAL -->
 <div
-        class="bm-modal h-auto bm-modal--scrollable"
+        class="bm-modal h-auto"
         id="add_modal"
         role="dialog"
         aria-modal="true"
@@ -198,7 +198,7 @@
 <!-- ! EDIT MODAL -->
 
 <div
-        class="bm-modal h-auto bm-modal--scrollable"
+        class="bm-modal h-auto"
         id="edit_modal"
         role="dialog"
         aria-modal="true"
@@ -307,7 +307,7 @@
 
 <!-- ! DELETE MODAL -->
 <div
-        class="bm-modal h-auto bm-modal--scrollable"
+        class="bm-modal h-auto"
         id="delete_modal"
         role="dialog"
         aria-modal="true"
