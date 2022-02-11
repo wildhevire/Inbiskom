@@ -177,7 +177,13 @@
             <br />
             <label class="bm-input-label" for="angkatan">Angkatan</label>
             <div class="bm-input">
-              <input name="angkatan" id="angkatan" type="number" class="bm-input__field" placeholder="Contoh: 2022" />
+              <select class="bm-input__field" id="angkatan" name="angkatan">
+                <option value="" disabled selected>Tahun</option>
+                <?php for ($i = 2017; $i <= date("Y"); $i++) : ?>
+                <option value="<?= $i?>" ><?= $i?></option>
+                <?php endfor; ?>
+              </select>
+              <span class="bm-input__arrow"></span>
             </div>
             <br />
             <label class="bm-input-label" for="deskripsi">Deskripsi</label>
@@ -413,10 +419,15 @@
       </div>
 
       <br />
-      <label class="bm-input-label" for="angkatan">Angkatan</label>
+      <label class="bm-input-label" for="update_angkatan">Angkatan</label>
       <div class="bm-input">
-        <input type="number" name="angkatan" id="update_angkatan" class="bm-input__field" placeholder="2020" />
-      </div>
+              <select class="bm-input__field" id="update_angkatan" name="angkatan">
+                <?php for ($i = 2017; $i <= date("Y"); $i++) : ?>
+                <option value="<?= $i?>"><?= $i?></option>
+                <?php endfor; ?>
+              </select>
+              <span class="bm-input__arrow"></span>
+            </div>
 
       <br />
 

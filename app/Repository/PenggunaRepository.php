@@ -140,12 +140,7 @@ class PenggunaRepository
     }
     public function UpdateStatus(string $id, bool $status):void
     {
-        $statusInDB = 0;
-        if($status){
-            $statusInDB = 1;
-        }
-
-        $statement = $this->conn->prepare("UPDATE pengguna SET status= ? WHERE id_pengguna = ?");
-        $statement->execute([$statusInDB, $id]);
+        $statement = $this->conn->prepare("UPDATE pengguna SET status= ABS(status - 1) WHERE id_pengguna = ?");
+        $statement->execute([$id]);
     }
 }

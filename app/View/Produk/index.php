@@ -40,7 +40,7 @@
              <td><?= $counter ?> </td>
              <td><?= $produk['nama_produk'] ?></td>
              <td class="text-truncate" style="max-width: 240px"><?= $produk['deskripsi_produk'] ?> </td>
-             <td><?= $produk['harga'] ?> </td>
+             <td><?= rupiah($produk['harga']) ?> </td>
              <td><?= $produk['nama_kategori'] ?></td>
              <td><?= $produk['nama_kelompok'] ?></td>
                <?php if(isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris" ) :?>
