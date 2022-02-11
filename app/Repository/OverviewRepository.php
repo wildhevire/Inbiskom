@@ -69,6 +69,35 @@ class OverviewRepository
 
         return $result;
     }
+    public function SelectTotalProduk(): ?array
+    {
+        $statement = $this->conn->query(
+            "SELECT COUNT(id_produk) AS total_produk FROM produk "
+        );
 
+        $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+    public function SelectTotalKelompok(): ?array
+    {
+        $statement = $this->conn->query(
+            "SELECT COUNT(id_kelompok) AS total_kelompok FROM kelompok "
+        );
+
+        $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+    public function SelectTotalPenjual(): ?array
+    {
+        $statement = $this->conn->query(
+            "SELECT COUNT(id_detail_kelompok) AS total_penjual FROM detail_kelompok "
+        );
+
+        $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
+
+        return $result;
+    }
 
 }

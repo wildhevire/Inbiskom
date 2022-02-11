@@ -7,7 +7,7 @@
                     <i class="fa fa-user"></i>
                 </div>
                 <div class="bm-card__inner col-8">
-                    <h2 class="bm-card__title">256</h2>
+                    <h2 class="bm-card__title"><?= $model['total_penjual'][0]['total_penjual']?></h2>
                     Total Penjual
                 </div>
             </div>
@@ -18,7 +18,7 @@
                     <i class="fa fa-user-friends"></i>
                 </div>
                 <div class="bm-card__inner col-8">
-                    <h2 class="bm-card__title">256</h2>
+                    <h2 class="bm-card__title"><?= $model['total_kelompok'][0]['total_kelompok']?></h2>
                     Total Kelompok
                 </div>
             </div>
@@ -29,7 +29,7 @@
                     <i class="fa fa-box-open"></i>
                 </div>
                 <div class="bm-card__inner col-8">
-                    <h2 class="bm-card__title">256</h2>
+                    <h2 class="bm-card__title"><?= $model['total_produk'][0]['total_produk']?></h2>
                     Total Produk
                 </div>
             </div>
