@@ -38,11 +38,22 @@ Router::Add('GET', '/dashboard-pengguna',
     \app\Controller\PenggunaController::class, 'index',
     [\app\Middleware\MustLoginMiddleware::class]
 );
+
+//Produk
 Router::Add('GET', '/dashboard-produk',
     \app\Controller\ProdukController::class, 'index',
     [\app\Middleware\MustLoginMiddleware::class]
 );
+Router::Add('GET', '/UpdateProduk',
+    \app\Controller\ProdukController::class, 'UpdateProduk',
+    [\app\Middleware\MustLoginMiddleware::class]
+);
+Router::Add('GET', '/DeleteProduk',
+    \app\Controller\ProdukController::class, 'DeleteProduk',
+    [\app\Middleware\MustLoginMiddleware::class]
+);
 
+//Konfig
 Router::Add('POST', '/TambahKonfig',
     \app\Controller\KonfigurasiController::class, 'AddKonfigurasi',
     [\app\Middleware\MustLoginMiddleware::class]
