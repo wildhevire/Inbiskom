@@ -18,27 +18,27 @@
     </div>
   </div>
 
-    <?php if(isset($model['success'])) {?>
-        <!-- ! SUCCESS ALERT -->
-        <div class="bm-alert bm-alert--success mt-4" role="alert">
-            <div class="bm-alert__icon">
-                <i class="fas fa-check-circle"></i>
-            </div>
-            <div class="bm-alert__content"><?= $model['success'] ?></div>
-        </div>
-        <!-- ! END OF SUCCESS ALERT -->
-    <?php } ?>
+  <?php if (isset($model['success'])) { ?>
+    <!-- ! SUCCESS ALERT -->
+    <div class="bm-alert bm-alert--success mt-4" role="alert">
+      <div class="bm-alert__icon">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <div class="bm-alert__content"><?= $model['success'] ?></div>
+    </div>
+    <!-- ! END OF SUCCESS ALERT -->
+  <?php } ?>
 
-    <?php if(isset($model['error'])) {?>
-        <!-- ! ERROR ALERT -->
-        <div class="bm-alert bm-alert--error mt-4" role="alert">
-            <div class="bm-alert__icon">
-                <i class="fas fa-exclamation-circle"></i>
-            </div>
-            <div class="bm-alert__content"><?= $model['error'] ?></div>
-        </div>
-        <!-- ! END OF ERROR ALERT -->
-    <?php } ?>
+  <?php if (isset($model['error'])) { ?>
+    <!-- ! ERROR ALERT -->
+    <div class="bm-alert bm-alert--error mt-4" role="alert">
+      <div class="bm-alert__icon">
+        <i class="fas fa-exclamation-circle"></i>
+      </div>
+      <div class="bm-alert__content"><?= $model['error'] ?></div>
+    </div>
+    <!-- ! END OF ERROR ALERT -->
+  <?php } ?>
 
   <div class="bm-card mt-4 bg-white">
     <table class="bm-table w-100">
@@ -53,36 +53,26 @@
         <th>Aksi</th>
       </thead>
       <tbody>
-          <?php $counter = 0; ?>
-          <?php foreach ($model['data']['kelompok'] as $kelompok) : ?>
-        <tr>
+        <?php $counter = 0; ?>
+        <?php foreach ($model['data']['kelompok'] as $kelompok) : ?>
+          <tr>
             <?php $counter++; ?>
-          <td><?= $counter ?> </td>
-          <td><?= $kelompok['nama_kelompok'] ?></td>
-          <td><?= $kelompok['tipe_kelompok'] ?></td>
-          <td><?= $kelompok['jumlah_anggota'] ?></td>
-          <td><?= $kelompok['jumlah_produk'] ?></td>
-          <td><?= $kelompok['kategori'] ?></td>
-          <td><?= $kelompok['angkatan'] ?></td>
-          <td>
-<!--            <a rel="modal:open" href="#detail_modal" class="bm-link"-->
-<!--            >Lihat</a>&nbsp;&nbsp;&nbsp;&nbsp;-->
-            <a rel="modal:open" href="#edit_modal" class="bm-link" id="btn_update"
-               data-id="<?= $kelompok['id_kelompok'] ?>"
-               data-nama="<?= $kelompok['nama_kelompok'] ?>"
-               data-tipe="<?= $kelompok['tipe_kelompok'] ?>"
-               data-jumlah_anggota="<?= $kelompok['jumlah_anggota'] ?>"
-               data-jumlah_produk="<?= $kelompok['jumlah_produk'] ?>"
-               data-kategori="<?= $kelompok['kategori'] ?>"
-               data-angkatan="<?= $kelompok['angkatan'] ?>"
-            >Ubah</a>&nbsp;&nbsp;&nbsp;&nbsp;
-            <a rel="modal:open" id="btn_delete" href="#delete_modal" class="bm-link text-danger btn_delete"
-               data-id="<?= $kelompok['id_kelompok'] ?>"
-            >Hapus</a>&nbsp;&nbsp;&nbsp;&nbsp;
-            <a rel="" href="/toko?q=<?= $kelompok['id_kelompok'] ?>" class="bm-link">Buka</a>
-          </td>
-        </tr>
-          <?php endforeach ?>
+            <td><?= $counter ?> </td>
+            <td><?= $kelompok['nama_kelompok'] ?></td>
+            <td><?= $kelompok['tipe_kelompok'] ?></td>
+            <td><?= $kelompok['jumlah_anggota'] ?></td>
+            <td><?= $kelompok['jumlah_produk'] ?></td>
+            <td><?= $kelompok['kategori'] ?></td>
+            <td><?= $kelompok['angkatan'] ?></td>
+            <td>
+              <!--            <a rel="modal:open" href="#detail_modal" class="bm-link"-->
+              <!--            >Lihat</a>&nbsp;&nbsp;&nbsp;&nbsp;-->
+              <a rel="modal:open" href="#edit_modal" class="bm-link" id="btn_update" data-id="<?= $kelompok['id_kelompok'] ?>" data-nama="<?= $kelompok['nama_kelompok'] ?>" data-tipe="<?= $kelompok['tipe_kelompok'] ?>" data-jumlah_anggota="<?= $kelompok['jumlah_anggota'] ?>" data-jumlah_produk="<?= $kelompok['jumlah_produk'] ?>" data-kategori="<?= $kelompok['kategori'] ?>" data-angkatan="<?= $kelompok['angkatan'] ?>">Ubah</a>&nbsp;&nbsp;&nbsp;&nbsp;
+              <a rel="modal:open" id="btn_delete" href="#delete_modal" class="bm-link text-danger btn_delete" data-id="<?= $kelompok['id_kelompok'] ?>">Hapus</a>&nbsp;&nbsp;&nbsp;&nbsp;
+              <a rel="" href="/toko?q=<?= $kelompok['id_kelompok'] ?>" class="bm-link">Buka</a>
+            </td>
+          </tr>
+        <?php endforeach ?>
       </tbody>
     </table>
   </div>
@@ -92,7 +82,7 @@
 </div>
 
 <!-- ! DETAIL MODAL -->
-<div class="bm-modal h-auto bm-modal--scrollable" id="detail_modal" role="dialog" aria-modal="true" aria-labelledby="modal-label" tabindex="-1">
+<div class="bm-modal h-auto " id="detail_modal" role="dialog" aria-modal="true" aria-labelledby="modal-label" tabindex="-1">
   <div class="bm-modal__header">
     <h5 class="bm-modal__title">Detail data kelompok</h5>
     <a class="bm-modal__button-close" aria-label="close" rel="modal:close">
@@ -397,7 +387,7 @@
 <!-- ! END OF ADD MODAL -->
 
 <!-- ! EDIT MODAL -->
-<div class="bm-modal h-auto bm-modal--scrollable" id="edit_modal" role="dialog" aria-modal="true" aria-labelledby="modal-label" tabindex="-1">
+<div class="bm-modal h-auto" id="edit_modal" role="dialog" aria-modal="true" aria-labelledby="modal-label" tabindex="-1">
   <div class="bm-modal__header">
     <h5 class="bm-modal__title">Ubah data pengguna</h5>
     <a class="bm-modal__button-close" aria-label="close" rel="modal:close">
@@ -407,44 +397,50 @@
   </div>
 
   <div class="bm-modal__body">
-  <form action="/UpdateKelompok" method="POST">
+    <form action="/UpdateKelompok" method="POST">
       <input type="hidden" name="id_kelompok" id="update_id_kelompok" class="bm-input__field" placeholder="Contoh: John Doe" />
 
-        <label class="bm-input-label" for="nama">Nama Kelompok</label>
-        <div class="bm-input">
-          <input type="text" name="nama_kelompok" id="nama" class="bm-input__field" placeholder="Contoh: John Doe" />
-        </div>
-
-        <br />
-        <label class="bm-input-label" for="angkatan">Angkatan</label>
-        <div class="bm-input">
-          <input type="number" name="angkatan" id="update_angkatan" class="bm-input__field" placeholder="2020" />
-        </div>
-
-        <br />
-
-      <label class="bm-input-label" for="tipe_kelompok">Tipe Kelompok</label>
+      <label class="bm-input-label" for="nama">Nama Kelompok</label>
       <div class="bm-input">
-          <select name="tipe_kelompok" class="bm-input__field" id="tipe_kelompok" required>
-
-              <option value="" disabled selected>Pilih </option>
-              <option value="Mahasiswa">Mahasiswa</option>
-              <option value="Umum">Umum</option>
-
-          </select>
-          <span class="bm-input__arrow"></span>
+        <input type="text" name="nama_kelompok" id="nama" class="bm-input__field" placeholder="Contoh: John Doe" />
       </div>
 
       <br />
+      <label class="bm-input-label" for="angkatan">Angkatan</label>
+      <div class="bm-input">
+        <input type="number" name="angkatan" id="update_angkatan" class="bm-input__field" placeholder="2020" />
+      </div>
+
+      <br />
+
+      <label class="bm-input-label" for="tipe_kelompok">Tipe Kelompok</label>
+      <div class="bm-input">
+        <select name="tipe_kelompok" class="bm-input__field" id="tipe_kelompok" required>
+
+          <option value="" disabled selected>Pilih </option>
+          <option value="Mahasiswa">Mahasiswa</option>
+          <option value="Umum">Umum</option>
+
+        </select>
+        <span class="bm-input__arrow"></span>
+      </div>
+
+      <br />
+
+      <label class="bm-input-label" for="deskripsi-produk-1">Deskripsi produk</label>
+      <div class="bm-input">
+        <textarea name="deskripsi_produk-1" id="deskripsi-peroduk-1" class="bm-input__field" placeholder="Contoh: T-shirt berwarna hitam dengan bahan katun"></textarea>
+      </div>
+      <br />
       <label class="bm-input-label" for="kategori">Kategori</label>
       <div class="bm-input">
-          <select name="id_kategori" class="bm-input__field" id="kategori" required>
-              <option value="" disabled selected>Pilih kategori</option>
-              <?php foreach ($model['data']['kategori'] as $kategori) : ?>
-                  <option value="<?= $kategori['id_kategori'] ?>"><?= $kategori['nama_kategori'] ?></option>
-              <?php endforeach; ?>
-          </select>
-          <span class="bm-input__arrow"></span>
+        <select name="id_kategori" class="bm-input__field" id="kategori" required>
+          <option value="" disabled selected>Pilih kategori</option>
+          <?php foreach ($model['data']['kategori'] as $kategori) : ?>
+            <option value="<?= $kategori['id_kategori'] ?>"><?= $kategori['nama_kategori'] ?></option>
+          <?php endforeach; ?>
+        </select>
+        <span class="bm-input__arrow"></span>
       </div>
       <br />
 
@@ -462,33 +458,33 @@
 <!-- ! END OF EDIT MODAL -->
 
 <!-- ! DELETE MODAL -->
-<div class="bm-modal h-auto bm-modal--scrollable" id="delete_modal" role="dialog" aria-modal="true" aria-labelledby="modal-label" tabindex="-1">
+<div class="bm-modal h-auto " id="delete_modal" role="dialog" aria-modal="true" aria-labelledby="modal-label" tabindex="-1">
 
-    <form action="/DeleteKelompok" method="POST">
-        <input type="hidden" name="id_kelompok" id="delete_id_kelompok"/>
-            <div class="bm-modal__header">
-            <h5 class="bm-modal__title">Apakah Anda yakin?</h5>
-            <a class="bm-modal__button-close" aria-label="close" rel="modal:close">
-              <span class="bm-modal__icon-close"></span>
-              <span class="bm-sr-only">Batal</span>
-            </a>
-          </div>
+  <form action="/DeleteKelompok" method="POST">
+    <input type="hidden" name="id_kelompok" id="delete_id_kelompok" />
+    <div class="bm-modal__header">
+      <h5 class="bm-modal__title">Apakah Anda yakin?</h5>
+      <a class="bm-modal__button-close" aria-label="close" rel="modal:close">
+        <span class="bm-modal__icon-close"></span>
+        <span class="bm-sr-only">Batal</span>
+      </a>
+    </div>
 
-          <div class="bm-modal__body">
-            <p class="bm-body1">
-              Anda tidak akan dapat memulihkan data ini jika sudah di hapus
-            </p>
-          </div>
+    <div class="bm-modal__body">
+      <p class="bm-body1">
+        Anda tidak akan dapat memulihkan data ini jika sudah di hapus
+      </p>
+    </div>
 
-          <div class="bm-modal__footer">
-            <a type="button" class="bm-btn bm-btn--secondary" rel="modal:close">
-              <span class="bm-btn__label">Batal</span>
-            </a>
-            <button type="submit" class="bm-btn bm-btn--danger">
-              <span class="bm-btn__label">Ya, hapus data ini!</span>
-            </button>
-          </div>
-    </form>
+    <div class="bm-modal__footer">
+      <a type="button" class="bm-btn bm-btn--secondary" rel="modal:close">
+        <span class="bm-btn__label">Batal</span>
+      </a>
+      <button type="submit" class="bm-btn bm-btn--danger">
+        <span class="bm-btn__label">Ya, hapus data ini!</span>
+      </button>
+    </div>
+  </form>
 </div>
 <!-- ! END OF DELETE MODAL -->
 <script>
@@ -571,7 +567,7 @@
     $("#tambah-produk").click(() => {
       produkIterator++;
 
-      
+
       $("#produk_count").val(produkIterator)
 
       if (produkIterator !== 1) {
@@ -774,7 +770,7 @@
     //           </label>
     //     `)
     // });
-    
+
     $('#foto-produk-wrapper-1').on("click", '#delete-foto', (e) => {
       e.preventDefault()
       let fotoProdukCount = document.getElementsByClassName("foto-produk-1").length
@@ -797,36 +793,39 @@
     })
   });
 
-  $("#btn_update").click(function (){
-      var id = $(this).data("id");
-      var nama = $(this).data("nama");
-      var tipe = $(this).data("tipe");
-      var jumlah_anggota = $(this).data("jumlah_anggota");
-      var jumlah_produk = $(this).data("jumlah_produk");
-      var kategori = $(this).data("kategori");
-      var angkatan = $(this).data("angkatan");
+  $("#btn_update").click(function() {
+    var id = $(this).data("id");
+    var nama = $(this).data("nama");
+    var tipe = $(this).data("tipe");
+    var jumlah_anggota = $(this).data("jumlah_anggota");
+    var jumlah_produk = $(this).data("jumlah_produk");
+    var kategori = $(this).data("kategori");
+    var angkatan = $(this).data("angkatan");
 
-      $("#update_id_kelompok").val(id);
-      $("#nama").val(nama);
-      $("#update_nama_kategori").val(jumlah_anggota);
-      $("#update_nama_kategori").val(jumlah_produk);
-      $("#update_nama_kategori").val(kategori);
-      $("#update_angkatan").val(angkatan);
+    $("#update_id_kelompok").val(id);
+    $("#nama").val(nama);
+    $("#update_nama_kategori").val(jumlah_anggota);
+    $("#update_nama_kategori").val(jumlah_produk);
+    $("#update_nama_kategori").val(kategori);
+    $("#update_angkatan").val(angkatan);
   });
 
-  $(".btn_delete").click(function (){
-      var id = $(this).data("id");
+  $(".btn_delete").click(function() {
+    var id = $(this).data("id");
 
-      $("#delete_id_kelompok").val(id);
+    $("#delete_id_kelompok").val(id);
   });
   //
-  //data-nama="<?//= $kelompok['nama_kelompok'] ?>//"
-  //data-tipe="<?//= $kelompok['tipe_kelompok'] ?>//"
-  //data-jumlah_anggota="<?//= $kelompok['jumlah_anggota'] ?>//"
-  //data-jumlah_produk="<?//= $kelompok['jumlah_produk'] ?>//"
-  //data-kategori="<?//= $kelompok['kategori'] ?>//"
-  //data-angkatan="<?//= $kelompok['angkatan'] ?>//"
-
-
-
+  //data-nama="<? //= $kelompok['nama_kelompok'] 
+                ?>//"
+  //data-tipe="<? //= $kelompok['tipe_kelompok'] 
+                ?>//"
+  //data-jumlah_anggota="<? //= $kelompok['jumlah_anggota'] 
+                          ?>//"
+  //data-jumlah_produk="<? //= $kelompok['jumlah_produk'] 
+                        ?>//"
+  //data-kategori="<? //= $kelompok['kategori'] 
+                    ?>//"
+  //data-angkatan="<? //= $kelompok['angkatan'] 
+                    ?>//"
 </script>
