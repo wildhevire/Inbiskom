@@ -77,7 +77,8 @@
                     <a
                             rel="modal:open"
                             href="#delete_modal"
-                            class="bm-link text-danger"
+                            class="bm-link text-danger btn_delete"
+                            data-id="<?= $data['id_pengguna']; ?>"
                     >Ubah status</a
                     >
                 </td>
@@ -313,8 +314,8 @@
         aria-labelledby="modal-label"
         tabindex="-1"
 >
-    <form action="/delete-pengguna" method="POST">
-        <input type="hidden" name="id_pengguna" id="delete_id_pengguna"/>
+    <form action="/DeletePengguna" method="POST">
+        <input type="text" name="id_pengguna" id="delete_id_pengguna"/>
         <div class="bm-modal__header">
             <h5 class="bm-modal__title">Apakah Anda yakin?</h5>
             <a class="bm-modal__button-close" aria-label="close" rel="modal:close">
@@ -333,7 +334,7 @@
             <a type="button" class="bm-btn bm-btn--secondary" rel="modal:close">
                 <span class="bm-btn__label">Batal</span>
             </a>
-            <button type="button" class="bm-btn bm-btn--danger">
+            <button type="submit" class="bm-btn bm-btn--danger">
                 <span class="bm-btn__label">Ya, hapus data ini!</span>
             </button>
         </div>
@@ -359,7 +360,7 @@
     });
 
     $(".btn_delete").click(function () {
-        var id = $(this).data("id_pengguna");
+        var id = $(this).data("id");
 
         $("#delete_id_pengguna").val(id);
     });

@@ -77,6 +77,11 @@ Router::Add('POST', '/DeletePenjual',
     [\app\Middleware\MustLoginMiddleware::class]
 );
 
+Router::Add('POST', '/DeletePengguna',
+    \app\Controller\PenggunaController::class, 'DeletePengguna',
+    [\app\Middleware\MustLoginMiddleware::class]
+);
+
 
 //Login
 Router::Add('GET', '/dashboard-login',

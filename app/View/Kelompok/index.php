@@ -67,7 +67,8 @@
             <td>
               <!--            <a rel="modal:open" href="#detail_modal" class="bm-link"-->
               <!--            >Lihat</a>&nbsp;&nbsp;&nbsp;&nbsp;-->
-              <a rel="modal:open" href="#edit_modal" class="bm-link" id="btn_update" data-id="<?= $kelompok['id_kelompok'] ?>" data-nama="<?= $kelompok['nama_kelompok'] ?>" data-tipe="<?= $kelompok['tipe_kelompok'] ?>" data-jumlah_anggota="<?= $kelompok['jumlah_anggota'] ?>" data-jumlah_produk="<?= $kelompok['jumlah_produk'] ?>" data-kategori="<?= $kelompok['kategori'] ?>" data-angkatan="<?= $kelompok['angkatan'] ?>">Ubah</a>&nbsp;&nbsp;&nbsp;&nbsp;
+              <a rel="modal:open" href="#edit_modal" class="bm-link btn_update" id="btn_update" data-deskripsi="<?= $kelompok['deskripsi_kelompok'] ?>"
+                 data-id="<?= $kelompok['id_kelompok'] ?>" data-nama="<?= $kelompok['nama_kelompok'] ?>" data-tipe="<?= $kelompok['tipe_kelompok'] ?>" data-jumlah_anggota="<?= $kelompok['jumlah_anggota'] ?>" data-jumlah_produk="<?= $kelompok['jumlah_produk'] ?>" data-kategori="<?= $kelompok['kategori'] ?>" data-angkatan="<?= $kelompok['angkatan'] ?>">Ubah</a>&nbsp;&nbsp;&nbsp;&nbsp;
               <a rel="modal:open" id="btn_delete" href="#delete_modal" class="bm-link text-danger btn_delete" data-id="<?= $kelompok['id_kelompok'] ?>">Hapus</a>&nbsp;&nbsp;&nbsp;&nbsp;
               <a rel="" href="/toko?q=<?= $kelompok['id_kelompok'] ?>" class="bm-link">Buka</a>
             </td>
@@ -427,9 +428,9 @@
 
       <br />
 
-      <label class="bm-input-label" for="deskripsi-produk-1">Deskripsi produk</label>
+      <label class="bm-input-label" for="deskripsi_kelompok">Deskripsi produk</label>
       <div class="bm-input">
-        <textarea name="deskripsi_produk-1" id="deskripsi-peroduk-1" class="bm-input__field" placeholder="Contoh: T-shirt berwarna hitam dengan bahan katun"></textarea>
+        <textarea name="deskripsi_kelompok" id="deskripsi_kelompok" class="bm-input__field" placeholder="Contoh: T-shirt berwarna hitam dengan bahan katun"></textarea>
       </div>
       <br />
       <label class="bm-input-label" for="kategori">Kategori</label>
@@ -793,23 +794,23 @@
     })
   });
 
-  $("#btn_update").click(function() {
-    var id = $(this).data("id");
-    var nama = $(this).data("nama");
-    var tipe = $(this).data("tipe");
-    var jumlah_anggota = $(this).data("jumlah_anggota");
-    var jumlah_produk = $(this).data("jumlah_produk");
-    var kategori = $(this).data("kategori");
-    var angkatan = $(this).data("angkatan");
+  $(".btn_update").click(function (){
+      var id = $(this).data("id");
+      var nama = $(this).data("nama");
+      var tipe = $(this).data("tipe");
+      var jumlah_anggota = $(this).data("jumlah_anggota");
+      var jumlah_produk = $(this).data("jumlah_produk");
+      var kategori = $(this).data("kategori");
+      var angkatan = $(this).data("angkatan");
+      var deskripsi = $(this).data("deskripsi");
 
-    console.log(tipe);
-
-    $("#update_id_kelompok").val(id);
-    $("#nama").val(nama);
-    $("#update_nama_kategori").val(jumlah_anggota);
-    $("#update_nama_kategori").val(jumlah_produk);
-    $("#update_nama_kategori").val(kategori);
-    $("#update_angkatan").val(angkatan);
+      $("#update_id_kelompok").val(id);
+      $("#nama").val(nama);
+      $("#update_nama_kategori").val(jumlah_anggota);
+      $("#update_nama_kategori").val(jumlah_produk);
+      $("#update_nama_kategori").val(kategori);
+      $("#update_angkatan").val(angkatan);
+      $("#deskripsi_kelompok").val(deskripsi);
   });
 
   $(".btn_delete").click(function() {
@@ -817,5 +818,6 @@
 
     $("#delete_id_kelompok").val(id);
   });
-  
+  //
+
 </script>

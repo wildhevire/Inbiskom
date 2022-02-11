@@ -100,7 +100,10 @@ class PenggunaController
 
     public function DeletePengguna():void
     {
-
+//        echo '<pre>' , var_dump($_POST) , '</pre>';
+        $id = $_POST['id_pengguna'];
+        $this->service->UpdateStatusPengguna($id, false);
+        View::Redirect("/dashboard-pengguna");
     }
 
 

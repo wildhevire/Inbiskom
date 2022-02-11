@@ -92,12 +92,15 @@ class KelompokController
     {
 //        echo '<pre>' , var_dump($_POST) , '</pre>';
 //        echo '<pre>' , var_dump($_FILES) , '</pre>';
+
+//        return;
         $req = new KelompokRequest();
         $req->id_kelompok = $_POST["id_kelompok"];
         $req->nama_kelompok = $_POST["nama_kelompok"];
         $req->angkatan = $_POST["angkatan"];
         $req->tipe_kelompok = $_POST["tipe_kelompok"];
         $req->id_kategori = $_POST["id_kategori"];
+        $req->deskripsi_kelompok = $_POST['deskripsi_kelompok'];
 
         $req->id_pengguna = $this->session->Get("id_pengguna");
         try {
