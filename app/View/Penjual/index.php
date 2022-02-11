@@ -38,7 +38,7 @@
                         <td><?= $penjual['tipe_kelompok'] ?></td>
                         <td><?= $penjual['nama_kelompok'] ?></td>
                         <td>
-                            <a rel="modal:open" href="#edit_modal" class="bm-link btn_update" id="btn_update" data-id="<?= $penjual['id_detail_kelompok']; ?>" data-no_id="<?= $penjual['no_identitas']; ?>" data-nama_penjual="<?= $penjual['nama_penjual']; ?>" data-nama_tipe="<?= $penjual['tipe_kelompok']; ?>" data-nama_kelompok="<?= $penjual['nama_kelompok']; ?>" data-id_kelompok"<?= $penjual['id_kelompok']; ?>">Ubah</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <a rel="modal:open" href="#edit_modal" class="bm-link btn_update" id="btn_update" data-id="<?= $penjual['id_detail_kelompok']; ?>" data-no_id="<?= $penjual['no_identitas']; ?>" data-nama_penjual="<?= $penjual['nama_penjual']; ?>" data-nama_tipe="<?= $penjual['tipe_kelompok']; ?>" data-nama_kelompok="<?= $penjual['nama_kelompok']; ?>" data-id_kelompok="<?= $penjual['id_kelompok']; ?>">Ubah</a>&nbsp;&nbsp;&nbsp;&nbsp;
                             <a rel="modal:open" href="#delete_modal" class="bm-link text-danger btn_delete" id="btn_delete" data-id_detail_kelompok="<?= $penjual['id_detail_kelompok'] ?>">Hapus</a>
                         </td>
                     </tr>
@@ -86,9 +86,9 @@
             <!--            <span class="bm-input__arrow"></span>-->
             <!--        </div>-->
             <!--        <br />-->
-            <label class="bm-input-label" for="kelompok">Kelompok</label>
+            <label class="bm-input-label" for="edit-kelompok">Kelompok</label>
             <div class="bm-input">
-                <select class="bm-input__field" name="kelompok" id="kelompok" required>
+                <select class="bm-input__field" name="kelompok" id="edit-kelompok" required>
                     <!--                <option value="4" disabled selected>Pilih opsi</option>-->
                     <!--                <option value="1">Option 1</option>-->
                     <!--                <option value="2">Option 2</option>-->
@@ -124,7 +124,7 @@
         </a>
     </div>
     <form action="/DeletePenjual" method="POST">
-        <input name="id_kelompok" type="text" id="delete_id_Kelompok">
+        <input name="id_kelompok" hidden type="text" id="delete_id_Kelompok">
         <div class="bm-modal__body">
             <p class="bm-body1">
                 Anda tidak akan dapat memulihkan data ini jika sudah di hapus
@@ -225,8 +225,9 @@
         $("#no-identitas").val(no_id);
         $("#nama").val(nama_penjual);
         $("#jenis").val(nama_tipe);
-        $("#kelompok").val(nama_kelompok);
+        $("#edit-kelompok").val(id_kelompok);
         // $("#kelompok").val(nama_kelompok);
+        console.log(id_kelompok);
     });
 
     $(".btn_delete").click(function() {

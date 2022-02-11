@@ -389,7 +389,7 @@
 <!-- ! EDIT MODAL -->
 <div class="bm-modal h-auto" id="edit_modal" role="dialog" aria-modal="true" aria-labelledby="modal-label" tabindex="-1">
   <div class="bm-modal__header">
-    <h5 class="bm-modal__title">Ubah data pengguna</h5>
+    <h5 class="bm-modal__title">Ubah data kelompok</h5>
     <a class="bm-modal__button-close" aria-label="close" rel="modal:close">
       <span class="bm-modal__icon-close"></span>
       <span class="bm-sr-only">Batal</span>
@@ -802,6 +802,8 @@
     var kategori = $(this).data("kategori");
     var angkatan = $(this).data("angkatan");
 
+    console.log(tipe);
+
     $("#update_id_kelompok").val(id);
     $("#nama").val(nama);
     $("#update_nama_kategori").val(jumlah_anggota);
@@ -815,17 +817,5 @@
 
     $("#delete_id_kelompok").val(id);
   });
-  //
-  //data-nama="<? //= $kelompok['nama_kelompok'] 
-                ?>//"
-  //data-tipe="<? //= $kelompok['tipe_kelompok'] 
-                ?>//"
-  //data-jumlah_anggota="<? //= $kelompok['jumlah_anggota'] 
-                          ?>//"
-  //data-jumlah_produk="<? //= $kelompok['jumlah_produk'] 
-                        ?>//"
-  //data-kategori="<? //= $kelompok['kategori'] 
-                    ?>//"
-  //data-angkatan="<? //= $kelompok['angkatan'] 
-                    ?>//"
+  
 </script>
