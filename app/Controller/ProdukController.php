@@ -25,4 +25,24 @@ class ProdukController
 
 //        echo '<pre>' , var_dump($this->produkService->GetAllModel()) , '</pre>';
     }
+
+    public function UpdateProduk(){
+        View::RenderDashboard("Produk/index", [
+            'title' => 'Produk',
+            'page_type' => 'produk',
+            'produk' => $this->produkService->GetAllModel()
+        ]);
+
+//        echo '<pre>' , var_dump($this->produkService->GetAllModel()) , '</pre>';
+    }
+
+    public function DeleteProduk(){
+//        View::RenderDashboard("Produk/index", [
+//            'title' => 'Produk',
+//            'page_type' => 'produk',
+//            'produk' => $this->produkService->GetAllModel()
+//        ]);
+
+//        echo '<pre>' , var_dump($this->produkService->GetAllModel()) , '</pre>';
+    }
 }
