@@ -7,7 +7,7 @@
                     <i class="fa fa-user"></i>
                 </div>
                 <div class="bm-card__inner col-8">
-                    <h2 class="bm-card__title"><?= $model['total_penjual'][0]['total_penjual']?></h2>
+                    <h2 class="bm-card__title"><?= $model['total_penjual'][0]['total_penjual'] ?></h2>
                     Total Penjual
                 </div>
             </div>
@@ -18,7 +18,7 @@
                     <i class="fa fa-user-friends"></i>
                 </div>
                 <div class="bm-card__inner col-8">
-                    <h2 class="bm-card__title"><?= $model['total_kelompok'][0]['total_kelompok']?></h2>
+                    <h2 class="bm-card__title"><?= $model['total_kelompok'][0]['total_kelompok'] ?></h2>
                     Total Kelompok
                 </div>
             </div>
@@ -29,24 +29,24 @@
                     <i class="fa fa-box-open"></i>
                 </div>
                 <div class="bm-card__inner col-8">
-                    <h2 class="bm-card__title"><?= $model['total_produk'][0]['total_produk']?></h2>
+                    <h2 class="bm-card__title"><?= $model['total_produk'][0]['total_produk'] ?></h2>
                     Total Produk
                 </div>
             </div>
         </div>
     </div>
     <div class="row mt-3 gap-3">
-        <div class="bm-card col-5 bg-white">
+        <div class="bm-card col-10 bg-white">
             <div class="bm-card__inner">
                 <div>
-                    <canvas id="totalPendaftar" height="300"></canvas>
+                    <canvas id="produkPerKategori" height="100"></canvas>
                 </div>
             </div>
         </div>
-        <div class="bm-card col-6 bg-white">
+        <div class="bm-card col-5 bg-white">
             <div class="bm-card__inner">
                 <div>
-                    <canvas id="produkPerKategori" height="280"></canvas>
+                    <canvas id="totalPendaftar" height="280"></canvas>
                 </div>
             </div>
         </div>
@@ -57,13 +57,13 @@
                 </div>
             </div>
         </div>
-        <div class="bm-card col-6 bg-white">
+        <!-- <div class="bm-card col-6 bg-white">
             <div class="bm-card__inner" style="height: 100%;">
 
                 <canvas id="kategoriPerTipe" height="280"></canvas>
 
             </div>
-        </div>
+        </div> -->
     </div>
 
 </main>
@@ -72,7 +72,6 @@
 </div>
 
 <script>
-
     const randomColor = function() {
         const r = Math.floor(Math.random() * 255);
         const g = Math.floor(Math.random() * 255);
@@ -89,12 +88,12 @@
     // }
     const dataPendaftar = [];
     const colorPendaftar = [];
-    <?php foreach ($model["pendaftar_pertahun"]as $pendaftar) :?>
-        labelsPendaftar.push(<?= $pendaftar['angkatan']?>);
-        dataPendaftar.push(<?= $pendaftar['jml_pendaftar']?>);
-    colorPendaftar.push(randomColor());
+    <?php foreach ($model["pendaftar_pertahun"] as $pendaftar) : ?>
+        labelsPendaftar.push(<?= $pendaftar['angkatan'] ?>);
+        dataPendaftar.push(<?= $pendaftar['jml_pendaftar'] ?>);
+        colorPendaftar.push(randomColor());
 
-    <?php endforeach;?>
+    <?php endforeach; ?>
 
     const data = {
         labels: labelsPendaftar,
@@ -102,7 +101,7 @@
             label: 'Total Pendaftar INBISKOM tiap tahun',
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
-            data:dataPendaftar,
+            data: dataPendaftar,
         }]
     };
 
@@ -132,11 +131,11 @@
     const labelProdukPerKategori = [];
     const dataProdukPerKategori = [];
     const colorProdukPerKategori = [];
-    <?php foreach ($model["produk_perkategori"]as $produk) :?>
-    labelProdukPerKategori.push("<?= $produk['nama_kategori']?>");
-    dataProdukPerKategori.push(<?= $produk['jml_produk']?>);
-    colorProdukPerKategori.push(randomColor());
-    <?php endforeach;?>
+    <?php foreach ($model["produk_perkategori"] as $produk) : ?>
+        labelProdukPerKategori.push("<?= $produk['nama_kategori'] ?>");
+        dataProdukPerKategori.push(<?= $produk['jml_produk'] ?>);
+        colorProdukPerKategori.push(randomColor());
+    <?php endforeach; ?>
     const produkPerKategori = new Chart(document.getElementById('produkPerKategori').getContext('2d'), {
         type: 'bar',
         data: {
@@ -152,7 +151,7 @@
                 //     'rgba(75, 192, 192, 1)',
                 //     'rgba(153, 102, 255, 1)',
                 // ],
-                backgroundColor:colorProdukPerKategori
+                backgroundColor: colorProdukPerKategori
             }, ]
         },
         options: {
@@ -172,10 +171,10 @@
     // TOTAL PENJUAL BERDASARKAN TIPE
     const labelTipeKelompok = [];
     const dataTipeKelompok = [];
-    <?php foreach ($model["penjual_pertipe"]as $item) :?>
-    labelTipeKelompok.push("<?= $item['tipe_kelompok']?>");
-    dataTipeKelompok.push(<?= $item['jml_penjual']?>);
-    <?php endforeach;?>
+    <?php foreach ($model["penjual_pertipe"] as $item) : ?>
+        labelTipeKelompok.push("<?= $item['tipe_kelompok'] ?>");
+        dataTipeKelompok.push(<?= $item['jml_penjual'] ?>);
+    <?php endforeach; ?>
     const penjualPerTipe = new Chart(document.getElementById('penjualPerTipe').getContext('2d'), {
         type: 'doughnut',
         data: {
@@ -211,54 +210,71 @@
 
     // Kategori produk berdasarkan tipe penjual
 
-    <?php
-
-
-    ?>
-    const kategoriPerTipe = new Chart(document.getElementById('kategoriPerTipe').getContext('2d'), {
-        type: 'bar',
-        data: {
-            labels: ['Mahasiswa', 'Umum'], // responsible for how many bars are gonna show on the chart
-            // create 12 datasets, since we have 12 items
-            // data[0] = labels[0] (data for first bar - 'Standing costs') | data[1] = labels[1] (data for second bar - 'Running costs')
-            // put 0, if there is no data for the particular bar
-            datasets: [{
-                label: 'Craft',
-                data: [2, 8],
-                backgroundColor: 'rgba(255, 99, 132, 1)'
-            }, {
-                label: 'Fashion',
-                data: [4, 2],
-                backgroundColor: 'rgba(54, 162, 235, 1)'
-            }, {
-                label: 'Foods',
-                data: [4, 1],
-                backgroundColor: 'rgba(255, 206, 86, 1)'
-            }, {
-                label: 'Pertanian & Perkebunan',
-                data: [5, 2],
-                backgroundColor: 'rgba(75, 192, 192, 1)'
-            }]
-        },
-        options: {
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Kategori produk berdasarkan tipe penjual',
-                    align: "start",
-                },
-                legend: {
-                    position: "right"
-                },
-            },
-            scales: {
-                x: {
-                    stacked: true // this should be set to make the bars stacked
-                },
-                y: {
-                    stacked: true // this also..
-                }
-            }
-        }
-    });
+    const test = [];
+    const test2 = [];
+    const test3 = [];
+    let penjualPerKategori = []
+    <?php foreach ($model["penjual_perkategori"] as $item) : ?>
+        penjualPerKategori.push({
+            label: "<?= $item['nama_kategori'] ?>",
+            tipe: "<?= $item['tipe_kelompok'] ?>",
+            jumlah: <?= $item['jml_produk'] ?>,
+            backgroundColor: randomColor()
+        })
+    <?php endforeach; ?>
+    // console.log(penjualPerKategori);
+    // console.log(test);
+    // console.log(test2);
+    // console.log(test3);
+    let mahasiswa = penjualPerKategori.filter(e => e.tipe == "mahasiswa")
+    let umum = penjualPerKategori.filter(e => e.tipe == "umum")
+    console.log(penjualPerKategori);
+    console.log(mahasiswa);
+    console.log(umum);
+    // const kategoriPerTipe = new Chart(document.getElementById('kategoriPerTipe').getContext('2d'), {
+    //     type: 'bar',
+    //     data: {
+    //         labels: ['Mahasiswa', 'Umum'], // responsible for how many bars are gonna show on the chart
+    //         // create 12 datasets, since we have 12 items
+    //         // data[0] = labels[0] (data for first bar - 'Standing costs') | data[1] = labels[1] (data for second bar - 'Running costs')
+    //         // put 0, if there is no data for the particular bar
+    //         datasets: [{
+    //             label: 'Craft',
+    //             data: [2, 8],
+    //             backgroundColor: 'rgba(255, 99, 132, 1)'
+    //         }, {
+    //             label: 'Fashion',
+    //             data: [4, 2],
+    //             backgroundColor: 'rgba(54, 162, 235, 1)'
+    //         }, {
+    //             label: 'Foods',
+    //             data: [4, 1],
+    //             backgroundColor: 'rgba(255, 206, 86, 1)'
+    //         }, {
+    //             label: 'Pertanian & Perkebunan',
+    //             data: [5, 2],
+    //             backgroundColor: 'rgba(75, 192, 192, 1)'
+    //         }]
+    //     },
+    //     options: {
+    //         plugins: {
+    //             title: {
+    //                 display: true,
+    //                 text: 'Kategori produk berdasarkan tipe penjual',
+    //                 align: "start",
+    //             },
+    //             legend: {
+    //                 position: "right"
+    //             },
+    //         },
+    //         scales: {
+    //             x: {
+    //                 stacked: true // this should be set to make the bars stacked
+    //             },
+    //             y: {
+    //                 stacked: true // this also..
+    //             }
+    //         }
+    //     }
+    // });
 </script>

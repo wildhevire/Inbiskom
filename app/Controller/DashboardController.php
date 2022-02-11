@@ -37,9 +37,10 @@ class DashboardController
             'total_produk'=>$this->service->SelectTotalProduk(),
             'total_kelompok'=>$this->service->SelectTotalKelompok(),
             'total_penjual'=>$this->service->SelectTotalPenjual(),
+            'penjual_perkategori'=>$this->service->SelectPenjualPerKategori(),
         ]);
 
-//        echo '<pre>' , var_dump($this->service->SelectPenjualPerKategori()) , '</pre>';
+    //    echo '<pre>' , var_dump($this->service->SelectPenjualPerKategori()) , '</pre>';
 
 
 

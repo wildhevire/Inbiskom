@@ -125,7 +125,7 @@ class PenggunaController
         try
         {
             $this->service->AddPengguna($request);
-            View::Redirect('/dashboard-login');
+            View::Redirect('/dashboard-pengguna');
         }
         catch (ValidationException $exception)
         {

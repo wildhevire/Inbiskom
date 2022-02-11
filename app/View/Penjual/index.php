@@ -8,14 +8,14 @@
                 </span>
                 <span class="bm-btn__label">Tambah Penjual</span></a>
         </div>
-        <div class="col-4">
+        <!-- <div class="col-4">
             <div class="bm-input bm-input--outline bm-input--with-icon">
                 <input type="text" class="bm-input__field" placeholder="Cari penjual" />
                 <div class="bm-input__icon">
                     <i class="fa fa-search"></i>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
     <div class="bm-card mt-4 bg-white">
         <table class="bm-table w-100">

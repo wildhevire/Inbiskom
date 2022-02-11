@@ -8,7 +8,7 @@
             <span class="bm-btn__label">Tambah pengguna</span></a
         >
     </div>
-    <div class="col-4">
+    <!-- <div class="col-4">
         <div class="bm-input bm-input--outline bm-input--with-icon">
             <input
                     type="text"
@@ -19,7 +19,7 @@
                 <i class="fa fa-search"></i>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
 
 <?php if (isset($model['success'])) { ?>
@@ -165,7 +165,7 @@
                             class="bm-radio__input"
                             id="hak-akses-kepala"
                             name="hak_akses"
-                            value="ketua-divisi"
+                            value="kepala_divisi"
                     />
                     <span class="bm-radio__checkmark"></span>
                 </label>

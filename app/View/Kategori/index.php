@@ -8,7 +8,7 @@
             <span class="bm-btn__label">Tambah kategori</span></a
         >
     </div>
-    <div class="col-4">
+    <!-- <div class="col-4">
         <div class="bm-input bm-input--outline bm-input--with-icon">
             <input
                     type="text"
@@ -19,7 +19,7 @@
                 <i class="fa fa-search"></i>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
 
 <?php if(isset($model['success'])) {?>

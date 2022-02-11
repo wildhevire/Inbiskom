@@ -8,14 +8,14 @@
         </span>
         <span class="bm-btn__label">Tambah kelompok</span></a>
     </div>
-    <div class="col-4">
+    <!-- <div class="col-4">
       <div class="bm-input bm-input--outline bm-input--with-icon">
         <input type="text" class="bm-input__field" placeholder="Cari kelompok" />
         <div class="bm-input__icon">
           <i class="fa fa-search"></i>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 
   <?php if (isset($model['success'])) { ?>
