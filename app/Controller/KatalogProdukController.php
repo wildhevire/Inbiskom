@@ -36,30 +36,39 @@ class KatalogProdukController
     public function index()
     {
         $request = $_GET['q'];
-        $model = $this->service->GetProduk($request);
-        $foto = $this->fotoService->GetFotoForProduk($request);
-        $noWa = $this->service->GetNoWa();
-        $this->produkRepository->UpdateViewsCount($request);
-        $konfigurasi = $this->service->GetKonfigurasi();
-        $primaryFoto = '';
-        $fotoPelengkap = [];
-        foreach ($foto as $item)
-        {
-            if($item['is_primary'] == 1){
-                $primaryFoto = $item;
+        try {
+            $model = $this->service->GetProduk($request);
+            $foto = $this->fotoService->GetFotoForProduk($request);
+            $noWa = $this->service->GetNoWa();
+            $this->produkRepository->UpdateViewsCount($request);
+            $konfigurasi = $this->service->GetKonfigurasi();
+            $primaryFoto = '';
+            $fotoPelengkap = [];
+            foreach ($foto as $item)
+            {
+                if($item['is_primary'] == 1){
+                    $primaryFoto = $item;
+                }
+                else{
+                    array_push($fotoPelengkap, $item);
+                }
             }
-            else{
-                array_push($fotoPelengkap, $item);
-            }
+            //    echo '<pre>' , var_dump($noWa) , '</pre>';
+            View::RenderKatalog("Katalog-Produk/index", [
+                'produk' => $model,
+                'fotoPrimary' => $primaryFoto,
+                'fotoPelengkap' => $fotoPelengkap,
+                'noWa' => $noWa,
+                'konfigurasi' => $konfigurasi,
+            ]);
+
         }
-    //    echo '<pre>' , var_dump($noWa) , '</pre>';
-        View::RenderKatalog("Katalog-Produk/index", [
-            'produk' => $model,
-            'fotoPrimary' => $primaryFoto,
-            'fotoPelengkap' => $fotoPelengkap,
-            'noWa' => $noWa,
-            'konfigurasi' => $konfigurasi,
-        ]);
+        catch (\Exception $e)
+        {
+            View::Redirect("/");
+        }
+
+
     }
 
 }

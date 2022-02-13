@@ -33,18 +33,27 @@ class TokoController
   public function index()
   {
       $request = $_GET['q'];
-      $tokoModel = $this->service->GetTokoDescription($request);
-      $memberModel = $this->service->GetTokoDescriptionMember($request);
-      $productsModel = $this->service->GetTokoDescriptionProducts($request);
-      $konfigurasi = $this->service->GetKonfigurasi();
+
+
       
-    //    echo '<pre>' , var_dump($tokoModel) , '</pre>';
-      View::RenderKatalog("Katalog-Toko/index", [
-          'tokoDescription' => $tokoModel,
-          'tokoMember' => $memberModel,
-          'tokoProducts' => $productsModel,
-          'konfigurasi' => $konfigurasi,
-      ]);
+
+      try {
+          $tokoModel = $this->service->GetTokoDescription($request);
+          $memberModel = $this->service->GetTokoDescriptionMember($request);
+          $productsModel = $this->service->GetTokoDescriptionProducts($request);
+          $konfigurasi = $this->service->GetKonfigurasi();
+
+          View::RenderKatalog("Katalog-Toko/index", [
+              'tokoDescription' => $tokoModel,
+              'tokoMember' => $memberModel,
+              'tokoProducts' => $productsModel,
+              'konfigurasi' => $konfigurasi,
+          ]);
+      }catch (\Exception $e)
+      {
+          View::Redirect("/");
+      }
+
   }
 
 }

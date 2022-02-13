@@ -17,7 +17,7 @@ class KatalogRepository
             " SELECT nama_kelompok, nama_produk, harga, view_count, nama_kategori, k.id_kelompok, k.id_kategori, p.id_produk,
                         (SELECT url FROM foto f WHERE f.id_produk=p.id_produk AND f.is_primary=1) AS primary_foto
                         FROM kelompok k, produk p, kategori ka
-                        WHERE k.id_kelompok=p.id_kelompok AND k.id_kategori=ka.id_kategori AND nama_kategori=:kategori
+                        WHERE k.id_kelompok=p.id_kelompok AND k.id_kategori=ka.id_kategori AND nama_kategori=:kategori 
                         ORDER BY view_count DESC LIMIT :limit"
         );
 
