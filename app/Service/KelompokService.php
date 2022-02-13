@@ -62,10 +62,16 @@ class KelompokService
             $kelompok->angkatan = $request->angkatan;
             $kelompok->deskripsi_kelompok = $request->deskripsi_kelompok;
             $kelompok->tipe_kelompok = $request->tipe_kelompok;
-//            $kelompok->url_logo_toko = $request->url_logo_toko;
+            $kelompok->url_logo_toko = $request->url_logo_toko;
             $kelompok->id_kategori = $request->id_kategori;
             $kelompok->id_pengguna = $request->id_pengguna;
-            $this->repo->Update($kelompok);
+            if(empty($kelompok->url_logo_toko))
+            {
+                $this->repo->Update($kelompok);
+            } else
+            {
+                $this->repo->UpdateWithLogo($kelompok);
+            }
 
             //DELETE THIS LATER JUST GARBAGE
 

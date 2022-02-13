@@ -360,7 +360,7 @@
   </div>
 
   <div class="bm-modal__body">
-    <form action="/UpdateKelompok" method="POST">
+    <form action="/UpdateKelompok" method="POST" enctype="multipart/form-data">
       <input type="hidden" name="id_kelompok" id="update_id_kelompok" class="bm-input__field" placeholder="Contoh: John Doe" />
 
       <label class="bm-input-label" for="nama">Nama Kelompok</label>

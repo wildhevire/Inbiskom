@@ -93,8 +93,13 @@ class KelompokController
     {
 //        echo '<pre>' , var_dump($_POST) , '</pre>';
 //        echo '<pre>' , var_dump($_FILES) , '</pre>';
-
 //        return;
+
+
+
+//
+
+
         $req = new KelompokRequest();
         $req->id_kelompok = $_POST["id_kelompok"];
         $req->nama_kelompok = $_POST["nama_kelompok"];
@@ -104,13 +109,29 @@ class KelompokController
         $req->deskripsi_kelompok = $_POST['deskripsi_kelompok'];
 
         $req->id_pengguna = $this->session->Get("id_pengguna");
+
+        $fieldName = "url_logo_toko";
+
+        if($_FILES[$fieldName]['size'] == 0)
+        {
+            $req->url_logo_toko = "";
+        } else
+        {
+            $img = FileUploader::HandleImageUpload('url_logo_toko');
+            $req->url_logo_toko = $img->filePath;
+        }
+
+
         try {
+
+
 
             $this->kelompokService->UpdateKelompok($req);
             View::Redirect('/dashboard-kelompok');
         }
         catch (\Exception $e)
         {
+
             $this->OnActionError($e->getMessage(),
                 [
                     'kategori'=> $this->kategoriService->GetAllModel(),

@@ -43,7 +43,7 @@
                 </div>
                 <div class="col-8 col-md-9">
                     <h1 class="bm-h3-headline fw-bold bm-text-primary text-center">
-                        INBISKOM <?= $model['error'] ?? '' ?>
+                        INBISKOM
                     </h1>
                 </div>
             </div>
@@ -58,6 +58,28 @@
             p-4
           "
         >
+            <?php if (isset($model['success'])) { ?>
+                <!-- ! SUCCESS ALERT -->
+                <div class="bm-alert bm-alert--success mt-4" role="alert">
+                    <div class="bm-alert__icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="bm-alert__content"><?= $model['success'] ?></div>
+                </div>
+                <!-- ! END OF SUCCESS ALERT -->
+            <?php } ?>
+
+            <?php if (isset($model['error'])) { ?>
+                <!-- ! ERROR ALERT -->
+                <div class="bm-alert bm-alert--error mt-4" role="alert">
+                    <div class="bm-alert__icon">
+                        <i class="fas fa-exclamation-circle"></i>
+                    </div>
+                    <div class="bm-alert__content"><?= $model['error'] ?></div>
+                </div>
+                <!-- ! END OF ERROR ALERT -->
+            <?php } ?>
+
             <form method="post" action="/auth">
 
                 <div class="bm-input bm-input--outline bm-input--with-icon mb-3">

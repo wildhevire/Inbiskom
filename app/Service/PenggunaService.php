@@ -96,7 +96,12 @@ class PenggunaService
 
         if(password_verify($request->password, $pengguna->password))
         {
+            if($pengguna->status == 0)
+            {
+                throw new ValidationException("Password salah");
+            }
             $response = new LoginPenggunaResponse();
+
             $response->username = $pengguna->username;
             $response->hak_akses = $pengguna->hak_akses;
             $response->id_pengguna = $pengguna->id_pengguna;
