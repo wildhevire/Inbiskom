@@ -155,23 +155,24 @@ class PenggunaService
 
         try {
             Database::BeginTransaction();
-            $pengguna = new Pengguna();
-            $pengguna = $this->repo->SelectByUsername($request->username);
+//            $pengguna = $this->repo->SelectByUsername($request->pengguna->username);
 
-            if($pengguna != null)
-            {
-                //TODO : Ganti Error Message
-                throw new ValidationException("Pengguna Dengan No Identitas Tersebut Sudah ada");
-            }
+//            if($pengguna != null)
+//            {
+//                //TODO : Ganti Error Message
+//                throw new ValidationException("Pengguna Dengan No Identitas Tersebut Sudah ada");
+//            }
+            $pengguna = new Pengguna();
 
             $pengguna->nama_pengguna = $request->pengguna->nama_pengguna;
             $pengguna->username = $request->pengguna->username;
             $pengguna->hak_akses = $request->pengguna->hak_akses;
-            $pengguna->status = $request->pengguna->status;
+//            $pengguna->status = $request->pengguna->status;
             $pengguna->tahun_aktif = $request->pengguna->tahun_aktif;
-
+            $pengguna->id_pengguna = $request->pengguna->id_pengguna;
             if($request->pengguna->password != ""){
-                $pengguna->password = $request->pengguna->password;
+
+                $pengguna->password = password_hash($request->pengguna->password, PASSWORD_BCRYPT);;
                 $this->repo->Update($pengguna);
             }
             $this->repo->Update($pengguna);

@@ -5,6 +5,7 @@ namespace app\Controller;
 use app\Config\Database;
 use app\Core\Session;
 use app\Core\View;
+use app\DBModel\Pengguna;
 use app\DTO\Pengguna\AddPenggunaRequest;
 use app\DTO\Pengguna\LoginPenggunaRequest;
 use app\DTO\Pengguna\PenggunaRequest;
@@ -79,22 +80,32 @@ class PenggunaController
 
     public function UpdatePengguna():void
     {
+//        echo '<pre>' , var_dump($_POST) , '</pre>';
+//        return;
         try
         {
             $request = new PenggunaRequest();
+            $request->pengguna = new Pengguna();
             $request->pengguna->id_pengguna = $_POST['id_pengguna'];
             $request->pengguna->username = $_POST['username'];
             $request->pengguna->password = $_POST['password'];
             $request->pengguna->tahun_aktif = $_POST['tahun_aktif'];
             $request->pengguna->hak_akses= $_POST['hak_akses'];
-            if($request->pengguna->password == "")
-            {
-
-            }
+            $request->pengguna->nama_pengguna = $_POST["nama_pengguna"];
+//            if($request->pengguna->password == "")
+//            {
+//                View::RenderDashboard('Pengguna/index', [
+//                    'error'=> "Password tidak boleh kosong"
+//                ]);
+//            }
+            $this->service->UpdatePengguna($request);
+            View::Redirect("/dashboard-pengguna");
         }
         catch(\Exception $e)
         {
-
+            View::RenderDashboard('Pengguna/index', [
+                'error'=> $e->getMessage()
+            ]);
         }
 
     }

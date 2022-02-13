@@ -110,16 +110,16 @@ class PenggunaRepository
 
     public function Update(Pengguna $pengguna) : Pengguna
     {
-        $statement = $this->connection->prepare("
+        $statement = $this->conn->prepare("
                 UPDATE pengguna SET nama_pengguna = ?, username = ?, 
-                                hak_akses = ?, status = ?, tahun_aktif = ? 
-                WHERE id_pengguna = ?,
+                                hak_akses = ?, tahun_aktif = ? 
+                WHERE id_pengguna = ?
             ");
         $statement->execute([
             $pengguna->nama_pengguna,
             $pengguna->username,
             $pengguna->hak_akses,
-            $pengguna->status,
+//            $pengguna->status,
             $pengguna->tahun_aktif,
             $pengguna->id_pengguna,
 
