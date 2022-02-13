@@ -3,12 +3,12 @@
   <h2 class="mb-4">Kelompok</h2>
   <div class="row align-items-center">
     <div class="col">
-        <?php if(isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris" ) :?>
-      <a rel="modal:open" href="#add_modal" class="bm-btn"><span class="bm-btn__icon">
-          <i class="fas fa-plus"></i>
-        </span>
-        <span class="bm-btn__label">Tambah kelompok</span></a>
-        <?php endif;?>
+      <?php if (isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris") : ?>
+        <a rel="modal:open" href="#add_modal" class="bm-btn"><span class="bm-btn__icon">
+            <i class="fas fa-plus"></i>
+          </span>
+          <span class="bm-btn__label">Tambah kelompok</span></a>
+      <?php endif; ?>
     </div>
     <!-- <div class="col-4">
       <div class="bm-input bm-input--outline bm-input--with-icon">
@@ -52,9 +52,9 @@
         <th>Jumlah Produk</th>
         <th>Kategori</th>
         <th>Angkatan</th>
-        <?php if(isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris" ) :?>
-        <th>Aksi</th>
-        <?php endif;?>
+        <?php if (isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris") : ?>
+          <th>Aksi</th>
+        <?php endif; ?>
       </thead>
       <tbody>
         <?php $counter = 0; ?>
@@ -68,16 +68,16 @@
             <td><?= $kelompok['jumlah_produk'] ?></td>
             <td><?= $kelompok['kategori'] ?></td>
             <td><?= $kelompok['angkatan'] ?></td>
-              <?php if(isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris" ) :?>
-            <td>
-              <!--            <a rel="modal:open" href="#detail_modal" class="bm-link"-->
-              <!--            >Lihat</a>&nbsp;&nbsp;&nbsp;&nbsp;-->
-              <a rel="modal:open" href="#edit_modal" class="bm-link btn_update" id="btn_update" data-deskripsi="<?= $kelompok['deskripsi_kelompok'] ?>"
-                 data-id="<?= $kelompok['id_kelompok'] ?>" data-nama="<?= $kelompok['nama_kelompok'] ?>" data-tipe="<?= $kelompok['tipe_kelompok'] ?>" data-jumlah_anggota="<?= $kelompok['jumlah_anggota'] ?>" data-jumlah_produk="<?= $kelompok['jumlah_produk'] ?>" data-kategori="<?= $kelompok['id_kategori'] ?>" data-angkatan="<?= $kelompok['angkatan'] ?>">Ubah</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a rel="modal:open" id="btn_delete" href="#delete_modal" class="bm-link text-danger btn_delete" data-id="<?= $kelompok['id_kelompok'] ?>">Hapus</a>&nbsp;&nbsp;&nbsp;&nbsp;
-              <a target="_blank" href="/toko?q=<?= $kelompok['id_kelompok'] ?>" class="bm-link">Buka</a>
-            </td>
-              <?php endif;?>
+            <?php if (isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris") : ?>
+              <td>
+                <!--            <a rel="modal:open" href="#detail_modal" class="bm-link"-->
+                <!--            >Lihat</a>&nbsp;&nbsp;&nbsp;&nbsp;-->
+                <a target="_blank" href="/toko?q=<?= $kelompok['id_kelompok'] ?>" class="bm-link">Buka</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a rel="modal:open" href="#edit_modal" class="bm-link btn_update" id="btn_update" data-deskripsi="<?= $kelompok['deskripsi_kelompok'] ?>" data-id="<?= $kelompok['id_kelompok'] ?>" data-nama="<?= $kelompok['nama_kelompok'] ?>" data-tipe="<?= $kelompok['tipe_kelompok'] ?>" data-jumlah_anggota="<?= $kelompok['jumlah_anggota'] ?>" data-jumlah_produk="<?= $kelompok['jumlah_produk'] ?>" data-kategori="<?= $kelompok['id_kategori'] ?>" data-angkatan="<?= $kelompok['angkatan'] ?>" data-url_logo_toko="<?= $kelompok['url_logo_toko'] ?>">Ubah</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a rel="modal:open" id="btn_delete" href="#delete_modal" class="bm-link text-danger btn_delete" data-id="<?= $kelompok['id_kelompok'] ?>">Hapus</a>
+
+              </td>
+            <?php endif; ?>
           </tr>
         <?php endforeach ?>
       </tbody>
@@ -87,56 +87,6 @@
 <!-- ! END OF MAIN CONTENT -->
 </div>
 </div>
-
-<!-- ! DETAIL MODAL -->
-<div class="bm-modal h-auto " id="detail_modal" role="dialog" aria-modal="true" aria-labelledby="modal-label" tabindex="-1">
-  <div class="bm-modal__header">
-    <h5 class="bm-modal__title">Detail data kelompok</h5>
-    <a class="bm-modal__button-close" aria-label="close" rel="modal:close">
-      <span class="bm-modal__icon-close"></span>
-      <span class="bm-sr-only">Batal</span>
-    </a>
-  </div>
-
-  <div class="bm-modal__body">
-    <span class="fw-bold">Nama kelompok:</span>
-    <p>Kupakkai</p>
-
-    <span class="fw-bold">Angkatan:</span>
-    <p>2021</p>
-
-    <span class="fw-bold">Deskripsi:</span>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo
-      soluta, doloremque ullam aspernatur obcaecati accusantium voluptate
-      dolorum vitae fugiat iure dolor. Quibusdam soluta rem nostrum vitae
-      velit officiis eligendi error!
-    </p>
-
-    <span class="fw-bold">Kategori:</span>
-    <p>Pakaian</p>
-
-    <span class="fw-bold">Anggota:</span>
-    <p>Ivan, Beno, Wildan</p>
-
-    <span class="fw-bold">Produk:</span>
-    <p>T-shirt polos, Celana panjang, Boba</p>
-
-    <span class="fw-bold">Foto produk:</span>
-    <div class="mt-2">
-      <div class="row" id="images">
-        <img class="bm-img-responsive col-4 bm-cursor-pointer" src="https://placekitten.com/200/300" alt="Picture 1" />
-      </div>
-    </div>
-  </div>
-
-  <div class="bm-modal__footer">
-    <a type="button" class="bm-btn bm-btn--secondary" rel="modal:close">
-      <span class="bm-btn__label">Tutup</span>
-    </a>
-  </div>
-</div>
-<!-- ! END OF DETAIL MODAL -->
 
 <!-- ! ADD MODAL -->
 <div class="bm-modal h-auto" id="add_modal" role="dialog" aria-modal="true" aria-labelledby="modal-label" tabindex="-1">
@@ -180,7 +130,7 @@
               <select class="bm-input__field" id="angkatan" name="angkatan">
                 <option value="" disabled selected>Tahun</option>
                 <?php for ($i = 2017; $i <= date("Y"); $i++) : ?>
-                <option value="<?= $i?>" ><?= $i?></option>
+                  <option value="<?= $i ?>"><?= $i ?></option>
                 <?php endfor; ?>
               </select>
               <span class="bm-input__arrow"></span>
@@ -421,13 +371,13 @@
       <br />
       <label class="bm-input-label" for="update_angkatan">Angkatan</label>
       <div class="bm-input">
-              <select class="bm-input__field" id="update_angkatan" name="angkatan">
-                <?php for ($i = 2017; $i <= date("Y"); $i++) : ?>
-                <option value="<?= $i?>"><?= $i?></option>
-                <?php endfor; ?>
-              </select>
-              <span class="bm-input__arrow"></span>
-            </div>
+        <select class="bm-input__field" id="update_angkatan" name="angkatan">
+          <?php for ($i = 2017; $i <= date("Y"); $i++) : ?>
+            <option value="<?= $i ?>"><?= $i ?></option>
+          <?php endfor; ?>
+        </select>
+        <span class="bm-input__arrow"></span>
+      </div>
 
       <br />
 
@@ -460,6 +410,17 @@
         <span class="bm-input__arrow"></span>
       </div>
       <br />
+
+      <label class="bm-input-label" for="url_logo_toko">Logo</label>
+      <label for="url_logo_toko" class="mb-4">
+        <img class="w-50 bm-img-responsive" id="placeholder-logo-toko" src="#" alt="Logo baru" />
+      </label>
+      <label for="url_logo_toko" class="bm-input--file" id="label-logo">
+        <input class="w-100 file-upload" type="file" name="url_logo_toko" id="url_logo_toko" accept="image/*" />
+
+        <p class="text-secondary">Upload image</p>
+        <i class="fas fa-save fs-2 text-secondary"></i>
+      </label>
 
       <div class="bm-modal__footer">
         <a type="button" class="bm-btn bm-btn--secondary" rel="modal:close">
@@ -810,26 +771,35 @@
     })
   });
 
-  $(".btn_update").click(function (){
-      var id = $(this).data("id");
-      var nama = $(this).data("nama");
-      var tipe = $(this).data("tipe");
-      var jumlah_anggota = $(this).data("jumlah_anggota");
-      var jumlah_produk = $(this).data("jumlah_produk");
-      var kategori = $(this).data("kategori");
-      var angkatan = $(this).data("angkatan");
-      var deskripsi = $(this).data("deskripsi");
+  $(".btn_update").click(function() {
+    var id = $(this).data("id");
+    var nama = $(this).data("nama");
+    var tipe = $(this).data("tipe");
+    var jumlah_anggota = $(this).data("jumlah_anggota");
+    var jumlah_produk = $(this).data("jumlah_produk");
+    var kategori = $(this).data("kategori");
+    var angkatan = $(this).data("angkatan");
+    var deskripsi = $(this).data("deskripsi");
+    var url_logo_toko = $(this).data("url_logo_toko");
 
-      $("#update_id_kelompok").val(id);
-      $("#nama").val(nama);
-      $("#update_nama_kategori").val(jumlah_anggota);
-      $("#update_nama_kategori").val(jumlah_produk);
-      $("#update_nama_kategori").val(kategori);
-      $("#update_angkatan").val(angkatan);
-      $("#deskripsi_kelompok").val(deskripsi);
-      $("#edit_tipe_kelompok").val(tipe);
-      $("#edit_kategori").val(kategori);
+    $("#placeholder-logo-toko").attr("src","/assets/images/"+url_logo_toko);
+    $("#update_id_kelompok").val(id);
+    $("#nama").val(nama);
+    $("#update_nama_kategori").val(jumlah_anggota);
+    $("#update_nama_kategori").val(jumlah_produk);
+    $("#update_nama_kategori").val(kategori);
+    $("#update_angkatan").val(angkatan);
+    $("#deskripsi_kelompok").val(deskripsi);
+    $("#edit_tipe_kelompok").val(tipe);
+    $("#edit_kategori").val(kategori);
   });
+
+  $('#url_logo_toko').change(function() {
+            const [logo] = $('#url_logo_toko')[0].files;
+            $('#label-logo').hide();
+            $('#placeholder-logo-toko').show();
+            $('#placeholder-logo-toko')[0].src = URL.createObjectURL(logo);
+        });
 
   $(".btn_delete").click(function() {
     var id = $(this).data("id");
@@ -837,5 +807,4 @@
     $("#delete_id_kelompok").val(id);
   });
   //
-
 </script>
