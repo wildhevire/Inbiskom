@@ -65,7 +65,7 @@ class KatalogProdukController
         }
         catch (\Exception $e)
         {
-            View::Redirect("/");
+            View::Redirect("/404");
         }
 
 

@@ -144,6 +144,9 @@ Router::Add('GET', '/tentang',
 
 
 
+Router::Add('GET', '/404',
+    \app\Controller\KatalogHomeController::class, 'Error');
+
 //TODO :TEST Purpose ONLY
 Router::Add('GET', '/AddPengguna',
     \app\Controller\PenggunaController::class, 'RenderAddPengguna',

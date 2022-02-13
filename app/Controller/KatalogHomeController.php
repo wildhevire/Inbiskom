@@ -51,5 +51,23 @@ class KatalogHomeController
 
     }
 
+    public function Error()
+    {
+        $kategori = $this->kategoriService->GetAllModel();
+        $model = array();
+        $konfigurasi = $this->service->GetKonfigurasi();
+        foreach ($kategori as $item)
+        {
+            $model[$item['nama_kategori']] = $this->service->GetAllModelHome($item['nama_kategori'], 5);
+            //array_push($model, $produk);
+        }
+        View::RenderKatalog("404", [
+            'kategori' => $kategori,
+            'katalog' => $model,
+            'konfigurasi' => $konfigurasi,
+        ]);
+    }
+
+
 
 }
