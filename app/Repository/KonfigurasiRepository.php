@@ -42,6 +42,56 @@ values (?, ?, ?, ?, ?, ?, ?, ?, ?)"
         return $konfigurasi;
     }
 
+    public function Update(Konfigurasi $konfigurasi) : void
+    {
+        $statement = $this->conn->prepare("UPDATE konfigurasi SET 
+                       nip = ?, 
+                       nama_ketua = ?, 
+                       alamat_inbiskom = ?, 
+                       no_hp = ?, 
+                       no_wa = ?, 
+                       email = ?, 
+                       username_ig = ?, 
+                       id_pengguna = ?");
+        $statement->execute([
+
+            $konfigurasi->nip,
+            $konfigurasi->nama_ketua,
+
+            $konfigurasi->alamat_inibiskom,
+            $konfigurasi->no_hp,
+            $konfigurasi->no_wa,
+            $konfigurasi->email,
+            $konfigurasi->username_ig,
+            $konfigurasi->id_pengguna
+        ]);
+    }
+
+    public function UpdateWithLogo(Konfigurasi $konfigurasi) : void
+    {
+        $statement = $this->conn->prepare("UPDATE konfigurasi SET 
+                       nip = ?, 
+                       nama_ketua = ?, 
+                       url_logo = ?, 
+                       alamat_inbiskom = ?, 
+                       no_hp = ?, 
+                       no_wa = ?, 
+                       email = ?, 
+                       username_ig = ?, 
+                       id_pengguna = ?");
+        $statement->execute([
+            $konfigurasi->nip,
+            $konfigurasi->nama_ketua,
+            $konfigurasi->url_logo,
+            $konfigurasi->alamat_inibiskom,
+            $konfigurasi->no_hp,
+            $konfigurasi->no_wa,
+            $konfigurasi->email,
+            $konfigurasi->username_ig,
+            $konfigurasi->id_pengguna
+        ]);
+    }
+
     public function SelectById(string $id): ?Konfigurasi
     {
         $statement = $this->conn->prepare(

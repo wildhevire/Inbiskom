@@ -64,9 +64,10 @@ class ProdukController
         $req->deskripsi_produk = $_POST['deskripsi_produk'];
         $req->id_kelompok = $_POST['id_kelompok'];
 
+
         $this->produkService->UpdateProduk($req);
         View::Redirect("/dashboard-produk");
-        echo '<pre>' , var_dump($_POST) , '</pre>';
+//        echo '<pre>' , var_dump($_POST) , '</pre>';
     }
 
     public function DeleteProduk()

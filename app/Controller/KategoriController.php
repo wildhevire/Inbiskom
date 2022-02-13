@@ -38,6 +38,7 @@ class KategoriController
         {
             $this->service->AddKategori($request);
             View::RenderDashboard('Kategori/index', [
+                'hak_akses' => $this->session->Get("hak_akses"),
                 'success'=> "Berhasil Menambahkan data",
                 'data' => $this->service->GetAllModel()
             ]);
@@ -46,6 +47,7 @@ class KategoriController
         {
             View::RenderDashboard('Kategori/index', [
                 'error'=> $exception->getMessage(),
+                'hak_akses' => $this->session->Get("hak_akses"),
                 'data' => $this->service->GetAllModel()
             ]);
         }
@@ -61,6 +63,7 @@ class KategoriController
         {
             $this->service->UpdateKategori($request);
             View::RenderDashboard('Kategori/index', [
+                'hak_akses' => $this->session->Get("hak_akses"),
                 'data' => $this->service->GetAllModel(),
                 'success' => "Berhasil Mengubah Kategori"
             ]);
@@ -68,6 +71,7 @@ class KategoriController
         catch (\Exception $exception)
         {
             View::RenderDashboard('Kategori/index', [
+                'hak_akses' => $this->session->Get("hak_akses"),
                 'error'=> $exception->getMessage(),
                 'data' => $this->service->GetAllModel()
             ]);
@@ -80,7 +84,11 @@ class KategoriController
         {
             $id = $_POST['id_kategori'];
             $this->service->RemoveKategori($id);
-            View::Redirect('/dashboard-kategori');
+            View::RenderDashboard('Kategori/index', [
+                'hak_akses' => $this->session->Get("hak_akses"),
+                'data' => $this->service->GetAllModel(),
+                'success' => "Berhasil Menghapus Kategori"
+            ]);
         }
         catch (\Exception $exception)
         {

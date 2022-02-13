@@ -75,6 +75,7 @@ class KelompokController
         View::RenderDashboard('Kelompok/index', [
             'title' => 'Kelompok',
             'page_type' => 'kelompok',
+            'hak_akses' => $this->session->Get("hak_akses"),
             'success' => $message,
             'data' => $model,
         ]);
@@ -85,6 +86,7 @@ class KelompokController
         View::RenderDashboard("Kelompok/index", [
             'title' => 'Kelompok',
             'page_type' => 'kelompok',
+            'hak_akses' => $this->session->Get("hak_akses"),
             'error'=> $message,
             'data' => $model
         ]);

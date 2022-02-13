@@ -33,8 +33,8 @@ class KonfigurasiController
 
     public function AddKonfigurasi()
     {
-        echo '<pre>' , var_dump($_POST) , '</pre>';
-        echo '<pre>' , var_dump($_FILES) , '</pre>';
+//        echo '<pre>' , var_dump($_POST) , '</pre>';
+//        echo '<pre>' , var_dump($_FILES) , '</pre>';
 
         $request = new KonfigurasiRequest();
 
@@ -46,13 +46,19 @@ class KonfigurasiController
         $request->email= $_POST['email'] ;
         $request->username_ig= $_POST['username_ig'] ;
         $request->id_pengguna= $this->session->Get("id_pengguna");
-        $img = FileUploader::HandleImageUpload('logo');
-        if($img->isSuccess)
+        if($_FILES['logo']['size'] == 0)
         {
+            $request->url_logo = "";
+        } else
+        {
+            $img = FileUploader::HandleImageUpload('logo');
+
             $request->url_logo = $img->filePath;
-            $this->service->AddKonfigurasi($request);
-            View::Redirect("/dashboard-konfigurasi");
         }
+        $this->service->AddKonfigurasi($request);
+        View::Redirect("/dashboard-konfigurasi");
+//        $img = FileUploader::HandleImageUpload('logo');
+
 
     }
 }

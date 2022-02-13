@@ -33,14 +33,27 @@ class KonfigurasiService
             //$konfigurasi->id_konfigurasi = $request->id_konfigurasi;
             $konfigurasi->nip = $request->nip;
             $konfigurasi->nama_ketua = $request->nama_ketua;
-            $konfigurasi->url_logo = $request->url_logo;
+
             $konfigurasi->alamat_inibiskom = $request->alamat_inibiskom;
             $konfigurasi->no_hp = $request->no_hp;
             $konfigurasi->no_wa = $request->no_wa;
             $konfigurasi->email = $request->email;
             $konfigurasi->username_ig = $request->username_ig;
             $konfigurasi->id_pengguna = $request->id_pengguna;
-            $this->repo->Insert($konfigurasi);
+
+            $konfigurasi->url_logo = $request->url_logo;
+            if(empty($konfigurasi->url_logo))
+            {
+                $this->repo->Update($konfigurasi);
+            } else
+            {
+                $this->repo->UpdateWithLogo($konfigurasi);
+            }
+
+
+
+
+//            $this->repo->Insert($konfigurasi);
 
             $response = new KonfigurasiResponse();
 
