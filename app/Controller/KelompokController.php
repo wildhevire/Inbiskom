@@ -85,6 +85,7 @@ class KelompokController
         $request = $_GET['q'];
         $produkByKelompok = $this->produkService->GetByKelompok($request);
         $memberModel = $this->katalogService->GetTokoDescriptionMember($request);
+        $fotoModel = $this->fotoService->GetFotoForKelompok($request);
         //  echo '<pre>' , var_dump($memberModel) , '</pre>';
         View::RenderDashboard("DetailKelompok/index", [
             'title' => 'Kelompok',
@@ -94,7 +95,8 @@ class KelompokController
                 'produk' => $produkByKelompok,
                 'kategori' => $this->kategoriService->GetAllModel(),
                 'kelompok' => $this->kelompokService->GetById($request),
-                'penjual' => $memberModel
+                'penjual' => $memberModel,
+                'foto' => $fotoModel
             ]
         ]);
     }

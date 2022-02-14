@@ -54,6 +54,16 @@ class FotoRepository
         }
     }
 
+    public function SelectByKelompok(string $id)
+    {
+        $statement = $this->conn->prepare(
+            "SELECT f.id_foto, f.url, f.is_primary, f.id_produk FROM produk p, foto f WHERE id_kelompok = ? AND p.id_produk = f.id_produk;"
+        );
+        $statement->execute([$id]);
+        $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
+        return $result;
+    }
+
     public function DeleteAll(): void
     {
         $this->conn->exec("DELETE FROM foto");

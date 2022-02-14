@@ -67,5 +67,15 @@ class FotoService
         }
         return $result;
     }
+
+    public function GetFotoForKelompok($id_kelompok)
+    {
+        $result = $this->repo->SelectByKelompok($id_kelompok);
+        if($result == null){
+            //TODO : Exception Message
+            throw new DatabaseQueryException("Tidak dapat mengambil data dari database.");
+        }
+        return $result;
+    }
     //TODO: Tambah GetModelByProduk dan action lain di katalog
 }

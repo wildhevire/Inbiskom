@@ -101,10 +101,34 @@
                 <!--            <a rel="modal:open" href="#detail_modal" class="bm-link"-->
                 <!--            >Lihat</a>&nbsp;&nbsp;&nbsp;&nbsp;-->
 
-                <a target="_blank" href="/toko?q=<?= $produk['id_produk'] ?>" class="bm-link">Buka</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a target="_blank" href="/produk?q=<?= $produk['id_produk'] ?>" class="bm-link">Buka</a>&nbsp;&nbsp;&nbsp;&nbsp;
 
 
-                <a rel="modal:open" href="#edit_modal" class="bm-link btn_update" data-id="<?= $produk['id_produk'] ?>" data-nama="<?= $produk['nama_produk'] ?>" data-harga="<?= $produk['harga'] ?>" data-id_kelompok="<?= $produk['id_kelompok'] ?>" data-deskripsi="<?= $produk['deskripsi_produk'] ?>">Ubah</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a rel="modal:open" href="#edit_modal" class="bm-link btn_update"
+                   data-id="<?= $produk['id_produk'] ?>"
+                   data-nama="<?= $produk['nama_produk'] ?>"
+                   data-harga="<?= $produk['harga'] ?>"
+                   data-id_kelompok="<?= $produk['id_kelompok'] ?>"
+                   data-deskripsi="<?= $produk['deskripsi_produk'] ?>"
+
+                   <?php $fotoCounter = 0; ?>
+                    <?php foreach ($model['data']['foto'] as $foto) : ?>
+
+                        <?php if(strcmp($produk['id_produk'], $foto['id_produk'])) : ?>
+
+                            <?php if($foto['is_primary'] == 1) : ?>
+                                data-id_primary_foto="<?= $foto['id_foto']?>"
+                                data-url_primary_foto="<?= $foto['url']?>"
+                            <?php else: ?>
+                                <?php $fotoCounter++; ?>
+                                data-id_foto_<?= $fotoCounter?>="<?= $foto['id_foto']?>"
+                                data-url_foto_<?= $fotoCounter?>="<?= $foto['url']?>"
+                            <?php endif;?>
+
+                        <?php endif;?>
+                    <?php endforeach ?>
+
+                >Ubah</a>&nbsp;&nbsp;&nbsp;&nbsp;
                 <a rel="modal:open" id="btn_delete" href="#delete_modal" class="bm-link text-danger btn_delete" data-id="<?= $produk['id_produk'] ?>">Hapus</a>
 
               </td>
