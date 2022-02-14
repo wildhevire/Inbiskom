@@ -30,6 +30,12 @@ Router::Add('GET', '/dashboard-kelompok',
     \app\Controller\KelompokController::class, 'index',
     [\app\Middleware\MustLoginMiddleware::class]
 );
+
+Router::Add('GET', '/dashboard-detail-kelompok',
+    \app\Controller\KelompokController::class, 'detail',
+    [\app\Middleware\MustLoginMiddleware::class]
+);
+
 Router::Add('GET', '/dashboard-penjual',
     \app\Controller\PenjualController::class, 'index',
     [\app\Middleware\MustLoginMiddleware::class]

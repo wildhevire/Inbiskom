@@ -52,6 +52,16 @@ class ProdukRepository
         }
     }
 
+    public function SelectByKelompok(string $id)
+    {
+        $statement = $this->conn->prepare(
+            "SELECT id_produk, nama_produk, harga, deskripsi_produk, id_kelompok FROM produk WHERE id_kelompok = ?"
+        );
+        $statement->execute([$id]);
+        $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
+        return $result;
+    }
+
     public function DeleteAll(): void
     {
         $this->conn->exec("DELETE FROM produk");

@@ -73,7 +73,7 @@
                 <!--            <a rel="modal:open" href="#detail_modal" class="bm-link"-->
                 <!--            >Lihat</a>&nbsp;&nbsp;&nbsp;&nbsp;-->
                   <?php if($kelompok['jumlah_produk'] != "0") : ?>
-                      <a target="_blank" href="/toko?q=<?= $kelompok['id_kelompok'] ?>" class="bm-link">Buka</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                      <a href="/dashboard-detail-kelompok?q=<?= $kelompok['id_kelompok'] ?>" class="bm-link">Detail</a>&nbsp;&nbsp;&nbsp;&nbsp;
                   <?php endif;?>
 
                 <a rel="modal:open" href="#edit_modal" class="bm-link btn_update" id="btn_update" data-deskripsi="<?= $kelompok['deskripsi_kelompok'] ?>" data-id="<?= $kelompok['id_kelompok'] ?>" data-nama="<?= $kelompok['nama_kelompok'] ?>" data-tipe="<?= $kelompok['tipe_kelompok'] ?>" data-jumlah_anggota="<?= $kelompok['jumlah_anggota'] ?>" data-jumlah_produk="<?= $kelompok['jumlah_produk'] ?>" data-kategori="<?= $kelompok['id_kategori'] ?>" data-angkatan="<?= $kelompok['angkatan'] ?>" data-url_logo_toko="<?= $kelompok['url_logo_toko'] ?>">Ubah</a>&nbsp;&nbsp;&nbsp;&nbsp;

@@ -88,7 +88,7 @@ class KatalogRepository
     public function SelectForDetailTokoMember(string $id_kelompok)
     {
         $statement = $this->conn->prepare(
-            "SELECT k.id_kelompok, d.nama_penjual
+            "SELECT id_detail_kelompok, k.id_kelompok, d.nama_penjual, no_identitas
             FROM kelompok k, detail_kelompok d
             WHERE k.id_kelompok=d.id_kelompok AND k.id_kelompok=?"
         );

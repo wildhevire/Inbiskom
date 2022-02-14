@@ -44,6 +44,17 @@ class ProdukService
             throw $e;
         }
     }
+
+    public function GetByKelompok(string $id)
+    {
+        $result = $this->repo->SelectByKelompok($id);
+        if($result == null){
+            //TODO : Exception Message
+            throw new DatabaseQueryException("Tidak dapat mengambil data dari database.");
+        }
+        return $result;
+    }
+
     public function GetAllModel()
     {
         $result = $this->repo->SelectAll();

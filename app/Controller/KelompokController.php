@@ -24,9 +24,15 @@ use app\Service\KategoriService;
 use app\Service\KelompokService;
 use app\Service\ProdukService;
 
+use app\Repository\KatalogRepository;
+use app\Service\KatalogService;
+
 class KelompokController
 {
     private Session $session;
+
+    private KatalogRepository $katalogRepository;
+    private KatalogService $katalogService;
 
     private KelompokRepository $kelompokRepository;
     private KelompokService $kelompokService;
@@ -44,6 +50,8 @@ class KelompokController
     {
         $this->session = new Session();
 
+        $this->katalogRepository = new KatalogRepository(Database::getConnection());
+        $this->katalogService = new KatalogService($this->katalogRepository);
         $this->kelompokRepository = new KelompokRepository(Database::getConnection());
         $this->fotoRepository = new FotoRepository(Database::getConnection());
         $this->kategoriRepository = new KategoriRepository(Database::getConnection());
@@ -58,14 +66,35 @@ class KelompokController
     }
 
 
-    public function index() : void{
+    public function index(): void
+    {
         View::RenderDashboard("Kelompok/index", [
             'title' => 'Kelompok',
             'page_type' => 'kelompok',
             'hak_akses' => $this->session->Get("hak_akses"),
             'data' => [
                 'kategori' => $this->kategoriService->GetAllModel(),
-                'kelompok'=> $this->kelompokService->GetAllModel()
+                'produk' => $this->produkService->GetAllModel(),
+                'kelompok' => $this->kelompokService->GetAllModel()
+            ]
+        ]);
+    }
+
+    public function detail(): void
+    {
+        $request = $_GET['q'];
+        $produkByKelompok = $this->produkService->GetByKelompok($request);
+        $memberModel = $this->katalogService->GetTokoDescriptionMember($request);
+        //  echo '<pre>' , var_dump($memberModel) , '</pre>';
+        View::RenderDashboard("DetailKelompok/index", [
+            'title' => 'Kelompok',
+            'page_type' => 'kelompok',
+            'hak_akses' => $this->session->Get("hak_akses"),
+            'data' => [
+                'produk' => $produkByKelompok,
+                'kategori' => $this->kategoriService->GetAllModel(),
+                'kelompok' => $this->kelompokService->GetById($request),
+                'penjual' => $memberModel
             ]
         ]);
     }
@@ -87,19 +116,19 @@ class KelompokController
             'title' => 'Kelompok',
             'page_type' => 'kelompok',
             'hak_akses' => $this->session->Get("hak_akses"),
-            'error'=> $message,
+            'error' => $message,
             'data' => $model
         ]);
     }
     public function UpdateKelompok()
     {
-//        echo '<pre>' , var_dump($_POST) , '</pre>';
-//        echo '<pre>' , var_dump($_FILES) , '</pre>';
-//        return;
+        //        echo '<pre>' , var_dump($_POST) , '</pre>';
+        //        echo '<pre>' , var_dump($_FILES) , '</pre>';
+        //        return;
 
 
 
-//
+        //
 
 
         $req = new KelompokRequest();
@@ -114,11 +143,9 @@ class KelompokController
 
         $fieldName = "url_logo_toko";
 
-        if($_FILES[$fieldName]['size'] == 0)
-        {
+        if ($_FILES[$fieldName]['size'] == 0) {
             $req->url_logo_toko = "";
-        } else
-        {
+        } else {
             $img = FileUploader::HandleImageUpload('url_logo_toko');
             $req->url_logo_toko = $img->filePath;
         }
@@ -130,84 +157,80 @@ class KelompokController
 
             $this->kelompokService->UpdateKelompok($req);
             View::Redirect('/dashboard-kelompok');
-        }
-        catch (\Exception $e)
-        {
+        } catch (\Exception $e) {
 
-            $this->OnActionError($e->getMessage(),
+            $this->OnActionError(
+                $e->getMessage(),
                 [
-                    'kategori'=> $this->kategoriService->GetAllModel(),
-                    'kelompok'=> $this->kelompokService->GetAllModel()
+                    'kategori' => $this->kategoriService->GetAllModel(),
+                    'kelompok' => $this->kelompokService->GetAllModel()
                 ]
             );
         }
     }
     public function DeleteKelompok()
     {
-//        echo '<pre>' , var_dump($_POST) , '</pre>';
-//        echo '<pre>' , var_dump($_FILES) , '</pre>';
+        //        echo '<pre>' , var_dump($_POST) , '</pre>';
+        //        echo '<pre>' , var_dump($_FILES) , '</pre>';
         $id = $_POST["id_kelompok"];
 
         try {
 
             $this->kelompokService->DeleteKelompokById($id);
             View::Redirect('/dashboard-kelompok');
-        }
-        catch (\Exception $e)
-        {
-            $this->OnActionError($e->getMessage(),
+        } catch (\Exception $e) {
+            $this->OnActionError(
+                $e->getMessage(),
                 [
-                    'kategori'=> $this->kategoriService->GetAllModel(),
-                    'kelompok'=> $this->kelompokService->GetAllModel()
+                    'kategori' => $this->kategoriService->GetAllModel(),
+                    'kelompok' => $this->kelompokService->GetAllModel()
                 ]
             );
         }
     }
 
-    public function TambahKelompok() : void
+    public function TambahKelompok(): void
     {
-//        echo '<pre>' , var_dump($_POST) , '</pre>';
-//        echo '<pre>' , var_dump($_FILES) , '</pre>';
+        //        echo '<pre>' , var_dump($_POST) , '</pre>';
+        //        echo '<pre>' , var_dump($_FILES) , '</pre>';
 
-        try
-        {
+        try {
             $kelompok = $this->InsertKelompok();
             $this->InsertAllDetailKelompok($kelompok);
             $this->InsertAllProduk($kelompok);
-//            echo '<pre>' , var_dump($_POST) , '</pre>';
-//            echo '<pre>' , var_dump($_FILES) , '</pre>';
-            $this->OnActionSuccess("Berhasil Menambahkan Kelompok!",
+            //            echo '<pre>' , var_dump($_POST) , '</pre>';
+            //            echo '<pre>' , var_dump($_FILES) , '</pre>';
+            $this->OnActionSuccess(
+                "Berhasil Menambahkan Kelompok!",
                 [
-                    'kategori'=> $this->kategoriService->GetAllModel(),
-                    'kelompok'=> $this->kelompokService->GetAllModel()
+                    'kategori' => $this->kategoriService->GetAllModel(),
+                    'kelompok' => $this->kelompokService->GetAllModel()
                 ]
             );
-        }
-        catch (\Exception $exception)
-        {
+        } catch (\Exception $exception) {
 
-            $this->OnActionError($exception->getMessage(),
+            $this->OnActionError(
+                $exception->getMessage(),
                 [
-                    'kategori'=> $this->kategoriService->GetAllModel(),
-                    'kelompok'=> $this->kelompokService->GetAllModel()
+                    'kategori' => $this->kategoriService->GetAllModel(),
+                    'kelompok' => $this->kelompokService->GetAllModel()
                 ]
             );
         }
     }
 
     //return new insered kelompok id
-    private function InsertKelompok() : string
+    private function InsertKelompok(): string
     {
-        $tipe =         $_POST['tipe_kelompok'      ];
-        $nama =         $_POST['nama_kelompok'      ];
-        $angkatan =     $_POST['angkatan'           ];
-        $deskripsi =    $_POST['deskripsi_kelompok' ];
-        $id_kategori =  $_POST['id_kategori'        ];
+        $tipe =         $_POST['tipe_kelompok'];
+        $nama =         $_POST['nama_kelompok'];
+        $angkatan =     $_POST['angkatan'];
+        $deskripsi =    $_POST['deskripsi_kelompok'];
+        $id_kategori =  $_POST['id_kategori'];
 
 
         $img = FileUploader::HandleImageUpload('url_logo_toko');
-        if(!$img->isSuccess)
-        {
+        if (!$img->isSuccess) {
             //TODO : Throw Exception Gagal Upload
             throw new UploadFailedException("Gagal Upload File");
         }
@@ -228,9 +251,9 @@ class KelompokController
     private function InsertAllDetailKelompok(string $kelompokID)
     {
         $detailKelompokCount = $_POST['detail_kelompok_count'];
-        for ($i = 1; $i <= $detailKelompokCount; $i++){
-            $noIdentitas        = $_POST['no_identitas-'.$i];
-            $namaPenjual        = $_POST['nama_penjual-'.$i];
+        for ($i = 1; $i <= $detailKelompokCount; $i++) {
+            $noIdentitas        = $_POST['no_identitas-' . $i];
+            $namaPenjual        = $_POST['nama_penjual-' . $i];
             $this->InsertSingleDetailKelompok($noIdentitas, $namaPenjual, $kelompokID);
         }
     }
@@ -244,11 +267,11 @@ class KelompokController
         $this->detailKelompokService->AddPenjual($request);
     }
 
-    private function InsertSingleProduk(string $onPostId,string $kelompokID)
+    private function InsertSingleProduk(string $onPostId, string $kelompokID)
     {
-        $namaProduk         =$_POST['nama_produk-'       .$onPostId];
-        $hargaProduk        =$_POST['harga-'             .$onPostId];
-        $deskripsiProduk    =$_POST['deskripsi_produk-'  .$onPostId];
+        $namaProduk         = $_POST['nama_produk-'       . $onPostId];
+        $hargaProduk        = $_POST['harga-'             . $onPostId];
+        $deskripsiProduk    = $_POST['deskripsi_produk-'  . $onPostId];
         $request = new ProdukRequest();
         $request->id_kelompok = $kelompokID;
         $request->nama_produk = $namaProduk;
@@ -268,9 +291,9 @@ class KelompokController
         for ($i = 1; $i <= (int)$produkCount; $i++) {
 
             //Handle Produk
-            $namaProduk     = $_POST['nama_produk-'.$i];
-            $hargaProduk    = $_POST['harga-'.$i];
-            $deskripsi      = $_POST['deskripsi_produk-'.$i];
+            $namaProduk     = $_POST['nama_produk-' . $i];
+            $hargaProduk    = $_POST['harga-' . $i];
+            $deskripsi      = $_POST['deskripsi_produk-' . $i];
             $request = new ProdukRequest();
             $request->id_kelompok = $kelompokID;
             $request->nama_produk = $namaProduk;
@@ -279,28 +302,26 @@ class KelompokController
             $produk = $this->produkService->AddProduk($request);
 
             //Handle Foto
-            for ($j = 1; $j <= $fotoCount; $j++)
-            {
-                if ($_FILES['foto-produk-'.$i."-".$j]['size'] == 0)
-                {
+            for ($j = 1; $j <= $fotoCount; $j++) {
+                if ($_FILES['foto-produk-' . $i . "-" . $j]['size'] == 0) {
                     continue;
                 }
 
-                $img = FileUploader::HandleImageUpload('foto-produk-'.$i."-".$j);
-//                if($img == null)
-//                {
-//                    throw new UploadFailedException("Gagal Upload File");
-//                }
+                $img = FileUploader::HandleImageUpload('foto-produk-' . $i . "-" . $j);
+                //                if($img == null)
+                //                {
+                //                    throw new UploadFailedException("Gagal Upload File");
+                //                }
 
-//                    if(!$img->isSuccess){
-//                        //TODO : Throw Exception
-//                        throw new UploadFailedException("Gagal Upload File Foto Produk");
-//                    }
+                //                    if(!$img->isSuccess){
+                //                        //TODO : Throw Exception
+                //                        throw new UploadFailedException("Gagal Upload File Foto Produk");
+                //                    }
                 $fotoReq = new FotoRequest();
                 $fotoReq->id_produk = $produk->id_produk;
                 $fotoReq->url = $img->filePath;
                 $fotoReq->is_primary = 0;
-                if($j == 1){
+                if ($j == 1) {
                     $fotoReq->is_primary = 1;
                 }
                 $this->fotoService->AddFoto($fotoReq);
