@@ -199,8 +199,8 @@ class KelompokController
 
         try {
             $kelompok = $this->InsertKelompok();
-            $this->InsertAllDetailKelompok($kelompok);
-            $this->InsertAllProduk($kelompok);
+//            $this->InsertAllDetailKelompok($kelompok);
+//            $this->InsertAllProduk($kelompok);
             //            echo '<pre>' , var_dump($_POST) , '</pre>';
             //            echo '<pre>' , var_dump($_FILES) , '</pre>';
             $this->OnActionSuccess(

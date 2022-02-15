@@ -67,10 +67,10 @@ class KatalogService
     public function GetTokoDescriptionMember(string $id_produk)
     {
         $result = $this->repo->SelectForDetailTokoMember($id_produk);
-        if($result == null){
-            //TODO : Exception Message
-            throw new DatabaseQueryException("Tidak dapat mengambil data dari database.");
-        }
+//        if($result == null){
+//            //TODO : Exception Message
+//            throw new DatabaseQueryException("Tidak dapat mengambil data dari database.");
+//        }
         return $result;
     }
 

@@ -1,5 +1,5 @@
 <!-- ! MAIN CONTENT -->
-<main class="container-fluid mt-4 pb-5">
+
   <h2 class="mb-4">Detail Kelompok - <?= $model['data']['kelompok']->nama_kelompok ?></h2>
   <?php if (isset($model['success'])) { ?>
     <!-- ! SUCCESS ALERT -->
@@ -33,6 +33,9 @@
       <?php endif; ?>
     </div>
   </div>
+
+
+<?php if(!empty($model['data']['penjual'])) :?>
   <div class="bm-card mt-4 bg-white">
     <table class="bm-table w-100">
       <thead>
@@ -63,7 +66,12 @@
       </tbody>
     </table>
   </div>
+<?php else: ?>
+<p>Tidak Ada Data</p>
+<?php endif; ?>
   <hr />
+
+
   <h3 class="mb-4">Data Produk</h3>
   <div class="row align-items-center">
     <div class="col">
@@ -76,6 +84,7 @@
     </div>
   </div>
 
+<?php if(!empty($model['data']['produk'])) :?>
   <div class="bm-card mt-4 bg-white">
     <table class="bm-table w-100">
       <thead>
@@ -87,6 +96,8 @@
           <th>Aksi</th>
         <?php endif; ?>
       </thead>
+
+
       <tbody>
         <?php $counter = 0; ?>
         <?php foreach ($model['data']['produk'] as $produk) : ?>
@@ -128,12 +139,15 @@
           </tr>
         <?php endforeach ?>
       </tbody>
+
     </table>
   </div>
 </main>
-<!-- ! END OF MAIN CONTENT -->
+
 </div>
-</div>
+<?php else : ?>
+      <p>Tidak ada Data</p>
+<?php endif; ?>
 
 <!-- ! ADD ANGGOTA MODAL -->
 <div class="bm-modal h-auto" id="add_anggota_modal" role="dialog" aria-modal="true" aria-labelledby="modal-label" tabindex="-1">
