@@ -164,18 +164,11 @@
         data: {
             labels: labelProdukPerKategori,
             // labels: ['Craft', 'Fashion', 'Foods', "Jasa", "Pertanian & Perkebunan"],
-            datasets: [{
-                data: dataProdukPerKategori,
-                // data: [12, 19, 3, 8, 16, 12],
-                // backgroundColor: [
-                //     'rgba(255, 99, 132, 1)',
-                //     'rgba(54, 162, 235, 1)',
-                //     'rgba(255, 206, 86, 1)',
-                //     'rgba(75, 192, 192, 1)',
-                //     'rgba(153, 102, 255, 1)',
-                // ],
-                backgroundColor: colorProdukPerKategori
-            }, ]
+            // datasets: [{
+            //     data: dataProdukPerKategori,
+            //     backgroundColor: colorProdukPerKategori
+            // }, ]
+            datasets: []
         },
         options: {
             plugins: {
@@ -193,6 +186,23 @@
         }
     });
 
+    // tambah data secara dinamis
+    
+    for(const [i, value] of dataProdukPerKategori.entries()){
+        var arr = new Array(dataProdukPerKategori.length).fill(0);
+        arr[i] = value;
+
+        var newDataset = {
+            data: arr,
+            label: [labelProdukPerKategori[i] + " (" + value + ")"],
+            backgroundColor: colorProdukPerKategori[i]
+        }
+        
+        produkPerKategori.config.data.datasets.push(newDataset);
+        // console.log(newDataset);
+    }
+    produkPerKategori.update();
+
     // TOTAL PENJUAL BERDASARKAN TIPE
     const labelTipeKelompok = [];
     const dataTipeKelompok = [];
@@ -200,6 +210,12 @@
         labelTipeKelompok.push("<?= $item['tipe_kelompok'] ?>");
         dataTipeKelompok.push(<?= $item['jml_penjual'] ?>);
     <?php endforeach; ?>
+    
+    var sum = dataTipeKelompok.reduce((a, b) => a + b, 0);
+    for(const [i, value] of labelTipeKelompok.entries()){
+        labelTipeKelompok[i] = value + " (" + Math.round((dataTipeKelompok[i]/sum)*100) + "%)";
+    }
+
     const penjualPerTipe = new Chart(document.getElementById('penjualPerTipe').getContext('2d'), {
         type: 'doughnut',
         data: {
