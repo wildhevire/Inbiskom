@@ -14,31 +14,49 @@ class OverviewService
     }
     public function SelectPendaftarPerTahun(): ?array
     {
-        $result = $this->repo->SelectPendaftarPerTahun();
-        if($result == null){
-            //TODO : Exception Message
-            throw new DatabaseQueryException("Tidak dapat mengambil data dari database.");
+        if(empty($_GET['angkatan'])){
+            $tahun = date("Y");
+        }else{
+            $tahun = $_GET['angkatan'];
         }
+
+        $result = $this->repo->SelectPendaftarPerTahun($tahun);
+        // if($result == null){
+        //     //TODO : Exception Message
+        //     throw new DatabaseQueryException("Tidak dapat mengambil data dari database.");
+        // }
         return $result;
     }
 
     public function SelectProdukPerKategori(): ?array
     {
-        $result = $this->repo->SelectProdukPerKategori();
-        if($result == null){
-            //TODO : Exception Message
-            throw new DatabaseQueryException("Tidak dapat mengambil data dari database.");
+        if(empty($_GET['angkatan'])){
+            $tahun = date("Y");
+        }else{
+            $tahun = $_GET['angkatan'];
         }
+        
+        $result = $this->repo->SelectProdukPerKategori($tahun);
+        // if($result == null){
+        //     //TODO : Exception Message
+        //     throw new DatabaseQueryException("Tidak dapat mengambil data dari database.");
+        // }
         return $result;
     }
 
     public function SelectPenjualPerTipe(): ?array
     {
-        $result = $this->repo->SelectPenjualPerTipe();
-        if($result == null){
-            //TODO : Exception Message
-            throw new DatabaseQueryException("Tidak dapat mengambil data dari database.");
+        if(empty($_GET['angkatan'])){
+            $tahun = date("Y");
+        }else{
+            $tahun = $_GET['angkatan'];
         }
+        
+        $result = $this->repo->SelectPenjualPerTipe($tahun);
+        // if($result == null){
+        //     //TODO : Exception Message
+        //     throw new DatabaseQueryException("Tidak dapat mengambil data dari database.");
+        // }
         return $result;
     }
 

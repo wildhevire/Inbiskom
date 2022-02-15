@@ -1,5 +1,24 @@
 <!-- ! MAIN CONTENT -->
 <main class="container-fluid mt-4 pb-5">
+    <h2 class="mb-4">Dashboard</h2>
+    <div class="col-3">
+        <form method='GET'>
+            <label class="bm-input-label text-secondary" for="angkatan">Tahun</label>
+            <div class="bm-input">
+                <select class="bm-input__field" id="angkatan" name="angkatan">
+                <option value="" disabled <?= isset($_GET['angkatan']) ? '' : 'selected'?>>Tahun</option>
+                <?php for ($i = 2017; $i <= date("Y"); $i++) : ?>
+                <option value="<?= $i?>" <?= isset($_GET['angkatan']) && $_GET['angkatan'] == $i ? 'selected' : ''?>><?= $i?></option>
+                <?php endfor; ?>
+                </select>
+                <span class="bm-input__arrow"></span>
+            </div>
+            <br/>
+            <button class="bm-btn w-100">Terapkan</button>
+        </form>
+        <br/>
+    </div>
+
     <div class="row gap-3">
         <div class="col-3">
             <div class="bm-card bg-white row">
@@ -119,7 +138,8 @@
                     align: "start",
                     font: {
                         size: 18
-                    }
+                    },
+                    padding: 15
                 }
             }
         }
@@ -165,11 +185,10 @@
                     align: "start",
                     font: {
                         size: 18
-                    }
+                    },
+                    padding: 15
                 },
-                legend: {
-                    display: false,
-                },
+
             },
         }
     });
@@ -208,7 +227,8 @@
                     align: "start",
                     font: {
                         size: 18
-                    }
+                    },
+                    padding: 15
                 },
                 legend: {
                     position: "top"
