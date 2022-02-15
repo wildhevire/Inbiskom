@@ -1,18 +1,15 @@
 <!-- ! NAVBAR -->
 <header class="navbar row px-1 justify-content-start">
     <div class="col-3 text-end">
+        <div class="d-inline-block" style="margin-right: 8px;" >
+            <img height="36" src=" <?php echo './assets/images/' . $model["konfigurasi"]["url_logo"] ?>" alt="Logo INBISKOM" />
+        </div>
         <a href="/" class="fw-bold text-white">INBISKOM</a>
     </div>
     <div class="col col-lg-6">
         <div class="bm-input bm-input--with-icon">
             <form action="/search?q=" method="get">
-                <input
-                    type="text"
-                    class="bm-input__field"
-                    placeholder="Cari produk"
-                    name="q"
-                    value=""
-                />
+                <input type="text" class="bm-input__field" placeholder="Cari produk" name="q" value="" />
             </form>
             <div class="bm-input__icon">
                 <i class="fas fa-search"></i>

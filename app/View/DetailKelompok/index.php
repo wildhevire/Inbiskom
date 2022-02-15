@@ -104,31 +104,7 @@
                 <a target="_blank" href="/produk?q=<?= $produk['id_produk'] ?>" class="bm-link">Buka</a>&nbsp;&nbsp;&nbsp;&nbsp;
 
 
-                <a rel="modal:open" href="#edit_modal" class="bm-link btn_update"
-                   data-id="<?= $produk['id_produk'] ?>"
-                   data-nama="<?= $produk['nama_produk'] ?>"
-                   data-harga="<?= $produk['harga'] ?>"
-                   data-id_kelompok="<?= $produk['id_kelompok'] ?>"
-                   data-deskripsi="<?= $produk['deskripsi_produk'] ?>"
-
-                   <?php $fotoCounter = 0; ?>
-                    <?php foreach ($model['data']['foto'] as $foto) : ?>
-
-                        <?php if(strcmp($produk['id_produk'], $foto['id_produk'])) : ?>
-
-                            <?php if($foto['is_primary'] == 1) : ?>
-                                data-id_primary_foto="<?= $foto['id_foto']?>"
-                                data-url_primary_foto="<?= $foto['url']?>"
-                            <?php else: ?>
-                                <?php $fotoCounter++; ?>
-                                data-id_foto_<?= $fotoCounter?>="<?= $foto['id_foto']?>"
-                                data-url_foto_<?= $fotoCounter?>="<?= $foto['url']?>"
-                            <?php endif;?>
-
-                        <?php endif;?>
-                    <?php endforeach ?>
-
-                >Ubah</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a rel="modal:open" href="#edit_modal" class="bm-link btn_update" data-id="<?= $produk['id_produk'] ?>" data-nama="<?= $produk['nama_produk'] ?>" data-harga="<?= $produk['harga'] ?>" data-id_kelompok="<?= $produk['id_kelompok'] ?>" data-deskripsi="<?= $produk['deskripsi_produk'] ?>" <?php $fotoCounter = 0; ?> <?php foreach ($model['data']['foto'] as $foto) : ?> <?php if (strcmp($produk['id_produk'], $foto['id_produk'])) : ?> <?php if ($foto['is_primary'] == 1) : ?> data-id_primary_foto="<?= $foto['id_foto'] ?>" data-url_primary_foto="<?= $foto['url'] ?>" <?php else : ?> <?php $fotoCounter++; ?> data-id_foto_<?= $fotoCounter ?>="<?= $foto['id_foto'] ?>" data-url_foto_<?= $fotoCounter ?>="<?= $foto['url'] ?>" <?php endif; ?> <?php endif; ?> <?php endforeach ?>>Ubah</a>&nbsp;&nbsp;&nbsp;&nbsp;
                 <a rel="modal:open" id="btn_delete" href="#delete_modal" class="bm-link text-danger btn_delete" data-id="<?= $produk['id_produk'] ?>">Hapus</a>
 
               </td>
@@ -403,7 +379,7 @@
         <div class="col-3 mb-4">
           <label for="foto-ubah-produk-1-1" id="label-foto-ubah-produk-1-1" class="bm-input--file bm-input--file__small mt-4 mx-auto bm-cursor-pointer">
             <input class="file-upload" type="file" name="foto-ubah-produk-1-1" id="foto-ubah-produk-1-1" accept="image/*" />
-            <input type="text" name="id_foto_1" />
+            <input type="text" id="id_primary_foto" name="id_foto_1" />
 
             <span class="text-secondary">Tambah foto</span>
             <i class="fas fa-image fs-2 text-secondary"></i>
@@ -423,7 +399,7 @@
         <div class="col-3">
           <label for="foto-ubah-produk-1-2" id="label-foto-ubah-produk-1-2" class="bm-input--file bm-input--file__small mt-4 mx-auto bm-cursor-pointer">
             <input class="file-upload" type="file" name="foto-ubah-produk-1-2" id="foto-ubah-produk-1-2" accept="image/*" />
-            <input type="text" name="id_foto_2" />
+            <input type="text" id="id_foto_1" name="id_foto_2" />
             <span class="text-secondary">Tambah foto</span>
             <i class="fas fa-image fs-2 text-secondary"></i>
           </label>
@@ -439,7 +415,7 @@
         <div class="col-3">
           <label for="foto-ubah-produk-1-3" id="label-foto-ubah-produk-1-3" class="bm-input--file bm-input--file__small mt-4 mx-auto bm-cursor-pointer">
             <input class="file-upload" type="file" name="foto-ubah-produk-1-3" id="foto-ubah-produk-1-3" accept="image/*" />
-            <input type="text" name="id_foto_3" />
+            <input type="text" id="id_foto_2" name="id_foto_3" />
             <span class="text-secondary">Tambah foto</span>
             <i class="fas fa-image fs-2 text-secondary"></i>
           </label>
@@ -455,7 +431,7 @@
         <div class="col-3">
           <label for="foto-ubah-produk-1-4" id="label-foto-ubah-produk-1-4" class="bm-input--file bm-input--file__small mt-4 mx-auto bm-cursor-pointer">
             <input class="file-upload" type="file" name="foto-ubah-produk-1-4" id="foto-ubah-produk-1-4" accept="image/*" />
-            <input type="text" name="id_foto_4" />
+            <input type="text" id="id_foto_3" name="id_foto_4" />
             <span class="text-secondary">Tambah foto</span>
             <i class="fas fa-image fs-2 text-secondary"></i>
           </label>
@@ -471,7 +447,7 @@
         <div class="col-3">
           <label for="foto-ubah-produk-1-5" id="label-foto-ubah-produk-1-5" class="bm-input--file bm-input--file__small mt-4 mx-auto bm-cursor-pointer">
             <input class="file-upload" type="file" name="foto-ubah-produk-1-5" id="foto-ubah-produk-1-5" accept="image/*" />
-            <input type="text" name="id_foto_5" />
+            <input type="text" id="id_foto_4" name="id_foto_5" />
             <span class="text-secondary">Tambah foto</span>
             <i class="fas fa-image fs-2 text-secondary"></i>
           </label>
@@ -604,7 +580,6 @@
       $("#foto_count-1").val(fotoProdukCount)
       if (e.target.parentElement.tagName === "SPAN") {
         let elId = e.target.parentElement.parentElement.parentElement.parentElement.children[0].children[0].id
-        console.log(elId);
         $(`#${elId}`).val('')
         $(`#placeholder-${elId}`).hide();
         $(`#label-image-${elId}`).hide();
@@ -640,12 +615,6 @@
   });
 
   $(".btn_update").click(function() {
-
-
-
-  });
-
-  $(".btn_update").click(function() {
     var id = $(this).data("id");
     var nama = $(this).data("nama");
     var harga = $(this).data("harga");
@@ -656,6 +625,21 @@
     var no_id = $(this).data("no_id");
     var nama_penjual = $(this).data("nama_penjual");
 
+    var id_primary_foto = $(this).data("id_primary_foto");
+    var url_primary_foto = $(this).data("url_primary_foto");
+
+    var id_foto_1 = $(this).data("id_foto_1");
+    var url_foto_1 = $(this).data("url_foto_1");
+
+    var id_foto_2 = $(this).data("id_foto_2");
+    var url_foto_2 = $(this).data("url_foto_2");
+
+    var id_foto_3 = $(this).data("id_foto_3");
+    var url_foto_3 = $(this).data("url_foto_3");
+
+    var id_foto_4 = $(this).data("id_foto_4");
+    var url_foto_4 = $(this).data("url_foto_4");
+
     $("#update-id-produk").val(id);
     $("#add-nama-produk").val(nama);
     $("#add-harga").val(harga);
@@ -663,6 +647,57 @@
     $("#id_pengguna").val(id);
     $("#no-identitas").val(no_id);
     $("#nama").val(nama_penjual);
+
+    $("#id_primary_foto").val("");
+    $("#id_foto_1").val("");
+    $("#id_foto_2").val("");
+    $("#id_foto_3").val("");
+    $("#id_foto_4").val("");
+
+    $("#label-image-foto-ubah-produk-1-1").hide();
+    $("#placeholder-foto-ubah-produk-1-1").hide();
+    $("#label-image-foto-ubah-produk-1-2").hide();
+    $("#placeholder-foto-ubah-produk-1-2").hide();
+    $("#label-image-foto-ubah-produk-1-3").hide();
+    $("#placeholder-foto-ubah-produk-1-3").hide();
+    $("#label-image-foto-ubah-produk-1-4").hide();
+    $("#placeholder-foto-ubah-produk-1-4").hide();
+    $("#label-image-foto-ubah-produk-1-5").hide();
+    $("#placeholder-foto-ubah-produk-1-5").hide();
+
+    if (id_primary_foto) {
+      $("#id_primary_foto").val(id_primary_foto);
+      $("#label-image-foto-ubah-produk-1-1").show();
+      $("#placeholder-foto-ubah-produk-1-1").show()
+      $("#placeholder-foto-ubah-produk-1-1")[0].src = "./assets/images/" + url_primary_foto;
+    }
+
+    if (id_foto_1) {
+      $("#id_foto_1").val(id_foto_1);
+      $("#label-image-foto-ubah-produk-1-2").show();
+      $("#placeholder-foto-ubah-produk-1-2").show()
+      $("#placeholder-foto-ubah-produk-1-2")[0].src = "./assets/images/" + url_foto_1;
+    }
+    if (id_foto_2) {
+      $("#id_foto_2").val(id_foto_2);
+      $("#label-image-foto-ubah-produk-1-3").show();
+      $("#placeholder-foto-ubah-produk-1-3").show()
+      $("#placeholder-foto-ubah-produk-1-3")[0].src = "./assets/images/" + url_foto_2;
+    }
+    if (id_foto_3) {
+      $("#id_foto_3").val(id_foto_3);
+      $("#label-image-foto-ubah-produk-1-4").show();
+      $("#placeholder-foto-ubah-produk-1-4").show()
+      $("#placeholder-foto-ubah-produk-1-4")[0].src = "./assets/images/" + url_foto_3;
+    }
+    if (id_foto_4) {
+      $("#id_foto_4").val(id_foto_4);
+      $("#label-image-foto-ubah-produk-1-5").show();
+      $("#placeholder-foto-ubah-produk-1-5").show()
+      $("#placeholder-foto-ubah-produk-1-5")[0].src = "./assets/images/" + url_foto_4;
+    }
+
+
   });
 
   $('#url_logo_toko').change(function() {
