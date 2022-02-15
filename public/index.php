@@ -68,6 +68,14 @@ Router::Add('GET', '/dashboard-banner',
     \app\Controller\BannerController::class, 'index',
     [\app\Middleware\MustLoginMiddleware::class]
 );
+Router::Add('POST', '/AddBanner',
+    \app\Controller\BannerController::class, 'AddBanner',
+    [\app\Middleware\MustLoginMiddleware::class]
+);
+Router::Add('POST', '/DeactivateBanner',
+    \app\Controller\BannerController::class, 'DeactivateBanner',
+    [\app\Middleware\MustLoginMiddleware::class]
+);
 
 //Konfig
 Router::Add('POST', '/TambahKonfig',

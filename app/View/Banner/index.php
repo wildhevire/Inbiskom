@@ -30,33 +30,37 @@
      <!-- ! END OF ERROR ALERT -->
  <?php } ?>
 
- <div class="bm-card mt-4 bg-white">
-     <table class="bm-table w-100">
+ <?php if(!empty($model['data'])) :?>
+     <div class="bm-card mt-4 bg-white">
+         <table class="bm-table w-100">
 
-         <thead>
-             <th>No</th>
-             <th>Gambar</th>
-             <th>Status</th>
-             <th>Aksi</th>
-         </thead>
-         <tbody>
-             <?php $counter = 0 ?>
-             <?php foreach ($model['data'] as $data) : ?>
-                 <tr>
-                     <?php $counter++; ?>
-                     <td><?= $counter ?></td>
-                     <td><img height="80" src="https://placekitten.com/500/500" alt="XPS, Designed to be the best" /></td>
-                     <td><?php echo $data['status'] == 1 ? "Aktif" : "Tidak Aktif" ?></td>
-                     <td>
-                         <!-- <a rel="modal:open" href="#edit_modal" class="bm-link btn_update" id="btn_update" data-id="<?= $data['id_pengguna']; ?>" data-nama="<?= $data['nama_pengguna']; ?>" data-username="<?= $data['username']; ?>" data-tahun-aktif="<?= $data['tahun_aktif']; ?>" data-hak-akses="<?= $data['hak_akses']; ?>">Ubah</a>&nbsp;&nbsp;&nbsp;&nbsp; -->
-                         <a rel="modal:open" href="#delete_modal" class="bm-link text-danger btn_delete" data-id="<?= $data['id_pengguna']; ?>">Ubah status</a>
-                     </td>
-                 </tr>
-             <?php endforeach; ?>
+             <thead>
+                 <th>No</th>
+                 <th>Gambar</th>
+                 <th>Status</th>
+                 <th>Aksi</th>
+             </thead>
+             <tbody>
+                 <?php $counter = 0 ?>
+                 <?php foreach ($model['data'] as $data) : ?>
+                     <tr>
+                         <?php $counter++; ?>
+                         <td><?= $counter ?></td>
+                         <td><img height="80" src="<?= "./assets/images/".$data['url_banner'] ?>" alt="XPS, Designed to be the best" /></td>
+                         <td><?php echo $data['status'] == 1 ? "Aktif" : "Tidak Aktif" ?></td>
+                         <td>
+                             <!-- <a rel="modal:open" href="#edit_modal" class="bm-link btn_update" id="btn_update" data-id="<?= $data['id']; ?>" data-nama="<?= $data['nama_pengguna']; ?>" data-username="<?= $data['username']; ?>" data-tahun-aktif="<?= $data['tahun_aktif']; ?>" data-hak-akses="<?= $data['hak_akses']; ?>">Ubah</a>&nbsp;&nbsp;&nbsp;&nbsp; -->
+                             <a rel="modal:open" href="#delete_modal" class="bm-link text-danger btn_delete" data-id="<?= $data['id']; ?>">Ubah status</a>
+                         </td>
+                     </tr>
+                 <?php endforeach; ?>
 
-         </tbody>
-     </table>
- </div>
+             </tbody>
+         </table>
+     </div>
+ <?php else :?>
+     <p>Tidak ada data</p>
+ <?php endif;?>
 
 
  <!-- ! TAMBAH MODAL -->
@@ -68,7 +72,7 @@
              <span class="bm-sr-only">Batal</span>
          </a>
      </div>
-     <form action="/AddPengguna" method="POST">
+     <form action="/AddBanner" method="POST" enctype="multipart/form-data">
 
          <div class="bm-modal__body">
              <!-- <label class="bm-input-label" for="logo-kelompok">Gambar</label> -->
@@ -97,8 +101,8 @@
 
  <!-- ! DELETE MODAL -->
  <div class="bm-modal h-auto" id="delete_modal" role="dialog" aria-modal="true" aria-labelledby="modal-label" tabindex="-1">
-     <form action="/DeletePengguna" method="POST">
-         <input type="text" hidden name="id_pengguna" id="delete_id_pengguna" />
+     <form action="/DeactivateBanner" method="POST">
+         <input type="text" hidden name="id_banner" id="delete_id_pengguna" />
          <div class="bm-modal__header">
              <h5 class="bm-modal__title">Apakah Anda yakin?</h5>
              <a class="bm-modal__button-close" aria-label="close" rel="modal:close">

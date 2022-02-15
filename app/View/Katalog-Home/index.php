@@ -11,27 +11,40 @@ $default_thumbnail = "./assets/images/Logo UNIKOM.png";
 <div class="dashboard-row">
     <!-- ! MAIN CONTENT -->
     <main class="container mt-4 pb-5">
+
+        <?php if (!empty($model['carousel'])) : ?>
         <!-- Carousel -->
         <div id="demo" class="carousel slide" data-bs-ride="carousel">
 
             <!-- Indicators/dots -->
             <div class="carousel-indicators">
-                <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-                <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-                <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+                <?php $carouselCounter = 0;?>
+                <?php foreach ($model['carousel'] as $carousel) :?>
+                    <?php if ($carouselCounter == 0) : ?>
+                        <button type="button" data-bs-target="#demo" data-bs-slide-to="<?= $carouselCounter?>" class="active"></button>
+                    <?php else :?>
+                        <button type="button" data-bs-target="#demo" data-bs-slide-to="<?= $carouselCounter?>"></button>
+                    <?php endif;?>
+                    <?php $carouselCounter++;?>
+                <?php endforeach; ?>
             </div>
 
             <!-- The slideshow/carousel -->
             <div class="carousel-inner">
-                <div class="carousel-item bm-carousel active">
-                    <img src="https://placekitten.com/500/200" alt="Los Angeles" class="d-block" style="width:100%">
-                </div>
-                <div class="carousel-item bm-carousel">
-                    <img src="https://placekitten.com/500/300" alt="Chicago" class="d-block" style="width:100%">
-                </div>
-                <div class="carousel-item bm-carousel">
-                    <img src="https://placekitten.com/500/400" alt="New York" class="d-block" style="width:100%">
-                </div>
+                <?php $carouselCounterImg = 0;?>
+                <?php foreach ($model['carousel'] as $carousel) :?>
+                    <?php if ($carouselCounterImg == 0)  : ?>
+                        <div class="carousel-item bm-carousel active">
+                            <img src="<?= './assets/images/'.$carousel['url_banner']?>" alt="Produk" class="d-block" style="width:100%">
+                        </div>
+                    <?php else :?>
+                        <div class="carousel-item bm-carousel">
+                            <img src="<?= './assets/images/'.$carousel['url_banner']?>" alt="Chicago" class="d-block" style="width:100%">
+                        </div>
+                    <?php endif;?>
+
+                    <?php $carouselCounterImg++;?>
+                <?php endforeach; ?>
             </div>
 
             <!-- Left and right controls/icons -->
@@ -42,6 +55,8 @@ $default_thumbnail = "./assets/images/Logo UNIKOM.png";
                 <span class="carousel-control-next-icon"></span>
             </button>
         </div>
+        <?php endif;?>
+
         <div class="kategori mt-5">
             <h3>Kategori</h3>
 
