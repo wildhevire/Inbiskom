@@ -1,53 +1,55 @@
 <!-- ! MAIN CONTENT -->
 
-  <h2 class="mb-4">Detail Kelompok - <?= $model['data']['kelompok']->nama_kelompok ?></h2>
-  <?php if (isset($model['success'])) { ?>
-    <!-- ! SUCCESS ALERT -->
-    <div class="bm-alert bm-alert--success mt-4" role="alert">
-      <div class="bm-alert__icon">
-        <i class="fas fa-check-circle"></i>
-      </div>
-      <div class="bm-alert__content"><?= $model['success'] ?></div>
+<h2 class="mb-4">Detail Kelompok - <?= $model['data']['kelompok']->nama_kelompok ?></h2>
+<?php if (isset($model['success'])) { ?>
+  <!-- ! SUCCESS ALERT -->
+  <div class="bm-alert bm-alert--success mt-4" role="alert">
+    <div class="bm-alert__icon">
+      <i class="fas fa-check-circle"></i>
     </div>
-    <!-- ! END OF SUCCESS ALERT -->
-  <?php } ?>
-
-  <?php if (isset($model['error'])) { ?>
-    <!-- ! ERROR ALERT -->
-    <div class="bm-alert bm-alert--error mt-4" role="alert">
-      <div class="bm-alert__icon">
-        <i class="fas fa-exclamation-circle"></i>
-      </div>
-      <div class="bm-alert__content"><?= $model['error'] ?></div>
-    </div>
-    <!-- ! END OF ERROR ALERT -->
-  <?php } ?>
-  <h3 class="mb-4">Data Anggota</h3>
-  <div class="row align-items-center">
-    <div class="col">
-      <?php if (isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris") : ?>
-        <a rel="modal:open" href="#add_anggota_modal" class="bm-btn"><span class="bm-btn__icon">
-            <i class="fas fa-plus"></i>
-          </span>
-          <span class="bm-btn__label">Tambah Anggota</span></a>
-      <?php endif; ?>
-    </div>
+    <div class="bm-alert__content"><?= $model['success'] ?></div>
   </div>
+  <!-- ! END OF SUCCESS ALERT -->
+<?php } ?>
+
+<?php if (isset($model['error'])) { ?>
+  <!-- ! ERROR ALERT -->
+  <div class="bm-alert bm-alert--error mt-4" role="alert">
+    <div class="bm-alert__icon">
+      <i class="fas fa-exclamation-circle"></i>
+    </div>
+    <div class="bm-alert__content"><?= $model['error'] ?></div>
+  </div>
+  <!-- ! END OF ERROR ALERT -->
+<?php } ?>
+<h3 class="mb-4">Data Anggota</h3>
+<div class="row align-items-center">
+  <div class="col">
+    <?php if (isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris") : ?>
+      <a rel="modal:open" href="#add_anggota_modal" class="bm-btn"><span class="bm-btn__icon">
+          <i class="fas fa-plus"></i>
+        </span>
+        <span class="bm-btn__label">Tambah Anggota</span></a>
+    <?php endif; ?>
+  </div>
+</div>
 
 
-<?php if(!empty($model['data']['penjual'])) :?>
-  <div class="bm-card mt-4 bg-white">
-    <table class="bm-table w-100">
-      <thead>
-        <th>No</th>
-        <th>No. Identitas</th>
-        <th>Nama</th>
-        <?php if (isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris") : ?>
-          <th>Aksi</th>
-        <?php endif; ?>
-      </thead>
-      <tbody>
-        <?php $counter = 0 ?>
+
+<div class="bm-card mt-4 bg-white">
+  <table class="bm-table w-100">
+    <thead>
+      <th>No</th>
+      <th>No. Identitas</th>
+      <th>Nama</th>
+      <?php if (isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris") : ?>
+        <th>Aksi</th>
+      <?php endif; ?>
+    </thead>
+    <tbody>
+      <?php $counter = 0 ?>
+      <?php if (!empty($model['data']['penjual'])) : ?>
+
         <?php foreach ($model['data']['penjual'] as $penjual) : ?>
           <tr>
             <?php $counter++ ?>
@@ -62,44 +64,48 @@
             <?php endif; ?>
           </tr>
         <?php endforeach; ?>
-
-      </tbody>
-    </table>
-  </div>
-<?php else: ?>
-<p>Tidak Ada Data</p>
-<?php endif; ?>
-  <hr />
-
-
-  <h3 class="mb-4">Data Produk</h3>
-  <div class="row align-items-center">
-    <div class="col">
-      <?php if (isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris") : ?>
-        <a rel="modal:open" href="#add_produk_modal" class="bm-btn"><span class="bm-btn__icon">
-            <i class="fas fa-plus"></i>
-          </span>
-          <span class="bm-btn__label">Tambah Produk</span></a>
+      <?php else : ?>
+        <tr>
+          <td colspan="4" class="text-center">Belum ada data</td>
+        </tr>
       <?php endif; ?>
-    </div>
+    </tbody>
+  </table>
+</div>
+
+
+<hr />
+
+
+<h3 class="mb-4">Data Produk</h3>
+<div class="row align-items-center">
+  <div class="col">
+    <?php if (isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris") : ?>
+      <a rel="modal:open" href="#add_produk_modal" class="bm-btn"><span class="bm-btn__icon">
+          <i class="fas fa-plus"></i>
+        </span>
+        <span class="bm-btn__label">Tambah Produk</span></a>
+    <?php endif; ?>
   </div>
-
-<?php if(!empty($model['data']['produk'])) :?>
-  <div class="bm-card mt-4 bg-white">
-    <table class="bm-table w-100">
-      <thead>
-        <th>No</th>
-        <th>Nama Produk</th>
-        <th>Deskripsi</th>
-        <th>Harga</th>
-        <?php if (isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris") : ?>
-          <th>Aksi</th>
-        <?php endif; ?>
-      </thead>
+</div>
 
 
-      <tbody>
-        <?php $counter = 0; ?>
+<div class="bm-card mt-4 bg-white">
+  <table class="bm-table w-100">
+    <thead>
+      <th>No</th>
+      <th>Nama Produk</th>
+      <th>Deskripsi</th>
+      <th>Harga</th>
+      <?php if (isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris") : ?>
+        <th>Aksi</th>
+      <?php endif; ?>
+    </thead>
+
+
+    <tbody>
+      <?php $counter = 0; ?>
+      <?php if (!empty($model['data']['produk'])) : ?>
         <?php foreach ($model['data']['produk'] as $produk) : ?>
           <tr>
             <?php $counter++; ?>
@@ -109,45 +115,30 @@
             <td><?= rupiah($produk['harga']) ?></td>
             <?php if (isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris") : ?>
               <td>
-                <!--            <a rel="modal:open" href="#detail_modal" class="bm-link"-->
-                <!--            >Lihat</a>&nbsp;&nbsp;&nbsp;&nbsp;-->
 
                 <a target="_blank" href="/produk?q=<?= $produk['id_produk'] ?>" class="bm-link">Buka</a>&nbsp;&nbsp;&nbsp;&nbsp;
 
 
-                <a rel="modal:open" href="#edit_modal" class="bm-link btn_update"
-                   data-id="<?= $produk['id_produk'] ?>"
-                   data-nama="<?= $produk['nama_produk'] ?>"
-                   data-harga="<?= $produk['harga'] ?>"
-                   data-id_kelompok="<?= $produk['id_kelompok'] ?>" data-deskripsi="<?= $produk['deskripsi_produk'] ?>"
-                    <?php $fotoCounter = 0; ?>
-                    <?php foreach ($model['data']['foto'] as $foto) : ?>
-<!--
-                        <?php if ($produk['id_produk'] == $foto['id_produk']) : ?>
-                            <?php if ($foto['is_primary'] == 1) : ?>
-                                data-id_primary_foto="<?= $foto['id_foto'] ?>"
-                                data-url_primary_foto="<?= $foto['url'] ?>"
-                            <?php else : ?>
-                                <?php $fotoCounter++; ?>
-                                data-id_foto_<?= $fotoCounter ?>="<?= $foto['id_foto'] ?>"
-                                data-url_foto_<?= $fotoCounter ?>="<?= $foto['url'] ?>"
-                <?php endif; ?> <?php endif; ?> <?php endforeach ?>>Ubah</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a rel="modal:open" href="#edit_modal" class="bm-link btn_update" data-id="<?= $produk['id_produk'] ?>" data-nama="<?= $produk['nama_produk'] ?>" data-harga="<?= $produk['harga'] ?>" data-id_kelompok="<?= $produk['id_kelompok'] ?>" data-deskripsi="<?= $produk['deskripsi_produk'] ?>" <?php $fotoCounter = 0; ?> <?php foreach ($model['data']['foto'] as $foto) : ?> <!-- <?php if ($produk['id_produk'] == $foto['id_produk']) : ?> <?php if ($foto['is_primary'] == 1) : ?> data-id_primary_foto="<?= $foto['id_foto'] ?>" data-url_primary_foto="<?= $foto['url'] ?>" <?php else : ?> <?php $fotoCounter++; ?> data-id_foto_<?= $fotoCounter ?>="<?= $foto['id_foto'] ?>" data-url_foto_<?= $fotoCounter ?>="<?= $foto['url'] ?>" <?php endif; ?> <?php endif; ?> <?php endforeach ?>>Ubah</a>&nbsp;&nbsp;&nbsp;&nbsp;
                 <a rel="modal:open" id="btn_delete" href="#delete_modal" class="bm-link text-danger btn_delete" data-id="<?= $produk['id_produk'] ?>">Hapus</a>
 
               </td>
             <?php endif; ?>
           </tr>
         <?php endforeach ?>
-      </tbody>
+      <?php else : ?>
+        <tr>
+          <td colspan="4" class="text-center">Belum ada data</td>
+        </tr>
+      <?php endif; ?>
+    </tbody>
 
-    </table>
-  </div>
+  </table>
+</div>
 </main>
 
 </div>
-<?php else : ?>
-      <p>Tidak ada Data</p>
-<?php endif; ?>
+
 
 <!-- ! ADD ANGGOTA MODAL -->
 <div class="bm-modal h-auto" id="add_anggota_modal" role="dialog" aria-modal="true" aria-labelledby="modal-label" tabindex="-1">
@@ -352,7 +343,7 @@
       </div>
 
       <br />
-      <input type="text" name="kelompok" value="<?= $_GET['q'] ?>" />
+      <input type="text" hidden name="kelompok" value="<?= $_GET['q'] ?>" />
     </div>
 
     <div class="bm-modal__footer">
@@ -409,7 +400,7 @@
         <div class="col-3 mb-4">
           <label for="foto-ubah-produk-1-1" id="label-foto-ubah-produk-1-1" class="bm-input--file bm-input--file__small mt-4 mx-auto bm-cursor-pointer">
             <input class="file-upload" type="file" name="foto-ubah-produk-1-1" id="foto-ubah-produk-1-1" accept="image/*" />
-            <input type="text" id="id_primary_foto" name="id_foto_1" />
+            <input type="text" hidden id="id_primary_foto" name="id_foto_1" />
 
             <span class="text-secondary">Tambah foto</span>
             <i class="fas fa-image fs-2 text-secondary"></i>
@@ -429,7 +420,7 @@
         <div class="col-3">
           <label for="foto-ubah-produk-1-2" id="label-foto-ubah-produk-1-2" class="bm-input--file bm-input--file__small mt-4 mx-auto bm-cursor-pointer">
             <input class="file-upload" type="file" name="foto-ubah-produk-1-2" id="foto-ubah-produk-1-2" accept="image/*" />
-            <input type="text" id="id_foto_1" name="id_foto_2" />
+            <input type="text" hidden id="id_foto_1" name="id_foto_2" />
             <span class="text-secondary">Tambah foto</span>
             <i class="fas fa-image fs-2 text-secondary"></i>
           </label>
@@ -445,7 +436,7 @@
         <div class="col-3">
           <label for="foto-ubah-produk-1-3" id="label-foto-ubah-produk-1-3" class="bm-input--file bm-input--file__small mt-4 mx-auto bm-cursor-pointer">
             <input class="file-upload" type="file" name="foto-ubah-produk-1-3" id="foto-ubah-produk-1-3" accept="image/*" />
-            <input type="text" id="id_foto_2" name="id_foto_3" />
+            <input type="text" hidden id="id_foto_2" name="id_foto_3" />
             <span class="text-secondary">Tambah foto</span>
             <i class="fas fa-image fs-2 text-secondary"></i>
           </label>
@@ -461,7 +452,7 @@
         <div class="col-3">
           <label for="foto-ubah-produk-1-4" id="label-foto-ubah-produk-1-4" class="bm-input--file bm-input--file__small mt-4 mx-auto bm-cursor-pointer">
             <input class="file-upload" type="file" name="foto-ubah-produk-1-4" id="foto-ubah-produk-1-4" accept="image/*" />
-            <input type="text" id="id_foto_3" name="id_foto_4" />
+            <input type="text" hidden id="id_foto_3" name="id_foto_4" />
             <span class="text-secondary">Tambah foto</span>
             <i class="fas fa-image fs-2 text-secondary"></i>
           </label>
@@ -477,7 +468,7 @@
         <div class="col-3">
           <label for="foto-ubah-produk-1-5" id="label-foto-ubah-produk-1-5" class="bm-input--file bm-input--file__small mt-4 mx-auto bm-cursor-pointer">
             <input class="file-upload" type="file" name="foto-ubah-produk-1-5" id="foto-ubah-produk-1-5" accept="image/*" />
-            <input type="text" id="id_foto_4" name="id_foto_5" />
+            <input type="text" hidden id="id_foto_4" name="id_foto_5" />
             <span class="text-secondary">Tambah foto</span>
             <i class="fas fa-image fs-2 text-secondary"></i>
           </label>
@@ -516,7 +507,8 @@
     </a>
   </div>
   <form action="/DeletePenjual" method="POST">
-    <input hidden name="id_kelompok" type="text" id="delete_id_anggota">
+    <input hidden name="id_anggota" type="text" id="delete_id_anggota">
+    <input type="hidden" name="id_kelompok" value="<?= $_GET['q'] ?>" />
     <div class="bm-modal__body">
       <p class="bm-body1">
         Anda tidak akan dapat memulihkan data ini jika sudah di hapus
@@ -699,32 +691,37 @@
     if (id_primary_foto) {
       $("#id_primary_foto").val(id_primary_foto);
       $("#label-image-foto-ubah-produk-1-1").show();
-      $("#placeholder-foto-ubah-produk-1-1").show()
+      $("#placeholder-foto-ubah-produk-1-1").show();
+      $(`#label-foto-ubah-produk-1-1`).hide();
       $("#placeholder-foto-ubah-produk-1-1")[0].src = "./assets/images/" + url_primary_foto;
     }
 
     if (id_foto_1) {
       $("#id_foto_1").val(id_foto_1);
       $("#label-image-foto-ubah-produk-1-2").show();
-      $("#placeholder-foto-ubah-produk-1-2").show()
+      $("#placeholder-foto-ubah-produk-1-2").show();
+      $(`#label-foto-ubah-produk-1-2`).hide();
       $("#placeholder-foto-ubah-produk-1-2")[0].src = "./assets/images/" + url_foto_1;
     }
     if (id_foto_2) {
       $("#id_foto_2").val(id_foto_2);
       $("#label-image-foto-ubah-produk-1-3").show();
-      $("#placeholder-foto-ubah-produk-1-3").show()
+      $("#placeholder-foto-ubah-produk-1-3").show();
+      $(`#label-foto-ubah-produk-1-3`).hide();
       $("#placeholder-foto-ubah-produk-1-3")[0].src = "./assets/images/" + url_foto_2;
     }
     if (id_foto_3) {
       $("#id_foto_3").val(id_foto_3);
       $("#label-image-foto-ubah-produk-1-4").show();
-      $("#placeholder-foto-ubah-produk-1-4").show()
+      $("#placeholder-foto-ubah-produk-1-4").show();
+      $(`#label-foto-ubah-produk-1-4`).hide();
       $("#placeholder-foto-ubah-produk-1-4")[0].src = "./assets/images/" + url_foto_3;
     }
     if (id_foto_4) {
       $("#id_foto_4").val(id_foto_4);
       $("#label-image-foto-ubah-produk-1-5").show();
-      $("#placeholder-foto-ubah-produk-1-5").show()
+      $("#placeholder-foto-ubah-produk-1-5").show();
+      $(`#label-foto-ubah-produk-1-5`).hide();
       $("#placeholder-foto-ubah-produk-1-5")[0].src = "./assets/images/" + url_foto_4;
     }
 

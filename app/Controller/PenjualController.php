@@ -51,7 +51,7 @@ class PenjualController
         $request->id_detail_kelompok = $idDetailKelompok;
 
         $this->service->UpdatePenjual($request);
-        View::Redirect("dashboard-penjual");
+        View::Redirect("/dashboard-detail-kelompok?q=".$idKelompok);
     }
 
     public function AddPenjual(){
@@ -81,7 +81,7 @@ class PenjualController
         try {
 
             $this->service->AddPenjual($req);
-            View::Redirect('/dashboard-penjual');
+            View::Redirect("/dashboard-detail-kelompok?q=".$id_kelompok);
         }
         catch (\Exception $e)
         {
@@ -96,11 +96,12 @@ class PenjualController
 
     public function DeletePenjual()
     {
-        $id = $_POST['id_kelompok'];
+        $id = $_POST['id_anggota'];
+        $id_kelompok = $_POST['id_kelompok'];
 
         try {
             $this->service->DeleteKelompokById($id);
-            View::Redirect("/dashboard-penjual");
+            View::Redirect("/dashboard-detail-kelompok?q=".$id_kelompok);
         }
         catch (\Exception $e)
         {

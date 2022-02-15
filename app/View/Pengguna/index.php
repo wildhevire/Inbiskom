@@ -63,7 +63,7 @@
                      <td><?= $data['nama_pengguna'] ?></td>
                      <td><?= $data['username'] ?></td>
                      <td><?= $data['tahun_aktif'] ?></td>
-                     <td><?= $data['hak_akses'] ?></td>
+                     <td><?php echo $data['hak_akses'] == "sekretaris" ? "Sekretaris" : "Kepala Divisi" ?></td>
                      <td><?php echo $data['status'] == 1 ? "Aktif" : "Tidak Aktif" ?></td>
                      <td>
                          <a rel="modal:open" href="#edit_modal" class="bm-link btn_update" id="btn_update" data-id="<?= $data['id_pengguna']; ?>" data-nama="<?= $data['nama_pengguna']; ?>" data-username="<?= $data['username']; ?>" data-tahun-aktif="<?= $data['tahun_aktif']; ?>" data-hak-akses="<?= $data['hak_akses']; ?>">Ubah</a>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -119,7 +119,7 @@
              <label class="bm-input-label">Hak akses</label>
              <div class="row px-5">
                  <label class="bm-radio col-6">
-                     Ketua divisi
+                     Kepala divisi
                      <input type="radio" class="bm-radio__input" id="hak-akses-kepala" name="hak_akses" value="kepala_divisi" />
                      <span class="bm-radio__checkmark"></span>
                  </label>
@@ -187,8 +187,8 @@
              <label class="bm-input-label">Hak akses</label>
              <div class="row px-5">
                  <label class="bm-radio col-6">
-                     Ketua divisi
-                     <input type="radio" class="bm-radio__input" id="update_hak-akses-kepala" name="hak_akses" value="ketua_divisi" />
+                     Kepala divisi
+                     <input type="radio" class="bm-radio__input" id="update_hak-akses-kepala" name="hak_akses" value="kepala_divisi" />
                      <span class="bm-radio__checkmark"></span>
                  </label>
                  <label class="bm-radio col-6">

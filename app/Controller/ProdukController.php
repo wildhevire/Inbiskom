@@ -184,7 +184,7 @@ class ProdukController
             $this->fotoService->AddFoto($fotoReq);
         }
 
-        View::Redirect("/dashboard-produk");
+        View::Redirect("/dashboard-detail-kelompok?q=".$kelompokID);
 
     }
 }

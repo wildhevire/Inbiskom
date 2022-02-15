@@ -32,7 +32,7 @@ class BannerRepository
     {
         $statement = $this->conn->prepare("
             UPDATE banner SET 
-               status = 0
+               status = ABS(status - 1)
                WHERE id = ?
             ");
         $statement->execute([

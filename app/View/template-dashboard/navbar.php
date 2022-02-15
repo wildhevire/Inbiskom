@@ -43,12 +43,14 @@
                     Kategori
                 </a>
             </li>
+            <?php if(isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris" ) :?>
             <li class="bm-nav-link <?php if(isset($model['page_type']) && $model['page_type'] == 'banner'){ echo 'bm-nav-link--active'; } else echo "" ?> ">
                 <a href="/dashboard-banner">
                 <i class="fa fa-image"></i>
                     Banner
                 </a>
             </li>
+            <?php endif;?>
             <?php if(isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris" ) :?>
             <li class="bm-nav-link <?php if(isset($model['page_type']) && $model['page_type'] == 'pengguna'){ echo 'bm-nav-link--active'; } else echo "" ?> ">
                 <a href="/dashboard-pengguna">
