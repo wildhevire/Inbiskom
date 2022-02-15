@@ -117,6 +117,9 @@
                     display: true,
                     text: 'Total Pendaftar INBISKOM tiap tahun',
                     align: "start",
+                    font: {
+                        size: 18
+                    }
                 }
             }
         }
@@ -160,6 +163,9 @@
                     display: true,
                     text: 'Total produk yang terdaftar berdasarkan kategori',
                     align: "start",
+                    font: {
+                        size: 18
+                    }
                 },
                 legend: {
                     display: false,
@@ -200,6 +206,9 @@
                     display: true,
                     text: 'Total penjual berdasarkan tipe',
                     align: "start",
+                    font: {
+                        size: 18
+                    }
                 },
                 legend: {
                     position: "top"
