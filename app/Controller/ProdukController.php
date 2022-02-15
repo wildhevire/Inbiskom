@@ -6,6 +6,7 @@ use app\Config\Database;
 use app\Core\FileUploader;
 use app\Core\Session;
 use app\Core\View;
+use app\DBModel\Foto;
 use app\DTO\Foto\FotoRequest;
 use app\DTO\Produk\ProdukRequest;
 use app\Repository\FotoRepository;
@@ -55,11 +56,30 @@ class ProdukController
 //
 //
 //    }
+
+    public function IsFileEntered($fieldName) : bool
+    {
+        if ($_FILES[$fieldName]['size'] == 0) {
+            return false;
+        }
+        return true;
+    }
+
+    public function UpdateFoto($fieldName)
+    {
+
+    }
+
+
     public function UpdateProduk()
     {
-        echo '<pre>' , var_dump($_FILES) , '</pre>';
-        echo '<pre>' , var_dump($_POST) , '</pre>';
-        return;
+//        echo '<pre>' , var_dump($_FILES) , '</pre>';
+//        echo '<pre>' , var_dump($_POST) , '</pre>';
+//        echo '<pre>' , var_dump(empty($_POST['id_foto_4'])) , '</pre>';
+//        return;
+//
+
+
         $req = new ProdukRequest();
         $req->id_produk = $_POST['id_produk'];
         $req->nama_produk = $_POST['nama_produk'];
@@ -67,9 +87,43 @@ class ProdukController
         $req->deskripsi_produk = $_POST['deskripsi_produk'];
         $req->id_kelompok = $_POST['id_kelompok'];
 
-
         $this->produkService->UpdateProduk($req);
-        View::Redirect("/dashboard-produk");
+
+        //Update FOto
+        for ($i = 1; $i <= 5; $i++)
+        {
+            $fieldName = "foto-ubah-produk-1-".$i;
+            $id = $_POST['id_foto_'.$i];
+            if(!$this->IsFileEntered($fieldName) )
+            {
+                continue;
+            }
+
+            $isPrimary = false;
+            if($i == 1) $isPrimary = true;
+
+            $img = FileUploader::HandleImageUpload($fieldName);
+            $request = new Foto();
+            $request->id_foto = $id;
+            $request->url = $img->filePath;
+            $request->is_primary = $isPrimary;
+            $request->id_produk = $req->id_produk;
+            if(empty($id))
+            {
+                $fotoReq = new FotoRequest();
+                $fotoReq->id_produk = $req->id_produk;
+                $fotoReq->url = $request->url;
+                $fotoReq->is_primary = $request->is_primary;
+                $this->fotoService->AddFoto($fotoReq);
+            }
+            else
+            {
+                $this->fotoService->Update($request);
+
+            }
+        }
+
+        View::Redirect("/dashboard-detail-kelompok?q=".$req->id_kelompok);
 //        echo '<pre>' , var_dump($_POST) , '</pre>';
     }
 

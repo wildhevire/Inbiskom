@@ -88,12 +88,12 @@ class FotoRepository
 
     public function Update(Foto $foto) :Foto
     {
-        $statement = $this->connection->prepare("
-                UPDATE foto SET url = ?, is_primary = ?, id_produk = ?
-                WHERE id_foto = ?,
+        $statement = $this->conn->prepare("
+                UPDATE foto SET url = ?, is_primary = ?
+                WHERE id_foto = ?
             ");
         $statement->execute([
-           $foto->url, $foto->is_primary, $foto->id_produk, $foto->id_foto
+           $foto->url, $foto->is_primary, $foto->id_foto
         ]);
         return $foto;
     }

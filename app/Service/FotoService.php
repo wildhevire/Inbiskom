@@ -77,5 +77,19 @@ class FotoService
         }
         return $result;
     }
+
+    public function Update(Foto $request)
+    {
+        try {
+            $foto = new Foto();
+            $foto->id_foto = $request->id_foto;
+            $foto->url = $request->url;
+            $foto->is_primary = $request->is_primary;
+            $this->repo->Update($foto);
+        }catch (\Exception $e)
+        {
+            throw $e;
+        }
+    }
     //TODO: Tambah GetModelByProduk dan action lain di katalog
 }
