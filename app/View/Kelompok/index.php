@@ -72,9 +72,9 @@
               <td>
                 <!--            <a rel="modal:open" href="#detail_modal" class="bm-link"-->
                 <!--            >Lihat</a>&nbsp;&nbsp;&nbsp;&nbsp;-->
-                  <?php if($kelompok['jumlah_produk'] != "0") : ?>
-                      <a href="/dashboard-detail-kelompok?q=<?= $kelompok['id_kelompok'] ?>" class="bm-link">Detail</a>&nbsp;&nbsp;&nbsp;&nbsp;
-                  <?php endif;?>
+                <?php if ($kelompok['jumlah_produk'] != "0") : ?>
+                  <a href="/dashboard-detail-kelompok?q=<?= $kelompok['id_kelompok'] ?>" class="bm-link">Detail</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <?php endif; ?>
 
                 <a rel="modal:open" href="#edit_modal" class="bm-link btn_update" id="btn_update" data-deskripsi="<?= $kelompok['deskripsi_kelompok'] ?>" data-id="<?= $kelompok['id_kelompok'] ?>" data-nama="<?= $kelompok['nama_kelompok'] ?>" data-tipe="<?= $kelompok['tipe_kelompok'] ?>" data-jumlah_anggota="<?= $kelompok['jumlah_anggota'] ?>" data-jumlah_produk="<?= $kelompok['jumlah_produk'] ?>" data-kategori="<?= $kelompok['id_kategori'] ?>" data-angkatan="<?= $kelompok['angkatan'] ?>" data-url_logo_toko="<?= $kelompok['url_logo_toko'] ?>">Ubah</a>&nbsp;&nbsp;&nbsp;&nbsp;
                 <a rel="modal:open" id="btn_delete" href="#delete_modal" class="bm-link text-danger btn_delete" data-id="<?= $kelompok['id_kelompok'] ?>">Hapus</a>
@@ -103,240 +103,61 @@
 
   <div class="bm-modal__body">
     <form action="/TambahKelompok" method="POST" enctype="multipart/form-data">
-      <ul class="bm-accordion">
-        <li class="bm-accordion__item bm-accordion__item--active">
-          <div class="bm-accordion__header bm-cursor-pointer">
-            <div class="bm-accordion__title">Data kelompok</div>
-            <span class="bm-accordion__arrow"></span>
-          </div>
-          <div class="bm-accordion__content">
-            <label class="bm-input-label">Tipe</label>
-            <div class="row px-5">
-              <label class="bm-radio col-6">
-                Mahasiswa
-                <input type="radio" class="bm-radio__input" id="tipe-mahasiswa" name="tipe_kelompok" value="Mahasiswa" />
-                <span class="bm-radio__checkmark"></span>
-              </label>
-              <label class="bm-radio col-6">
-                Umum
-                <input type="radio" class="bm-radio__input" id="tipe-umum" name="tipe_kelompok" value="Umum" />
-                <span class="bm-radio__checkmark"></span>
-              </label>
-            </div>
-            <label class="bm-input-label" for="nama-kelompok">Nama kelompok</label>
-            <div class="bm-input">
-              <input name="nama_kelompok" id="nama-kelompok" type="text" class="bm-input__field" placeholder="Contoh: Kupakkai" />
-            </div>
-            <br />
-            <label class="bm-input-label" for="angkatan">Angkatan</label>
-            <div class="bm-input">
-              <select class="bm-input__field" id="angkatan" name="angkatan">
-                <option value="" disabled selected>Tahun</option>
-                <?php for ($i = 2017; $i <= date("Y"); $i++) : ?>
-                  <option value="<?= $i ?>"><?= $i ?></option>
-                <?php endfor; ?>
-              </select>
-              <span class="bm-input__arrow"></span>
-            </div>
-            <br />
-            <label class="bm-input-label" for="deskripsi">Deskripsi</label>
-            <div class="bm-input">
-              <textarea name="deskripsi_kelompok" id="deskripsi" class="bm-input__field" placeholder="Contoh: Jual berbagai macam t-shirt"></textarea>
-            </div>
-            <br />
-            <label class="bm-input-label" for="kategori">Kategori</label>
-            <div class="bm-input">
-              <select name="id_kategori" class="bm-input__field" id="kategori" required>
-                <option value="" disabled selected>Pilih kategori</option>
-                <?php foreach ($model['data']['kategori'] as $kategori) : ?>
-                  <option value="<?= $kategori['id_kategori'] ?>"><?= $kategori['nama_kategori'] ?></option>
-                <?php endforeach; ?>
-              </select>
-              <span class="bm-input__arrow"></span>
-            </div>
-            <br />
-            <label class="bm-input-label" for="logo-kelompok">Logo kelompok</label>
-            <label for="logo" class="bm-input--file mt-4 mx-auto bm-cursor-pointer" id="label-logo">
-              <input class="w-100 file-upload" type="file" name="url_logo_toko" id="logo" accept="image/*" />
+      <label class="bm-input-label">Tipe</label>
+      <div class="row px-5">
+        <label class="bm-radio col-6">
+          Mahasiswa
+          <input type="radio" class="bm-radio__input" id="tipe-mahasiswa" name="tipe_kelompok" value="Mahasiswa" />
+          <span class="bm-radio__checkmark"></span>
+        </label>
+        <label class="bm-radio col-6">
+          Umum
+          <input type="radio" class="bm-radio__input" id="tipe-umum" name="tipe_kelompok" value="Umum" />
+          <span class="bm-radio__checkmark"></span>
+        </label>
+      </div>
+      <label class="bm-input-label" for="nama-kelompok">Nama kelompok</label>
+      <div class="bm-input">
+        <input name="nama_kelompok" id="nama-kelompok" type="text" class="bm-input__field" placeholder="Contoh: Kupakkai" />
+      </div>
+      <br />
+      <label class="bm-input-label" for="angkatan">Angkatan</label>
+      <div class="bm-input">
+        <select class="bm-input__field" id="angkatan" name="angkatan">
+          <option value="" disabled selected>Tahun</option>
+          <?php for ($i = 2017; $i <= date("Y"); $i++) : ?>
+            <option value="<?= $i ?>"><?= $i ?></option>
+          <?php endfor; ?>
+        </select>
+        <span class="bm-input__arrow"></span>
+      </div>
+      <br />
+      <label class="bm-input-label" for="deskripsi">Deskripsi</label>
+      <div class="bm-input">
+        <textarea name="deskripsi_kelompok" id="deskripsi" class="bm-input__field" placeholder="Contoh: Jual berbagai macam t-shirt"></textarea>
+      </div>
+      <br />
+      <label class="bm-input-label" for="kategori">Kategori</label>
+      <div class="bm-input">
+        <select name="id_kategori" class="bm-input__field" id="kategori" required>
+          <option value="" disabled selected>Pilih kategori</option>
+          <?php foreach ($model['data']['kategori'] as $kategori) : ?>
+            <option value="<?= $kategori['id_kategori'] ?>"><?= $kategori['nama_kategori'] ?></option>
+          <?php endforeach; ?>
+        </select>
+        <span class="bm-input__arrow"></span>
+      </div>
+      <br />
+      <label class="bm-input-label" for="logo-kelompok">Logo kelompok</label>
+      <label for="logo" class="bm-input--file mt-4 mx-auto bm-cursor-pointer" id="label-logo">
+        <input class="w-100 file-upload" type="file" name="url_logo_toko" id="logo" accept="image/*" />
 
-              <p class="text-secondary">Tambah foto</p>
-              <i class="fas fa-image fs-2 text-secondary"></i>
-            </label>
-            <label for="logo" class="mx-auto mt-4 mb-2 text-center">
-              <img class="w-50 bm-img-responsive bm-cursor-pointer" id="placeholder-logo" src="#" alt="Logo baru" />
-            </label>
-          </div>
-        </li>
-        <li class="bm-accordion__item">
-          <div class="bm-accordion__header bm-cursor-pointer">
-            <div class="bm-accordion__title">Anggota kelompok</div>
-            <span class="bm-accordion__arrow"></span>
-          </div>
-          <div class="bm-accordion__content">
-            <input name="detail_kelompok_count" hidden hidden id="detail_kelompok_count" type="number" value="1" />
-            <div id="form-anggota">
-              <div class="anggota" class="anggota-1">
-                <label class="bm-input-label" for="no-identitas-1">No. Identitas 1</label>
-                <div class="bm-input">
-                  <input name="no_identitas-1" id="no-identitas-1" type="text" class="bm-input__field" placeholder="Contoh: 12355212129900001" />
-                </div>
-                <br />
-                <label class="bm-input-label" for="nama-anggota-1">Nama anggota 1</label>
-                <div class="bm-input">
-                  <input name="nama_penjual-1" id="nama-anggota-1" type="text" class="bm-input__field" placeholder="Contoh: John Doe" />
-                </div>
-                <hr />
-              </div>
-            </div>
-            <button type="button" class="bm-btn" id="tambah-anggota">
-              <span class="bm-btn__icon">
-                <i class="fas fa-plus"></i>
-              </span>
-              <span class="bm-btn__label">Tambah anggota</span>
-            </button>
-            <button type="button" class="bm-btn bm-btn--danger" id="hapus-anggota">
-              <span class="bm-btn__icon">
-                <i class="fas fa-plus"></i>
-              </span>
-              <span class="bm-btn__label">Hapus Anggota</span>
-            </button>
-          </div>
-        </li>
-        <li class="bm-accordion__item">
-          <div class="bm-accordion__header bm-cursor-pointer">
-            <div class="bm-accordion__title">Data produk</div>
-            <span class="bm-accordion__arrow"></span>
-          </div>
-          <div class="bm-accordion__content">
-            <input name="produk_count" hidden id="produk_count" type="number" value="1" />
-            <div id="produk-container">
-              <div class="produk-wrapper">
-                <p class="fw-bold">Produk 1</p>
-                <label class="bm-input-label" for="nama-produk-1">Nama produk</label>
-                <div class="bm-input">
-                  <input name="nama_produk-1" id="nama-produk-1" type="text" class="bm-input__field" placeholder="Contoh: T-shirt hitam manis" />
-                </div>
-                <br />
-                <label class="bm-input-label" for="harga-1">Harga</label>
-                <div class="bm-input">
-                  <input name="harga-1" id="harga-1" type="number" class="bm-input__field" placeholder="Contoh: 30000" />
-                </div>
-                <br />
-                <label class="bm-input-label" for="deskripsi-produk-1">Deskripsi produk</label>
-                <div class="bm-input">
-                  <textarea name="deskripsi_produk-1" id="deskripsi-peroduk-1" class="bm-input__field" placeholder="Contoh: T-shirt berwarna hitam dengan bahan katun"></textarea>
-                </div>
-                <br />
-                <label class="bm-input-label" for="foto-produk-1">Foto produk</label>
-                <input name="foto_count-1" hidden id="foto_count-1" type="number" value="0" />
-                <div class="row" id="foto-produk-wrapper-1">
-                  <span class="col-12 bm-caption text-secondary">
-                    Foto utama produk
-                  </span>
-                  <div class="col-3 mb-4">
-                    <label for="foto-produk-1-1" id="label-foto-produk-1-1" class="bm-input--file bm-input--file__small mt-4 mx-auto bm-cursor-pointer">
-                      <input class="file-upload" type="file" name="foto-produk-1-1" id="foto-produk-1-1" accept="image/*" />
-
-                      <span class="text-secondary">Tambah foto</span>
-                      <i class="fas fa-image fs-2 text-secondary"></i>
-                    </label>
-                    <label for="foto-produk-1-1" class="mx-auto my-4 text-center bm-relative" id="label-image-foto-produk-1-1">
-                      <img class="bm-img-responsive bm-cursor-pointer" id="placeholder-foto-produk-1-1" src="#" alt="Foto produk" />
-                      <button class="bm-btn-circle bm-btn-circle--small bm-close-btn" id="delete-foto">
-                        <span class="bm-btn-circle__icon">
-                          <i class="fas fa-times"></i>
-                        </span>
-                      </button>
-                    </label>
-                  </div>
-                  <span class="col-12 bm-caption text-secondary">
-                    Foto produk
-                  </span>
-                  <div class="col-3">
-                    <label for="foto-produk-1-2" id="label-foto-produk-1-2" class="bm-input--file bm-input--file__small mt-4 mx-auto bm-cursor-pointer">
-                      <input class="file-upload" type="file" name="foto-produk-1-2" id="foto-produk-1-2" accept="image/*" />
-
-                      <span class="text-secondary">Tambah foto</span>
-                      <i class="fas fa-image fs-2 text-secondary"></i>
-                    </label>
-                    <label for="foto-produk-1-2" class="mx-auto my-4 text-center bm-relative" id="label-image-foto-produk-1-2">
-                      <img class="bm-img-responsive bm-cursor-pointer" id="placeholder-foto-produk-1-2" src="#" alt="Foto produk" />
-                      <button class="bm-btn-circle bm-btn-circle--small bm-close-btn" id="delete-foto">
-                        <span class="bm-btn-circle__icon">
-                          <i class="fas fa-times"></i>
-                        </span>
-                      </button>
-                    </label>
-                  </div>
-                  <div class="col-3">
-                    <label for="foto-produk-1-3" id="label-foto-produk-1-3" class="bm-input--file bm-input--file__small mt-4 mx-auto bm-cursor-pointer">
-                      <input class="file-upload" type="file" name="foto-produk-1-3" id="foto-produk-1-3" accept="image/*" />
-
-                      <span class="text-secondary">Tambah foto</span>
-                      <i class="fas fa-image fs-2 text-secondary"></i>
-                    </label>
-                    <label for="foto-produk-1-3" class="mx-auto my-4 text-center bm-relative" id="label-image-foto-produk-1-3">
-                      <img class="bm-img-responsive bm-cursor-pointer" id="placeholder-foto-produk-1-3" src="#" alt="Foto produk" />
-                      <button class="bm-btn-circle bm-btn-circle--small bm-close-btn" id="delete-foto">
-                        <span class="bm-btn-circle__icon">
-                          <i class="fas fa-times"></i>
-                        </span>
-                      </button>
-                    </label>
-                  </div>
-                  <div class="col-3">
-                    <label for="foto-produk-1-4" id="label-foto-produk-1-4" class="bm-input--file bm-input--file__small mt-4 mx-auto bm-cursor-pointer">
-                      <input class="file-upload" type="file" name="foto-produk-1-4" id="foto-produk-1-4" accept="image/*" />
-
-                      <span class="text-secondary">Tambah foto</span>
-                      <i class="fas fa-image fs-2 text-secondary"></i>
-                    </label>
-                    <label for="foto-produk-1-4" class="mx-auto my-4 text-center bm-relative" id="label-image-foto-produk-1-4">
-                      <img class="bm-img-responsive bm-cursor-pointer" id="placeholder-foto-produk-1-4" src="#" alt="Foto produk" />
-                      <button class="bm-btn-circle bm-btn-circle--small bm-close-btn" id="delete-foto">
-                        <span class="bm-btn-circle__icon">
-                          <i class="fas fa-times"></i>
-                        </span>
-                      </button>
-                    </label>
-                  </div>
-                  <div class="col-3">
-                    <label for="foto-produk-1-5" id="label-foto-produk-1-5" class="bm-input--file bm-input--file__small mt-4 mx-auto bm-cursor-pointer">
-                      <input class="file-upload" type="file" name="foto-produk-1-5" id="foto-produk-1-5" accept="image/*" />
-
-                      <span class="text-secondary">Tambah foto</span>
-                      <i class="fas fa-image fs-2 text-secondary"></i>
-                    </label>
-                    <label for="foto-produk-1-5" class="mx-auto my-4 text-center bm-relative" id="label-image-foto-produk-1-5">
-                      <img class="bm-img-responsive bm-cursor-pointer" id="placeholder-foto-produk-1-5" src="#" alt="Foto produk" />
-                      <button class="bm-btn-circle bm-btn-circle--small bm-close-btn" id="delete-foto">
-                        <span class="bm-btn-circle__icon">
-                          <i class="fas fa-times"></i>
-                        </span>
-                      </button>
-                    </label>
-                  </div>
-                </div>
-
-                <hr />
-
-              </div>
-            </div>
-            <button type="button" class="bm-btn" id="tambah-produk">
-              <span class="bm-btn__icon">
-                <i class="fas fa-plus"></i>
-              </span>
-              <span class="bm-btn__label">Tambah produk</span>
-            </button>
-            <button type="button" class="bm-btn bm-btn--danger" id="hapus-produk">
-              <span class="bm-btn__icon">
-                <i class="fas fa-plus"></i>
-              </span>
-              <span class="bm-btn__label">Hapus produk</span>
-            </button>
-          </div>
-        </li>
-      </ul>
+        <p class="text-secondary">Tambah foto</p>
+        <i class="fas fa-image fs-2 text-secondary"></i>
+      </label>
+      <label for="logo" class="mx-auto mt-4 mb-2 text-center">
+        <img class="w-50 bm-img-responsive bm-cursor-pointer" id="placeholder-logo" src="#" alt="Logo baru" />
+      </label>
       <div class="bm-modal__footer">
         <a type="button" class="bm-btn bm-btn--secondary" rel="modal:close">
           <span class="bm-btn__label">Batal</span>
@@ -785,7 +606,7 @@
     var deskripsi = $(this).data("deskripsi");
     var url_logo_toko = $(this).data("url_logo_toko");
 
-    $("#placeholder-logo-toko").attr("src","/assets/images/"+url_logo_toko);
+    $("#placeholder-logo-toko").attr("src", "/assets/images/" + url_logo_toko);
     $("#update_id_kelompok").val(id);
     $("#nama").val(nama);
     $("#update_nama_kategori").val(jumlah_anggota);
@@ -798,11 +619,11 @@
   });
 
   $('#url_logo_toko').change(function() {
-            const [logo] = $('#url_logo_toko')[0].files;
-            $('#label-logo').hide();
-            $('#placeholder-logo-toko').show();
-            $('#placeholder-logo-toko')[0].src = URL.createObjectURL(logo);
-        });
+    const [logo] = $('#url_logo_toko')[0].files;
+    $('#label-logo').hide();
+    $('#placeholder-logo-toko').show();
+    $('#placeholder-logo-toko')[0].src = URL.createObjectURL(logo);
+  });
 
   $(".btn_delete").click(function() {
     var id = $(this).data("id");

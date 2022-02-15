@@ -527,6 +527,7 @@
 
   <form action="/DeleteProduk" method="POST">
     <input type="hidden" name="id_produk" id="delete_id_produk" />
+    <input type="hidden" name="id_kelompok" value="<?= $_GET['q'] ?>" />
     <div class="bm-modal__header">
       <h5 class="bm-modal__title">Apakah Anda yakin?</h5>
       <a class="bm-modal__button-close" aria-label="close" rel="modal:close">

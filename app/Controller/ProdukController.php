@@ -130,10 +130,10 @@ class ProdukController
     public function DeleteProduk()
     {
 
-       // echo '<pre>' , var_dump($_POST) , '</pre>';
+    //    echo '<pre>' , var_dump($_POST) , '</pre>';
         $id = $_POST['id_produk'];
         $this->produkService->DeleteProdukById($id);
-        View::Redirect("/dashboard-produk");
+        View::Redirect("/dashboard-detail-kelompok?q=".$_POST['id_kelompok']);
     }
 
     public function AddProduk()

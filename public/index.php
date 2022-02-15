@@ -63,6 +63,12 @@ Router::Add('POST', '/AddProduk',
     [\app\Middleware\MustLoginMiddleware::class]
 );
 
+//Carousel
+Router::Add('GET', '/dashboard-banner',
+    \app\Controller\BannerController::class, 'index',
+    [\app\Middleware\MustLoginMiddleware::class]
+);
+
 //Konfig
 Router::Add('POST', '/TambahKonfig',
     \app\Controller\KonfigurasiController::class, 'AddKonfigurasi',

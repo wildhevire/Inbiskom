@@ -189,6 +189,15 @@ body {
   white-space: pre-wrap;
 }
 
+.bm-carousel {
+  height: 180px;
+}
+
+.bm-carousel img {
+  height: 100%;
+  object-fit: cover;
+}
+
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 600px) {
   .bm-border-left {
@@ -202,5 +211,9 @@ body {
 
   .bm-card-product__small > img {
     height: 177px;
+  }
+
+  .bm-carousel {
+    height: 360px;
   }
 }

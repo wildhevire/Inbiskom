@@ -25,6 +25,7 @@
       media="all"
     />
     <link rel="stylesheet" href="./../assets/css/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 <div class="container-fluid">
