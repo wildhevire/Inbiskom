@@ -178,7 +178,7 @@ class PenggunaService
             if($request->pengguna->password != ""){
 
                 $pengguna->password = password_hash($request->pengguna->password, PASSWORD_BCRYPT);;
-                $this->repo->Update($pengguna);
+                $this->repo->UpdatePasword($pengguna);
             }
             $this->repo->Update($pengguna);
             $response = new PenggunaResponse();
