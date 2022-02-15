@@ -57,6 +57,9 @@ class ProdukController
 //    }
     public function UpdateProduk()
     {
+        echo '<pre>' , var_dump($_FILES) , '</pre>';
+        echo '<pre>' , var_dump($_POST) , '</pre>';
+        return;
         $req = new ProdukRequest();
         $req->id_produk = $_POST['id_produk'];
         $req->nama_produk = $_POST['nama_produk'];

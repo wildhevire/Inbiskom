@@ -86,7 +86,8 @@ class KelompokController
         $produkByKelompok = $this->produkService->GetByKelompok($request);
         $memberModel = $this->katalogService->GetTokoDescriptionMember($request);
         $fotoModel = $this->fotoService->GetFotoForKelompok($request);
-        //  echo '<pre>' , var_dump($memberModel) , '</pre>';
+//          echo '<pre>' , var_dump($fotoModel) , '</pre>';
+//          return;
         View::RenderDashboard("DetailKelompok/index", [
             'title' => 'Kelompok',
             'page_type' => 'kelompok',
