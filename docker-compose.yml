@@ -39,7 +39,7 @@ services:
       SERVICE_NAME: mariadb
     command: --default-authentication-plugin=mysql_native_password
     ports:
-      - ${DB_PORT}:${DB_PORT}
+      - 8079:${DB_PORT}
     volumes:
       - ./docker-compose/mysql:/docker-entrypoint-initdb.d
     networks:
@@ -51,7 +51,7 @@ services:
     container_name: inbiskom-nginx
     restart: unless-stopped
     ports:
-      - 8000:80
+      - 8081:80
     volumes:
       - ./:/var/www
       - ./docker-compose/nginx:/etc/nginx/conf.d
