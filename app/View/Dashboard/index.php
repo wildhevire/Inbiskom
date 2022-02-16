@@ -27,7 +27,7 @@
                 </div>
                 <div class="bm-card__inner col-8">
                     <h2 class="bm-card__title"><?= $model['total_penjual'][0]['total_penjual'] ?></h2>
-                    Total Penjual
+                    Total Anggota
                 </div>
             </div>
         </div>
@@ -117,7 +117,7 @@
     const data = {
         labels: labelsPendaftar,
         datasets: [{
-            label: 'Total Pendaftar INBISKOM tiap tahun',
+            label: 'Total pendaftar INBISKOM tiap tahun',
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
             data: dataPendaftar,
@@ -239,7 +239,7 @@
             plugins: {
                 title: {
                     display: true,
-                    text: 'Total penjual berdasarkan tipe',
+                    text: 'Total anggota berdasarkan tipe',
                     align: "start",
                     font: {
                         size: 18
