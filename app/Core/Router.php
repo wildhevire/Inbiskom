@@ -27,13 +27,13 @@ class Router
         if (isset($_SERVER['PATH_INFO'])) {
             $path = $_SERVER['PATH_INFO'];
         }
+die();
 
         $method = $_SERVER['REQUEST_METHOD'];
 
         foreach (self::$routes as $route) {
             $pattern = "#^" . $route['path'] . "$#";
             if (preg_match($pattern, $path, $variables) && $method == $route['method']) {
-
                 // call middleware
                 foreach ($route['middleware'] as $middleware){
                     $instance = new $middleware;
