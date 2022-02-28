@@ -97,9 +97,7 @@
       <th>Nama Produk</th>
       <th>Deskripsi</th>
       <th>Harga</th>
-      <?php if (isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris") : ?>
-        <th>Aksi</th>
-      <?php endif; ?>
+      <th>Aksi</th>
     </thead>
 
 
@@ -113,17 +111,17 @@
             <td><?= $produk['nama_produk'] ?></td>
             <td class="text-truncate" style="max-width: 240px"><?= $produk['deskripsi_produk'] ?> </td>
             <td><?= rupiah($produk['harga']) ?></td>
-            <?php if (isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris") : ?>
-              <td>
-
-                <a target="_blank" href="/produk?q=<?= $produk['id_produk'] ?>" class="bm-link">Buka</a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <td>
+              
+              <a target="_blank" href="/produk?q=<?= $produk['id_produk'] ?>" class="bm-link">Buka</a>&nbsp;&nbsp;&nbsp;&nbsp;
+              <?php if (isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris") : ?>
 
 
                 <a rel="modal:open" href="#edit_modal" class="bm-link btn_update" data-id="<?= $produk['id_produk'] ?>" data-nama="<?= $produk['nama_produk'] ?>" data-harga="<?= $produk['harga'] ?>" data-id_kelompok="<?= $produk['id_kelompok'] ?>" data-deskripsi="<?= $produk['deskripsi_produk'] ?>" <?php $fotoCounter = 0; ?> <?php foreach ($model['data']['foto'] as $foto) : ?> <!-- <?php if ($produk['id_produk'] == $foto['id_produk']) : ?> <?php if ($foto['is_primary'] == 1) : ?> data-id_primary_foto="<?= $foto['id_foto'] ?>" data-url_primary_foto="<?= $foto['url'] ?>" <?php else : ?> <?php $fotoCounter++; ?> data-id_foto_<?= $fotoCounter ?>="<?= $foto['id_foto'] ?>" data-url_foto_<?= $fotoCounter ?>="<?= $foto['url'] ?>" <?php endif; ?> <?php endif; ?> <?php endforeach ?>>Ubah</a>&nbsp;&nbsp;&nbsp;&nbsp;
                 <a rel="modal:open" id="btn_delete" href="#delete_modal" class="bm-link text-danger btn_delete" data-id="<?= $produk['id_produk'] ?>">Hapus</a>
 
+                <?php endif; ?>
               </td>
-            <?php endif; ?>
           </tr>
         <?php endforeach ?>
       <?php else : ?>

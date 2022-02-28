@@ -52,9 +52,7 @@
         <th>Jumlah Produk</th>
         <th>Kategori</th>
         <th>Angkatan</th>
-        <?php if (isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris") : ?>
-          <th>Aksi</th>
-        <?php endif; ?>
+        <th>Aksi</th>
       </thead>
       <tbody>
         <?php $counter = 0; ?>
@@ -68,19 +66,19 @@
             <td><?= $kelompok['jumlah_produk'] ?></td>
             <td><?= $kelompok['kategori'] ?></td>
             <td><?= $kelompok['angkatan'] ?></td>
-            <?php if (isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris") : ?>
-              <td>
-                <!--            <a rel="modal:open" href="#detail_modal" class="bm-link"-->
+            <td>
+              <!--            <a rel="modal:open" href="#detail_modal" class="bm-link"-->
                 <!--            >Lihat</a>&nbsp;&nbsp;&nbsp;&nbsp;-->
-
-              <a href="/dashboard-detail-kelompok?q=<?= $kelompok['id_kelompok'] ?>" class="bm-link">Detail</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                
+                <a href="/dashboard-detail-kelompok?q=<?= $kelompok['id_kelompok'] ?>" class="bm-link">Detail</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <?php if (isset($model["hak_akses"]) && $model["hak_akses"] == "sekretaris") : ?>
 
 
                 <a rel="modal:open" href="#edit_modal" class="bm-link btn_update" id="btn_update" data-deskripsi="<?= $kelompok['deskripsi_kelompok'] ?>" data-id="<?= $kelompok['id_kelompok'] ?>" data-nama="<?= $kelompok['nama_kelompok'] ?>" data-tipe="<?= $kelompok['tipe_kelompok'] ?>" data-jumlah_anggota="<?= $kelompok['jumlah_anggota'] ?>" data-jumlah_produk="<?= $kelompok['jumlah_produk'] ?>" data-kategori="<?= $kelompok['id_kategori'] ?>" data-angkatan="<?= $kelompok['angkatan'] ?>" data-url_logo_toko="<?= $kelompok['url_logo_toko'] ?>">Ubah</a>&nbsp;&nbsp;&nbsp;&nbsp;
                 <a rel="modal:open" id="btn_delete" href="#delete_modal" class="bm-link text-danger btn_delete" data-id="<?= $kelompok['id_kelompok'] ?>">Hapus</a>
 
+                <?php endif; ?>
               </td>
-            <?php endif; ?>
           </tr>
         <?php endforeach ?>
       </tbody>
@@ -148,7 +146,7 @@
         <span class="bm-input__arrow"></span>
       </div>
       <br />
-      <label class="bm-input-label" for="logo-kelompok">Logo kelompok</label>
+      <label class="bm-input-label" for="logo-kelompok">Foto kelompok</label>
       <label for="logo" class="bm-input--file mt-4 mx-auto bm-cursor-pointer" id="label-logo">
         <input class="w-100 file-upload" type="file" name="url_logo_toko" id="logo" accept="image/*" />
 
@@ -235,7 +233,7 @@
       </div>
       <br />
 
-      <label class="bm-input-label" for="url_logo_toko">Logo</label>
+      <label class="bm-input-label" for="url_logo_toko">Foto Kelompok</label>
       <label for="url_logo_toko" class="mb-4">
         <img class="w-50 bm-img-responsive" id="placeholder-logo-toko" src="#" alt="Logo baru" />
       </label>
