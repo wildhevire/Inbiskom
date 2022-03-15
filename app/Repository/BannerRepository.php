@@ -43,7 +43,7 @@ class BannerRepository
     public function SelectAll()
     {
         $statement = $this->conn->prepare(
-            "SELECT * FROM banner ORDER BY status DESC"
+            "SELECT * FROM banner ORDER BY status DESC, id DESC"
         );
 
         $statement->execute();

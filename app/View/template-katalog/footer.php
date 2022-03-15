@@ -40,6 +40,14 @@
             <span class="bm-btn__label"><?= $model["konfigurasi"]["username_ig"] ?></span>
           </a>
         </div>
+        <div class="col-12">
+          <a href="https://unikommart.bhinneka.com/" type="button" class="bm-btn bm-btn--ghost" target="_blank">
+            <span class="bm-btn__icon">
+              <i class="fa fa-shopping-bag"></i>
+            </span>
+            <span class="bm-btn__label">Situs Bhinneka UNIKOM</span>
+          </a>
+        </div>
       </div>
     </div>
     <div class="col-8 col-lg-3">

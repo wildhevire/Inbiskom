@@ -63,10 +63,10 @@ class OverviewService
     public function SelectPenjualPerKategori(): ?array
     {
         $result = $this->repo->SelectPenjualPerKategori();
-        if($result == null){
-            //TODO : Exception Message
-            throw new DatabaseQueryException("Tidak dapat mengambil data dari database.");
-        }
+        // if($result == null){
+        //     //TODO : Exception Message
+        //     throw new DatabaseQueryException("Tidak dapat mengambil data dari database.");
+        // }
         return $result;
     }
 
