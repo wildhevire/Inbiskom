@@ -55,6 +55,7 @@
         <th>Aksi</th>
       </thead>
       <tbody>
+      <?php if (!empty($model['data']['kelompok'])) : ?>
         <?php $counter = 0; ?>
         <?php foreach ($model['data']['kelompok'] as $kelompok) : ?>
           <tr>
@@ -81,6 +82,11 @@
               </td>
           </tr>
         <?php endforeach ?>
+        <?php else : ?>
+        <tr>
+          <td colspan="8" class="text-center">Belum ada data</td>
+        </tr>
+      <?php endif; ?>
       </tbody>
     </table>
   </div>

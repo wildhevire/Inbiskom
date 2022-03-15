@@ -5,14 +5,14 @@ function DatabaseConfig(): array
     return [
         "database" => [
             "prod" => [
-                "url" => "mysql:host=127.0.0.1:8079;dbname=inbiskom_test",
-                "username" => "inbiskom",
-                "password" => "inbiskom##89"
+                "url" => "mysql:host=localhost:3306;dbname=inbiskom_test",
+                "username" => "root",
+                "password" => ""
             ],
             "test" => [
-                "url" => "mysql:host=127.0.0.1:8079;dbname=inbiskom_test",
-                "username" => "inbiskom",
-                "password" => "inbiskom##89"
+                "url" => "mysql:host=localhost:3306;dbname=inbiskom_test",
+                "username" => "root",
+                "password" => ""
             ]
         ]
     ];
