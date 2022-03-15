@@ -7,6 +7,7 @@
             <div class="bm-input">
                 <select class="bm-input__field" id="angkatan" name="angkatan">
                 <option value="" disabled <?= isset($_GET['angkatan']) ? '' : 'selected'?>>Tahun</option>
+                <option value="all" <?= isset($_GET['angkatan']) ? 'selected' : ''?>>Semua Tahun</option>
                 <?php for ($i = 2017; $i <= date("Y"); $i++) : ?>
                 <option value="<?= $i?>" <?= isset($_GET['angkatan']) && $_GET['angkatan'] == $i ? 'selected' : ''?>><?= $i?></option>
                 <?php endfor; ?>

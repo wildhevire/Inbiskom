@@ -14,13 +14,7 @@ class OverviewService
     }
     public function SelectPendaftarPerTahun(): ?array
     {
-        if(empty($_GET['angkatan'])){
-            $tahun = date("Y");
-        }else{
-            $tahun = $_GET['angkatan'];
-        }
-
-        $result = $this->repo->SelectPendaftarPerTahun($tahun);
+        $result = $this->repo->SelectPendaftarPerTahun();
         // if($result == null){
         //     //TODO : Exception Message
         //     throw new DatabaseQueryException("Tidak dapat mengambil data dari database.");
@@ -72,7 +66,13 @@ class OverviewService
 
     public function SelectTotalProduk(): ?array
     {
-        $result = $this->repo->SelectTotalProduk();
+        if(empty($_GET['angkatan'])){
+            $tahun = date("Y");
+        }else{
+            $tahun = $_GET['angkatan'];
+        }
+
+        $result = $this->repo->SelectTotalProduk($tahun);
         if($result == null){
             //TODO : Exception Message
             throw new DatabaseQueryException("Tidak dapat mengambil data dari database.");
@@ -81,7 +81,13 @@ class OverviewService
     }
     public function SelectTotalKelompok(): ?array
     {
-        $result = $this->repo->SelectTotalKelompok();
+        if(empty($_GET['angkatan'])){
+            $tahun = date("Y");
+        }else{
+            $tahun = $_GET['angkatan'];
+        }
+
+        $result = $this->repo->SelectTotalKelompok($tahun);
         if($result == null){
             //TODO : Exception Message
             throw new DatabaseQueryException("Tidak dapat mengambil data dari database.");
@@ -90,7 +96,13 @@ class OverviewService
     }
     public function SelectTotalPenjual(): ?array
     {
-        $result = $this->repo->SelectTotalPenjual();
+        if(empty($_GET['angkatan'])){
+            $tahun = date("Y");
+        }else{
+            $tahun = $_GET['angkatan'];
+        }
+
+        $result = $this->repo->SelectTotalPenjual($tahun);
         if($result == null){
             //TODO : Exception Message
             throw new DatabaseQueryException("Tidak dapat mengambil data dari database.");
