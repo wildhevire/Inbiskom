@@ -35,7 +35,10 @@ class KatalogProdukController
 
     public function index()
     {
-        $request = $_GET['q'];
+        // Parse ID
+        $q = $_GET['q'];
+        $request = parseId($q);
+        // End Parse ID
         try {
             $model = $this->service->GetProduk($request);
             $foto = $this->fotoService->GetFotoForProduk($request);

@@ -107,7 +107,7 @@ $default_thumbnail = "./assets/images/Logo UNIKOM.png";
                                         <div class="bm-card__inner">
                                             <h2 class="bm-card__title"><?= rupiah($produk['harga']) ?></h2>
 
-                                            <a href="<?= "/produk?q=" . $produk['id_produk'] ?>" class="bm-two-lines-truncate mb-3 text-decoration-none">
+                                            <a href="<?= "/produk?q=" . generateUrl($produk['id_produk'], $produk['nama_produk']) ?>" class="bm-two-lines-truncate mb-3 text-decoration-none">
                                                 <?= $produk['nama_produk'] ?>
                                             </a>
                                             <div class="row align-items-center text-secondary">

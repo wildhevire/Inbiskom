@@ -34,8 +34,9 @@ function generateUrl(string $id, string $slug)
 
 function parseId(string $url)
 {
-    $id = explode('-', $url)[0];
-    return decryptUrl($id);
+    $id = explode('-', $url);
+    return  decryptUrl($id[0])[0];
+    //return decryptUrl($id);
 }
 
 
