@@ -13,6 +13,7 @@ class FileUploader
     {
         $dir = __DIR__."/../../public/assets/images/";
         $allowedFileExt = array('png', 'jpg', 'jpeg', 'jfif');
+        $maxsize    = 2097152;
 
         $fileName = $_FILES[$fieldName]['name'];
         $fileType = $_FILES[$fieldName]['type'];
@@ -22,6 +23,10 @@ class FileUploader
         if($fileSize == 0){
             throw new UploadFailedException("no file - ".$fieldName);
 
+        }
+        if($fileSize >= $maxsize)
+        {
+            throw new UploadFailedException("Size too big");
         }
         if($error != 0)
             throw new UploadFailedException("ERROR");
