@@ -4,6 +4,39 @@ require_once __DIR__ .'/../vendor/autoload.php';
 
 use app\Core\Router;
 use app\Controller\DashboardController;
+use Hashids\Hashids;
+
+
+
+
+function encryptUrl(string $url){
+    $hashids = new Hashids('inbiskom');
+    return $hashids->encode($url);
+}
+function decryptUrl(string $url){
+    $hashids = new Hashids('inbiskom');
+    return $hashids->decode($url);
+}
+
+function slugify(string $slug)
+{
+    $regex = '/[^\-\s\pN\pL]+/u';
+    $reges2 = '/[\-\s]+/';
+    $result = preg_replace($regex, "", mb_strtolower($slug, 'UTF-8'));
+    $result = preg_replace($reges2,'-', $result);
+    return trim($result, '-');
+}
+
+function generateUrl(string $id, string $slug)
+{
+    return encryptUrl($id).'-'.slugify($slug);
+}
+
+function parseId(string $url)
+{
+    $id = explode('-', $url)[0];
+    return decryptUrl($id);
+}
 
 
 function rupiah($angka){
